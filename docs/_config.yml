@@ -32,8 +32,8 @@ debug:
 include:
   - app.js
   - feed.xml
-  - .htaccess
   - feed.json
+  - .htaccess
   - node_modules
   - package.json
 
