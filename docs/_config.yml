@@ -53,12 +53,12 @@ exclude:
   - vendor/bundle/
   - package-lock.json
   - webpack.config.js
-  - docker_compose.yml
   - requirements.txt
   - node_modules
   - package.json
   - package-lock.json
   - webpack.config.js
+  - docker_compose.yml
   - jekyll-rtd-theme.gemspec
 
 encoding: utf-8
