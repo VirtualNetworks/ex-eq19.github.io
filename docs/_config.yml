@@ -111,6 +111,12 @@ defaults:
   -
     scope:
       path: ""
+      type: "posts"
+    values:
+      layout: "default"
+  -
+    scope:
+      path: ""
       type: "leads"
     values:
       layout: "redirect"
