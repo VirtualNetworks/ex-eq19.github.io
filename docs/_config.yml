@@ -4,8 +4,8 @@
 # https://learn.cloudcannon.com/jekyll-cheat-sheet/
 
 input_types:
-- text
 - date
+- text
 - email
 - radio
 - number
@@ -32,8 +32,8 @@ debug:
 include:
   - app.js
   - feed.xml
-  - feed.json
   - .htaccess
+  - feed.json
   - node_modules
   - package.json
 
@@ -42,6 +42,10 @@ exclude:
   - Makefile
   - yarn.lock
   - Dockerfile
+  - Makefile
+  - update.sh
+  - Gemfile
+  - Gemfile.lock
   - Gemfile.lock
   - vendor/ruby/
   - vendor/gems/
@@ -49,24 +53,20 @@ exclude:
   - vendor/bundle/
   - package-lock.json
   - webpack.config.js
-  - docker_compose.yml
-  - Makefile
-  - update.sh
-  - Gemfile
-  - Gemfile.lock
   - requirements.txt
   - node_modules
   - package.json
   - package-lock.json
   - webpack.config.js
+  - docker_compose.yml
   - jekyll-rtd-theme.gemspec
 
 encoding: utf-8
 livereload: true
 limit_posts: 1000
 timezone: Asia/Jakarta
-collections_dir: assets
 remote_theme: eQ19/parser
+collections_dir: docs/assets
 excerpt_separator: <!--end_excerpt-->
 
 # Plugins Setting
@@ -77,8 +77,8 @@ excerpt_separator: <!--end_excerpt-->
 
 plugins:
   - jemoji
-  - jekyll-gist
   - jekyll-feed
+  - jekyll-gist
   - jekyll-avatar
   - jekyll-sitemap
   - jekyll-mentions
@@ -87,8 +87,8 @@ plugins:
 
 whitelist:
   - jemoji
-  - jekyll-gist
   - jekyll-feed
+  - jekyll-gist
   - jekyll-avatar
   - jekyll-sitemap
   - jekyll-mentions
@@ -163,13 +163,13 @@ kramdown:
   math_engine_opts configuration: mathjax
  
 # Custom Headers
-# https://shopify.github.io/liquid/
 # https://jekyllrb.com/docs/configuration/webrick/
 # https://en.wikipedia.org/wiki/Content_Security_Policy
 
 google:
   gtag: GTM-PGWT4RS
   #adsense: ca-pub-3677197599836940
+
 webrick:
   headers:
     Content-Security-Policy: default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';
@@ -206,8 +206,6 @@ flow_labels:
 basedir: _feeds
 username: chetabahana
 organization: marketleader
-project_link: https://www.chetabahana.com/
-repository: chetabahana/chetabahana.github.io
 
 # Site Metadata
 # https://stackoverflow.com/a/55094996/4058484
