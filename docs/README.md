@@ -13,9 +13,9 @@ https://github.com/organizations/new
 Install Github from Windows, get it here:    
 https://windows.github.com/
 
-Select a template. You may fork this repo, or get it FREE here:
-https://www.templatemonster.com/free-templates/globaly-responsive-consulting-wordpress-theme-52382.html
-https://www.templatemo.com/preview/templatemo_395_urbanic
+Select a template. You may [fork this repo](https://github.com/eq19/eq19.github.io/fork), or get it FREE here:
+* [templatemonster.com](https://www.templatemonster.com/free-templates/globaly-responsive-consulting-wordpress-theme-52382.html)
+* [templatemo.com](https://www.templatemo.com/preview/templatemo_395_urbanic)
 
 Create repository for the template: "YOUR-ORGANIZATION.github.io":     
 https://help.github.com/articles/getting-started-with-github-for-windows/
@@ -37,12 +37,12 @@ Point your browser to:
 `https://YOUR-ORGANIZATION.github.io`
 
 Set up your custom domain follow this documentation:  
-https://help.github.com/articles/user-organization-and-project-pages/  
-https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/
+* [user-organization-and-project-pages](https://help.github.com/articles/user-organization-and-project-pages/)
+* [setting-up-a-custom-domain-with-github-pages](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/)
 
 You can use the same domain for your project pages, turn Jekyll off if necessary:   
-https://help.github.com/articles/using-jekyll-with-pages#troubleshooting  
-https://stackoverflow.com/questions/9082499/custom-domain-for-github-project-pages
+* [custom-domain](https://stackoverflow.com/questions/9082499/custom-domain-for-github-project-pages)
+* [troubleshooting](https://help.github.com/articles/using-jekyll-with-pages#troubleshooting) 
 
 You are done..    
 
@@ -60,10 +60,10 @@ Here are the URLs as samples that pointing to our [forked projects](https://gith
 
 
 See more details about Github & Jeckyll here:  
-Github Repository of Jeckyll: https://github.com/mojombo/tpw  
-Setup GitHub Pages branchs: https://gist.github.com/chrisjacob/833223  
-Concept: http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html    
-Site of Jeckyll Author, Tom Preston-Werner, GitHub's co-founder.: http://tom.preston-werner.com
+* [Concept](http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html)  
+* [Setup GitHub Pages branchs](https://gist.github.com/chrisjacob/833223)  
+* [Github Repository of Jeckyll](https://github.com/mojombo/tpw) 
+* [Site of Jeckyll Author, Tom Preston-Werner, GitHub's co-founder](http://tom.preston-werner.com)
 ***
 |[:arrow_backward:](https://github.com/eq19) [Prev](https://github.com/eq19)|[Next](http://eq19.github.io/) [:arrow_forward:](http://eq19.github.io/)|
 |:----|----:|
