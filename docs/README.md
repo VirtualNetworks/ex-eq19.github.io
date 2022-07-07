@@ -13,15 +13,15 @@ Select a template. You may [fork this repo](https://github.com/eq19/eq19.github.
 * [templatemonster.com](https://www.templatemonster.com/free-templates/globaly-responsive-consulting-wordpress-theme-52382.html)
 * [templatemo.com](https://www.templatemo.com/preview/templatemo_395_urbanic)
 
-Create repository for the template: "YOUR-ORGANIZATION.github.io":     
+Create repository for the template: "YOUR-ORGANIZATION.github.io":
 * [Download](http://jekyll-windows.juthilo.com/1-ruby-and-devkit/) the installer & Devkit for Ruby and setup Jeckyll
 * Tweak how you want the site URLs to look follow guidance [here](http://jekyllrb.com/docs/structure/)
-* [Commit](http://martinbuberl.com/blog/setup-jekyll-on-windows-and-host-it-on-github-pages/ ) the template to Github    
-   
-
+* [Commit](http://martinbuberl.com/blog/setup-jekyll-on-windows-and-host-it-on-github-pages/ ) the template to Github
+```
     git add --all    
     git commit -m "Initial commit"    
     git push "origin" master:master
+```
 
 Point your browser to:    
 [https://YOUR-ORGANIZATION.github.io](https://help.github.com/articles/getting-started-with-github-for-windows/)
