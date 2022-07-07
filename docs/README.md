@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/guard/guard.svg)](https://travis-ci.org/guard/guard) [![Code Climate](https://codeclimate.com/github/guard/guard/badges/gpa.svg)](https://codeclimate.com/github/guard/guard) [![Test Coverage](https://codeclimate.com/github/guard/guard/badges/coverage.svg)](https://codeclimate.com/github/guard/guard) [![Inline docs](http://inch-ci.org/github/guard/guard.svg)](http://inch-ci.org/github/guard/guard)
 
+## Get up and running
 We start our documentation by a tutorial how we start to get our site up and running on Github.
 
 * Open Github account [here]{ https://github.com/join)
@@ -13,7 +14,7 @@ Select a template. You may [fork this repo](https://github.com/eq19/eq19.github.
 * [templatemo.com](https://www.templatemo.com/preview/templatemo_395_urbanic)
 
 Create repository for the template: "[YOUR-ORGANIZATION.github.io](https://help.github.com/articles/getting-started-with-github-for-windows/)":     
-* [Download](http://jekyll-windows.juthilo.com/1-ruby-and-devkit/) the installer & Devkit for Ruby and setup Jeckyill     
+* [Download](http://jekyll-windows.juthilo.com/1-ruby-and-devkit/) the installer & Devkit for Ruby and setup Jeckyill
 * Tweak how you want the site URLs to look follow guidance [here](http://jekyllrb.com/docs/structure/)
 * [Commit](http://martinbuberl.com/blog/setup-jekyll-on-windows-and-host-it-on-github-pages/ ) the template to Github    
    
@@ -35,7 +36,7 @@ You can use the same domain for your project pages, turn Jekyll off if necessary
 
 You are done..    
 
-
+## Custom Domain
 Here are the URLs to point to our site:    
 
     http://eq19.github.io/   
