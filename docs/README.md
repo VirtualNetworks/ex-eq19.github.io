@@ -13,8 +13,9 @@ https://github.com/organizations/new
 Install Github from Windows, get it here:    
 https://windows.github.com/
 
-Select a template, or use ours, get it FREE here:    
-http://www.templatemo.com/preview/templatemo_395_urbanic
+Select a template. You may fork this repo, or get it FREE here:
+https://www.templatemonster.com/free-templates/globaly-responsive-consulting-wordpress-theme-52382.html
+https://www.templatemo.com/preview/templatemo_395_urbanic
 
 Create repository for the template: "YOUR-ORGANIZATION.github.io":     
 https://help.github.com/articles/getting-started-with-github-for-windows/
