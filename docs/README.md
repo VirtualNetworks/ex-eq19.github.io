@@ -26,6 +26,9 @@ Create repository for the template: "[YOUR-ORGANIZATION.github.io](https://help.
 Point your browser to:    
 `https://YOUR-ORGANIZATION.github.io`
 
+You are done..    
+
+## Custom Domain
 Set up your custom domain follow this documentation:  
 * [user-organization-and-project-pages](https://help.github.com/articles/user-organization-and-project-pages/)
 * [setting-up-a-custom-domain-with-github-pages](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/)
@@ -34,9 +37,6 @@ You can use the same domain for your project pages, turn Jekyll off if necessary
 * [custom-domain](https://stackoverflow.com/questions/9082499/custom-domain-for-github-project-pages)
 * [troubleshooting](https://help.github.com/articles/using-jekyll-with-pages#troubleshooting) 
 
-You are done..    
-
-## Custom Domain
 Here are the URLs to point to our site:    
 
     http://eq19.github.io/   
