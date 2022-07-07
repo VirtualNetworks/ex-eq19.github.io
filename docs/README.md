@@ -4,30 +4,19 @@
 
 We start our documentation by a tutorial how we start to get our site up and running on Github.
 
-Open Github account here:    
-https://github.com/join
-
-Create a new organization here:     
-https://github.com/organizations/new
-
-Install Github from Windows, get it here:    
-https://windows.github.com/
+* Open Github account [here]{ https://github.com/join)
+* Create a new organization [here](https://github.com/organizations/new)
+* Install Github from Windows, get it [here](https://windows.github.com/)
 
 Select a template. You may [fork this repo](https://github.com/eq19/eq19.github.io/fork), or get it FREE here:
 * [templatemonster.com](https://www.templatemonster.com/free-templates/globaly-responsive-consulting-wordpress-theme-52382.html)
 * [templatemo.com](https://www.templatemo.com/preview/templatemo_395_urbanic)
 
-Create repository for the template: "YOUR-ORGANIZATION.github.io":     
-https://help.github.com/articles/getting-started-with-github-for-windows/
-
-Download the installer & Devkit for Ruby and setup Jeckyill    
-http://jekyll-windows.juthilo.com/1-ruby-and-devkit/    
-
-Tweak how you want the site URLs to look follow guidance here:    
-http://jekyllrb.com/docs/structure/
-
-Commit the template to Github    
-http://martinbuberl.com/blog/setup-jekyll-on-windows-and-host-it-on-github-pages/    
+Create repository for the template: "[YOUR-ORGANIZATION.github.io](https://help.github.com/articles/getting-started-with-github-for-windows/)":     
+* [Download](http://jekyll-windows.juthilo.com/1-ruby-and-devkit/) the installer & Devkit for Ruby and setup Jeckyill     
+* Tweak how you want the site URLs to look follow guidance [here](http://jekyllrb.com/docs/structure/)
+* [Commit](http://martinbuberl.com/blog/setup-jekyll-on-windows-and-host-it-on-github-pages/ ) the template to Github    
+   
 
     git add --all    
     git commit -m "Initial commit"    
