@@ -64,5 +64,5 @@ Setup GitHub Pages branchs: https://gist.github.com/chrisjacob/833223
 Concept: http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html    
 Site of Jeckyll Author, Tom Preston-Werner, GitHub's co-founder.: http://tom.preston-werner.com
 ***
-|[:arrow_backward:]((https://github.com/eq19)) [Prev](http://eq19.github.io/)|[Next](https://github.com/chetabahana/chetabahana.github.io/wiki) [:arrow_forward:](https://github.com/chetabahana/chetabahana.github.io/wiki)|
+|[:arrow_backward:](https://github.com/eq19) [Prev](http://eq19.github.io/)|[Next](https://github.com/eq19) [:arrow_forward:](http://eq19.github.io/)|
 |:----|----:|
