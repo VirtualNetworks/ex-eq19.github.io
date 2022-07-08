@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/guard/guard.svg)](https://travis-ci.org/guard/guard) [![Code Climate](https://codeclimate.com/github/guard/guard/badges/gpa.svg)](https://codeclimate.com/github/guard/guard) [![Test Coverage](https://codeclimate.com/github/guard/guard/badges/coverage.svg)](https://codeclimate.com/github/guard/guard) [![Inline docs](http://inch-ci.org/github/guard/guard.svg)](http://inch-ci.org/github/guard/guard)
 
-## Get up and running
+## Up and running
 How we start to get our site up and running on Github.
 
 * Open Github account [here](https://github.com/join)
