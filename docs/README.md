@@ -10,8 +10,8 @@ How we start to get our site up and running on Github.
 * Install Github from Windows, get it [here](https://windows.github.com/)
 
 Select a template. You may [fork this repo](https://github.com/eq19/eq19.github.io/fork), or get it FREE here:
-* [templatemonster.com](https://www.templatemonster.com/free-templates/globaly-responsive-consulting-wordpress-theme-52382.html)
-* [templatemo.com](https://www.templatemo.com/preview/templatemo_395_urbanic)
+* [Responsive WordPress Theme](https://www.templatemonster.com/free-templates/globaly-responsive-consulting-wordpress-theme-52382.html)
+* [HTML5 website template](https://www.templatemo.com/preview/templatemo_395_urbanic)
 
 Create repository for the template: "YOUR-ORGANIZATION.github.io":
 * [Download](http://jekyll-windows.juthilo.com/1-ruby-and-devkit/) the installer & Devkit for Ruby and setup Jeckyll
