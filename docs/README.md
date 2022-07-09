@@ -18,7 +18,7 @@ Create repository for the template: "YOUR-ORGANIZATION.github.io":
 * Tweak how you want the site URLs to look follow guidance [here](http://jekyllrb.com/docs/structure/)
 * [Commit](http://martinbuberl.com/blog/setup-jekyll-on-windows-and-host-it-on-github-pages/ ) the template to Github
 ```
-    git add --all    
+    git add --all
     git commit -m "Initial commit"    
     git push "origin" master:master
 ```
