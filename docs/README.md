@@ -31,7 +31,7 @@ You are done..
 ## Custom Domain
 Set up your custom domain follow this documentation:  
 * [About GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages)
-* [Configuring a custom domain for your GitHub Pages](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/)
+* [Configuring a custom domain](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/)
 
 You can use the same domain for your project pages, turn Jekyll off if necessary:   
 * [Custom domain for GitHub project pages](https://stackoverflow.com/questions/9082499/custom-domain-for-github-project-pages)
