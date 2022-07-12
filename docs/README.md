@@ -26,7 +26,7 @@ Create repository for the template: "YOUR-ORGANIZATION.github.io":
 Point your browser to:    
 [https://YOUR-ORGANIZATION.github.io](https://help.github.com/articles/getting-started-with-github-for-windows/)
 
-You are done..    
+You are done..
 
 ## Custom Domain
 Set up your custom domain follow this documentation:  
