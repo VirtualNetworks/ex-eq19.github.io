@@ -1,6 +1,5 @@
 ---
 title: Project Mapping
-layout: method
 permalink: /map
 ---
 # Concept
