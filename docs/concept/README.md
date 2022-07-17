@@ -1,6 +1,5 @@
 ---
 sort: 1
-layout: maps
 path: /concept
 permalink: /concept
 title: Tabulate Prime by π(1000)=168
