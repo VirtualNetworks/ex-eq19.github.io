@@ -1,13 +1,13 @@
 ---
 sort: 1
+layout: maps
 path: /concept
-layout: concept
 permalink: /concept
-title: Tabulate Prime by The Power of 168
+title: Tabulate Prime by π(1000)=168
 ---
-
+{{ page.path }}
 {%- for item in site.html_pages -%}
-	{%- if item.path == "docs/README.md" -%}
+	{%- if item.path == "concept/map.md" -%}
 		{{ item.content }}
 	{%- endif -%}
 {%- endfor -%}
