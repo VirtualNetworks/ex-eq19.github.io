@@ -4,7 +4,6 @@ path: /concept
 permalink: /concept
 title: Tabulate Prime by π(1000)=168
 ---
-{{ page.path }}
 {%- for item in site.html_pages -%}
 	{%- if item.path == "concept/map.md" -%}
 		{{ item.content }}
