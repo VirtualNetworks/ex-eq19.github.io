@@ -5,16 +5,16 @@ function include(url) {
 
 /* cookie.JS
  ========================================================*/
-include('/style/js/jquery.cookie.js');
+include('/js/jquery.cookie.js');
 
 
 /* DEVICE.JS
  ========================================================*/
-include('/style/js/device.min.js');
+include('/js/device.min.js');
 
 /* Stick up menu
  ========================================================*/
-include('/style/js/tmstickup.js');
+include('/js/tmstickup.js');
 $(window).load(function () {
     if ($('html').hasClass('desktop')) {
         $('#stuck_container').TMStickUp({
@@ -24,12 +24,12 @@ $(window).load(function () {
 
 /* Easing library
  ========================================================*/
-include('/style/js/jquery.easing.1.3.js');
+include('/js/jquery.easing.1.3.js');
 
 
 /* ToTop
  ========================================================*/
-include('/style/js/jquery.ui.totop.js');
+include('/js/jquery.ui.totop.js');
 $(function () {
     $().UItoTop({ easingType: 'easeOutQuart' });
 });
@@ -37,8 +37,8 @@ $(function () {
 
 /* DEVICE.JS AND SMOOTH SCROLLIG
  ========================================================*/
-include('/style/js/jquery.mousewheel.min.js');
-include('/style/js/jquery.simplr.smoothscroll.min.js');
+include('/js/jquery.mousewheel.min.js');
+include('/js/jquery.simplr.smoothscroll.min.js');
 $(function () {
     if ($('html').hasClass('desktop')) {
         $.srSmoothscroll({
@@ -58,12 +58,12 @@ $(document).ready(function () {
 
 /* Superfish menu
  ========================================================*/
-include('/style/js/superfish.js');
-include('/style/js/jquery.mobilemenu.js');
+include('/js/superfish.js');
+include('/js/jquery.mobilemenu.js');
 
 /* Unveil
  ========================================================*/
-include('/style/js/jquery.unveil.js');
+include('/js/jquery.unveil.js');
 $(document).ready(function () {
     $('img').unveil();
 });

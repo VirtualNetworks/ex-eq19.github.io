@@ -137,7 +137,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(247, 247, 247, 0.48) url('/style/images/form-loader.gif');
+  background: rgba(247, 247, 247, 0.48) url('/images/form-loader.gif');
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 5%;
