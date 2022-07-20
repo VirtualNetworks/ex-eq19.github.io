@@ -263,7 +263,7 @@ img {
     width: 100%;
     height: 40px;
     border: 1px solid #dddddd;
-    background: #edecec url(/assets/images/select.png) 99% center no-repeat;
+    background: #edecec url(/style/images/select.png) 99% center no-repeat;
     color: #000000;
     border-radius: 0;
     -webkit-appearance: none;
@@ -886,7 +886,7 @@ address .text_7 + .text_8 {
 /*============  LightBox =============*/
 a[data-type='lightbox'] {
   display: block;
-  background: url('/assets/images/magnify.png') no-repeat center center;
+  background: url('/style/images/magnify.png') no-repeat center center;
 }
 a[data-type='lightbox'] img {
   width: 100%;
