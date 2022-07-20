@@ -7,7 +7,7 @@ How we start to get our site up and running on Github.
 
 * Open Github account [here](https://github.com/join)
 * Create a new organization [here](https://github.com/organizations/new)
-* Install Github from Windows, get it [here](https://windows.github.com/)
+* Install Github Dekstop, get it [here](https://desktop.github.com/)
 
 Select a template. You may [fork this repo](https://github.com/eq19/eq19.github.io/fork), or get it FREE here:
 * [Responsive WordPress Theme](https://www.templatemonster.com/free-templates/globaly-responsive-consulting-wordpress-theme-52382.html)
