@@ -23,6 +23,13 @@ debug:
   compress: false
   shortcodes: false
 
+encoding: utf-8
+livereload: true
+limit_posts: 1000
+collections_dir: maps
+timezone: Asia/Jakarta
+remote_theme: eQ19/parser
+
 # Repository Settings
 # https://blog.webjeda.com/jekyll-redirect/
 # https://github.com/dotnet/docs/issues/20459#issuecomment-725295168
@@ -60,13 +67,6 @@ exclude:
   - webpack.config.js
   - docker_compose.yml
   - jekyll-rtd-theme.gemspec
-
-encoding: utf-8
-livereload: true
-limit_posts: 1000
-collections_dir: maps
-timezone: Asia/Jakarta
-remote_theme: eQ19/parser
 
 # Plugins Setting
 # https://pages.github.com/versions/
