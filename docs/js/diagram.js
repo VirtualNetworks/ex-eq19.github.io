@@ -1,16 +1,17 @@
-{%- comment -%}
+/*{%- comment -%}
 *
 *  Here we are defining The Document Object Model (DOM) with JavaScript
 *  as the relations between their nodes with our feeds object.
 *
 *  You may see the running code here:
-*  https://chetabahana.github.io/diagram.js
+*  https://eq19.github.io/js/diagram.js
 *
 *  Note:
 *  Documentation is currently available in bahasa only
 *  https://github.com/chetabahana/chetabahana.github.io/wiki#skema
 *
-{%- endcomment -%}var id, js, ids, pad, back, data, feed, json, link, init, size, test, type, query, click, diagram, options, elements, draw = {
+{%- endcomment -%}*/
+var id, js, ids, pad, back, data, feed, json, link, init, size, test, type, query, click, diagram, options, elements, draw = {
 
     diagram : function() {
 
@@ -269,7 +270,7 @@
 
             //Set to {{ data.loop }} and {{ data.root }} per the Scheme of 5‘ and 3‘. See more detail on source code
             //ref https://github.com/chetabahana/chetabahana.github.io/blob/Chetabahana/_includes/feeds/skema/diagram.js
-            {% comment %}
+            /*{% comment %}
             * 
             *  Scheme 5‘ and 3‘
             *  Injected by 53 objects of id: 142
@@ -327,7 +328,7 @@
             *  Documentation is currently available in bahasa only
             *  https://github.com/chetabahana/chetabahana.github.io/wiki/Jekyll-Liquid#Mekanisme
             *
-            {% endcomment %}
+            {% endcomment %}*/
             if (!json) json = result.items[{{ data.loop }}].items[{{ data.root }}].items;
             if (!size) size = json.length;
             if (!type) type = 'Sequence';
