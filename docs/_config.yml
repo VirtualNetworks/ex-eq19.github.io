@@ -67,7 +67,6 @@ limit_posts: 1000
 collections_dir: maps
 timezone: Asia/Jakarta
 remote_theme: eQ19/parser
-excerpt_separator: <!--end_excerpt-->
 
 # Plugins Setting
 # https://pages.github.com/versions/
@@ -155,6 +154,8 @@ feed:
         - diagram # https://chetabahana.github.io/feed/feeds/diagram.xml
         - section # https://chetabahana.github.io/feed/feeds/section.xml
       path: /feeds.xml # https://chetabahana.github.io/feeds.xml
+
+excerpt_separator: <!--end_excerpt-->
 
 # Kramdown Options
 # https://kramdown.gettalong.org/options.html
