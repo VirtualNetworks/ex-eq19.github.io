@@ -21,7 +21,7 @@ form_engines:
 debug:
   dist: false
   compress: false
-  shortcodes: false
+  shortcodes: true
 
 encoding: utf-8
 livereload: true
