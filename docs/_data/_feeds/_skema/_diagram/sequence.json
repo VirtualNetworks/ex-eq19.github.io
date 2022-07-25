@@ -11,7 +11,7 @@
             "guide": {
                 "xml": "/feeds.xml",
                 "link": "https://en.wikipedia.org/wiki/CoffeeScript",
-                "file": "sequence/js/sequence-diagram-snap-min.js",
+                "file": "https://eq19.github.io/sequence/js/sequence-diagram-snap-min.js",
                 "from": "https://coffeescript.org/#overview",
                 "to": "https://coffeescript.org/v1/annotated-source/grammar.html",
                 "docs": "https://chetabahana.github.io/styles/skema/doc/index.html"

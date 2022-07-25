@@ -11,7 +11,7 @@
             "guide": {
                 "xml": "/feed/feeds/user.xml",
                 "link": "https://chetabahana.github.io/tree/doc/guides/writing-tests.html",
-                "file": "tree/test/fixtures/three.graphql/build.js",
+                "file": "https://eq19.github.io/tree/test/fixtures/three.graphql/build.js",
                 "from": "https://github.com/chetabahana/scenetree/blob/gh-pages/node_modules/three/examples/js/loaders/VRMLLoader.js",
                 "to": "https://github.com/chetabahana/threejs/blob/master/examples/js/loaders/VRMLLoader.js#L5",
                 "docs": "https://nodejs.org/api/all.json"

@@ -1,7 +1,7 @@
 {
     "id": 60,
-    "title": "grammar",
-    "js": "feeds/skema/diagram/grammar.js",
+    "title": "pattern",
+    "js": "feeds/skema/diagram/pattern.js",
     "items": [
         {
             "style": {
@@ -11,7 +11,7 @@
             "guide": {
                 "xml": "/leads.xml",
                 "link": "https://chetabahana.github.io/grammar/playground/",
-                "file": "grammar/diagrams/diagram.min.js",
+                "file": "https://eq19.github.io/pattern/diagrams/diagram.min.js",
                 "from": "https://github.com/chetabahana/grammar/blob/master/examples/implementation_languages/coffeescript/coffeescript_json.coffee",
                 "to": "https://chetabahana.github.io/bash/grammar.html",
                 "docs": "https://sap.github.io/chevrotain/docs/guide/custom_apis.html#gast-structure"
