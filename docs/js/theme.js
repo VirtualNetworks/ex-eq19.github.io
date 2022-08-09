@@ -281,7 +281,7 @@ $("div.highlighter-rouge").each(function () {
 });
 
 if ("serviceWorker" in navigator) {
-  //navigator.serviceWorker.register(`${ui.baseurl}/sw.caches.js`);
+  navigator.serviceWorker.register(`${ui.baseurl}/sw.caches.js`);
 } else {
   debug("Service Worker not supported!");
 }
