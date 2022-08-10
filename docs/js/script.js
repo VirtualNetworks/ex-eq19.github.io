@@ -36,7 +36,7 @@ $(function () {
 
 
 /* DEVICE.JS AND SMOOTH SCROLLIG
- ========================================================*/
+ ========================================================
 include('/wheel/jquery.mousewheel.min.js');
 include('/js/jquery.simplr.smoothscroll.min.js');
 $(function () {
@@ -46,7 +46,7 @@ $(function () {
             speed: 800
         });
     }
-});
+});*/
 
 /* Copyright Year
  ========================================================*/
