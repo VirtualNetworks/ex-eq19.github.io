@@ -37,7 +37,7 @@ $(function () {
 
 /* DEVICE.JS AND SMOOTH SCROLLIG
  ========================================================*/
-include('/js/jquery.mousewheel.min.js');
+include('/wheel/jquery.mousewheel.min.js');
 include('/js/jquery.simplr.smoothscroll.min.js');
 $(function () {
     if ($('html').hasClass('desktop')) {
