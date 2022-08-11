@@ -5,7 +5,6 @@ function include(url) {
 
 /* cookie.JS
  ========================================================*/
-include('/js/jquery.js');
 include('/js/jquery.cookie.js');
 include('/js/jquery-migrate-1.2.1.js');
 
