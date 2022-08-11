@@ -70,11 +70,6 @@ $(document).ready(function () {
     $('img').unveil();
 });
 
-/* Flatdoc
- ========================================================*/
-include('/js/legacy.js');
-include('/js/flatdoc.js');
-//Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 
 /* Orientation tablet fix
  ========================================================*/
@@ -126,7 +121,9 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
 
 /* Custom script
  ========================================================*/
+include('/js/legacy.js');
 include('/js/camera.js');
+include('/js/flatdoc.js');
 include('/js/isotope.min.js');
 include('/js/owl.carousel.js');
 
@@ -206,6 +203,7 @@ $(document).ready(function () {
         });
     }
 
+	Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 
 });
 
