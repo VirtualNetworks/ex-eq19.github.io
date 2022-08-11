@@ -8,7 +8,7 @@ function include(url) {
 include('/js/jquery.cookie.js');
 include('/js/jquery-migrate-1.2.1.js');
 
-/* DEVICE.JS
+/* device JS
  ========================================================*/
 include('/js/device.min.js');
 
