@@ -129,7 +129,6 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
 include('/js/isotope.min.js');
 include('/js/owl.carousel.js');
 include('/js/camera.js');
-include('/js/theme.js');
 
 $(document).ready(function () {
     var camera = $('#camera');
