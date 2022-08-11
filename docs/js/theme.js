@@ -74,7 +74,7 @@ $(document).ready(function () {
  ========================================================*/
 include('/js/legacy.js');
 include('/js/flatdoc.js');
-Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
+//Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 
 /* Orientation tablet fix
  ========================================================*/
