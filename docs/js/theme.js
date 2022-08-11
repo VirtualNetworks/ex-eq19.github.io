@@ -1,3 +1,6 @@
+---
+layout: tasks/compress
+---
 function include(url) {
     document.write('<script src="' + url + '"></script>');
     return false;
