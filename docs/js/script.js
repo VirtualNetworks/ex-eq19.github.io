@@ -6,7 +6,7 @@ function include(url) {
 /* cookie.JS
  ========================================================*/
 include('/js/jquery.cookie.js');
-
+include('/js/jquery-migrate-1.2.1.js');
 
 /* DEVICE.JS
  ========================================================*/
@@ -22,9 +22,11 @@ $(window).load(function () {
     }
 });
 
+
 /* Easing library
  ========================================================*/
 include('/js/jquery.easing.1.3.js');
+include('/js/jquery.equalheights.js');
 
 
 /* ToTop
@@ -70,8 +72,8 @@ $(document).ready(function () {
 
 /* Flatdoc
  ========================================================*/
-include('https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/legacy.js');
-include('https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/flatdoc.js');
+include('/js/legacy.js');
+include('/js/flatdoc.js');
 Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 
 /* Orientation tablet fix
@@ -124,6 +126,11 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
 
 /* Custom script
  ========================================================*/
+include('/js/isotope.min.js');
+include('/js/owl.carousel.js');
+include('/js/camera.js');
+include('/js/theme.js');
+
 $(document).ready(function () {
     var camera = $('#camera');
     var owl = $('#owl');
