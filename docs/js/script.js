@@ -35,7 +35,7 @@ $(function () {
 });
 
 
-/* DEVICE.JS AND SMOOTH SCROLLIG
+/* Smooth scrolling
  ========================================================
 include('/wheel/jquery.mousewheel.min.js');
 include('/js/jquery.simplr.smoothscroll.min.js');
@@ -67,6 +67,12 @@ include('/js/jquery.unveil.js');
 $(document).ready(function () {
     $('img').unveil();
 });
+
+/* Flatdoc
+ ========================================================*/
+include('https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/legacy.js');
+include('https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/flatdoc.js');
+Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 
 /* Orientation tablet fix
  ========================================================*/
