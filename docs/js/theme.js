@@ -126,14 +126,14 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
 
 /* Custom script
  ========================================================*/
+include('/js/camera.js');
 include('/js/isotope.min.js');
 include('/js/owl.carousel.js');
-include('/js/camera.js');
 
 $(document).ready(function () {
-    var camera = $('#camera');
     var owl = $('#owl');
     var owl2 = $('#owl_2');
+    var camera = $('#camera');
     var isotope = $('.isotope');
 
     if(camera.length > 0){
