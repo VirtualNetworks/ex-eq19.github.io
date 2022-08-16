@@ -15,7 +15,7 @@ include('/js/device.min.js');
 /* Stick up menu
  ========================================================*/
 include('/js/tmstickup.js');
-$(window).on('load', function() {
+$(window).load(function () {
     if ($('html').hasClass('desktop')) {
         $('#stuck_container').TMStickUp({
         })
