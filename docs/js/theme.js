@@ -60,7 +60,7 @@ $(function () {
 		});
 	}
 });*/
-include('scroll/jquery.simplyscroll.min.js');
+include('/scroll/jquery.simplyscroll.min.js');
 $(document).ready(function () {
 	$(".templatemo-project-gallery").simplyScroll();
 });
