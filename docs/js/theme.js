@@ -1,5 +1,5 @@
-function include(url) {
-    document.write('<script src="' + url + '"></script>');
+$('#₠Quantum').empty();function include(url) {
+    $('#₠Quantum').append('<script src="' + url + '"></script>');
     return false;
 }
 
