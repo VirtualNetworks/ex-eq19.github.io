@@ -14,10 +14,9 @@ include('/js/device.min.js');
 
 /* Stick up menu
  ========================================================*/
-include('/stickUp/js/stickUp.min.js');
-$(document).ready(function () {
+$.getScript('/stickUp/js/stickUp.min.js', function() {
 	$('.top-menu').stickUp();
-});
+});  
 
 include('/js/tmstickup.js');
 $(window).load(function () {
