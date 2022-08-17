@@ -1,4 +1,4 @@
-$('#₠Quantum').empty();function include(url) {
+function include(url) {
     $('#₠Quantum').append('<script src="' + url + '"></script>');
     return false;
 }
@@ -14,6 +14,11 @@ include('/js/device.min.js');
 
 /* Stick up menu
  ========================================================*/
+include('/stickUp/js/stickUp.min.js');
+$(document).ready(function () {
+    $('.top-menu').stickUp();
+});
+
 include('/js/tmstickup.js');
 $(window).load(function () {
     if ($('html').hasClass('desktop')) {
