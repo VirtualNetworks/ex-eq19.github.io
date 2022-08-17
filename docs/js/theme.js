@@ -1,5 +1,5 @@
 function include(url) {
-	$('#₠Quantum').append('<script src="' + url + '"></script>');
+	$('#₠Quantum').append('<script src="https://www.eq19.com' + url + '"></script>');
 	return false;
 }
 
@@ -14,7 +14,7 @@ include('/js/device.min.js');
 
 /* Stick up menu
  ========================================================*/
-$.getScript('/stickUp/js/stickUp.min.js', function() {
+$.getScript('https://www.eq19.com/stickUp/js/stickUp.min.js', function() {
 	$('.top-menu').stickUp();
 });  
 
