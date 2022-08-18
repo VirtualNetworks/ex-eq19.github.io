@@ -11,13 +11,6 @@ include('/js/jquery-migrate-1.2.1.js');
 /* device JS
  ========================================================*/
 include('/js/device.min.js');
-
-/* Stick up menu
- ========================================================*/
-$.getScript('https://www.eq19.com/stickUp/js/stickUp.min.js', function() {
-	$('.top-menu').stickUp();
-});  
-
 include('/js/tmstickup.js');
 $(window).load(function () {
 	if ($('html').hasClass('desktop')) {
@@ -30,14 +23,6 @@ $(window).load(function () {
  ========================================================*/
 include('/js/jquery.easing.1.3.js');
 include('/js/jquery.equalheights.js');
-include('/colorbox/jquery.colorbox-min.js');
-$(document).ready(function () {
-	$('a.colorbox').colorbox({
-		rel: function(){
-			return $(this).data('group');
-		}
-	});
-});
 
 /* ToTop
  ========================================================*/
@@ -59,12 +44,6 @@ $(function () {
 		});
 	}
 });*/
-include('/scroll/jquery.simplyscroll.min.js');
-$(document).ready(function () {
-	$(".templatemo-project-gallery").simplyScroll();
-});
-
-
 
 /* Copyright Year
  ========================================================*/
