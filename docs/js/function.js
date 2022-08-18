@@ -50,6 +50,8 @@ $(window).load(function () {
 	}
 });
 
+// jQuery document.ready will be executed just after html dom tree has been parsed out.
+// So it is far more earlier executed than window onload.
 $(document).ready(function () {
 	var owl = $('#owl');
 	var owl2 = $('#owl_2');
@@ -63,6 +65,55 @@ $(document).ready(function () {
 			return $(this).data('group');
 		}
 	});
+	// to stick navbar on top and hash
+	top_menu_height = $('.top-menu').height();
+	$('html,body').scrollspy({target: '#templatemo-nav-bar', offset: top_menu_height + 10});
+
+	// do scroll and clear the hash anytime someone arrives with a hash tag
+	// https://stackoverflow.com/a/50688363/4058484
+	if( typeof(location.hash) !== 'undefined' && location.hash.length ) 
+	{
+		var location_hash = location.hash.split('?')[0];
+		history.replaceState(null, null, location.pathname);
+		scrollTo(location_hash);
+	}
+
+	// set links which point outside
+	$('.external-link').unbind('click');
+	$(document.links).filter(function() {
+		return this.hostname != window.location.hostname;
+	}).attr('target', '_blank'); 
+
+	// scroll to top
+	$('#btn-back-to-top').click(function(e)
+	{
+		e.preventDefault();
+		scrollTo('#templatemo-top');
+	});
+
+	// scroll to specific id when click on link
+	$('.internal-link, .carousel-inner a').click(function(e)
+	{
+		e.preventDefault(); 
+		var linkId = $(this).attr('href');
+		scrollTo(linkId);
+		return false;
+	});
+
+	// scroll to specific id when click on menu
+	$('.top-menu .navbar-nav a').click(function(e)
+	{
+		e.preventDefault(); 
+		var linkId = $(this).attr('href');
+		scrollTo(linkId);
+		if($('.navbar-toggle').is(":visible") == true)
+		{
+			$('.navbar-collapse').collapse('toggle');
+		}
+		$(this).blur();
+		return false;
+	});
+
 	$(".templatemo-project-gallery").simplyScroll();
 	$('.templatemo-gallery-category a').click(function(e)
 	{
@@ -469,11 +520,6 @@ function filterBy(data, filters = {}) {
 		return (laur.yearFrom >= filters.yearFrom) &&
 		   (laur.yearTo <= filters.yearTo);
   });
-}
-
-function include(url) {
-	$('#₠Quantum').append('<script src="{{ site.url }}/' + url + '"></script>');
-	return false;
 }
 
 /* Orientation tablet fix
