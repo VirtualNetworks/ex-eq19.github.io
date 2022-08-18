@@ -49,7 +49,6 @@ exclude:
   - Makefile
   - yarn.lock
   - Dockerfile
-  - Makefile
   - update.sh
   - Gemfile
   - Gemfile.lock
