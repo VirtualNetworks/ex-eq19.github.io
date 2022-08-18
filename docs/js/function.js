@@ -1,5 +1,5 @@
 $(function () {
-	$().UItoTop({ easingType: 'easeOutQuart' });
+	//$().UItoTop({ easingType: 'easeOutQuart' });
 	if ($('html').hasClass('desktop')) {
 		$.srSmoothscroll({
 			step: 150,
