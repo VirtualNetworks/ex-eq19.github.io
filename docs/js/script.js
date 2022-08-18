@@ -20,16 +20,14 @@ $(window).load(function () {
 });
 
 /* Easing library
- ========================================================*/
+ ========================================================
+include('/js/jquery.ui.totop.js');
 include('/js/jquery.easing.1.3.js');
 include('/js/jquery.equalheights.js');
 
-/* ToTop
- ========================================================*/
-include('/js/jquery.ui.totop.js');
 $(function () {
 	$().UItoTop({ easingType: 'easeOutQuart' });
-});
+});*/
 
 
 /* Smooth scrolling
