@@ -66,7 +66,7 @@ $(document).ready(function () {
 		}
 	});
 	// to stick navbar on top and hash
-	top_menu_height = $('.top-menu').height();
+	var top_menu_height = $('.top-menu').height();
 	$('html,body').scrollspy({target: '#templatemo-nav-bar', offset: top_menu_height + 10});
 
 	// do scroll and clear the hash anytime someone arrives with a hash tag
@@ -493,8 +493,6 @@ if ("serviceWorker" in navigator) {
 }
 
 // init scrollTo 
-var myIdcounter = 0;
-var top_menu_height = 0;
 function scrollTo(selectors)
 {
 	if(!$(selectors).length) return;
