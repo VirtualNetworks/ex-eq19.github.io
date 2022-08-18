@@ -209,7 +209,6 @@ flow_labels:
 # https://stackoverflow.com/a/30828197/4058484
 
 username: eq19
-basedir: _feeds
 organization: feedmapping
 repository: eq19/eq19.github.io
 project_link: https://www.eq19.com/
