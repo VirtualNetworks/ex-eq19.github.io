@@ -1,17 +1,17 @@
 function include(url) {
-	$('#₠Quantum').append('<script src="https://www.eq19.com' + url + '"></script>');
+	$('#₠Quantum').append('<script src="{{ site.url }} + url + '"></script>');
 	return false;
 }
 
 /* cookie.JS
  ========================================================*/
-include('/js/jquery.cookie.js');
-include('/js/jquery-migrate-1.2.1.js');
+include('js/jquery.cookie.js');
+include('js/jquery-migrate-1.2.1.js');
 
 /* device JS
  ========================================================*/
-include('/js/device.min.js');
-include('/js/tmstickup.js');
+include('js/device.min.js');
+include('js/tmstickup.js');
 $(window).load(function () {
 	if ($('html').hasClass('desktop')) {
 		$('#stuck_container').TMStickUp({
@@ -21,9 +21,9 @@ $(window).load(function () {
 
 /* Easing library
  ========================================================
-include('/js/jquery.ui.totop.js');
-include('/js/jquery.easing.1.3.js');
-include('/js/jquery.equalheights.js');
+include('js/jquery.ui.totop.js');
+include('js/jquery.easing.1.3.js');
+include('js/jquery.equalheights.js');
 
 $(function () {
 	$().UItoTop({ easingType: 'easeOutQuart' });
@@ -33,7 +33,7 @@ $(function () {
 /* Smooth scrolling
  ========================================================
 include('/wheel/jquery.mousewheel.min.js');
-include('/js/jquery.simplr.smoothscroll.min.js');
+include('js/jquery.simplr.smoothscroll.min.js');
 $(function () {
 	if ($('html').hasClass('desktop')) {
 		$.srSmoothscroll({
@@ -53,9 +53,9 @@ $(document).ready(function () {
 
 /* Superfish menu
  ========================================================*/
-include('/js/superfish.js');
-include('/js/jquery.unveil.js');
-include('/js/jquery.mobilemenu.js');
+include('js/superfish.js');
+include('js/jquery.unveil.js');
+include('js/jquery.mobilemenu.js');
 $(document).ready(function () {
 	$('img').unveil();
 	$('.top-menu').stickUp();
@@ -130,11 +130,11 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
 
 /* Custom script
  ========================================================*/
-include('/js/legacy.js');
-include('/js/camera.js');
-include('/js/flatdoc.js');
-include('/js/isotope.min.js');
-include('/js/owl.carousel.js');
+include('js/legacy.js');
+include('js/camera.js');
+include('js/flatdoc.js');
+include('js/isotope.min.js');
+include('js/owl.carousel.js');
 
 $(document).ready(function () {
 	var owl = $('#owl');
