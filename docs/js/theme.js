@@ -56,15 +56,31 @@ $(document).ready(function () {
 /* Superfish menu
  ========================================================*/
 include('/js/superfish.js');
-include('/js/jquery.mobilemenu.js');
-
-/* Unveil
- ========================================================*/
 include('/js/jquery.unveil.js');
+include('/js/jquery.mobilemenu.js');
 $(document).ready(function () {
 	$('img').unveil();
+	$('.top-menu').stickUp();
+	$('a.colorbox').colorbox({
+		rel: function(){
+			return $(this).data('group');
+		}
+	});
+	$(".templatemo-project-gallery").simplyScroll();
+	$('.templatemo-gallery-category a').click(function(e)
+	{
+		e.preventDefault(); 
+		$(this).parent().children('a').removeClass('active');
+		$(this).addClass('active');
+		var linkClass = $(this).attr('href');
+		$('.gallery').each(function(){
+			if($(this).is(":visible") == true){
+			   $(this).hide();
+			};
+		});
+		$(linkClass).fadeIn();
+	});
 });
-
 
 /* Orientation tablet fix
  ========================================================*/
