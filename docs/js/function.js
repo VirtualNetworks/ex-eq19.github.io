@@ -202,6 +202,27 @@ $(document).ready(function () {
 	$("#copyright-year").text((new Date).getFullYear());
 	Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 
+	// https://api.jqueryui.com/uniqueId/
+	var myIdcounter = 0;
+	window.uniqueId = function(){return 'myid-' + myIdcounter++;}
+	$('.theme').each(function (i, e) {
+		var id = uniqueId();
+		var name = uniqueId();
+		$(e).attr('name', name).attr('id', id);
+	});
+
+	// https://stackoverflow.com/a/10811687/4058484
+	$('.theme').val('hand');
+	$.getScript($('#js')[0].href, function() {
+		if (!editor) draw.editor();
+		$.ajax({
+			type: "GET",
+			dataType: "xml",
+			url: "/sitemap.xml",
+			success: draw.getJSON(xml)
+		});
+	});  
+
 });
 
 function search(data) {
