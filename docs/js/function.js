@@ -467,11 +467,11 @@ $(".status").click(function () {
   $(".addons").toggleClass("d-none");
 });
 
-if (location.pathname == `${ui.baseurl}/search.html`) {
+/*if (location.pathname == `${ui.baseurl}/search.html`) {
   $.ajax(`${ui.baseurl}/data.json`)
 	.done(search)
 	.fail((xhr, message) => debug(message));
-}
+}*/
 
 toc();
 initialize(location.pathname);
