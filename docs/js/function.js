@@ -59,12 +59,18 @@ $(document).ready(function () {
 	var isotope = $('.isotope');
 
 	$('img').unveil();
-	$('.top-menu').stickUp();
-	$('a.colorbox').colorbox({
-		rel: function(){
-			return $(this).data('group');
-		}
+	$.getScript('https://www.eq19.com/stickUp/js/stickUp.min.js', function() {
+		$('.top-menu').stickUp();
 	});
+
+	$.getScript('https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js', function() {
+		$('a.colorbox').colorbox({
+			rel: function(){
+				return $(this).data('group');
+			}
+		});
+	});
+	
 	// to stick navbar on top and hash
 	var top_menu_height = $('.top-menu').height();
 	$('html,body').scrollspy({target: '#templatemo-nav-bar', offset: top_menu_height + 10});
@@ -114,7 +120,10 @@ $(document).ready(function () {
 		return false;
 	});
 
-	$(".templatemo-project-gallery").simplyScroll();
+	$.getScript('https://cdnjs.cloudflare.com/ajax/libs/jquery-simplyscroll/2.1.1/jquery.simplyscroll.min.js', function() {
+		$(".templatemo-project-gallery").simplyScroll();
+	});
+
 	$('.templatemo-gallery-category a').click(function(e)
 	{
 		e.preventDefault(); 
