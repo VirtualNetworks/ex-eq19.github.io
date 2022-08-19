@@ -59,7 +59,7 @@ $(document).ready(function () {
 	var isotope = $('.isotope');
 
 	$('img').unveil();
-	$('.top-menu').stickUp();
+	//$('.top-menu').stickUp();
 	$('a.colorbox').colorbox({
 		rel: function(){
 			return $(this).data('group');
