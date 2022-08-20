@@ -221,9 +221,8 @@ $(document).ready(function () {
 	});
 
 	// https://stackoverflow.com/a/10811687/4058484
-	$('.theme').val('hand');
 	$.getScript($('#js')[0].href, function() {
-		$('.theme').change(function() {draw.change();});
+		$('.theme').val('hand');
 		if (!editor) draw.editor();
 		$.ajax({
 			type: "GET",
@@ -231,6 +230,7 @@ $(document).ready(function () {
 			url: "/sitemap.xml",
 			success: draw.getJSON(xml)
 		});
+		$('.theme').change(function() {draw.change();});
 	});  
 
 });
