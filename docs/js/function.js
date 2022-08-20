@@ -1,11 +1,11 @@
 $(function () {
-	//$().UItoTop({ easingType: 'easeOutQuart' });
+	/*$().UItoTop({ easingType: 'easeOutQuart' });
 	if ($('html').hasClass('desktop')) {
 		$.srSmoothscroll({
 			step: 150,
 			speed: 800
 		});
-	}
+	}*/
 // IPad/IPhone
 	var viewportmeta = document.querySelector && document.querySelector('meta[name="viewport"]'),
 		ua = navigator.userAgent,
