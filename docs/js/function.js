@@ -58,7 +58,10 @@ $(document).ready(function () {
 	var camera = $('#camera');
 	var isotope = $('.isotope');
 
-	$('img').unveil();
+	$.getScript('https://www.eq19.com/js/jquery.unveil.js', function() {
+		$('img').unveil();
+	});
+
 	$.getScript('https://www.eq19.com/stickUp/js/stickUp.min.js', function() {
 		$('.top-menu').stickUp();
 	});
