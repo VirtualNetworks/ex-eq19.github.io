@@ -1,5 +1,6 @@
 window.include = function(url){
-	$('#₠Quantum').append('<script src="https://www.eq19.com//' + url + '"></script>');
+	var tag = '<script src="https://www.eq19.com//' + url + '"></script>';
+	$('#₠Quantum').append(tag);
 	return false;
 }
 
