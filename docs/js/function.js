@@ -75,8 +75,7 @@ $(document).ready(function () {
 	});
 	
 	// to stick navbar on top and hash
-	var top_menu_height = $('.top-menu').height();
-	$('html,body').scrollspy({target: '#templatemo-nav-bar', offset: top_menu_height + 10});
+	$('html,body').scrollspy({target: '#templatemo-nav-bar', offset: $('.top-menu').height() + 10});
 
 	// do scroll and clear the hash anytime someone arrives with a hash tag
 	// https://stackoverflow.com/a/50688363/4058484
@@ -531,7 +530,7 @@ $("div.highlighter-rouge").each(function () {
 function scrollTo(selectors)
 {
 	if(!$(selectors).length) return;
-	var selector_top = $(selectors).offset().top - top_menu_height;
+	var selector_top = $(selectors).offset().top - $('.top-menu').height();
 	$('html,body').animate({scrollTop: selector_top }, 'slow');
 }
 
