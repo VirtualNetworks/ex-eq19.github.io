@@ -43,6 +43,58 @@ $(function () {
 	}
 });
 
+function set(name, value) {
+  return localStorage.setItem(name, value);
+}
+
+function get(name) {
+  return localStorage.getItem(name) || false;
+}
+
+function debug() {
+  console.debug.apply(console, arguments);
+}
+
+function toc() {
+  $(".toctree li.current")
+	.append('<ul class="content-toc"></ul>')
+	.html(function () {
+	  let level = parseInt(this.dataset.level);
+	  let temp = 0;
+	  let stack = [$(this).find(".content-toc")];
+
+	  $(".markdown-body")
+		.find("h2,h3,h4,h5,h6")
+		.each(function () {
+		  let anchor = $("<a/>")
+			.addClass("d-flex flex-items-baseline")
+			.text($(this).text())
+			.attr("href", `#${this.id}`);
+		  let tagLevel = parseInt(this.tagName.slice(1)) - 1;
+
+		  if (tagLevel > temp) {
+			let parent = stack[0].children("li:last")[0];
+			if (parent) {
+			  stack.unshift($("<ul/>").appendTo(parent));
+			}
+		  } else {
+			stack.splice(
+			  0,
+			  Math.min(temp - tagLevel, Math.max(stack.length - 1, 0))
+			);
+		  }
+		  temp = tagLevel;
+
+		  $("<li/>")
+			.addClass(`toc level-${level + tagLevel}`)
+			.append(anchor)
+			.appendTo(stack[0]);
+		});
+	  if (!stack[0].html()) {
+		stack[0].remove();
+	  }
+	});
+}
 
 function search(data) {
   let text = new URL(location.href).searchParams.get("q");
@@ -149,59 +201,6 @@ function toggleCurrent(link) {
   closest.toggleClass("current");
 }
 
-function toc() {
-  $(".toctree li.current")
-	.append('<ul class="content-toc"></ul>')
-	.html(function () {
-	  let level = parseInt(this.dataset.level);
-	  let temp = 0;
-	  let stack = [$(this).find(".content-toc")];
-
-	  $(".markdown-body")
-		.find("h2,h3,h4,h5,h6")
-		.each(function () {
-		  let anchor = $("<a/>")
-			.addClass("d-flex flex-items-baseline")
-			.text($(this).text())
-			.attr("href", `#${this.id}`);
-		  let tagLevel = parseInt(this.tagName.slice(1)) - 1;
-
-		  if (tagLevel > temp) {
-			let parent = stack[0].children("li:last")[0];
-			if (parent) {
-			  stack.unshift($("<ul/>").appendTo(parent));
-			}
-		  } else {
-			stack.splice(
-			  0,
-			  Math.min(temp - tagLevel, Math.max(stack.length - 1, 0))
-			);
-		  }
-		  temp = tagLevel;
-
-		  $("<li/>")
-			.addClass(`toc level-${level + tagLevel}`)
-			.append(anchor)
-			.appendTo(stack[0]);
-		});
-	  if (!stack[0].html()) {
-		stack[0].remove();
-	  }
-	});
-}
-
-function set(name, value) {
-  return localStorage.setItem(name, value);
-}
-
-function get(name) {
-  return localStorage.getItem(name) || false;
-}
-
-function debug() {
-  console.debug.apply(console, arguments);
-}
-
 function restore() {
   let scroll = get("scroll");
   let scrollTime = get("scrollTime");
@@ -252,6 +251,48 @@ function scrollTo(selectors)
     var selector_top = $(selectors).offset().top - top_menu_height + 10;
     $('html,body').animate({scrollTop: selector_top }, 'slow');
 }
+
+
+$(window).bind("hashchange", () =>
+  initialize(location.hash || location.pathname)
+);
+
+$(window).load(function () {
+	if ($('html').hasClass('desktop')) {
+		$('#stuck_container').TMStickUp({
+		})
+	}
+});
+
+$(document).on("scroll", function () {
+  let start = $(this).scrollTop() + 5;
+  let items = [];
+
+  $(".markdown-body")
+	.find("h1,h2,h3,h4,h5,h6")
+	.each(function () {
+	  items.push({
+		offset: $(this).offset().top,
+		id: this.id,
+		level: parseInt(this.tagName.slice(1)),
+	  });
+	});
+  for (let i = 0; i < items.length; i++) {
+	if (start > items[i].offset) {
+	  if (i < items.length - 1) {
+		if (start < items[i + 1].offset) {
+		  if (items[i].level == 1) {
+			initialize(location.pathname);
+		  } else {
+			initialize("#" + items[i].id);
+		  }
+		}
+	  } else {
+		initialize("#" + items[i].id);
+	  }
+	}
+  }
+});
 
 // jQuery document.ready will be executed just after html dom tree has been parsed out.
 // So it is far more earlier executed than window onload.
@@ -394,8 +435,41 @@ $(document).ready(function () {
 		});
 	}
 
-	$("#copyright-year").text((new Date).getFullYear());
-	Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
+	/* nested ul */
+	$(".toc ul")
+	  .siblings("a")
+	  .each(function () {
+		let link = $(this);
+		let expand = $('<i class="fa fa-plus-square-o"></i>');
+
+		expand.on("click", function (e) {
+		  e.stopPropagation();
+		  toggleCurrent(link);
+		  return false;
+		});
+		link.prepend(expand);
+	  });
+
+	$("div.highlighter-rouge").each(function () {
+	  const match = $(this)
+		.attr("class")
+		.match(/language-(\w+)/);
+	  if (match) {
+		$(this).attr("data-lang", match[1]);
+	  }
+	});
+
+	/*if (location.pathname == `${ui.baseurl}/search.html`) {
+	  $.ajax(`${ui.baseurl}/data.json`)
+		.done(search)
+		.fail((xhr, message) => debug(message));
+	}*/
+
+	/*if ("serviceWorker" in navigator) {
+	  navigator.serviceWorker.register(`${ui.baseurl}/sw.caches.js`);
+	} else {
+	  debug("Service Worker not supported!");
+	}*/
 
 	// https://api.jqueryui.com/uniqueId/
 	window.uniqueId = function(){return 'myid-' + myIdcounter++;}
@@ -404,6 +478,19 @@ $(document).ready(function () {
 		var name = uniqueId();
 		$(e).attr('name', name).attr('id', id);
 	});
+
+	$("#toggle").click(function () {
+	  $(".sidebar-wrap,.content-wrap,.addons-wrap").toggleClass("shift");
+	});
+	$(".status").click(function () {
+	  $(".addons").toggleClass("d-none");
+	});
+
+	$(".markdown-body :header").append(function () {
+	  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
+	});
+
+	$("#copyright-year").text((new Date).getFullYear());
 
 	var jsScript = 'https://www.eq19.com/js/jquery.unveil.js';
 	$.getScript(jsScript, function() {
@@ -444,105 +531,17 @@ $(document).ready(function () {
 
 });
 
-$(window).bind("hashchange", () =>
-  initialize(location.hash || location.pathname)
-);
-
-$(window).load(function () {
-	if ($('html').hasClass('desktop')) {
-		$('#stuck_container').TMStickUp({
-		})
-	}
-});
-
-$(document).on("scroll", function () {
-  let start = $(this).scrollTop() + 5;
-  let items = [];
-
-  $(".markdown-body")
-	.find("h1,h2,h3,h4,h5,h6")
-	.each(function () {
-	  items.push({
-		offset: $(this).offset().top,
-		id: this.id,
-		level: parseInt(this.tagName.slice(1)),
-	  });
-	});
-  for (let i = 0; i < items.length; i++) {
-	if (start > items[i].offset) {
-	  if (i < items.length - 1) {
-		if (start < items[i + 1].offset) {
-		  if (items[i].level == 1) {
-			initialize(location.pathname);
-		  } else {
-			initialize("#" + items[i].id);
-		  }
-		}
-	  } else {
-		initialize("#" + items[i].id);
-	  }
-	}
-  }
-});
-
-$("#toggle").click(function () {
-  $(".sidebar-wrap,.content-wrap,.addons-wrap").toggleClass("shift");
-});
-$(".status").click(function () {
-  $(".addons").toggleClass("d-none");
-});
-
-/*if (location.pathname == `${ui.baseurl}/search.html`) {
-  $.ajax(`${ui.baseurl}/data.json`)
-	.done(search)
-	.fail((xhr, message) => debug(message));
-}*/
-
+/* Orientation tablet fix
+ ========================================================*/
 toc();
 initialize(location.pathname);
 initialize(location.hash);
 restore();
 highlight();
 
-/* nested ul */
-$(".toc ul")
-  .siblings("a")
-  .each(function () {
-	let link = $(this);
-	let expand = $('<i class="fa fa-plus-square-o"></i>');
-
-	expand.on("click", function (e) {
-	  e.stopPropagation();
-	  toggleCurrent(link);
-	  return false;
-	});
-	link.prepend(expand);
-  });
-
-$(".markdown-body :header").append(function () {
-  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
-});
-
-$("div.highlighter-rouge").each(function () {
-  const match = $(this)
-	.attr("class")
-	.match(/language-(\w+)/);
-  if (match) {
-	$(this).attr("data-lang", match[1]);
-  }
-});
-
-
-/*if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register(`${ui.baseurl}/sw.caches.js`);
-} else {
-  debug("Service Worker not supported!");
-}*/
-
-/* Orientation tablet fix
- ========================================================*/
 var myIdcounter = top_menu_height = 0;
 var currentYear = (new Date).getFullYear();
+Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 
 var ua = navigator.userAgent.toLocaleLowerCase(),
 	regV = /ipod|ipad|iphone/gi,
