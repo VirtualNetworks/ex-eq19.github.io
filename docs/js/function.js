@@ -240,6 +240,8 @@ function scrollTo(selectors)
 }
 
 $(function () {
+	
+	$("#copyright-year").text((new Date).getFullYear());
 	/*$().UItoTop({ easingType: 'easeOutQuart' });
 	if ($('html').hasClass('desktop')) {
 		$.srSmoothscroll({
@@ -247,6 +249,7 @@ $(function () {
 			speed: 800
 		});
 	}*/
+
 // IPad/IPhone
 	var viewportmeta = document.querySelector && document.querySelector('meta[name="viewport"]'),
 		ua = navigator.userAgent,
@@ -287,277 +290,277 @@ $(function () {
 	  initialize(location.hash || location.pathname)
 	);
 
-});
+	$(document).on("scroll", function () {
+	  let start = $(this).scrollTop() + 5;
+	  let items = [];
 
-$(document).on("scroll", function () {
-  let start = $(this).scrollTop() + 5;
-  let items = [];
-
-  $(".markdown-body")
-	.find("h1,h2,h3,h4,h5,h6")
-	.each(function () {
-	  items.push({
-		offset: $(this).offset().top,
-		id: this.id,
-		level: parseInt(this.tagName.slice(1)),
-	  });
-	});
-  for (let i = 0; i < items.length; i++) {
-	if (start > items[i].offset) {
-	  if (i < items.length - 1) {
-		if (start < items[i + 1].offset) {
-		  if (items[i].level == 1) {
-			initialize(location.pathname);
+	  $(".markdown-body")
+		.find("h1,h2,h3,h4,h5,h6")
+		.each(function () {
+		  items.push({
+			offset: $(this).offset().top,
+			id: this.id,
+			level: parseInt(this.tagName.slice(1)),
+		  });
+		});
+	  for (let i = 0; i < items.length; i++) {
+		if (start > items[i].offset) {
+		  if (i < items.length - 1) {
+			if (start < items[i + 1].offset) {
+			  if (items[i].level == 1) {
+				initialize(location.pathname);
+			  } else {
+				initialize("#" + items[i].id);
+			  }
+			}
 		  } else {
 			initialize("#" + items[i].id);
 		  }
 		}
-	  } else {
-		initialize("#" + items[i].id);
 	  }
-	}
-  }
-});
+	});
 
-// jQuery document.ready will be executed just after html dom tree has been parsed out.
-// So it is far more earlier executed than window onload.
-$(document).ready(function () {
+	// jQuery document.ready will be executed just after html dom tree has been parsed out.
+	// So it is far more earlier executed than window onload.
+	$(document).ready(function () {
 
-	var owl = $('#owl');
-	var owl2 = $('#owl_2');
-	var camera = $('#camera');
-	var isotope = $('.isotope');
+		var owl = $('#owl');
+		var owl2 = $('#owl_2');
+		var camera = $('#camera');
+		var isotope = $('.isotope');
 
-	if(camera.length > 0){
-		camera.camera(
-			{
-				autoAdvance: false,
-				height: '31.25%',
-				minHeight: '200px',
-				pagination: false,
-				thumbnails: false,
-				playPause: false,
-				hover: false,
-				loader: 'none',
-				navigation: true,
-				navigationHover: false,
-				mobileNavHover: false,
-				fx: 'simpleFade'
-			}
-		);
-	}
+		if(camera.length > 0){
+			camera.camera(
+				{
+					autoAdvance: false,
+					height: '31.25%',
+					minHeight: '200px',
+					pagination: false,
+					thumbnails: false,
+					playPause: false,
+					hover: false,
+					loader: 'none',
+					navigation: true,
+					navigationHover: false,
+					mobileNavHover: false,
+					fx: 'simpleFade'
+				}
+			);
+		}
 
-	if(owl.length > 0){
-		owl.owlCarousel(
-			{
-				navigation: true,
-				autoPlay: true,
-				slideSpeed: 300,
-				stopOnHover: true,
-				pagination: false,
-				paginationSpeed: 400,
-				singleItem: true,
-				mouseDrag: false,
-				navigationText: ["", ""]
-			}
-		);
-	}
+		if(owl.length > 0){
+			owl.owlCarousel(
+				{
+					navigation: true,
+					autoPlay: true,
+					slideSpeed: 300,
+					stopOnHover: true,
+					pagination: false,
+					paginationSpeed: 400,
+					singleItem: true,
+					mouseDrag: false,
+					navigationText: ["", ""]
+				}
+			);
+		}
 
-	if(owl2.length > 0){
-		owl2.owlCarousel(
-			{
-				navigation: true,
-				autoPlay: true,
-				slideSpeed: 300,
-				stopOnHover: true,
-				pagination: false,
-				paginationSpeed: 400,
-				singleItem: true,
-				mouseDrag: false,
-				navigationText: ["", ""]
-			}
-		);
-	}
+		if(owl2.length > 0){
+			owl2.owlCarousel(
+				{
+					navigation: true,
+					autoPlay: true,
+					slideSpeed: 300,
+					stopOnHover: true,
+					pagination: false,
+					paginationSpeed: 400,
+					singleItem: true,
+					mouseDrag: false,
+					navigationText: ["", ""]
+				}
+			);
+		}
 
-	if(isotope.length > 0){
-		isotope.isotope({
-			itemSelector: '.element-item',
-			layoutMode: 'fitRows'
+		if(isotope.length > 0){
+			isotope.isotope({
+				itemSelector: '.element-item',
+				layoutMode: 'fitRows'
+			});
+
+			$('#filters').on( 'click', 'a', function() {
+				var filterValue = $( this ).attr('data-filter');
+				console.log(filterValue);
+
+				if(filterValue == '*'){
+					isotope.isotope({ filter: filterValue });
+				}else{
+					isotope.isotope({ filter: '.'+filterValue });
+				}
+				return false;
+			});
+		}
+
+		/* nested ul */
+		$(".toc ul")
+		  .siblings("a")
+		  .each(function () {
+			let link = $(this);
+			let expand = $('<i class="fa fa-plus-square-o"></i>');
+
+			expand.on("click", function (e) {
+			  e.stopPropagation();
+			  toggleCurrent(link);
+			  return false;
+			});
+			link.prepend(expand);
+		  });
+
+		$("div.highlighter-rouge").each(function () {
+		  const match = $(this)
+			.attr("class")
+			.match(/language-(\w+)/);
+		  if (match) {
+			$(this).attr("data-lang", match[1]);
+		  }
 		});
 
-		$('#filters').on( 'click', 'a', function() {
-			var filterValue = $( this ).attr('data-filter');
-			console.log(filterValue);
+		/*if (location.pathname == `${ui.baseurl}/search.html`) {
+		  $.ajax(`${ui.baseurl}/data.json`)
+			.done(search)
+			.fail((xhr, message) => debug(message));
+		}*/
 
-			if(filterValue == '*'){
-				isotope.isotope({ filter: filterValue });
-			}else{
-				isotope.isotope({ filter: '.'+filterValue });
-			}
+		/*if ("serviceWorker" in navigator) {
+		  navigator.serviceWorker.register(`${ui.baseurl}/sw.caches.js`);
+		} else {
+		  debug("Service Worker not supported!");
+		}*/
+
+		$("#toggle").click(function () {
+		  $(".sidebar-wrap,.content-wrap,.addons-wrap").toggleClass("shift");
+		});
+		$(".status").click(function () {
+		  $(".addons").toggleClass("d-none");
+		});
+
+		$(".markdown-body :header").append(function () {
+		  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
+		});
+
+		// to stick navbar on top and hash
+		top_menu_height = $('.top-menu').height();
+		$('html,body').scrollspy({target: '#templatemo-nav-bar', offset: top_menu_height + 10});
+
+		// do scroll and clear the hash anytime someone arrives with a hash tag
+		// https://stackoverflow.com/a/50688363/4058484
+		if( typeof(location.hash) !== 'undefined' && location.hash.length ) 
+		{
+			var location_hash = location.hash.split('?')[0];
+			history.replaceState(null, null, location.pathname);
+			scrollTo(location_hash);
+		}
+
+		// set links which point outside
+		$('.external-link').unbind('click');
+		$(document.links).filter(function() {
+			return this.hostname != window.location.hostname;
+		}).attr('target', '_blank'); 
+
+		// scroll to top
+		$('#btn-back-to-top').click(function(e)
+		{
+			e.preventDefault();
+			scrollTo('#templatemo-top');
+		});
+
+		// scroll to specific id when click on link
+		$('.internal-link, .carousel-inner a').click(function(e)
+		{
+			e.preventDefault(); 
+			var linkId = $(this).attr('href');
+			scrollTo(linkId);
 			return false;
 		});
-	}
 
-	/* nested ul */
-	$(".toc ul")
-	  .siblings("a")
-	  .each(function () {
-		let link = $(this);
-		let expand = $('<i class="fa fa-plus-square-o"></i>');
-
-		expand.on("click", function (e) {
-		  e.stopPropagation();
-		  toggleCurrent(link);
-		  return false;
-		});
-		link.prepend(expand);
-	  });
-
-	$("div.highlighter-rouge").each(function () {
-	  const match = $(this)
-		.attr("class")
-		.match(/language-(\w+)/);
-	  if (match) {
-		$(this).attr("data-lang", match[1]);
-	  }
-	});
-
-	/*if (location.pathname == `${ui.baseurl}/search.html`) {
-	  $.ajax(`${ui.baseurl}/data.json`)
-		.done(search)
-		.fail((xhr, message) => debug(message));
-	}*/
-
-	/*if ("serviceWorker" in navigator) {
-	  navigator.serviceWorker.register(`${ui.baseurl}/sw.caches.js`);
-	} else {
-	  debug("Service Worker not supported!");
-	}*/
-
-	$("#toggle").click(function () {
-	  $(".sidebar-wrap,.content-wrap,.addons-wrap").toggleClass("shift");
-	});
-	$(".status").click(function () {
-	  $(".addons").toggleClass("d-none");
-	});
-
-	$(".markdown-body :header").append(function () {
-	  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
-	});
-
-	$("#copyright-year").text((new Date).getFullYear());
-	// to stick navbar on top and hash
-	$('html,body').scrollspy({target: '#templatemo-nav-bar', offset: $('.top-menu').height() + 10});
-
-	// do scroll and clear the hash anytime someone arrives with a hash tag
-	// https://stackoverflow.com/a/50688363/4058484
-	if( typeof(location.hash) !== 'undefined' && location.hash.length ) 
-	{
-		var location_hash = location.hash.split('?')[0];
-		history.replaceState(null, null, location.pathname);
-		scrollTo(location_hash);
-	}
-
-	// set links which point outside
-	$('.external-link').unbind('click');
-	$(document.links).filter(function() {
-		return this.hostname != window.location.hostname;
-	}).attr('target', '_blank'); 
-
-	// scroll to top
-	$('#btn-back-to-top').click(function(e)
-	{
-		e.preventDefault();
-		scrollTo('#templatemo-top');
-	});
-
-	// scroll to specific id when click on link
-	$('.internal-link, .carousel-inner a').click(function(e)
-	{
-		e.preventDefault(); 
-		var linkId = $(this).attr('href');
-		scrollTo(linkId);
-		return false;
-	});
-
-	// scroll to specific id when click on menu
-	$('.top-menu .navbar-nav a').click(function(e)
-	{
-		e.preventDefault(); 
-		var linkId = $(this).attr('href');
-		scrollTo(linkId);
-		if($('.navbar-toggle').is(":visible") == true)
+		// scroll to specific id when click on menu
+		$('.top-menu .navbar-nav a').click(function(e)
 		{
-			$('.navbar-collapse').collapse('toggle');
-		}
-		$(this).blur();
-		return false;
-	});
-
-	$('.templatemo-gallery-category a').click(function(e)
-	{
-		e.preventDefault(); 
-		$(this).parent().children('a').removeClass('active');
-		$(this).addClass('active');
-		var linkClass = $(this).attr('href');
-		$('.gallery').each(function(){
-			if($(this).is(":visible") == true){
-			   $(this).hide();
-			};
-		});
-		$(linkClass).fadeIn();
-	});
-
-	if ($('html').hasClass('desktop')) {
-		$('#stuck_container').TMStickUp({
-		})
-	}
-	// unbind external link
-	$('.external-link').unbind('click');
-
-	// assign unique id
-	// https://api.jqueryui.com/uniqueId/
-	$('.theme').each(function (i, e) {
-		var id = uniqueId();
-		var name = uniqueId();
-		$(e).attr('name', name).attr('id', id);
-	});
-
-	// https://stackoverflow.com/a/10811687/4058484
-	$.getScript($('#js')[0].href, function() {
-		$('.theme').val('hand');
-		$('.theme').change(function() {draw.change();});
-		if (!editor) draw.editor();
-		$.ajax({
-			type: "GET",
-			dataType: "xml",
-			url: "/sitemap.xml",
-			success: draw.getJSON(xml)
-		});
-	});  
-
-	var jsScript = 'https://www.eq19.com/js/jquery.unveil.js';
-	$.getScript(jsScript, function() {
-		$('img').unveil();
-	});
-
-	jsScript = 'https://www.eq19.com/stickUp/js/stickUp.min.js';
-	$.getScript(jsScript, function() {
-		$('.top-menu').stickUp();
-	});
-
-	jsScript = 'https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js';
-	$.getScript(jsScript, function() {
-		$('a.colorbox').colorbox({
-			rel: function(){
-				return $(this).data('group');
+			e.preventDefault(); 
+			var linkId = $(this).attr('href');
+			scrollTo(linkId);
+			if($('.navbar-toggle').is(":visible") == true)
+			{
+				$('.navbar-collapse').collapse('toggle');
 			}
+			$(this).blur();
+			return false;
 		});
-	});
 
-	jsScript ='https://cdnjs.cloudflare.com/ajax/libs/jquery-simplyscroll/2.1.1/jquery.simplyscroll.min.js';
-	$.getScript(jsScript, function() {
-		$(".templatemo-project-gallery").simplyScroll();
+		$('.templatemo-gallery-category a').click(function(e)
+		{
+			e.preventDefault(); 
+			$(this).parent().children('a').removeClass('active');
+			$(this).addClass('active');
+			var linkClass = $(this).attr('href');
+			$('.gallery').each(function(){
+				if($(this).is(":visible") == true){
+				   $(this).hide();
+				};
+			});
+			$(linkClass).fadeIn();
+		});
+
+		if ($('html').hasClass('desktop')) {
+			$('#stuck_container').TMStickUp({
+			})
+		}
+		// unbind external link
+		$('.external-link').unbind('click');
+
+		// assign unique id
+		// https://api.jqueryui.com/uniqueId/
+		$('.theme').each(function (i, e) {
+			var id = uniqueId();
+			var name = uniqueId();
+			$(e).attr('name', name).attr('id', id);
+		});
+
+		// https://stackoverflow.com/a/10811687/4058484
+		$.getScript($('#js')[0].href, function() {
+			$('.theme').val('hand');
+			$('.theme').change(function() {draw.change();});
+			if (!editor) draw.editor();
+			$.ajax({
+				type: "GET",
+				dataType: "xml",
+				url: "/sitemap.xml",
+				success: draw.getJSON(xml)
+			});
+		});  
+
+		var jsScript = 'https://www.eq19.com/js/jquery.unveil.js';
+		$.getScript(jsScript, function() {
+			$('img').unveil();
+		});
+
+		jsScript = 'https://www.eq19.com/stickUp/js/stickUp.min.js';
+		$.getScript(jsScript, function() {
+			$('.top-menu').stickUp();
+		});
+
+		jsScript = 'https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js';
+		$.getScript(jsScript, function() {
+			$('a.colorbox').colorbox({
+				rel: function(){
+					return $(this).data('group');
+				}
+			});
+		});
+
+		jsScript ='https://cdnjs.cloudflare.com/ajax/libs/jquery-simplyscroll/2.1.1/jquery.simplyscroll.min.js';
+		$.getScript(jsScript, function() {
+			$(".templatemo-project-gallery").simplyScroll();
+		});
+
 	});
 
 });
