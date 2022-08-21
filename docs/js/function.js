@@ -487,8 +487,8 @@ $(function () {
 			return false;
 		});
 
-		$('.templatemo-gallery-category a').click(function(e)
-		{
+		$(".templatemo-project-gallery").simplyScroll();
+		$('.templatemo-gallery-category a').click(function(e){
 			e.preventDefault(); 
 			$(this).parent().children('a').removeClass('active');
 			$(this).addClass('active');
@@ -505,8 +505,12 @@ $(function () {
 			$('#stuck_container').TMStickUp({
 			})
 		}
-		// unbind external link
-		$('.external-link').unbind('click');
+		// colorbox
+		$('a.colorbox').colorbox({
+			rel: function(){
+				return $(this).data('group');
+			}
+		});
 
 		// assign unique id
 		// https://api.jqueryui.com/uniqueId/
@@ -517,18 +521,6 @@ $(function () {
 		});
 
 		// https://stackoverflow.com/a/10811687/4058484
-		$.getScript($('#js')[0].href, function() {
-			$('.theme').val('hand');
-			$('.theme').change(function() {draw.change();});
-			if (!editor) draw.editor();
-			$.ajax({
-				type: "GET",
-				dataType: "xml",
-				url: "/sitemap.xml",
-				success: draw.getJSON(xml)
-			});
-		});  
-
 		var jsScript = 'https://www.eq19.com/js/flatdoc.js';
 		$.getScript(jsScript, function() {
 			Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
@@ -544,19 +536,17 @@ $(function () {
 			$('.top-menu').stickUp();
 		});
 
-		jsScript = 'https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js';
-		$.getScript(jsScript, function() {
-			$('a.colorbox').colorbox({
-				rel: function(){
-					return $(this).data('group');
-				}
+		$.getScript($('#js')[0].href, function() {
+			$('.theme').val('hand');
+			$('.theme').change(function() {draw.change();});
+			if (!editor) draw.editor();
+			$.ajax({
+				type: "GET",
+				dataType: "xml",
+				url: "/sitemap.xml",
+				success: draw.getJSON(xml)
 			});
-		});
-
-		jsScript ='https://cdnjs.cloudflare.com/ajax/libs/jquery-simplyscroll/2.1.1/jquery.simplyscroll.min.js';
-		$.getScript(jsScript, function() {
-			$(".templatemo-project-gallery").simplyScroll();
-		});
+		});  
 
 	});
 
