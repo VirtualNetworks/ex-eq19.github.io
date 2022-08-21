@@ -43,199 +43,6 @@ $(function () {
 	}
 });
 
-$(window).load(function () {
-	if ($('html').hasClass('desktop')) {
-		$('#stuck_container').TMStickUp({
-		})
-	}
-});
-
-// jQuery document.ready will be executed just after html dom tree has been parsed out.
-// So it is far more earlier executed than window onload.
-$(document).ready(function () {
-	var owl = $('#owl');
-	var owl2 = $('#owl_2');
-	var camera = $('#camera');
-	var isotope = $('.isotope');
-
-	$.getScript('https://www.eq19.com/js/jquery.unveil.js', function() {
-		$('img').unveil();
-	});
-
-	$.getScript('https://www.eq19.com/stickUp/js/stickUp.min.js', function() {
-		$('.top-menu').stickUp();
-	});
-
-	$.getScript('https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js', function() {
-		$('a.colorbox').colorbox({
-			rel: function(){
-				return $(this).data('group');
-			}
-		});
-	});
-	
-	// to stick navbar on top and hash
-	$('html,body').scrollspy({target: '#templatemo-nav-bar', offset: $('.top-menu').height() + 10});
-
-	// do scroll and clear the hash anytime someone arrives with a hash tag
-	// https://stackoverflow.com/a/50688363/4058484
-	if( typeof(location.hash) !== 'undefined' && location.hash.length ) 
-	{
-		var location_hash = location.hash.split('?')[0];
-		history.replaceState(null, null, location.pathname);
-		scrollTo(location_hash);
-	}
-
-	// set links which point outside
-	$('.external-link').unbind('click');
-	$(document.links).filter(function() {
-		return this.hostname != window.location.hostname;
-	}).attr('target', '_blank'); 
-
-	// scroll to top
-	$('#btn-back-to-top').click(function(e)
-	{
-		e.preventDefault();
-		scrollTo('#templatemo-top');
-	});
-
-	// scroll to specific id when click on link
-	$('.internal-link, .carousel-inner a').click(function(e)
-	{
-		e.preventDefault(); 
-		var linkId = $(this).attr('href');
-		scrollTo(linkId);
-		return false;
-	});
-
-	// scroll to specific id when click on menu
-	$('.top-menu .navbar-nav a').click(function(e)
-	{
-		e.preventDefault(); 
-		var linkId = $(this).attr('href');
-		scrollTo(linkId);
-		if($('.navbar-toggle').is(":visible") == true)
-		{
-			$('.navbar-collapse').collapse('toggle');
-		}
-		$(this).blur();
-		return false;
-	});
-
-	$.getScript('https://cdnjs.cloudflare.com/ajax/libs/jquery-simplyscroll/2.1.1/jquery.simplyscroll.min.js', function() {
-		$(".templatemo-project-gallery").simplyScroll();
-	});
-
-	$('.templatemo-gallery-category a').click(function(e)
-	{
-		e.preventDefault(); 
-		$(this).parent().children('a').removeClass('active');
-		$(this).addClass('active');
-		var linkClass = $(this).attr('href');
-		$('.gallery').each(function(){
-			if($(this).is(":visible") == true){
-			   $(this).hide();
-			};
-		});
-		$(linkClass).fadeIn();
-	});
-
-	if(camera.length > 0){
-		camera.camera(
-			{
-				autoAdvance: false,
-				height: '31.25%',
-				minHeight: '200px',
-				pagination: false,
-				thumbnails: false,
-				playPause: false,
-				hover: false,
-				loader: 'none',
-				navigation: true,
-				navigationHover: false,
-				mobileNavHover: false,
-				fx: 'simpleFade'
-			}
-		);
-	}
-
-	if(owl.length > 0){
-		owl.owlCarousel(
-			{
-				navigation: true,
-				autoPlay: true,
-				slideSpeed: 300,
-				stopOnHover: true,
-				pagination: false,
-				paginationSpeed: 400,
-				singleItem: true,
-				mouseDrag: false,
-				navigationText: ["", ""]
-			}
-		);
-	}
-
-	if(owl2.length > 0){
-		owl2.owlCarousel(
-			{
-				navigation: true,
-				autoPlay: true,
-				slideSpeed: 300,
-				stopOnHover: true,
-				pagination: false,
-				paginationSpeed: 400,
-				singleItem: true,
-				mouseDrag: false,
-				navigationText: ["", ""]
-			}
-		);
-	}
-
-	if(isotope.length > 0){
-		isotope.isotope({
-			itemSelector: '.element-item',
-			layoutMode: 'fitRows'
-		});
-
-		$('#filters').on( 'click', 'a', function() {
-			var filterValue = $( this ).attr('data-filter');
-			console.log(filterValue);
-
-			if(filterValue == '*'){
-				isotope.isotope({ filter: filterValue });
-			}else{
-				isotope.isotope({ filter: '.'+filterValue });
-			}
-			return false;
-		});
-	}
-
-	$("#copyright-year").text((new Date).getFullYear());
-	Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
-
-	// https://api.jqueryui.com/uniqueId/
-	var myIdcounter = 0;
-	window.uniqueId = function(){return 'myid-' + myIdcounter++;}
-	$('.theme').each(function (i, e) {
-		var id = uniqueId();
-		var name = uniqueId();
-		$(e).attr('name', name).attr('id', id);
-	});
-
-	// https://stackoverflow.com/a/10811687/4058484
-	$.getScript($('#js')[0].href, function() {
-		$('.theme').val('hand');
-		if (!editor) draw.editor();
-		$.ajax({
-			type: "GET",
-			dataType: "xml",
-			url: "/sitemap.xml",
-			success: draw.getJSON(xml)
-		});
-		$('.theme').change(function() {draw.change();});
-	});  
-
-});
 
 function search(data) {
   let text = new URL(location.href).searchParams.get("q");
@@ -438,6 +245,205 @@ function highlight() {
   }
 }
 
+$(window).load(function () {
+	if ($('html').hasClass('desktop')) {
+		$('#stuck_container').TMStickUp({
+		})
+	}
+});
+
+// jQuery document.ready will be executed just after html dom tree has been parsed out.
+// So it is far more earlier executed than window onload.
+$(document).ready(function () {
+
+	// to stick navbar on top and hash
+	$('html,body').scrollspy({target: '#templatemo-nav-bar', offset: $('.top-menu').height() + 10});
+
+	// do scroll and clear the hash anytime someone arrives with a hash tag
+	// https://stackoverflow.com/a/50688363/4058484
+	if( typeof(location.hash) !== 'undefined' && location.hash.length ) 
+	{
+		var location_hash = location.hash.split('?')[0];
+		history.replaceState(null, null, location.pathname);
+		scrollTo(location_hash);
+	}
+
+	// set links which point outside
+	$('.external-link').unbind('click');
+	$(document.links).filter(function() {
+		return this.hostname != window.location.hostname;
+	}).attr('target', '_blank'); 
+
+	// scroll to top
+	$('#btn-back-to-top').click(function(e)
+	{
+		e.preventDefault();
+		scrollTo('#templatemo-top');
+	});
+
+	// scroll to specific id when click on link
+	$('.internal-link, .carousel-inner a').click(function(e)
+	{
+		e.preventDefault(); 
+		var linkId = $(this).attr('href');
+		scrollTo(linkId);
+		return false;
+	});
+
+	// scroll to specific id when click on menu
+	$('.top-menu .navbar-nav a').click(function(e)
+	{
+		e.preventDefault(); 
+		var linkId = $(this).attr('href');
+		scrollTo(linkId);
+		if($('.navbar-toggle').is(":visible") == true)
+		{
+			$('.navbar-collapse').collapse('toggle');
+		}
+		$(this).blur();
+		return false;
+	});
+
+	$('.templatemo-gallery-category a').click(function(e)
+	{
+		e.preventDefault(); 
+		$(this).parent().children('a').removeClass('active');
+		$(this).addClass('active');
+		var linkClass = $(this).attr('href');
+		$('.gallery').each(function(){
+			if($(this).is(":visible") == true){
+			   $(this).hide();
+			};
+		});
+		$(linkClass).fadeIn();
+	});
+
+	var owl = $('#owl');
+	var owl2 = $('#owl_2');
+	var camera = $('#camera');
+	var isotope = $('.isotope');
+
+	if(camera.length > 0){
+		camera.camera(
+			{
+				autoAdvance: false,
+				height: '31.25%',
+				minHeight: '200px',
+				pagination: false,
+				thumbnails: false,
+				playPause: false,
+				hover: false,
+				loader: 'none',
+				navigation: true,
+				navigationHover: false,
+				mobileNavHover: false,
+				fx: 'simpleFade'
+			}
+		);
+	}
+
+	if(owl.length > 0){
+		owl.owlCarousel(
+			{
+				navigation: true,
+				autoPlay: true,
+				slideSpeed: 300,
+				stopOnHover: true,
+				pagination: false,
+				paginationSpeed: 400,
+				singleItem: true,
+				mouseDrag: false,
+				navigationText: ["", ""]
+			}
+		);
+	}
+
+	if(owl2.length > 0){
+		owl2.owlCarousel(
+			{
+				navigation: true,
+				autoPlay: true,
+				slideSpeed: 300,
+				stopOnHover: true,
+				pagination: false,
+				paginationSpeed: 400,
+				singleItem: true,
+				mouseDrag: false,
+				navigationText: ["", ""]
+			}
+		);
+	}
+
+	if(isotope.length > 0){
+		isotope.isotope({
+			itemSelector: '.element-item',
+			layoutMode: 'fitRows'
+		});
+
+		$('#filters').on( 'click', 'a', function() {
+			var filterValue = $( this ).attr('data-filter');
+			console.log(filterValue);
+
+			if(filterValue == '*'){
+				isotope.isotope({ filter: filterValue });
+			}else{
+				isotope.isotope({ filter: '.'+filterValue });
+			}
+			return false;
+		});
+	}
+
+	$("#copyright-year").text((new Date).getFullYear());
+	Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
+
+	// https://api.jqueryui.com/uniqueId/
+	var myIdcounter = 0;
+	window.uniqueId = function(){return 'myid-' + myIdcounter++;}
+	$('.theme').each(function (i, e) {
+		var id = uniqueId();
+		var name = uniqueId();
+		$(e).attr('name', name).attr('id', id);
+	});
+
+	var jsScript = 'https://www.eq19.com/js/jquery.unveil.js';
+	$.getScript(jsScript, function() {
+		$('img').unveil();
+	});
+
+	jsScript = 'https://www.eq19.com/stickUp/js/stickUp.min.js';
+	$.getScript(jsScript, function() {
+		$('.top-menu').stickUp();
+	});
+
+	jsScript = 'https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js';
+	$.getScript(jsScript, function() {
+		$('a.colorbox').colorbox({
+			rel: function(){
+				return $(this).data('group');
+			}
+		});
+	});
+
+	jsScript ='https://cdnjs.cloudflare.com/ajax/libs/jquery-simplyscroll/2.1.1/jquery.simplyscroll.min.js';
+	$.getScript(jsScript, function() {
+		$(".templatemo-project-gallery").simplyScroll();
+	});
+
+	// https://stackoverflow.com/a/10811687/4058484
+	$.getScript($('#js')[0].href, function() {
+		$('.theme').val('hand');
+		$('.theme').change(function() {draw.change();});
+		if (!editor) draw.editor();
+		$.ajax({
+			type: "GET",
+			dataType: "xml",
+			url: "/sitemap.xml",
+			success: draw.getJSON(xml)
+		});
+	});  
+
+});
+
 $(window).bind("hashchange", () =>
   initialize(location.hash || location.pathname)
 );
@@ -525,34 +531,6 @@ $("div.highlighter-rouge").each(function () {
 } else {
   debug("Service Worker not supported!");
 }*/
-
-// init scrollTo 
-function scrollTo(selectors)
-{
-	if(!$(selectors).length) return;
-	var selector_top = $(selectors).offset().top - $('.top-menu').height();
-	$('html,body').animate({scrollTop: selector_top }, 'slow');
-}
-
-// filtering json object
-function filterBy(data, filters = {}) {
-	// Set up the specific defaults that will show everything:
-	const defaults = {
-		category: null,
-		yearFrom: 1895,
-		yearTo: 2100,
-		gender: null
-	}
-
-	// Merge any filters with the defaults
-	filters = Object.assign({}, defaults, filters);
-
-	// Filter based on that filters object:
-	return data.filter(laur => {
-		return (laur.yearFrom >= filters.yearFrom) &&
-		   (laur.yearTo <= filters.yearTo);
-  });
-}
 
 /* Orientation tablet fix
  ========================================================*/
