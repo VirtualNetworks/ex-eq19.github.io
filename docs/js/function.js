@@ -237,8 +237,8 @@ $(function () {
 	/*$().UItoTop({ easingType: 'easeOutQuart' });
 	if ($('html').hasClass('desktop')) {
 		$.srSmoothscroll({
-			step: 150,
-			speed: 800
+			speed: 800,
+			step: 150
 		});
 	}*/
 
@@ -427,20 +427,22 @@ $(function () {
 		  debug("Service Worker not supported!");
 		}*/
 
-		$("#toggle").click(function () {
-		  $(".sidebar-wrap,.content-wrap,.addons-wrap").toggleClass("shift");
-		});
 		$(".status").click(function () {
 		  $(".addons").toggleClass("d-none");
 		});
 
-		$(".markdown-body :header").append(function () {
-		  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
+		$("#toggle").click(function () {
+		  $(".sidebar-wrap,.content-wrap,.addons-wrap").toggleClass("shift");
 		});
 
 		// to stick navbar on top and hash
+		// https://stackoverflow.com/a/68834313/4058484
 		top_menu_height = $('.top-menu').height();
-		$('html,body').scrollspy({target: '#templatemo-nav-bar', offset: top_menu_height + 10});
+		$('html,body').scrollspy({target: '.nav', offset: top_menu_height + 10});
+
+		$(".markdown-body :header").append(function () {
+		  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
+		});
 
 		// do scroll and clear the hash anytime someone arrives with a hash tag
 		// https://stackoverflow.com/a/50688363/4058484
