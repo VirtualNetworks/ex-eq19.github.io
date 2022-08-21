@@ -419,9 +419,9 @@ $(function () {
 		  $.ajax(`${ui.baseurl}/data.json`)
 			.done(search)
 			.fail((xhr, message) => debug(message));
-		}*/
+		}
 
-		/*if ("serviceWorker" in navigator) {
+		if ("serviceWorker" in navigator) {
 		  navigator.serviceWorker.register(`${ui.baseurl}/sw.caches.js`);
 		} else {
 		  debug("Service Worker not supported!");
