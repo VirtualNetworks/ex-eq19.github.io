@@ -252,18 +252,6 @@ function scrollTo(selectors)
     $('html,body').animate({scrollTop: selector_top }, 'slow');
 }
 
-
-$(window).bind("hashchange", () =>
-  initialize(location.hash || location.pathname)
-);
-
-$(window).load(function () {
-	if ($('html').hasClass('desktop')) {
-		$('#stuck_container').TMStickUp({
-		})
-	}
-});
-
 $(document).on("scroll", function () {
   let start = $(this).scrollTop() + 5;
   let items = [];
@@ -531,17 +519,21 @@ $(document).ready(function () {
 
 });
 
+$(window).load(function () {
+	if ($('html').hasClass('desktop')) {
+		$('#stuck_container').TMStickUp({
+		})
+	}
+});
+
+$(window).bind("hashchange", () =>
+  initialize(location.hash || location.pathname)
+);
+
 /* Orientation tablet fix
  ========================================================*/
-toc();
-initialize(location.pathname);
-initialize(location.hash);
-restore();
-highlight();
-
 var myIdcounter = top_menu_height = 0;
 var currentYear = (new Date).getFullYear();
-Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 
 var ua = navigator.userAgent.toLocaleLowerCase(),
 	regV = /ipod|ipad|iphone/gi,
@@ -550,4 +542,11 @@ var ua = navigator.userAgent.toLocaleLowerCase(),
 if (!result) {
 	userScale = ",user-scalable=0"
 }
+
+toc();
+restore();
+highlight();
+initialize(location.hash);
+initialize(location.pathname);
+Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0' + userScale + '">')
