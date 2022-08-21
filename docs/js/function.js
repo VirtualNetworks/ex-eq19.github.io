@@ -1,47 +1,13 @@
-$(function () {
-	/*$().UItoTop({ easingType: 'easeOutQuart' });
-	if ($('html').hasClass('desktop')) {
-		$.srSmoothscroll({
-			step: 150,
-			speed: 800
-		});
-	}*/
-// IPad/IPhone
-	var viewportmeta = document.querySelector && document.querySelector('meta[name="viewport"]'),
-		ua = navigator.userAgent,
+var myIdcounter = top_menu_height = 0;
+var currentYear = (new Date).getFullYear();
 
-		gestureStart = function () {
-			viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6, initial-scale=1.0";
-		},
-
-		scaleFix = function () {
-			if (viewportmeta && /iPhone|iPad/.test(ua) && !/Opera Mini/.test(ua)) {
-				viewportmeta.content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
-				document.addEventListener("gesturestart", gestureStart, false);
-			}
-		};
-
-	scaleFix();
-	// Menu Android
-	if (window.orientation != undefined) {
-		var regM = /ipod|ipad|iphone/gi,
-			result = ua.match(regM)
-		if (!result) {
-			$('.sf-menu li').each(function () {
-				if ($(">ul", this)[0]) {
-					$(">a", this).toggle(
-						function () {
-							return false;
-						},
-						function () {
-							window.location.href = $(this).attr("href");
-						}
-					);
-				}
-			})
-		}
-	}
-});
+var ua = navigator.userAgent.toLocaleLowerCase(),
+	regV = /ipod|ipad|iphone/gi,
+	result = ua.match(regV),
+	userScale = "";
+if (!result) {
+	userScale = ",user-scalable=0"
+}
 
 function set(name, value) {
   return localStorage.setItem(name, value);
@@ -94,6 +60,26 @@ function toc() {
 		stack[0].remove();
 	  }
 	});
+}
+
+// filtering json object
+function filterBy(data, filters = {}) {
+    // Set up the specific defaults that will show everything:
+    const defaults = {
+        category: null,
+        yearFrom: 1895,
+        yearTo: 2100,
+        gender: null
+    }
+
+    // Merge any filters with the defaults
+    filters = Object.assign({}, defaults, filters);
+
+    // Filter based on that filters object:
+    return data.filter(laur => {
+        return (laur.yearFrom >= filters.yearFrom) &&
+           (laur.yearTo <= filters.yearTo);
+  });
 }
 
 function search(data) {
@@ -251,36 +237,6 @@ function scrollTo(selectors)
     var selector_top = $(selectors).offset().top - top_menu_height + 10;
     $('html,body').animate({scrollTop: selector_top }, 'slow');
 }
-
-$(document).on("scroll", function () {
-  let start = $(this).scrollTop() + 5;
-  let items = [];
-
-  $(".markdown-body")
-	.find("h1,h2,h3,h4,h5,h6")
-	.each(function () {
-	  items.push({
-		offset: $(this).offset().top,
-		id: this.id,
-		level: parseInt(this.tagName.slice(1)),
-	  });
-	});
-  for (let i = 0; i < items.length; i++) {
-	if (start > items[i].offset) {
-	  if (i < items.length - 1) {
-		if (start < items[i + 1].offset) {
-		  if (items[i].level == 1) {
-			initialize(location.pathname);
-		  } else {
-			initialize("#" + items[i].id);
-		  }
-		}
-	  } else {
-		initialize("#" + items[i].id);
-	  }
-	}
-  }
-});
 
 // jQuery document.ready will be executed just after html dom tree has been parsed out.
 // So it is far more earlier executed than window onload.
@@ -460,7 +416,6 @@ $(document).ready(function () {
 	}*/
 
 	// https://api.jqueryui.com/uniqueId/
-	window.uniqueId = function(){return 'myid-' + myIdcounter++;}
 	$('.theme').each(function (i, e) {
 		var id = uniqueId();
 		var name = uniqueId();
@@ -519,6 +474,85 @@ $(document).ready(function () {
 
 });
 
+$(function () {
+	/*$().UItoTop({ easingType: 'easeOutQuart' });
+	if ($('html').hasClass('desktop')) {
+		$.srSmoothscroll({
+			step: 150,
+			speed: 800
+		});
+	}*/
+// IPad/IPhone
+	var viewportmeta = document.querySelector && document.querySelector('meta[name="viewport"]'),
+		ua = navigator.userAgent,
+
+		gestureStart = function () {
+			viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6, initial-scale=1.0";
+		},
+
+		scaleFix = function () {
+			if (viewportmeta && /iPhone|iPad/.test(ua) && !/Opera Mini/.test(ua)) {
+				viewportmeta.content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+				document.addEventListener("gesturestart", gestureStart, false);
+			}
+		};
+
+	scaleFix();
+	// Menu Android
+	if (window.orientation != undefined) {
+		var regM = /ipod|ipad|iphone/gi,
+			result = ua.match(regM)
+		if (!result) {
+			$('.sf-menu li').each(function () {
+				if ($(">ul", this)[0]) {
+					$(">a", this).toggle(
+						function () {
+							return false;
+						},
+						function () {
+							window.location.href = $(this).attr("href");
+						}
+					);
+				}
+			})
+		}
+	}
+});
+
+$(document).on("scroll", function () {
+  let start = $(this).scrollTop() + 5;
+  let items = [];
+
+  $(".markdown-body")
+	.find("h1,h2,h3,h4,h5,h6")
+	.each(function () {
+	  items.push({
+		offset: $(this).offset().top,
+		id: this.id,
+		level: parseInt(this.tagName.slice(1)),
+	  });
+	});
+  for (let i = 0; i < items.length; i++) {
+	if (start > items[i].offset) {
+	  if (i < items.length - 1) {
+		if (start < items[i + 1].offset) {
+		  if (items[i].level == 1) {
+			initialize(location.pathname);
+		  } else {
+			initialize("#" + items[i].id);
+		  }
+		}
+	  } else {
+		initialize("#" + items[i].id);
+	  }
+	}
+  }
+});
+
+$(window).bind("hashchange", () =>
+  initialize(location.hash || location.pathname)
+);
+
 $(window).load(function () {
 	if ($('html').hasClass('desktop')) {
 		$('#stuck_container').TMStickUp({
@@ -526,27 +560,13 @@ $(window).load(function () {
 	}
 });
 
-$(window).bind("hashchange", () =>
-  initialize(location.hash || location.pathname)
-);
-
 /* Orientation tablet fix
  ========================================================*/
-var myIdcounter = top_menu_height = 0;
-var currentYear = (new Date).getFullYear();
-
-var ua = navigator.userAgent.toLocaleLowerCase(),
-	regV = /ipod|ipad|iphone/gi,
-	result = ua.match(regV),
-	userScale = "";
-if (!result) {
-	userScale = ",user-scalable=0"
-}
-
 toc();
 restore();
 highlight();
 initialize(location.hash);
 initialize(location.pathname);
 Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
+window.uniqueId = function(){return 'myid-' + myIdcounter++;}
 document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0' + userScale + '">')
