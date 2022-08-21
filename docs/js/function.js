@@ -533,17 +533,13 @@ $(window).bind("hashchange", () =>
   initialize(location.hash || location.pathname)
 );
 
+// Window.onload event will be executed only when all page resources
+// ( images, audio, video etc ) has been downloaded in the page.
 $(window).load(function () {
 	if ($('html').hasClass('desktop')) {
 		$('#stuck_container').TMStickUp({
 		})
 	}
-});
-
-// Window.onload event will be executed only when all page resources
-// ( images, audio, video etc ) has been downloaded in the page.
-$(window).on('load', function()
-{
 	// unbind external link
 	$('.external-link').unbind('click');
 
