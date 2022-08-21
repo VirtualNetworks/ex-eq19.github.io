@@ -2,14 +2,6 @@ var myIdcounter = top_menu_height = 0;
 var currentYear = (new Date).getFullYear();
 window.uniqueId = function(){return 'myid-' + myIdcounter++;}
 
-var ua = navigator.userAgent.toLocaleLowerCase(),
-	regV = /ipod|ipad|iphone/gi,
-	result = ua.match(regV),
-	userScale = "";
-if (!result) {
-	userScale = ",user-scalable=0"
-}
-
 function debug() {
   console.debug.apply(console, arguments);
 }
@@ -570,8 +562,18 @@ restore();
 highlight();
 initialize(location.hash);
 initialize(location.pathname);
+Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 
 /* Orientation tablet fix
  ========================================================*/
-Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
+var ua = navigator.userAgent.toLocaleLowerCase(),
+	regV = /ipod|ipad|iphone/gi,
+	result = ua.match(regV),
+	userScale = "";
+if (!result) {
+	userScale = ",user-scalable=0"
+}
+
+var params, regex = /[?&]([^=#]+)=([^&#]*)/g, url = window.location.href, params = {}, match;
+while(match = regex.exec(url)) {params[match[1]] = match[2];}
 document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0' + userScale + '">')
