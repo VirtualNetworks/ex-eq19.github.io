@@ -239,6 +239,86 @@ function scrollTo(selectors)
     $('html,body').animate({scrollTop: selector_top }, 'slow');
 }
 
+$(function () {
+	/*$().UItoTop({ easingType: 'easeOutQuart' });
+	if ($('html').hasClass('desktop')) {
+		$.srSmoothscroll({
+			step: 150,
+			speed: 800
+		});
+	}*/
+// IPad/IPhone
+	var viewportmeta = document.querySelector && document.querySelector('meta[name="viewport"]'),
+		ua = navigator.userAgent,
+
+		gestureStart = function () {
+			viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6, initial-scale=1.0";
+		},
+
+		scaleFix = function () {
+			if (viewportmeta && /iPhone|iPad/.test(ua) && !/Opera Mini/.test(ua)) {
+				viewportmeta.content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+				document.addEventListener("gesturestart", gestureStart, false);
+			}
+		};
+	scaleFix();
+
+	// Menu Android
+	if (window.orientation != undefined) {
+		var regM = /ipod|ipad|iphone/gi,
+			result = ua.match(regM)
+		if (!result) {
+			$('.sf-menu li').each(function () {
+				if ($(">ul", this)[0]) {
+					$(">a", this).toggle(
+						function () {
+							return false;
+						},
+						function () {
+							window.location.href = $(this).attr("href");
+						}
+					);
+				}
+			})
+		}
+	}
+
+	$(window).bind("hashchange", () =>
+	  initialize(location.hash || location.pathname)
+	);
+
+});
+
+$(document).on("scroll", function () {
+  let start = $(this).scrollTop() + 5;
+  let items = [];
+
+  $(".markdown-body")
+	.find("h1,h2,h3,h4,h5,h6")
+	.each(function () {
+	  items.push({
+		offset: $(this).offset().top,
+		id: this.id,
+		level: parseInt(this.tagName.slice(1)),
+	  });
+	});
+  for (let i = 0; i < items.length; i++) {
+	if (start > items[i].offset) {
+	  if (i < items.length - 1) {
+		if (start < items[i + 1].offset) {
+		  if (items[i].level == 1) {
+			initialize(location.pathname);
+		  } else {
+			initialize("#" + items[i].id);
+		  }
+		}
+	  } else {
+		initialize("#" + items[i].id);
+	  }
+	}
+  }
+});
+
 // jQuery document.ready will be executed just after html dom tree has been parsed out.
 // So it is far more earlier executed than window onload.
 $(document).ready(function () {
@@ -428,114 +508,6 @@ $(document).ready(function () {
 		$(linkClass).fadeIn();
 	});
 
-	var jsScript = 'https://www.eq19.com/js/jquery.unveil.js';
-	$.getScript(jsScript, function() {
-		$('img').unveil();
-	});
-
-	jsScript = 'https://www.eq19.com/stickUp/js/stickUp.min.js';
-	$.getScript(jsScript, function() {
-		$('.top-menu').stickUp();
-	});
-
-	jsScript = 'https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js';
-	$.getScript(jsScript, function() {
-		$('a.colorbox').colorbox({
-			rel: function(){
-				return $(this).data('group');
-			}
-		});
-	});
-
-	jsScript ='https://cdnjs.cloudflare.com/ajax/libs/jquery-simplyscroll/2.1.1/jquery.simplyscroll.min.js';
-	$.getScript(jsScript, function() {
-		$(".templatemo-project-gallery").simplyScroll();
-	});
-
-});
-
-$(function () {
-	/*$().UItoTop({ easingType: 'easeOutQuart' });
-	if ($('html').hasClass('desktop')) {
-		$.srSmoothscroll({
-			step: 150,
-			speed: 800
-		});
-	}*/
-// IPad/IPhone
-	var viewportmeta = document.querySelector && document.querySelector('meta[name="viewport"]'),
-		ua = navigator.userAgent,
-
-		gestureStart = function () {
-			viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6, initial-scale=1.0";
-		},
-
-		scaleFix = function () {
-			if (viewportmeta && /iPhone|iPad/.test(ua) && !/Opera Mini/.test(ua)) {
-				viewportmeta.content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
-				document.addEventListener("gesturestart", gestureStart, false);
-			}
-		};
-	scaleFix();
-
-	// Menu Android
-	if (window.orientation != undefined) {
-		var regM = /ipod|ipad|iphone/gi,
-			result = ua.match(regM)
-		if (!result) {
-			$('.sf-menu li').each(function () {
-				if ($(">ul", this)[0]) {
-					$(">a", this).toggle(
-						function () {
-							return false;
-						},
-						function () {
-							window.location.href = $(this).attr("href");
-						}
-					);
-				}
-			})
-		}
-	}
-});
-
-$(document).on("scroll", function () {
-  let start = $(this).scrollTop() + 5;
-  let items = [];
-
-  $(".markdown-body")
-	.find("h1,h2,h3,h4,h5,h6")
-	.each(function () {
-	  items.push({
-		offset: $(this).offset().top,
-		id: this.id,
-		level: parseInt(this.tagName.slice(1)),
-	  });
-	});
-  for (let i = 0; i < items.length; i++) {
-	if (start > items[i].offset) {
-	  if (i < items.length - 1) {
-		if (start < items[i + 1].offset) {
-		  if (items[i].level == 1) {
-			initialize(location.pathname);
-		  } else {
-			initialize("#" + items[i].id);
-		  }
-		}
-	  } else {
-		initialize("#" + items[i].id);
-	  }
-	}
-  }
-});
-
-$(window).bind("hashchange", () =>
-  initialize(location.hash || location.pathname)
-);
-
-// Window.onload event will be executed only when all page resources
-// ( images, audio, video etc ) has been downloaded in the page.
-$(window).load(function () {
 	if ($('html').hasClass('desktop')) {
 		$('#stuck_container').TMStickUp({
 		})
@@ -564,6 +536,30 @@ $(window).load(function () {
 		});
 	});  
 
+	var jsScript = 'https://www.eq19.com/js/jquery.unveil.js';
+	$.getScript(jsScript, function() {
+		$('img').unveil();
+	});
+
+	jsScript = 'https://www.eq19.com/stickUp/js/stickUp.min.js';
+	$.getScript(jsScript, function() {
+		$('.top-menu').stickUp();
+	});
+
+	jsScript = 'https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js';
+	$.getScript(jsScript, function() {
+		$('a.colorbox').colorbox({
+			rel: function(){
+				return $(this).data('group');
+			}
+		});
+	});
+
+	jsScript ='https://cdnjs.cloudflare.com/ajax/libs/jquery-simplyscroll/2.1.1/jquery.simplyscroll.min.js';
+	$.getScript(jsScript, function() {
+		$(".templatemo-project-gallery").simplyScroll();
+	});
+
 });
 
 toc();
@@ -571,8 +567,8 @@ restore();
 highlight();
 initialize(location.hash);
 initialize(location.pathname);
-Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 
 /* Orientation tablet fix
  ========================================================*/
+Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0' + userScale + '">')
