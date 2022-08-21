@@ -1,5 +1,6 @@
 var myIdcounter = top_menu_height = 0;
 var currentYear = (new Date).getFullYear();
+window.uniqueId = function(){return 'myid-' + myIdcounter++;}
 
 var ua = navigator.userAgent.toLocaleLowerCase(),
 	regV = /ipod|ipad|iphone/gi,
@@ -353,13 +354,6 @@ $(document).ready(function () {
 	  debug("Service Worker not supported!");
 	}*/
 
-	// https://api.jqueryui.com/uniqueId/
-	$('.theme').each(function (i, e) {
-		var id = uniqueId();
-		var name = uniqueId();
-		$(e).attr('name', name).attr('id', id);
-	});
-
 	$("#toggle").click(function () {
 	  $(".sidebar-wrap,.content-wrap,.addons-wrap").toggleClass("shift");
 	});
@@ -458,19 +452,6 @@ $(document).ready(function () {
 		$(".templatemo-project-gallery").simplyScroll();
 	});
 
-	// https://stackoverflow.com/a/10811687/4058484
-	$.getScript($('#js')[0].href, function() {
-		$('.theme').val('hand');
-		$('.theme').change(function() {draw.change();});
-		if (!editor) draw.editor();
-		$.ajax({
-			type: "GET",
-			dataType: "xml",
-			url: "/sitemap.xml",
-			success: draw.getJSON(xml)
-		});
-	});  
-
 });
 
 $(function () {
@@ -495,8 +476,8 @@ $(function () {
 				document.addEventListener("gesturestart", gestureStart, false);
 			}
 		};
-
 	scaleFix();
+
 	// Menu Android
 	if (window.orientation != undefined) {
 		var regM = /ipod|ipad|iphone/gi,
@@ -559,13 +540,43 @@ $(window).load(function () {
 	}
 });
 
-/* Orientation tablet fix
- ========================================================*/
+// Window.onload event will be executed only when all page resources
+// ( images, audio, video etc ) has been downloaded in the page.
+$(window).on('load', function()
+{
+	// unbind external link
+	$('.external-link').unbind('click');
+
+	// assign unique id
+	// https://api.jqueryui.com/uniqueId/
+	$('.theme').each(function (i, e) {
+		var id = uniqueId();
+		var name = uniqueId();
+		$(e).attr('name', name).attr('id', id);
+	});
+
+	// https://stackoverflow.com/a/10811687/4058484
+	$.getScript($('#js')[0].href, function() {
+		$('.theme').val('hand');
+		$('.theme').change(function() {draw.change();});
+		if (!editor) draw.editor();
+		$.ajax({
+			type: "GET",
+			dataType: "xml",
+			url: "/sitemap.xml",
+			success: draw.getJSON(xml)
+		});
+	});  
+
+});
+
 toc();
 restore();
 highlight();
 initialize(location.hash);
 initialize(location.pathname);
 Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
-window.uniqueId = function(){return 'myid-' + myIdcounter++;}
+
+/* Orientation tablet fix
+ ========================================================*/
 document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0' + userScale + '">')
