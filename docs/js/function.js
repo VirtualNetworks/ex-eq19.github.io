@@ -245,6 +245,14 @@ function highlight() {
   }
 }
 
+// init scrollTo 
+function scrollTo(selectors)
+{
+    if(!$(selectors).length) return;
+    var selector_top = $(selectors).offset().top - top_menu_height;
+    $('html,body').animate({scrollTop: selector_top }, 'slow');
+}
+
 // jQuery document.ready will be executed just after html dom tree has been parsed out.
 // So it is far more earlier executed than window onload.
 $(document).ready(function () {
@@ -533,7 +541,7 @@ $("div.highlighter-rouge").each(function () {
 
 /* Orientation tablet fix
  ========================================================*/
-var myIdcounter = 0;
+var myIdcounter = top_menu_height = 0;
 var currentYear = (new Date).getFullYear();
 
 var ua = navigator.userAgent.toLocaleLowerCase(),
@@ -544,4 +552,3 @@ if (!result) {
 	userScale = ",user-scalable=0"
 }
 document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0' + userScale + '">')
-
