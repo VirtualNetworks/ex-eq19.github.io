@@ -529,7 +529,12 @@ $(function () {
 			});
 		});  
 
-		var jsScript = 'https://www.eq19.com/js/jquery.unveil.js';
+		var jsScript = 'https://www.eq19.com/js/flatdoc.js';
+		$.getScript(jsScript, function() {
+			Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
+		});
+
+		jsScript = 'https://www.eq19.com/js/jquery.unveil.js';
 		$.getScript(jsScript, function() {
 			$('img').unveil();
 		});
@@ -562,7 +567,6 @@ restore();
 highlight();
 initialize(location.hash);
 initialize(location.pathname);
-Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 
 /* Orientation tablet fix
  ========================================================*/
