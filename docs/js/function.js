@@ -245,13 +245,6 @@ function highlight() {
   }
 }
 
-$(window).load(function () {
-	if ($('html').hasClass('desktop')) {
-		$('#stuck_container').TMStickUp({
-		})
-	}
-});
-
 // jQuery document.ready will be executed just after html dom tree has been parsed out.
 // So it is far more earlier executed than window onload.
 $(document).ready(function () {
@@ -397,7 +390,6 @@ $(document).ready(function () {
 	Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 
 	// https://api.jqueryui.com/uniqueId/
-	var myIdcounter = 0;
 	window.uniqueId = function(){return 'myid-' + myIdcounter++;}
 	$('.theme').each(function (i, e) {
 		var id = uniqueId();
@@ -447,6 +439,13 @@ $(document).ready(function () {
 $(window).bind("hashchange", () =>
   initialize(location.hash || location.pathname)
 );
+
+$(window).load(function () {
+	if ($('html').hasClass('desktop')) {
+		$('#stuck_container').TMStickUp({
+		})
+	}
+});
 
 $(document).on("scroll", function () {
   let start = $(this).scrollTop() + 5;
@@ -534,6 +533,7 @@ $("div.highlighter-rouge").each(function () {
 
 /* Orientation tablet fix
  ========================================================*/
+var myIdcounter = 0;
 var currentYear = (new Date).getFullYear();
 
 var ua = navigator.userAgent.toLocaleLowerCase(),
