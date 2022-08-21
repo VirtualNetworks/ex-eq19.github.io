@@ -10,16 +10,16 @@ if (!result) {
 	userScale = ",user-scalable=0"
 }
 
+function debug() {
+  console.debug.apply(console, arguments);
+}
+
 function set(name, value) {
   return localStorage.setItem(name, value);
 }
 
 function get(name) {
   return localStorage.getItem(name) || false;
-}
-
-function debug() {
-  console.debug.apply(console, arguments);
 }
 
 function toc() {
