@@ -242,68 +242,6 @@ function scrollTo(selectors)
 // So it is far more earlier executed than window onload.
 $(document).ready(function () {
 
-	// to stick navbar on top and hash
-	$('html,body').scrollspy({target: '#templatemo-nav-bar', offset: $('.top-menu').height() + 10});
-
-	// do scroll and clear the hash anytime someone arrives with a hash tag
-	// https://stackoverflow.com/a/50688363/4058484
-	if( typeof(location.hash) !== 'undefined' && location.hash.length ) 
-	{
-		var location_hash = location.hash.split('?')[0];
-		history.replaceState(null, null, location.pathname);
-		scrollTo(location_hash);
-	}
-
-	// set links which point outside
-	$('.external-link').unbind('click');
-	$(document.links).filter(function() {
-		return this.hostname != window.location.hostname;
-	}).attr('target', '_blank'); 
-
-	// scroll to top
-	$('#btn-back-to-top').click(function(e)
-	{
-		e.preventDefault();
-		scrollTo('#templatemo-top');
-	});
-
-	// scroll to specific id when click on link
-	$('.internal-link, .carousel-inner a').click(function(e)
-	{
-		e.preventDefault(); 
-		var linkId = $(this).attr('href');
-		scrollTo(linkId);
-		return false;
-	});
-
-	// scroll to specific id when click on menu
-	$('.top-menu .navbar-nav a').click(function(e)
-	{
-		e.preventDefault(); 
-		var linkId = $(this).attr('href');
-		scrollTo(linkId);
-		if($('.navbar-toggle').is(":visible") == true)
-		{
-			$('.navbar-collapse').collapse('toggle');
-		}
-		$(this).blur();
-		return false;
-	});
-
-	$('.templatemo-gallery-category a').click(function(e)
-	{
-		e.preventDefault(); 
-		$(this).parent().children('a').removeClass('active');
-		$(this).addClass('active');
-		var linkClass = $(this).attr('href');
-		$('.gallery').each(function(){
-			if($(this).is(":visible") == true){
-			   $(this).hide();
-			};
-		});
-		$(linkClass).fadeIn();
-	});
-
 	var owl = $('#owl');
 	var owl2 = $('#owl_2');
 	var camera = $('#camera');
@@ -434,6 +372,67 @@ $(document).ready(function () {
 	});
 
 	$("#copyright-year").text((new Date).getFullYear());
+	// to stick navbar on top and hash
+	$('html,body').scrollspy({target: '#templatemo-nav-bar', offset: $('.top-menu').height() + 10});
+
+	// do scroll and clear the hash anytime someone arrives with a hash tag
+	// https://stackoverflow.com/a/50688363/4058484
+	if( typeof(location.hash) !== 'undefined' && location.hash.length ) 
+	{
+		var location_hash = location.hash.split('?')[0];
+		history.replaceState(null, null, location.pathname);
+		scrollTo(location_hash);
+	}
+
+	// set links which point outside
+	$('.external-link').unbind('click');
+	$(document.links).filter(function() {
+		return this.hostname != window.location.hostname;
+	}).attr('target', '_blank'); 
+
+	// scroll to top
+	$('#btn-back-to-top').click(function(e)
+	{
+		e.preventDefault();
+		scrollTo('#templatemo-top');
+	});
+
+	// scroll to specific id when click on link
+	$('.internal-link, .carousel-inner a').click(function(e)
+	{
+		e.preventDefault(); 
+		var linkId = $(this).attr('href');
+		scrollTo(linkId);
+		return false;
+	});
+
+	// scroll to specific id when click on menu
+	$('.top-menu .navbar-nav a').click(function(e)
+	{
+		e.preventDefault(); 
+		var linkId = $(this).attr('href');
+		scrollTo(linkId);
+		if($('.navbar-toggle').is(":visible") == true)
+		{
+			$('.navbar-collapse').collapse('toggle');
+		}
+		$(this).blur();
+		return false;
+	});
+
+	$('.templatemo-gallery-category a').click(function(e)
+	{
+		e.preventDefault(); 
+		$(this).parent().children('a').removeClass('active');
+		$(this).addClass('active');
+		var linkClass = $(this).attr('href');
+		$('.gallery').each(function(){
+			if($(this).is(":visible") == true){
+			   $(this).hide();
+			};
+		});
+		$(linkClass).fadeIn();
+	});
 
 	var jsScript = 'https://www.eq19.com/js/jquery.unveil.js';
 	$.getScript(jsScript, function() {
