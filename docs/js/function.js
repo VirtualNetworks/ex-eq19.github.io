@@ -488,7 +488,7 @@ $(function () {
 			return false;
 		});
 
-		$(".templatemo-project-gallery").simplyScroll();
+		//$(".templatemo-project-gallery").simplyScroll();
 		$('.templatemo-gallery-category a').click(function(e){
 			e.preventDefault(); 
 			$(this).parent().children('a').removeClass('active');
