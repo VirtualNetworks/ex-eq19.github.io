@@ -488,30 +488,10 @@ $(function () {
 			return false;
 		});
 
-		//$(".templatemo-project-gallery").simplyScroll();
-		$('.templatemo-gallery-category a').click(function(e){
-			e.preventDefault(); 
-			$(this).parent().children('a').removeClass('active');
-			$(this).addClass('active');
-			var linkClass = $(this).attr('href');
-			$('.gallery').each(function(){
-				if($(this).is(":visible") == true){
-				   $(this).hide();
-				};
-			});
-			$(linkClass).fadeIn();
-		});
-
 		if ($('html').hasClass('desktop')) {
 			$('#stuck_container').TMStickUp({
 			})
 		}
-		// colorbox
-		$('a.colorbox').colorbox({
-			rel: function(){
-				return $(this).data('group');
-			}
-		});
 
 		// https://stackoverflow.com/a/10811687/4058484
 		var jsScript = 'https://www.eq19.com/js/flatdoc.js';
@@ -527,6 +507,32 @@ $(function () {
 		jsScript = 'https://www.eq19.com/stickUp/js/stickUp.min.js';
 		$.getScript(jsScript, function() {
 			$('.top-menu').stickUp();
+		});
+
+		jsScript = 'https://www.eq19.com/colorbox/jquery.colorbox-min.js';
+		$.getScript(jsScript, function() {
+			$('a.colorbox').colorbox({
+				rel: function(){
+					return $(this).data('group');
+				}
+			});
+		});
+
+		jsScript = 'https://www.eq19.com/scroll/jquery.simplyscroll.min.js';
+		$.getScript(jsScript, function() {
+			//$(".templatemo-project-gallery").simplyScroll();
+			$('.templatemo-gallery-category a').click(function(e){
+				e.preventDefault(); 
+				$(this).parent().children('a').removeClass('active');
+				$(this).addClass('active');
+				var linkClass = $(this).attr('href');
+				$('.gallery').each(function(){
+					if($(this).is(":visible") == true){
+					   $(this).hide();
+					};
+				});
+				$(linkClass).fadeIn();
+			});
 		});
 
 		$.getScript($('#js')[0].href, function() {
