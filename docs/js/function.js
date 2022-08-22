@@ -1,6 +1,5 @@
 var myIdcounter = top_menu_height = 0;
 var currentYear = (new Date).getFullYear();
-window.uniqueId = function(){return 'myid-' + myIdcounter++;}
 
 function debug() {
   console.debug.apply(console, arguments);
