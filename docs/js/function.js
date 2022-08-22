@@ -494,23 +494,19 @@ $(function () {
 		}
 
 		// https://stackoverflow.com/a/10811687/4058484
-		var jsScript = 'https://www.eq19.com/js/flatdoc.js';
-		$.getScript(jsScript, function() {
+		$.getScript('https://www.eq19.com/js/flatdoc.js', function() {
 			Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 		});
 
-		jsScript = 'https://www.eq19.com/js/jquery.unveil.js';
-		$.getScript(jsScript, function() {
+		$.getScript('https://www.eq19.com/js/jquery.unveil.js', function() {
 			$('img').unveil();
 		});
 
-		jsScript = 'https://www.eq19.com/stickUp/js/stickUp.min.js';
-		$.getScript(jsScript, function() {
+		$.getScript('https://www.eq19.com/stickUp/js/stickUp.min.js', function() {
 			$('.top-menu').stickUp();
 		});
 
-		jsScript = 'https://www.eq19.com/colorbox/jquery.colorbox-min.js';
-		$.getScript(jsScript, function() {
+		$.getScript('https://www.eq19.com/colorbox/jquery.colorbox-min.js', function() {
 			$('a.colorbox').colorbox({
 				rel: function(){
 					return $(this).data('group');
@@ -518,8 +514,7 @@ $(function () {
 			});
 		});
 
-		jsScript = 'https://www.eq19.com/scroll/jquery.simplyscroll.min.js';
-		$.getScript(jsScript, function() {
+		$.getScript('https://www.eq19.com/scroll/jquery.simplyscroll.min.js', function() {
 			//$(".templatemo-project-gallery").simplyScroll();
 			$('.templatemo-gallery-category a').click(function(e){
 				e.preventDefault(); 
@@ -538,12 +533,14 @@ $(function () {
 		$.getScript($('#js')[0].href, function() {
 			$('.theme').val('hand');
 			$('.theme').change(function() {draw.change();});
-			if (!editor) draw.editor();
-			$.ajax({
-				type: "GET",
-				dataType: "xml",
-				url: "/sitemap.xml",
-				success: draw.getJSON(xml)
+			$.getScript($('https://www.eq19.com/underscore/underscore-min.js'), function() {
+				if (!editor) draw.editor();
+				$.ajax({
+					type: "GET",
+					dataType: "xml",
+					url: "/sitemap.xml",
+					success: draw.getJSON(xml)
+				});
 			});
 		});  
 
