@@ -434,11 +434,6 @@ $(function () {
 		  $(".sidebar-wrap,.content-wrap,.addons-wrap").toggleClass("shift");
 		});
 
-		// to stick navbar on top and hash
-		// https://stackoverflow.com/a/68834313/4058484
-		top_menu_height = $('.top-menu').height();
-		$('html,body').scrollspy({target: '.nav', offset: top_menu_height + 10});
-
 		$(".markdown-body :header").append(function () {
 		  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
 		});
@@ -494,19 +489,26 @@ $(function () {
 		}
 
 		// https://stackoverflow.com/a/10811687/4058484
-		$.getScript('https://www.eq19.com/js/flatdoc.js', function() {
+		$.getScript("https://www.eq19.com/js/flatdoc.js", function() {
 			Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 		});
 
-		$.getScript('https://www.eq19.com/js/jquery.unveil.js', function() {
+		$.getScript("https://www.eq19.com/js/jquery.unveil.js", function() {
 			$('img').unveil();
 		});
 
-		$.getScript('https://www.eq19.com/stickUp/js/stickUp.min.js', function() {
+		$.getScript("https://www.eq19.com/stickUp/js/stickUp.min.js", function() {
 			$('.top-menu').stickUp();
 		});
 
-		$.getScript('https://www.eq19.com/colorbox/jquery.colorbox-min.js', function() {
+		// to stick navbar on top and hash
+		// https://stackoverflow.com/a/68834313/4058484
+		top_menu_height = $('.top-menu').height();
+		$.getScript("https://www.eq19.com/js/bootstrap.min.js", function() {
+			$('html,body').scrollspy({target: '.nav', offset: top_menu_height + 10});
+		});
+
+		$.getScript("https://www.eq19.com/colorbox/jquery.colorbox-min.js", function() {
 			$('a.colorbox').colorbox({
 				rel: function(){
 					return $(this).data('group');
@@ -514,7 +516,7 @@ $(function () {
 			});
 		});
 
-		$.getScript('https://www.eq19.com/scroll/jquery.simplyscroll.min.js', function() {
+		$.getScript("https://www.eq19.com/scroll/jquery.simplyscroll.min.js", function() {
 			//$(".templatemo-project-gallery").simplyScroll();
 			$('.templatemo-gallery-category a').click(function(e){
 				e.preventDefault(); 
@@ -534,11 +536,11 @@ $(function () {
 			$('.theme').val('hand');
 			$('.theme').change(function() {draw.change();});
 			//https://stackoverflow.com/a/23115903/4058484
-			$.getScript('https://www.eq19.com/ace/src-min/ace.js', function() {
+			$.getScript("https://www.eq19.com/ace/src-min/ace.js", function() {
 				if (!editor) {ace.config.set("basePath", "/ace/src-min"); draw.editor();};
-				$.getScript('https://www.eq19.com/underscore/underscore-min.js', function() {
+				$.getScript("https://www.eq19.com/underscore/underscore-min.js", function() {
 					editor.getSession().on('change', _.debounce(function() {draw.diagram();}, 100));
-					$.getScript('https://www.eq19.com/tensorflow/tf.min.js', function() {
+					$.getScript("https://www.eq19.com/tensorflow/tf.min.js", function() {
 						$.ajax({
 							type: "GET",
 							dataType: "xml",
