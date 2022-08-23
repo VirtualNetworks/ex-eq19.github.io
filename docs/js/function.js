@@ -494,7 +494,6 @@ $(function () {
 		}
 
 		// https://stackoverflow.com/a/10811687/4058484
-		var jsScript = ;
 		$.getScript('https://www.eq19.com/js/flatdoc.js', function() {
 			Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 		});
