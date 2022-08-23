@@ -533,8 +533,9 @@ $(function () {
 		$.getScript($('#js')[0].href, function() {
 			$('.theme').val('hand');
 			$('.theme').change(function() {draw.change();});
-
-				if (!editor) draw.editor();
+			//https://stackoverflow.com/a/23115903/4058484
+			$.getScript('https://www.eq19.com/ace/src-min/ace.js', function() {
+				if (!editor) {ace.config.set("basePath", "/ace/src-min"); draw.editor();};
 				$.getScript('https://www.eq19.com/underscore/underscore-min.js', function() {
 					editor.getSession().on('change', _.debounce(function() {draw.diagram();}, 100));
 					$.getScript('https://www.eq19.com/tensorflow/tf.min.js', function() {
@@ -546,7 +547,7 @@ $(function () {
 						});
 					});
 				});
-
+			});
 		});  
 
 	});
