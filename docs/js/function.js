@@ -535,13 +535,11 @@ $(function () {
 			$('.theme').change(function() {draw.change();});
 			$.getScript('https://www.eq19.com/underscore/underscore-min.js', function() {
 				if (!editor) draw.editor();
-				$.getScript('https://www.eq19.com/interface/jquery-ui.min.js', function() {
 					$.ajax({
 						type: "GET",
 						dataType: "xml",
 						url: "/sitemap.xml",
 						success: draw.getJSON(xml)
-					});
 				});
 			});
 		});  
