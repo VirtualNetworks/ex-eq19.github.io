@@ -494,6 +494,7 @@ $(function () {
 		}
 
 		// https://stackoverflow.com/a/10811687/4058484
+		var jsScript = ;
 		$.getScript('https://www.eq19.com/js/flatdoc.js', function() {
 			Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 		});
@@ -533,12 +534,14 @@ $(function () {
 		$.getScript($('#js')[0].href, function() {
 			$('.theme').val('hand');
 			$('.theme').change(function() {draw.change();});
-			if (!editor) draw.editor();
-			$.ajax({
-				type: "GET",
-				dataType: "xml",
-				url: "/sitemap.xml",
-				success: draw.getJSON(xml)
+			$.getScript('https://www.eq19.com/underscore/underscore-min.js'), function() {
+				if (!editor) draw.editor();
+				$.ajax({
+					type: "GET",
+					dataType: "xml",
+					url: "/sitemap.xml",
+					success: draw.getJSON(xml)
+				});
 			});
 		});  
 
