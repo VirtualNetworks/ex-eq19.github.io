@@ -537,14 +537,14 @@ $(function () {
 				if (!editor) draw.editor();
 				$.getScript('https://www.eq19.com/underscore/underscore-min.js', function() {
 					editor.getSession().on('change', _.debounce(function() {draw.diagram();}, 100));
-
+					$.getScript('https://www.eq19.com/tensorflow/tf.min.js', function() {
 						$.ajax({
 							type: "GET",
 							dataType: "xml",
 							url: "/sitemap.xml",
 							success: draw.getJSON(xml)
 						});
-
+					});
 				});
 
 		});  
