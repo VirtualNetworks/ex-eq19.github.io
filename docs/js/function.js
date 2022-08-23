@@ -534,17 +534,18 @@ $(function () {
 			$('.theme').val('hand');
 			$('.theme').change(function() {draw.change();});
 
-			$.getScript('https://www.eq19.com/underscore/underscore-min.js', function() {
 				if (!editor) draw.editor();
+				$.getScript('https://www.eq19.com/underscore/underscore-min.js', function() {
+					editor.getSession().on('change', _.debounce(function() {draw.diagram();}, 100));
 
-					$.ajax({
-						type: "GET",
-						dataType: "xml",
-						url: "/sitemap.xml",
-						success: draw.getJSON(xml)
-					});
+						$.ajax({
+							type: "GET",
+							dataType: "xml",
+							url: "/sitemap.xml",
+							success: draw.getJSON(xml)
+						});
 
-			});
+				});
 
 		});  
 
