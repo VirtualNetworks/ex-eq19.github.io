@@ -7,14 +7,6 @@
 @import "variables";
 @import "root";
 
-@import "lib/@primer/css/base";
-@import "lib/@primer/css/forms";
-@import "lib/@primer/css/loaders";
-@import "lib/@primer/css/buttons";
-@import "lib/@primer/css/markdown";
-@import "lib/@primer/css/utilities";
-@import "lib/@primer/css/breadcrumb";
-
 // theme
 @import "layout";
 @import "rest";
@@ -32,6 +24,14 @@
 @import "core/title";
 @import "core/markdown";
 @import "core/toasts";
+
+@import "lib/@primer/css/base";
+@import "lib/@primer/css/forms";
+@import "lib/@primer/css/loaders";
+@import "lib/@primer/css/buttons";
+@import "lib/@primer/css/markdown";
+@import "lib/@primer/css/utilities";
+@import "lib/@primer/css/breadcrumb";
 
 // fonts
 @import "font-face";
