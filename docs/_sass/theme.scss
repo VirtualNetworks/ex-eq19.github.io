@@ -15,15 +15,6 @@
 @import "lib/@primer/css/utilities";
 @import "lib/@primer/css/breadcrumb";
 
-// fonts
-@import "font-face";
-@import "lib/font-awesome/variables";
-@import "lib/font-awesome/icons";
-@import "lib/font-awesome/v6.1.1/scss/fontawesome";
-@import "lib/font-awesome/v6.1.1/scss/regular";
-@import "lib/font-awesome/v6.1.1/scss/brands";
-@import "lib/font-awesome/v6.1.1/scss/solid";
-
 // theme
 @import "layout";
 @import "rest";
@@ -42,7 +33,16 @@
 @import "core/markdown";
 @import "core/toasts";
 
-//improved
+// fonts
+@import "font-face";
+@import "lib/font-awesome/variables";
+@import "lib/font-awesome/icons";
+@import "lib/font-awesome/v6.1.1/scss/fontawesome";
+@import "lib/font-awesome/v6.1.1/scss/regular";
+@import "lib/font-awesome/v6.1.1/scss/brands";
+@import "lib/font-awesome/v6.1.1/scss/solid";
+
 //https://developers.google.com/fonts/docs/getting_started
 //@import url(https://fonts.googleapis.com/css?family=Marvel:400);;
 //@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
+
