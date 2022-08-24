@@ -15,6 +15,15 @@
 @import "lib/@primer/css/utilities";
 @import "lib/rouge/github";
 
+// fonts
+@import "font-face";
+@import "lib/font-awesome/variables";
+@import "lib/font-awesome/icons";
+@import "lib/font-awesome/v6.1.1/scss/fontawesome";
+@import "lib/font-awesome/v6.1.1/scss/regular";
+@import "lib/font-awesome/v6.1.1/scss/brands";
+@import "lib/font-awesome/v6.1.1/scss/solid";
+
 // theme
 @import "layout";
 @import "rest";
@@ -32,15 +41,6 @@
 @import "core/title";
 @import "core/markdown";
 @import "core/toasts";
-
-// fonts
-@import "font-face";
-@import "lib/font-awesome/variables";
-@import "lib/font-awesome/icons";
-@import "lib/font-awesome/v6.1.1/scss/fontawesome";
-@import "lib/font-awesome/v6.1.1/scss/regular";
-@import "lib/font-awesome/v6.1.1/scss/brands";
-@import "lib/font-awesome/v6.1.1/scss/solid";
 
 //improved
 //https://developers.google.com/fonts/docs/getting_started
