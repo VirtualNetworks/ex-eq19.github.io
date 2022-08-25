@@ -402,12 +402,6 @@ $(function () {
 		  debug("Service Worker not supported!");
 		}*/
 
-		if ($('html').hasClass('desktop')) {
-			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
-				$('#stuck_container').TMStickUp({})
-			});
-		}
-
 		/* nested ul */
 		$(".toc ul")
 		  .siblings("a")
@@ -440,53 +434,14 @@ $(function () {
 		  $(".sidebar-wrap,.content-wrap,.addons-wrap").toggleClass("shift");
 		});
 
-		$(".markdown-body :header").append(function () {
-		  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
-		});
-
-		// do scroll and clear the hash anytime someone arrives with a hash tag
-		// https://stackoverflow.com/a/50688363/4058484
-		if( typeof(location.hash) !== 'undefined' && location.hash.length ) 
-		{
-			var location_hash = location.hash.split('?')[0];
-			history.replaceState(null, null, location.pathname);
-			scrollTo(location_hash);
-		}
-
 		// set links which point outside
 		$('.external-link').unbind('click');
 		$(document.links).filter(function() {
 			return this.hostname != window.location.hostname;
 		}).attr('target', '_blank'); 
 
-		// scroll to top
-		$('#btn-back-to-top').click(function(e)
-		{
-			e.preventDefault();
-			scrollTo('#templatemo-top');
-		});
-
-		// scroll to specific id when click on link
-		$('.internal-link, .carousel-inner a').click(function(e)
-		{
-			e.preventDefault(); 
-			var linkId = $(this).attr('href');
-			scrollTo(linkId);
-			return false;
-		});
-
-		// scroll to specific id when click on menu
-		$('.top-menu .navbar-nav a').click(function(e)
-		{
-			e.preventDefault(); 
-			var linkId = $(this).attr('href');
-			scrollTo(linkId);
-			if($('.navbar-toggle').is(":visible") == true)
-			{
-				$('.navbar-collapse').collapse('toggle');
-			}
-			$(this).blur();
-			return false;
+		$(".markdown-body :header").append(function () {
+		  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
 		});
 
 		// https://stackoverflow.com/a/10811687/4058484
@@ -498,16 +453,15 @@ $(function () {
 			$('img').unveil();
 		});
 
+		if ($('html').hasClass('desktop')) {
+			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
+				$('#stuck_container').TMStickUp({})
+			});
+		}
+
 		/*$.getScript("https://www.eq19.com/stickUp/js/stickUp.min.js", function() {
 			$('.top-menu').stickUp();
 		});*/
-
-		// to stick navbar on top and hash
-		// https://stackoverflow.com/a/68834313/4058484
-		top_menu_height = $('.top-menu').height();
-		$.getScript("https://www.eq19.com/js/bootstrap.min.js", function() {
-			$('html,body').scrollspy({target: '.nav', offset: top_menu_height + 10});
-		});
 
 		$.getScript("https://www.eq19.com/colorbox/jquery.colorbox-min.js", function() {
 			$('a.colorbox').colorbox({
@@ -533,6 +487,7 @@ $(function () {
 			});
 		});
 
+
 		//https://stackoverflow.com/a/23115903/4058484
 		$.getScript($('#js')[0].href, function() {
 			$('.theme').val('hand').change(function() {draw.change();});
@@ -549,6 +504,52 @@ $(function () {
 						});
 					});
 				});
+			});
+		});
+
+		// to stick navbar on top and hash
+		// https://stackoverflow.com/a/68834313/4058484
+		$.getScript("https://www.eq19.com/js/bootstrap.min.js", function() {
+			top_menu_height = $('.top-menu').height();
+			$('html,body').scrollspy({target: '.nav', offset: top_menu_height + 10});
+
+			// do scroll and clear the hash anytime someone arrives with a hash tag
+			// https://stackoverflow.com/a/50688363/4058484
+			if( typeof(location.hash) !== 'undefined' && location.hash.length ) 
+			{
+				var location_hash = location.hash.split('?')[0];
+				history.replaceState(null, null, location.pathname);
+				scrollTo(location_hash);
+			}
+
+			// scroll to top
+			$('#btn-back-to-top').click(function(e)
+			{
+				e.preventDefault();
+				scrollTo('#templatemo-top');
+			});
+
+			// scroll to specific id when click on link
+			$('.internal-link, .carousel-inner a').click(function(e)
+			{
+				e.preventDefault(); 
+				var linkId = $(this).attr('href');
+				scrollTo(linkId);
+				return false;
+			});
+
+			// scroll to specific id when click on menu
+			$('.top-menu .navbar-nav a').click(function(e)
+			{
+				e.preventDefault(); 
+				var linkId = $(this).attr('href');
+				scrollTo(linkId);
+				if($('.navbar-toggle').is(":visible") == true)
+				{
+					$('.navbar-collapse').collapse('toggle');
+				}
+				$(this).blur();
+				return false;
 			});
 		});
 
