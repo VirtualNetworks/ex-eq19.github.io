@@ -227,7 +227,9 @@ function scrollTo(selectors)
 {
     if(!$(selectors).length) return;
     var selector_top = $(selectors).offset().top - top_menu_height;
-    $('html,body').animate({scrollTop: selector_top }, 'slow');
+ 	$.getScript("https://www.eq19.com/js/bootstrap.min.js", function() {
+		$('html,body').animate({scrollTop: selector_top }, 'slow');
+	});
 }
 
 $(function () {
@@ -441,8 +443,8 @@ $(function () {
 		// to stick navbar on top and hash
 		// https://stackoverflow.com/a/68834313/4058484
 		$.getScript("https://www.eq19.com/js/bootstrap.min.js", function() {
-			top_menu_height = $('.top-menu').height();
-			$('html,body').scrollspy({target: '.nav', offset: top_menu_height + 10});
+			top_menu_height = $('.top-menu').height() + 10;
+			$('html,body').scrollspy({target: '.nav', offset: top_menu_height});
 		});
 
 		// do scroll and clear the hash anytime someone arrives with a hash tag
