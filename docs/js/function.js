@@ -483,11 +483,6 @@ $(function () {
 			return false;
 		});
 
-		if ($('html').hasClass('desktop')) {
-			$('#stuck_container').TMStickUp({
-			})
-		}
-
 		// https://stackoverflow.com/a/10811687/4058484
 		$.getScript("https://www.eq19.com/js/flatdoc.js", function() {
 			Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
@@ -549,7 +544,13 @@ $(function () {
 					});
 				});
 			});
-		});  
+		});
+
+		if ($('html').hasClass('desktop')) {
+			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
+				$('.stuck_container').TMStickUp({})
+			});
+		}
 
 	});
 
