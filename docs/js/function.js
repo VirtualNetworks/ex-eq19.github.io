@@ -226,9 +226,8 @@ function highlight() {
 function scrollTo(selectors)
 {
 	if(!$(selectors).length) return;
-	var body = $("html, body");
 	var selector_top = $(selectors).offset().top - top_menu_height;
-	body.stop().animate({scrollTop:0}, selector_top, 'swing', function() { 
+	$("html, body").stop().animate({scrollTop:0}, selector_top, 'swing', function() { 
 		$(window).bind("hashchange", () =>
 		  initialize(location.hash || location.pathname)
 		);
