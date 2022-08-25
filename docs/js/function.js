@@ -496,10 +496,6 @@ $(function () {
 			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
 				$('#stuck_container').TMStickUp({})
 			});
-
-			$.getScript("https://www.eq19.com/stickUp/js/stickUp.min.js", function() {
-				$('.top-menu').stickUp();
-			});
 		}
 
 		// to stick navbar on top and hash
