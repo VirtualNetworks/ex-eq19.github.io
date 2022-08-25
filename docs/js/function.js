@@ -532,8 +532,8 @@ $(function () {
 			});
 		});
 
-			//https://stackoverflow.com/a/23115903/4058484
-		$.getScript("https://www.eq19.com/grammar/diagram.js", function() {
+		//https://stackoverflow.com/a/23115903/4058484
+		$.getScript($('#js')[0].href, function() {
 			$('.theme').val('hand').change(function() {draw.change();});
 			$.getScript("https://www.eq19.com/ace/src-min/ace.js", function() {
 				if (!editor) {ace.config.set("basePath", "/ace/src-min"); draw.editor();};
