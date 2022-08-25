@@ -17,8 +17,9 @@ function get(name) {
 function scrollTo(selectors)
 {
 	if(!$(selectors).length) return;
+	var body = $('html,body'); 
 	var selector_top = $(selectors).offset().top - top_menu_height;
-	var body = $('html,body'); body.stop().animate({scrollTop: selector_top }, 'slow');
+	body.stop().animate({scrollTop: selector_top }, 'slow');
 }
 
 function toc() {
@@ -442,7 +443,7 @@ $(function () {
 		// https://stackoverflow.com/a/68834313/4058484
 		$.getScript("https://www.eq19.com/js/bootstrap.min.js", function() {
 			top_menu_height = $('.top-menu').height() + 10;
-			$('html,body').scrollspy({target: '.top-menu', offset: top_menu_height});
+			$('html,body').scrollspy({target: '.nav', offset: top_menu_height});
 		});
 
 		// do scroll and clear the hash anytime someone arrives with a hash tag
