@@ -257,7 +257,10 @@ $(function () {
 		};
 	scaleFix();
 
-	// Menu Android
+	$(window).bind("hashchange", () =>
+	  initialize(location.hash || location.pathname)
+	);
+
 	if (window.orientation != undefined) {
 		var regM = /ipod|ipad|iphone/gi,
 			result = ua.match(regM)
@@ -276,10 +279,6 @@ $(function () {
 			})
 		}
 	}
-
-	$(window).bind("hashchange", () =>
-	  initialize(location.hash || location.pathname)
-	);
 
 	// jQuery document.ready will be executed just after html dom tree has been parsed out.
 	// So it is far more earlier executed than window onload.
