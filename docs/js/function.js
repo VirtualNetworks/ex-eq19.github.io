@@ -390,6 +390,24 @@ $(function () {
 			});
 		}
 
+		/*if (location.pathname == `${ui.baseurl}/search.html`) {
+		  $.ajax(`${ui.baseurl}/data.json`)
+			.done(search)
+			.fail((xhr, message) => debug(message));
+		}
+
+		if ("serviceWorker" in navigator) {
+		  navigator.serviceWorker.register(`${ui.baseurl}/sw.caches.js`);
+		} else {
+		  debug("Service Worker not supported!");
+		}*/
+
+		if ($('html').hasClass('desktop')) {
+			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
+				$('#stuck_container').TMStickUp({})
+			});
+		}
+
 		/* nested ul */
 		$(".toc ul")
 		  .siblings("a")
@@ -413,18 +431,6 @@ $(function () {
 			$(this).attr("data-lang", match[1]);
 		  }
 		});
-
-		/*if (location.pathname == `${ui.baseurl}/search.html`) {
-		  $.ajax(`${ui.baseurl}/data.json`)
-			.done(search)
-			.fail((xhr, message) => debug(message));
-		}
-
-		if ("serviceWorker" in navigator) {
-		  navigator.serviceWorker.register(`${ui.baseurl}/sw.caches.js`);
-		} else {
-		  debug("Service Worker not supported!");
-		}*/
 
 		$(".status").click(function () {
 		  $(".addons").toggleClass("d-none");
@@ -545,12 +551,6 @@ $(function () {
 				});
 			});
 		});
-
-		if ($('html').hasClass('desktop')) {
-			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
-				$('#stuck_container').TMStickUp({})
-			});
-		}
 
 	});
 
