@@ -222,16 +222,12 @@ function highlight() {
   }
 }
 
-// init scrollTo 
+//https://stackoverflow.com/a/16475234/4058484
 function scrollTo(selectors)
 {
 	if(!$(selectors).length) return;
 	var selector_top = $(selectors).offset().top - top_menu_height;
-	$("html, body").stop().animate({scrollTop:0}, selector_top, 'swing', function() { 
-		$(window).bind("hashchange", () =>
-		  initialize(location.hash || location.pathname)
-		);
-	});
+	var body = $('html,body'); body.stop().animate({scrollTop: selector_top }, 'slow');
 }
 
 $(function () {
@@ -280,6 +276,10 @@ $(function () {
 			})
 		}
 	}
+
+	$(window).bind("hashchange", () =>
+	  initialize(location.hash || location.pathname)
+	);
 
 	$(document).on("scroll", function () {
 	  let start = $(this).scrollTop() + 5;
