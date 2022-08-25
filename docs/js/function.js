@@ -257,10 +257,7 @@ $(function () {
 		};
 	scaleFix();
 
-	$(window).bind("hashchange", () =>
-	  initialize(location.hash || location.pathname)
-	);
-
+	// Menu Android
 	if (window.orientation != undefined) {
 		var regM = /ipod|ipad|iphone/gi,
 			result = ua.match(regM)
@@ -279,6 +276,40 @@ $(function () {
 			})
 		}
 	}
+
+	$(window).bind("hashchange", () =>
+	  initialize(location.hash || location.pathname)
+	);
+
+	$(document).on("scroll", function () {
+	  let start = $(this).scrollTop() + 5;
+	  let items = [];
+
+	  $(".markdown-body")
+		.find("h1,h2,h3,h4,h5,h6")
+		.each(function () {
+		  items.push({
+			offset: $(this).offset().top,
+			id: this.id,
+			level: parseInt(this.tagName.slice(1)),
+		  });
+		});
+	  for (let i = 0; i < items.length; i++) {
+		if (start > items[i].offset) {
+		  if (i < items.length - 1) {
+			if (start < items[i + 1].offset) {
+			  if (items[i].level == 1) {
+				initialize(location.pathname);
+			  } else {
+				initialize("#" + items[i].id);
+			  }
+			}
+		  } else {
+			initialize("#" + items[i].id);
+		  }
+		}
+	  }
+	});
 
 	// jQuery document.ready will be executed just after html dom tree has been parsed out.
 	// So it is far more earlier executed than window onload.
@@ -359,18 +390,6 @@ $(function () {
 			});
 		}
 
-		/*if (location.pathname == `${ui.baseurl}/search.html`) {
-		  $.ajax(`${ui.baseurl}/data.json`)
-			.done(search)
-			.fail((xhr, message) => debug(message));
-		}
-
-		if ("serviceWorker" in navigator) {
-		  navigator.serviceWorker.register(`${ui.baseurl}/sw.caches.js`);
-		} else {
-		  debug("Service Worker not supported!");
-		}*/
-
 		/* nested ul */
 		$(".toc ul")
 		  .siblings("a")
@@ -395,6 +414,18 @@ $(function () {
 		  }
 		});
 
+		/*if (location.pathname == `${ui.baseurl}/search.html`) {
+		  $.ajax(`${ui.baseurl}/data.json`)
+			.done(search)
+			.fail((xhr, message) => debug(message));
+		}
+
+		if ("serviceWorker" in navigator) {
+		  navigator.serviceWorker.register(`${ui.baseurl}/sw.caches.js`);
+		} else {
+		  debug("Service Worker not supported!");
+		}*/
+
 		$(".status").click(function () {
 		  $(".addons").toggleClass("d-none");
 		});
@@ -403,15 +434,59 @@ $(function () {
 		  $(".sidebar-wrap,.content-wrap,.addons-wrap").toggleClass("shift");
 		});
 
+		$(".markdown-body :header").append(function () {
+		  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
+		});
+
+		// do scroll and clear the hash anytime someone arrives with a hash tag
+		// https://stackoverflow.com/a/50688363/4058484
+		if( typeof(location.hash) !== 'undefined' && location.hash.length ) 
+		{
+			var location_hash = location.hash.split('?')[0];
+			history.replaceState(null, null, location.pathname);
+			scrollTo(location_hash);
+		}
+
 		// set links which point outside
 		$('.external-link').unbind('click');
 		$(document.links).filter(function() {
 			return this.hostname != window.location.hostname;
 		}).attr('target', '_blank'); 
 
-		$(".markdown-body :header").append(function () {
-		  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
+		// scroll to top
+		$('#btn-back-to-top').click(function(e)
+		{
+			e.preventDefault();
+			scrollTo('#templatemo-top');
 		});
+
+		// scroll to specific id when click on link
+		$('.internal-link, .carousel-inner a').click(function(e)
+		{
+			e.preventDefault(); 
+			var linkId = $(this).attr('href');
+			scrollTo(linkId);
+			return false;
+		});
+
+		// scroll to specific id when click on menu
+		$('.top-menu .navbar-nav a').click(function(e)
+		{
+			e.preventDefault(); 
+			var linkId = $(this).attr('href');
+			scrollTo(linkId);
+			if($('.navbar-toggle').is(":visible") == true)
+			{
+				$('.navbar-collapse').collapse('toggle');
+			}
+			$(this).blur();
+			return false;
+		});
+
+		if ($('html').hasClass('desktop')) {
+			$('#stuck_container').TMStickUp({
+			})
+		}
 
 		// https://stackoverflow.com/a/10811687/4058484
 		$.getScript("https://www.eq19.com/js/flatdoc.js", function() {
@@ -422,15 +497,16 @@ $(function () {
 			$('img').unveil();
 		});
 
-		if ($('html').hasClass('desktop')) {
-			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
-				$('#stuck_container').TMStickUp({})
-			});
-		}
-
-		/*$.getScript("https://www.eq19.com/stickUp/js/stickUp.min.js", function() {
+		$.getScript("https://www.eq19.com/stickUp/js/stickUp.min.js", function() {
 			$('.top-menu').stickUp();
-		});*/
+		});
+
+		// to stick navbar on top and hash
+		// https://stackoverflow.com/a/68834313/4058484
+		top_menu_height = $('.top-menu').height();
+		$.getScript("https://www.eq19.com/js/bootstrap.min.js", function() {
+			$('html,body').scrollspy({target: '.nav', offset: top_menu_height + 10});
+		});
 
 		$.getScript("https://www.eq19.com/colorbox/jquery.colorbox-min.js", function() {
 			$('a.colorbox').colorbox({
@@ -456,10 +532,10 @@ $(function () {
 			});
 		});
 
-
-		//https://stackoverflow.com/a/23115903/4058484
 		$.getScript($('#js')[0].href, function() {
-			$('.theme').val('hand').change(function() {draw.change();});
+			$('.theme').val('hand');
+			$('.theme').change(function() {draw.change();});
+			//https://stackoverflow.com/a/23115903/4058484
 			$.getScript("https://www.eq19.com/ace/src-min/ace.js", function() {
 				if (!editor) {ace.config.set("basePath", "/ace/src-min"); draw.editor();};
 				$.getScript("https://www.eq19.com/underscore/underscore-min.js", function() {
@@ -474,84 +550,8 @@ $(function () {
 					});
 				});
 			});
-		});
+		});  
 
-		// to stick navbar on top and hash
-		// https://stackoverflow.com/a/68834313/4058484
-		$.getScript("https://www.eq19.com/js/bootstrap.min.js", function() {
-			top_menu_height = $('.top-menu').height();
-			$('html,body').scrollspy({target: '.nav', offset: top_menu_height + 10});
-
-			// do scroll and clear the hash anytime someone arrives with a hash tag
-			// https://stackoverflow.com/a/50688363/4058484
-			if( typeof(location.hash) !== 'undefined' && location.hash.length ) 
-			{
-				var location_hash = location.hash.split('?')[0];
-				history.replaceState(null, null, location.pathname);
-				scrollTo(location_hash);
-			}
-
-			// scroll to top
-			$('#btn-back-to-top').click(function(e)
-			{
-				e.preventDefault();
-				scrollTo('#templatemo-top');
-			});
-
-			// scroll to specific id when click on link
-			$('.internal-link, .carousel-inner a').click(function(e)
-			{
-				e.preventDefault(); 
-				var linkId = $(this).attr('href');
-				scrollTo(linkId);
-				return false;
-			});
-
-			// scroll to specific id when click on menu
-			$('.top-menu .navbar-nav a').click(function(e)
-			{
-				e.preventDefault(); 
-				var linkId = $(this).attr('href');
-				scrollTo(linkId);
-				if($('.navbar-toggle').is(":visible") == true)
-				{
-					$('.navbar-collapse').collapse('toggle');
-				}
-				$(this).blur();
-				return false;
-			});
-		});
-
-	});
-
-	$(document).on("scroll", function () {
-	  let start = $(this).scrollTop() + 5;
-	  let items = [];
-
-	  $(".markdown-body")
-		.find("h1,h2,h3,h4,h5,h6")
-		.each(function () {
-		  items.push({
-			offset: $(this).offset().top,
-			id: this.id,
-			level: parseInt(this.tagName.slice(1)),
-		  });
-		});
-	  for (let i = 0; i < items.length; i++) {
-		if (start > items[i].offset) {
-		  if (i < items.length - 1) {
-			if (start < items[i + 1].offset) {
-			  if (items[i].level == 1) {
-				initialize(location.pathname);
-			  } else {
-				initialize("#" + items[i].id);
-			  }
-			}
-		  } else {
-			initialize("#" + items[i].id);
-		  }
-		}
-	  }
 	});
 
 });
