@@ -402,12 +402,6 @@ $(function () {
 		  debug("Service Worker not supported!");
 		}*/
 
-		if ($('html').hasClass('desktop')) {
-			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
-				$('#stuck_container').TMStickUp({})
-			});
-		}
-
 		/* nested ul */
 		$(".toc ul")
 		  .siblings("a")
@@ -443,6 +437,11 @@ $(function () {
 		$(".markdown-body :header").append(function () {
 		  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
 		});
+
+		// to stick navbar on top and hash
+		// https://stackoverflow.com/a/68834313/4058484
+		top_menu_height = $('.top-menu').height();
+		$('html,body').scrollspy({target: '.nav', offset: top_menu_height + 10});
 
 		// do scroll and clear the hash anytime someone arrives with a hash tag
 		// https://stackoverflow.com/a/50688363/4058484
@@ -494,20 +493,19 @@ $(function () {
 			Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
 		});
 
+		if ($('html').hasClass('desktop')) {
+			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
+				$('#stuck_container').TMStickUp({})
+			});
+		}
+
 		$.getScript("https://www.eq19.com/js/jquery.unveil.js", function() {
 			$('img').unveil();
 		});
 
-		$.getScript("https://www.eq19.com/stickUp/js/stickUp.min.js", function() {
+		/*$.getScript("https://www.eq19.com/stickUp/js/stickUp.min.js", function() {
 			$('.top-menu').stickUp();
-		});
-
-		// to stick navbar on top and hash
-		// https://stackoverflow.com/a/68834313/4058484
-		top_menu_height = $('.top-menu').height();
-		$.getScript("https://www.eq19.com/js/bootstrap.min.js", function() {
-			$('html,body').scrollspy({target: '.nav', offset: top_menu_height + 10});
-		});
+		});*/
 
 		$.getScript("https://www.eq19.com/colorbox/jquery.colorbox-min.js", function() {
 			$('a.colorbox').colorbox({
