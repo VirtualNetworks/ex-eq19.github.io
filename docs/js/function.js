@@ -225,10 +225,13 @@ function highlight() {
 // init scrollTo 
 function scrollTo(selectors)
 {
+	var body = $("html, body");
     if(!$(selectors).length) return;
     var selector_top = $(selectors).offset().top - top_menu_height;
- 	$.getScript("https://www.eq19.com/js/bootstrap.min.js", function() {
-		$('html,body').animate({scrollTop: selector_top }, 'slow');
+	body.stop().animate({scrollTop:0}, selector_top, 'swing', function() { 
+		$(window).bind("hashchange", () =>
+		  initialize(location.hash || location.pathname)
+		);
 	});
 }
 
@@ -278,10 +281,6 @@ $(function () {
 			})
 		}
 	}
-
-	$(window).bind("hashchange", () =>
-	  initialize(location.hash || location.pathname)
-	);
 
 	$(document).on("scroll", function () {
 	  let start = $(this).scrollTop() + 5;
