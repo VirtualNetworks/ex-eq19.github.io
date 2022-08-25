@@ -13,6 +13,14 @@ function get(name) {
   return localStorage.getItem(name) || false;
 }
 
+//https://stackoverflow.com/a/16475234/4058484
+function scrollTo(selectors)
+{
+	if(!$(selectors).length) return;
+	var selector_top = $(selectors).offset().top - top_menu_height;
+	var body = $('html,body'); body.stop().animate({scrollTop: selector_top }, 'slow');
+}
+
 function toc() {
   $(".toctree li.current")
 	.append('<ul class="content-toc"></ul>')
@@ -220,14 +228,6 @@ function highlight() {
 	});
 	$(".search input").val(text);
   }
-}
-
-//https://stackoverflow.com/a/16475234/4058484
-function scrollTo(selectors)
-{
-	if(!$(selectors).length) return;
-	var selector_top = $(selectors).offset().top - top_menu_height;
-	var body = $('html,body'); body.stop().animate({scrollTop: selector_top }, 'slow');
 }
 
 $(function () {
