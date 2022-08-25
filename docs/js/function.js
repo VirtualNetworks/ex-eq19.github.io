@@ -504,8 +504,8 @@ $(function () {
 
 		// to stick navbar on top and hash
 		// https://stackoverflow.com/a/68834313/4058484
-		top_menu_height = $('.top-menu').height();
 		$.getScript("https://www.eq19.com/js/bootstrap.min.js", function() {
+			top_menu_height = $('.top-menu').height();
 			$('html,body').scrollspy({target: '.nav', offset: top_menu_height + 10});
 		});
 
