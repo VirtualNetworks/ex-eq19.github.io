@@ -438,6 +438,13 @@ $(function () {
 		  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
 		});
 
+		// to stick navbar on top and hash
+		// https://stackoverflow.com/a/68834313/4058484
+		$.getScript("https://www.eq19.com/js/bootstrap.min.js", function() {
+			top_menu_height = $('.top-menu').height();
+			$('html,body').scrollspy({target: '.nav', offset: top_menu_height + 10});
+		});
+
 		// do scroll and clear the hash anytime someone arrives with a hash tag
 		// https://stackoverflow.com/a/50688363/4058484
 		if( typeof(location.hash) !== 'undefined' && location.hash.length ) 
@@ -497,13 +504,6 @@ $(function () {
 				$('#stuck_container').TMStickUp({})
 			});
 		}
-
-		// to stick navbar on top and hash
-		// https://stackoverflow.com/a/68834313/4058484
-		$.getScript("https://www.eq19.com/js/bootstrap.min.js", function() {
-			top_menu_height = $('.top-menu').height();
-			$('html,body').scrollspy({target: '.nav', offset: top_menu_height + 10});
-		});
 
 		$.getScript("https://www.eq19.com/colorbox/jquery.colorbox-min.js", function() {
 			$('a.colorbox').colorbox({
