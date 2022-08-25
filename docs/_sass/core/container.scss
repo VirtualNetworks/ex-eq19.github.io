@@ -1,7 +1,10 @@
 .container {
   font-weight: $font-weight-normal;
   color: $theme-black;
-  /* background: $theme-white; */
+}
+
+.stuck_container {
+  background: $theme-white;
 }
 
 @include breakpoint(xl) {
