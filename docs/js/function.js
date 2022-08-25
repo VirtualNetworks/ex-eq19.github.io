@@ -548,7 +548,7 @@ $(function () {
 
 		if ($('html').hasClass('desktop')) {
 			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
-				$('.stuck_container').TMStickUp({})
+				$('#stuck_container').TMStickUp({})
 			});
 		}
 
