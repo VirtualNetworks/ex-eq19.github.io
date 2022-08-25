@@ -483,11 +483,6 @@ $(function () {
 			return false;
 		});
 
-		if ($('html').hasClass('desktop')) {
-			$('#stuck_container').TMStickUp({
-			})
-		}
-
 		// https://stackoverflow.com/a/10811687/4058484
 		$.getScript("https://www.eq19.com/js/flatdoc.js", function() {
 			Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
@@ -497,9 +492,15 @@ $(function () {
 			$('img').unveil();
 		});
 
-		$.getScript("https://www.eq19.com/stickUp/js/stickUp.min.js", function() {
-			$('.top-menu').stickUp();
-		});
+		if ($('html').hasClass('desktop')) {
+			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
+				$('#stuck_container').TMStickUp({})
+			});
+
+			$.getScript("https://www.eq19.com/stickUp/js/stickUp.min.js", function() {
+				$('.top-menu').stickUp();
+			});
+		}
 
 		// to stick navbar on top and hash
 		// https://stackoverflow.com/a/68834313/4058484
