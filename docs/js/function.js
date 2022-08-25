@@ -281,36 +281,6 @@ $(function () {
 	  initialize(location.hash || location.pathname)
 	);
 
-	$(document).on("scroll", function () {
-	  let start = $(this).scrollTop() + 5;
-	  let items = [];
-
-	  $(".markdown-body")
-		.find("h1,h2,h3,h4,h5,h6")
-		.each(function () {
-		  items.push({
-			offset: $(this).offset().top,
-			id: this.id,
-			level: parseInt(this.tagName.slice(1)),
-		  });
-		});
-	  for (let i = 0; i < items.length; i++) {
-		if (start > items[i].offset) {
-		  if (i < items.length - 1) {
-			if (start < items[i + 1].offset) {
-			  if (items[i].level == 1) {
-				initialize(location.pathname);
-			  } else {
-				initialize("#" + items[i].id);
-			  }
-			}
-		  } else {
-			initialize("#" + items[i].id);
-		  }
-		}
-	  }
-	});
-
 	// jQuery document.ready will be executed just after html dom tree has been parsed out.
 	// So it is far more earlier executed than window onload.
 	$(document).ready(function () {
@@ -553,6 +523,36 @@ $(function () {
 			});
 		});
 
+	});
+
+	$(document).on("scroll", function () {
+	  let start = $(this).scrollTop() + 5;
+	  let items = [];
+
+	  $(".markdown-body")
+		.find("h1,h2,h3,h4,h5,h6")
+		.each(function () {
+		  items.push({
+			offset: $(this).offset().top,
+			id: this.id,
+			level: parseInt(this.tagName.slice(1)),
+		  });
+		});
+	  for (let i = 0; i < items.length; i++) {
+		if (start > items[i].offset) {
+		  if (i < items.length - 1) {
+			if (start < items[i + 1].offset) {
+			  if (items[i].level == 1) {
+				initialize(location.pathname);
+			  } else {
+				initialize("#" + items[i].id);
+			  }
+			}
+		  } else {
+			initialize("#" + items[i].id);
+		  }
+		}
+	  }
 	});
 
 });
