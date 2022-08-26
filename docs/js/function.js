@@ -79,10 +79,10 @@ jQuery(function($) {
 
         //gallery light box setup
         $('a.colorbox').colorbox({
-                                    rel: function(){
-                                        return $(this).data('group');
-
-                                    }
+            rel: function(){
+                return $(this).data('group');
+            }
         });
+
     });
 });
