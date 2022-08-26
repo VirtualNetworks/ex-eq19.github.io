@@ -441,10 +441,8 @@ $(function () {
 
 		// to stick navbar on top and hash
 		// https://stackoverflow.com/a/68834313/4058484
-		$.getScript("https://www.eq19.com/js/bootstrap.min.js", function() {
-			top_menu_height = $('.top-menu').height() + 10;
-			$('html,body').scrollspy({target: '.nav', offset: top_menu_height});
-		});
+		top_menu_height = $('.top-menu').height() + 10;
+		$('html,body').scrollspy({target: '.nav', offset: top_menu_height});
 
 		// do scroll and clear the hash anytime someone arrives with a hash tag
 		// https://stackoverflow.com/a/50688363/4058484
@@ -480,9 +478,13 @@ $(function () {
 		// scroll to specific id when click on menu
 		$('.top-menu .navbar-nav a').click(function(e)
 		{
-			e.preventDefault(); 
+			e.preventDefault();
+			$(this).parent().children('a').removeClass('active');
+			$(this).addClass('active');
+
 			var linkId = $(this).attr('href');alert(linkId);
 			scrollTo(linkId);
+
 			if($('.navbar-toggle').is(":visible") == true)
 			{
 				$('.navbar-collapse').collapse('toggle');
