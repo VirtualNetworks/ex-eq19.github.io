@@ -11,13 +11,10 @@ function get(name) {
 }
 
 // scroll animation 
-function scrollTo(selectors)
-{
-
+function scrollTo(selectors) {
     if(!$(selectors).size()) return;
-    var selector_top = $(selectors).offset().top - top_menu_height;
+    var selector_top = $(selectors).offset().top;
     $('html,body').animate({ scrollTop: selector_top }, 'slow');
-
 }
 
 function toc() {
