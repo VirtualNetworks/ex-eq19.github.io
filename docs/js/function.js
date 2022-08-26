@@ -337,6 +337,7 @@ $(function () {
 		var owl2 = $('#owl_2');
 		var camera = $('#camera');
 		var isotope = $('.isotope');
+		top_menu_height = $('.templatemo-top-menu').height() + 10 ;
 
 		if(camera.length > 0){
 			camera.camera(
@@ -457,7 +458,6 @@ $(function () {
 		});
 
 		// scroll spy to auto active the nav item
-		var top_menu_height = $('.templatemo-top-menu').height() + 10 ;
 		$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
 
 		// scroll to top
