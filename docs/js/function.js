@@ -441,8 +441,8 @@ $(function () {
 
 		// to stick navbar on top and hash
 		// https://stackoverflow.com/a/68834313/4058484
-		top_menu_height = $('.top-menu').height() + 10;
-		$('html,body').scrollspy({target: '.nav', offset: top_menu_height});
+		top_menu_height = $('.top-menu').height();
+		$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
 
 		// do scroll and clear the hash anytime someone arrives with a hash tag
 		// https://stackoverflow.com/a/50688363/4058484
