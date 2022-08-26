@@ -1,47 +1,40 @@
 var top_menu_height = 0;
 jQuery(function($) {
 		$(window).load( function() {
-			$('.external-link').unbind('click');	
+			$('.external-link').unbind('click');
 		});
 		
-        $(document).ready( function() {
+       $(document).ready( function() {
 
-            // load google map
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' +
-            'callback=initialize';
-        document.body.appendChild(script);
-
-        top_menu_height = $('.top-menu').height();
-        // scroll spy to auto active the nav item
-        $('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
+		top_menu_height = $('.top-menu').height();
+		// scroll spy to auto active the nav item
+		$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
 		$('.external-link').unbind('click');
 
-        // scroll to top
-        $('#btn-back-to-top').click(function(e){
-            e.preventDefault();
-            scrollTo('#templatemo-top');
-        });
+		// scroll to top
+		$('#btn-back-to-top').click(function(e){
+			e.preventDefault();
+			scrollTo('#templatemo-top');
+		});
 
-        // scroll to specific id when click on menu
-        $('.top-menu .navbar-nav a').click(function(e){
-            e.preventDefault(); 
-            var linkId = $(this).attr('href');
-            scrollTo(linkId);
-            if($('.navbar-toggle').is(":visible") == true){
-                $('.navbar-collapse').collapse('toggle');
-            }
-            $(this).blur();
-            return false;
-        });
+		// scroll to specific id when click on menu
+		$('.top-menu .navbar-nav a').click(function(e){
+			e.preventDefault(); 
+			var linkId = $(this).attr('href');
+			scrollTo(linkId);
+			if($('.navbar-toggle').is(":visible") == true){
+				$('.navbar-collapse').collapse('toggle');
+			}
+			$(this).blur();
+			return false;
+		});
 		/*
 		var dt = window.atob('IHwgRGVzaWduOiA8YSByZWw9Im5vZm9sbG93IiBocmVmPSJodHRwOi8vd3d3LnRlbXBsYXRlbW8uY29tL3RtLTM5NS11cmJhbmljIiB0YXJnZXQ9Il9wYXJlbnQiPlVyYmFuaWM8L2E+'); // decode the string
 		var div = document.getElementById('footer-line');
 		div.innerHTML = div.innerHTML + dt;
 		*/
 
-    	// to stick navbar on top
+		// to stick navbar on top
 		if ($('html').hasClass('desktop')) {
 			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
 				//$('.top-menu').TMStickUp({})
