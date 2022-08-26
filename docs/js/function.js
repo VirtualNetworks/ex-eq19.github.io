@@ -1,14 +1,4 @@
-var vaetop = top_menu_height = 0;
-
-// scroll animation 
-function scrollTo(selectors) {
-
-    if(!$(selectors).size()) return;
-    var selector_top = $(selectors).offset().top - top_menu_height;
-    $('html,body').animate({ scrollTop: selector_top }, 'slow');
-
-}
-
+var top_menu_height = 0;
 jQuery(function($) {
 		$(window).load( function() {
 			$('.external-link').unbind('click');	
@@ -25,7 +15,7 @@ jQuery(function($) {
 
         top_menu_height = $('.templatemo-top-menu').height();
         // scroll spy to auto active the nav item
-        $('body').scrollspy({ target: '.nav', offset: top_menu_height + 10 });
+        $('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
 		$('.external-link').unbind('click');
 
         // scroll to top
@@ -84,4 +74,14 @@ function initialize() {
     };
 
     var map = new google.maps.Map(document.getElementById('map-canvas'),  mapOptions);
+}
+
+// scroll animation 
+function scrollTo(selectors)
+{
+
+    if(!$(selectors).size()) return;
+    var selector_top = $(selectors).offset().top - top_menu_height;
+    $('html,body').animate({ scrollTop: selector_top }, 'slow');
+
 }
