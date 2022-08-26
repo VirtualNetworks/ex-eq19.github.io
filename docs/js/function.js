@@ -478,13 +478,9 @@ $(function () {
 		// scroll to specific id when click on menu
 		$('.top-menu .navbar-nav a').click(function(e)
 		{
-			e.preventDefault();
-			$(this).parent().children('a').removeClass('active');
-			$(this).addClass('active');
-
-			var linkId = $(this).attr('href');alert(linkId);
+			e.preventDefault(); 
+			var linkId = $(this).attr('href');
 			scrollTo(linkId);
-
 			if($('.navbar-toggle').is(":visible") == true)
 			{
 				$('.navbar-collapse').collapse('toggle');
