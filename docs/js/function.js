@@ -13,7 +13,7 @@ function get(name) {
 // scroll animation 
 function scrollTo(selectors) {
     if(!$(selectors).size()) return;
-    var selector_top = $(selectors).offset().top;
+    var selector_top = $(selectors).offset().top - top_menu_height - 10;
     $('html,body').animate({ scrollTop: selector_top }, 'slow');
 }
 
