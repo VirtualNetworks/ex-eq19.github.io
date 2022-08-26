@@ -6,6 +6,13 @@ jQuery(function($) {
 		
         $(document).ready( function() {
 
+            // load google map
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' +
+            'callback=initialize';
+        document.body.appendChild(script);
+
         top_menu_height = $('.top-menu').height();
         // scroll spy to auto active the nav item
         $('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
@@ -37,7 +44,8 @@ jQuery(function($) {
     	// to stick navbar on top
 		if ($('html').hasClass('desktop')) {
 			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
-				$('.top-menu').TMStickUp({})
+				//$('.top-menu').TMStickUp({})
+				$('.top-menu ').stickUp();
 			});
 		}
 
