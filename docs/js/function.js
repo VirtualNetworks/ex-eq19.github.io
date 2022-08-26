@@ -1,7 +1,7 @@
 
 /* Orientation tablet fix
  ========================================================*/
-var myIdcounter = top_menu_height = 0;
+var myIdcounter = var top_menu_height = 0;
 var currentYear = (new Date).getFullYear();
 
 var ua = navigator.userAgent.toLocaleLowerCase(),
