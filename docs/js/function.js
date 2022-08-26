@@ -13,6 +13,7 @@ function get(name) {
 // scroll animation 
 function scrollTo(selectors) {
     if(!$(selectors).size()) return;
+	var top_menu_height = $('.templatemo-top-menu').height() + 10 ;
     var selector_top = $(selectors).offset().top - top_menu_height - 10;alert(top_menu_height);
     $('html,body').animate({ scrollTop: selector_top }, 'slow');
 }
@@ -439,7 +440,7 @@ $(function () {
 		});
 
 		// scroll spy to auto active the nav item
-		top_menu_height = $('.templatemo-top-menu').height();
+		var top_menu_height = $('.templatemo-top-menu').height() + 10 ;
 		$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
 
 		// scroll to top
@@ -534,7 +535,7 @@ initialize(location.pathname);
 
 /* Orientation tablet fix
  ========================================================*/
-var myIdcounter = top_menu_height = 0;
+var myIdcounter 0;
 var currentYear = (new Date).getFullYear();
 var ua = navigator.userAgent.toLocaleLowerCase(),
 	regV = /ipod|ipad|iphone/gi,
