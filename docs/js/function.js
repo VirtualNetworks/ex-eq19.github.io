@@ -30,14 +30,13 @@ function get(name) {
 
 // scroll animation 
 function scrollTo(selectors) {
-    if(!$(selectors).size()) return;
-	var top_menu_height = $('.templatemo-top-menu').height() + 10 ;
-    var selector_top = $(selectors).offset().top - top_menu_height - 10;alert(top_menu_height);
-    $('html,body').animate({ scrollTop: selector_top }, 'slow');
+	if(!$(selectors).size()) return;
+	var selector_top = $(selectors).offset().top - top_menu_height - 10;alert(top_menu_height);
+	$('html,body').animate({ scrollTop: selector_top }, 'slow');
 }
 
 function toc() {
-  $(".toctree li.current")
+	$(".toctree li.current")
 	.append('<ul class="content-toc"></ul>')
 	.html(function () {
 	  let level = parseInt(this.dataset.level);
@@ -79,21 +78,21 @@ function toc() {
 
 // filtering json object
 function filterBy(data, filters = {}) {
-    // Set up the specific defaults that will show everything:
-    const defaults = {
-        category: null,
-        yearFrom: 1895,
-        yearTo: 2100,
-        gender: null
-    }
+	// Set up the specific defaults that will show everything:
+	const defaults = {
+		category: null,
+		yearFrom: 1895,
+		yearTo: 2100,
+		gender: null
+	}
 
-    // Merge any filters with the defaults
-    filters = Object.assign({}, defaults, filters);
+	// Merge any filters with the defaults
+	filters = Object.assign({}, defaults, filters);
 
-    // Filter based on that filters object:
-    return data.filter(laur => {
-        return (laur.yearFrom >= filters.yearFrom) &&
-           (laur.yearTo <= filters.yearTo);
+	// Filter based on that filters object:
+	return data.filter(laur => {
+		return (laur.yearFrom >= filters.yearFrom) &&
+		   (laur.yearTo <= filters.yearTo);
   });
 }
 
