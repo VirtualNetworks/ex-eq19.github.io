@@ -13,7 +13,7 @@ function get(name) {
 // scroll animation 
 function scrollTo(selectors) {
     if(!$(selectors).size()) return;
-    var selector_top = $(selectors).offset().top - top_menu_height - 10;
+    var selector_top = $(selectors).offset().top - top_menu_height - 10;alert(top_menu_height);
     $('html,body').animate({ scrollTop: selector_top }, 'slow');
 }
 
@@ -438,6 +438,10 @@ $(function () {
 		  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
 		});
 
+		// scroll spy to auto active the nav item
+		top_menu_height = $('.templatemo-top-menu').height();
+		$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
+
 		// scroll to top
 		$('#btn-back-to-top').click(function(e){
 			e.preventDefault();
@@ -498,10 +502,6 @@ $(function () {
 			$.getScript("https://www.eq19.com/js/stickUp.min.js", function() {
 				$('.templatemo-top-menu ').stickUp();
 			});
-
-		// scroll spy to auto active the nav item
-		top_menu_height = $('.templatemo-top-menu').height();alert(top_menu_height);
-		$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
 
 		// draw diagram
 		$.getScript($('#js')[0].href, function() {
