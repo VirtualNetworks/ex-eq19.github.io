@@ -229,13 +229,217 @@ function highlight() {
   }
 }
 
-jQuery(function($) {
+$(function () {
+	
+	$("#copyright-year").text((new Date).getFullYear());
+	/*$().UItoTop({ easingType: 'easeOutQuart' });
+	if ($('html').hasClass('desktop')) {
+		$.srSmoothscroll({
+			speed: 800,
+			step: 150
+		});
+	}*/
+
+// IPad/IPhone
+	var viewportmeta = document.querySelector && document.querySelector('meta[name="viewport"]'),
+		ua = navigator.userAgent,
+
+		gestureStart = function () {
+			viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6, initial-scale=1.0";
+		},
+
+		scaleFix = function () {
+			if (viewportmeta && /iPhone|iPad/.test(ua) && !/Opera Mini/.test(ua)) {
+				viewportmeta.content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+				document.addEventListener("gesturestart", gestureStart, false);
+			}
+		};
+	scaleFix();
+
+	// Menu Android
+	if (window.orientation != undefined) {
+		var regM = /ipod|ipad|iphone/gi,
+			result = ua.match(regM)
+		if (!result) {
+			$('.sf-menu li').each(function () {
+				if ($(">ul", this)[0]) {
+					$(">a", this).toggle(
+						function () {
+							return false;
+						},
+						function () {
+							window.location.href = $(this).attr("href");
+						}
+					);
+				}
+			})
+		}
+	}
 
 	$(window).load( function() {
 		$('.external-link').unbind('click');
 	});
 
+	$(window).bind("hashchange", () =>
+	  initialize(location.hash || location.pathname)
+	);
+
+	$(document).on("scroll", function () {
+	  let start = $(this).scrollTop() + 5;
+	  let items = [];
+
+	  $(".markdown-body")
+		.find("h1,h2,h3,h4,h5,h6")
+		.each(function () {
+		  items.push({
+			offset: $(this).offset().top,
+			id: this.id,
+			level: parseInt(this.tagName.slice(1)),
+		  });
+		});
+	  for (let i = 0; i < items.length; i++) {
+		if (start > items[i].offset) {
+		  if (i < items.length - 1) {
+			if (start < items[i + 1].offset) {
+			  if (items[i].level == 1) {
+				initialize(location.pathname);
+			  } else {
+				initialize("#" + items[i].id);
+			  }
+			}
+		  } else {
+			initialize("#" + items[i].id);
+		  }
+		}
+	  }
+	});
+
+	// jQuery document.ready will be executed just after html dom tree has been parsed out.
+	// So it is far more earlier executed than window onload.
 	$(document).ready( function() {
+
+		var owl = $('#owl');
+		var owl2 = $('#owl_2');
+		var camera = $('#camera');
+		var isotope = $('.isotope');
+
+		if(camera.length > 0){
+			camera.camera(
+				{
+					autoAdvance: false,
+					height: '31.25%',
+					minHeight: '200px',
+					pagination: false,
+					thumbnails: false,
+					playPause: false,
+					hover: false,
+					loader: 'none',
+					navigation: true,
+					navigationHover: false,
+					mobileNavHover: false,
+					fx: 'simpleFade'
+				}
+			);
+		}
+
+		if(owl.length > 0){
+			owl.owlCarousel(
+				{
+					navigation: true,
+					autoPlay: true,
+					slideSpeed: 300,
+					stopOnHover: true,
+					pagination: false,
+					paginationSpeed: 400,
+					singleItem: true,
+					mouseDrag: false,
+					navigationText: ["", ""]
+				}
+			);
+		}
+
+		if(owl2.length > 0){
+			owl2.owlCarousel(
+				{
+					navigation: true,
+					autoPlay: true,
+					slideSpeed: 300,
+					stopOnHover: true,
+					pagination: false,
+					paginationSpeed: 400,
+					singleItem: true,
+					mouseDrag: false,
+					navigationText: ["", ""]
+				}
+			);
+		}
+
+		if(isotope.length > 0){
+			isotope.isotope({
+				itemSelector: '.element-item',
+				layoutMode: 'fitRows'
+			});
+
+			$('#filters').on( 'click', 'a', function() {
+				var filterValue = $( this ).attr('data-filter');
+				console.log(filterValue);
+
+				if(filterValue == '*'){
+					isotope.isotope({ filter: filterValue });
+				}else{
+					isotope.isotope({ filter: '.'+filterValue });
+				}
+				return false;
+			});
+		}
+
+		/* nested ul */
+		$(".toc ul")
+		  .siblings("a")
+		  .each(function () {
+			let link = $(this);
+			let expand = $('<i class="fa fa-plus-square-o"></i>');
+
+			expand.on("click", function (e) {
+			  e.stopPropagation();
+			  toggleCurrent(link);
+			  return false;
+			});
+			link.prepend(expand);
+		  });
+
+		$("div.highlighter-rouge").each(function () {
+		  const match = $(this)
+			.attr("class")
+			.match(/language-(\w+)/);
+		  if (match) {
+			$(this).attr("data-lang", match[1]);
+		  }
+		});
+
+		/*if (location.pathname == `${ui.baseurl}/search.html`) {
+		  $.ajax(`${ui.baseurl}/data.json`)
+			.done(search)
+			.fail((xhr, message) => debug(message));
+		}
+
+		if ("serviceWorker" in navigator) {
+		  navigator.serviceWorker.register(`${ui.baseurl}/sw.caches.js`);
+		} else {
+		  debug("Service Worker not supported!");
+		}*/
+
+		$(".status").click(function () {
+		  $(".addons").toggleClass("d-none");
+		});
+
+		$("#toggle").click(function () {
+		  $(".sidebar-wrap,.content-wrap,.addons-wrap").toggleClass("shift");
+		});
+
+		$(".markdown-body :header").append(function () {
+		  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
+		});
 
 		// scroll to top
 		$('#btn-back-to-top').click(function(e){
