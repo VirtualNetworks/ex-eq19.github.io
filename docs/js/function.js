@@ -11,17 +11,12 @@ function scrollTo(selectors)
 }
 
 jQuery(function($) {
+
 	$(window).load( function() {
 		$('.external-link').unbind('click');
 	});
 
 	$(document).ready( function() {
-
-		$('.external-link').unbind('click');
-
-		// scroll spy to auto active the nav item
-		top_menu_height = $('.templatemo-top-menu').height();
-		$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
 
 		// scroll to top
 		$('#btn-back-to-top').click(function(e){
@@ -41,10 +36,20 @@ jQuery(function($) {
 			return false;
 		});
 
-		// to stick navbar on top
-			$.getScript("https://www.eq19.com/js/stickUp.min.js", function() {
-				$('.templatemo-top-menu ').stickUp();
-			});
+		// set links which point outside
+		$('.external-link').unbind('click');
+		$(document.links).filter(function() {
+			return this.hostname != window.location.hostname;
+		}).attr('target', '_blank'); 
+
+		// do scroll and clear the hash anytime someone arrives with a hash tag
+		// https://stackoverflow.com/a/50688363/4058484
+		if( typeof(location.hash) !== 'undefined' && location.hash.length ) 
+		{
+			var location_hash = location.hash.split('?')[0];
+			history.replaceState(null, null, location.pathname);
+			scrollTo(location_hash);
+		}
 
 		// gallery category
 		$('.templatemo-gallery-category a').click(function(e){
@@ -68,6 +73,15 @@ jQuery(function($) {
 				}
 			});
 		});
-		
+
+		// to stick navbar on top
+			$.getScript("https://www.eq19.com/js/stickUp.min.js", function() {
+				$('.templatemo-top-menu ').stickUp();
+			});
+
+		// scroll spy to auto active the nav item
+		top_menu_height = $('.templatemo-top-menu').height();
+		$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
+
 	});
 });
