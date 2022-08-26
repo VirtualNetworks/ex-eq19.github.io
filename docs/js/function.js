@@ -1,3 +1,21 @@
+
+/* Orientation tablet fix
+ ========================================================*/
+var myIdcounter = top_menu_height = 0;
+var currentYear = (new Date).getFullYear();
+
+var ua = navigator.userAgent.toLocaleLowerCase(),
+	regV = /ipod|ipad|iphone/gi, 	result = ua.match(regV), userScale = "";
+
+var params, regex = /[?&]([^=#]+)=([^&#]*)/g, url = window.location.href, params = {}, match;
+while(match = regex.exec(url)) {params[match[1]] = match[2];}
+
+if (!result) {
+	userScale = ",user-scalable=0"
+}
+document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0' + userScale + '">')
+
+
 function debug() {
   console.debug.apply(console, arguments);
 }
@@ -532,19 +550,3 @@ restore();
 highlight();
 initialize(location.hash);
 initialize(location.pathname);
-
-/* Orientation tablet fix
- ========================================================*/
-var myIdcounter 0;
-var currentYear = (new Date).getFullYear();
-var ua = navigator.userAgent.toLocaleLowerCase(),
-	regV = /ipod|ipad|iphone/gi,
-	result = ua.match(regV),
-	userScale = "";
-if (!result) {
-	userScale = ",user-scalable=0"
-}
-
-var params, regex = /[?&]([^=#]+)=([^&#]*)/g, url = window.location.href, params = {}, match;
-while(match = regex.exec(url)) {params[match[1]] = match[2];}
-document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0' + userScale + '">')
