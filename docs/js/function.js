@@ -65,7 +65,7 @@ jQuery(function($) {
 			$(linkClass).fadeIn();  
 		});
 
-		//gallery light box setup
+		// gallery light box setup
 		$.getScript("https://www.eq19.com/colorbox/jquery.colorbox-min.js", function() {
 			$('a.colorbox').colorbox({
 				rel: function(){
@@ -83,10 +83,10 @@ jQuery(function($) {
 		top_menu_height = $('.templatemo-top-menu').height();
 		$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
 
+		// draw diagram
 		$.getScript($('#js')[0].href, function() {
-			$('.theme').val('hand');
-			$('.theme').change(function() {draw.change();});
-			//https://stackoverflow.com/a/23115903/4058484
+			$('.theme').val('hand').change(function() {draw.change();});
+			//https://stackoverflow.com/a/73466462/4058484
 			$.getScript("https://www.eq19.com/ace/src-min/ace.js", function() {
 				if (!editor) {ace.config.set("basePath", "/ace/src-min"); draw.editor();};
 				$.getScript("https://www.eq19.com/underscore/underscore-min.js", function() {
