@@ -481,7 +481,7 @@ $(function () {
 		$('.top-menu .navbar-nav a').click(function(e)
 		{
 			e.preventDefault(); 
-			var linkId = $(this).attr('href');
+			var linkId = $(this).attr('href');alert(linkId);
 			scrollTo(linkId);
 			if($('.navbar-toggle').is(":visible") == true)
 			{
