@@ -48,7 +48,6 @@ jQuery(function($) {
 			});
 		}
 
-
 		// gallery category
 		$('.templatemo-gallery-category a').click(function(e){
 			e.preventDefault(); 
