@@ -40,7 +40,8 @@ jQuery(function($) {
 		var div = document.getElementById('footer-line');
 		div.innerHTML = div.innerHTML + dt;
 		*/
-        // to stick navbar on top
+
+    	// to stick navbar on top
 		if ($('html').hasClass('desktop')) {
 			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
 				$('.top-menu').TMStickUp({})
@@ -48,45 +49,48 @@ jQuery(function($) {
 		}
 
 
-        // gallery category
-        $('.templatemo-gallery-category a').click(function(e){
-            e.preventDefault(); 
-            $(this).parent().children('a').removeClass('active');
-            $(this).addClass('active');
-            var linkClass = $(this).attr('href');
-            $('.gallery').each(function(){
-                if($(this).is(":visible") == true){
-                   $(this).hide();
-                };
-            });
-            $(linkClass).fadeIn();  
-        });
+		// gallery category
+		$('.templatemo-gallery-category a').click(function(e){
+			e.preventDefault(); 
+			$(this).parent().children('a').removeClass('active');
+			$(this).addClass('active');
+			var linkClass = $(this).attr('href');
+			$('.gallery').each(function(){
+				if($(this).is(":visible") == true){
+				   $(this).hide();
+				};
+			});
+			$(linkClass).fadeIn();  
+		});
 
-        //gallery light box setup
-        $('a.colorbox').colorbox({
-                                    rel: function(){
-                                        return $(this).data('group');
+		//gallery light box setup
+		$.getScript("https://www.eq19.com/colorbox/jquery.colorbox-min.js", function() {
+			$('a.colorbox').colorbox({
+				rel: function(){
+					return $(this).data('group');
+				}
+			});
+		});
 
-                                    }
-        });
-    });
+	});
+
 });
 
 function initialize() {
-    var mapOptions = {
-      zoom: 12,
-      center: new google.maps.LatLng(16.8451789,96.1439764)
-    };
+	var mapOptions = {
+	  zoom: 12,
+	  center: new google.maps.LatLng(16.8451789,96.1439764)
+	};
 
-    var map = new google.maps.Map(document.getElementById('map-canvas'),  mapOptions);
+	var map = new google.maps.Map(document.getElementById('map-canvas'),  mapOptions);
 }
 
 // scroll animation 
 function scrollTo(selectors)
 {
 
-    if(!$(selectors).size()) return;
-    var selector_top = $(selectors).offset().top - top_menu_height;
-    $('html,body').animate({ scrollTop: selector_top }, 'slow');
+	if(!$(selectors).size()) return;
+	var selector_top = $(selectors).offset().top - top_menu_height;
+	$('html,body').animate({ scrollTop: selector_top }, 'slow');
 
 }
