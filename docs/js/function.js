@@ -1,4 +1,4 @@
-var top_menu_height = 0;
+var vaetop = top_menu_height = 0;
 
 // scroll animation 
 function scrollTo(selectors) {
