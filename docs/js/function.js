@@ -83,5 +83,25 @@ jQuery(function($) {
 		top_menu_height = $('.templatemo-top-menu').height();
 		$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
 
+		$.getScript($('#js')[0].href, function() {
+			$('.theme').val('hand');
+			$('.theme').change(function() {draw.change();});
+			//https://stackoverflow.com/a/23115903/4058484
+			$.getScript("https://www.eq19.com/ace/src-min/ace.js", function() {
+				if (!editor) {ace.config.set("basePath", "/ace/src-min"); draw.editor();};
+				$.getScript("https://www.eq19.com/underscore/underscore-min.js", function() {
+					editor.getSession().on('change', _.debounce(function() {draw.diagram();}, 100));
+					$.getScript("https://www.eq19.com/tensorflow/tf.min.js", function() {
+						$.ajax({
+							type: "GET",
+							dataType: "xml",
+							url: "/sitemap.xml",
+							success: draw.getJSON(xml)
+						});
+					});
+				});
+			});
+		});  
+
 	});
 });
