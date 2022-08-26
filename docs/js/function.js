@@ -61,7 +61,9 @@ jQuery(function($) {
 		div.innerHTML = div.innerHTML + dt;
 		*/
         // to stick navbar on top
-        $('.templatemo-top-menu ').stickUp();
+			$.getScript("https://www.eq19.com/js/stickUp.min.js", function() {
+				$('.templatemo-top-menu ').stickUp();
+			});
 
         // gallery category
         $('.templatemo-gallery-category a').click(function(e){
@@ -78,11 +80,13 @@ jQuery(function($) {
         });
 
         //gallery light box setup
-        $('a.colorbox').colorbox({
-            rel: function(){
-                return $(this).data('group');
-            }
-        });
-
+		$.getScript("https://www.eq19.com/colorbox/jquery.colorbox-min.js", function() {
+			$('a.colorbox').colorbox({
+				rel: function(){
+					return $(this).data('group');
+				}
+			});
+		});
+		
     });
 });
