@@ -479,11 +479,14 @@ $(function () {
 			return false;
 		});
 
-		// set links which point outside
-		$('.external-link').unbind('click');
-		$(document.links).filter(function() {
-			return this.hostname != window.location.hostname;
-		}).attr('target', '_blank'); 
+		// scroll to specific id when click on link
+		$('.internal-link, .carousel-inner a').click(function(e)
+		{
+			e.preventDefault(); 
+			var linkId = $(this).attr('href');
+			scrollTo(linkId);
+			return false;
+		});
 
 		// do scroll and clear the hash anytime someone arrives with a hash tag
 		// https://stackoverflow.com/a/50688363/4058484
@@ -493,6 +496,12 @@ $(function () {
 			history.replaceState(null, null, location.pathname);
 			scrollTo(location_hash);
 		}
+
+		// set links which point outside
+		$('.external-link').unbind('click');
+		$(document.links).filter(function() {
+			return this.hostname != window.location.hostname;
+		}).attr('target', '_blank'); 
 
 		// gallery category
 		$('.templatemo-gallery-category a').click(function(e){
