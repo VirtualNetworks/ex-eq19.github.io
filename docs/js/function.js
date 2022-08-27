@@ -1,5 +1,4 @@
 var myIdcounter = 0; 
-var top_menu_height = 0;
 var currentYear = (new Date).getFullYear();
 
 var params, regex = /[?&]([^=#]+)=([^&#]*)/g, url = window.location.href, params = {}, match;
@@ -20,7 +19,7 @@ function get(name) {
 // scroll animation 
 function scrollTo(selectors) {
 	if(!$(selectors).size()) return;
-	var selector_top = $(selectors).offset().top - top_menu_height;
+	var selector_top = $(selectors).offset().top - $('.templatemo-top-menu').height();
 	$('html,body').animate({ scrollTop: selector_top }, 'slow');
 }
 
@@ -280,7 +279,6 @@ $(function () {
 	  }
 	});
 
-
 	/*$().UItoTop({ easingType: 'easeOutQuart' });
 	if ($('html').hasClass('desktop')) {
 		$.srSmoothscroll({
@@ -464,10 +462,6 @@ $(function () {
 		  $(".sidebar-wrap,.content-wrap,.addons-wrap").toggleClass("shift");
 		});
 
-		// scroll spy to auto active the nav item
-		top_menu_height = $('.templatemo-top-menu').height();
-		$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
-
 		// scroll to top
 		$('#btn-back-to-top').click(function(e){
 			e.preventDefault();
@@ -527,6 +521,11 @@ $(function () {
 			$.getScript("https://www.eq19.com/js/stickUp.min.js", function() {
 				$('.templatemo-top-menu ').stickUp();
 			});
+
+			// scroll spy to auto active the nav item
+			var top_menu_height = $('.templatemo-top-menu').height();
+			$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
+
 		}
 
 		// gallery light box setup
