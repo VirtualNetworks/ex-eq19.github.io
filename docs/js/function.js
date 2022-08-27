@@ -464,10 +464,6 @@ $(function () {
 		  $(".sidebar-wrap,.content-wrap,.addons-wrap").toggleClass("shift");
 		});
 
-		$(".markdown-body :header").append(function () {
-		  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
-		});
-
 		// scroll spy to auto active the nav item
 		top_menu_height = $('.templatemo-top-menu').height();
 		$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
@@ -507,6 +503,10 @@ $(function () {
 			history.replaceState(null, null, location.pathname);
 			scrollTo(location_hash);
 		}
+
+		$(".markdown-body :header").append(function () {
+		  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
+		});
 
 		// https://stackoverflow.com/a/10811687/4058484
 		$.getScript("https://www.eq19.com/js/flatdoc.js", function() {
