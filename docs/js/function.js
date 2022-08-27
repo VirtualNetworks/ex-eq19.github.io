@@ -240,6 +240,7 @@ $(function () {
 	highlight();
 	initialize(location.hash);
 	initialize(location.pathname);
+	$("#copyright-year").text((new Date).getFullYear());
 
 	$(window).load( function() {
 		$('.external-link').unbind('click');
@@ -280,7 +281,6 @@ $(function () {
 	});
 
 
-	$("#copyright-year").text((new Date).getFullYear());
 	/*$().UItoTop({ easingType: 'easeOutQuart' });
 	if ($('html').hasClass('desktop')) {
 		$.srSmoothscroll({
