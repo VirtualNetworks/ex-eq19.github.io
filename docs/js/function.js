@@ -1,10 +1,21 @@
 
+/* Orientation tablet fix
+ ========================================================*/
 var myIdcounter = 0; 
 var top_menu_height = 0;
 var currentYear = (new Date).getFullYear();
 
+var ua = navigator.userAgent.toLocaleLowerCase(),
+	regV = /ipod|ipad|iphone/gi, 	result = ua.match(regV), userScale = "";
+
 var params, regex = /[?&]([^=#]+)=([^&#]*)/g, url = window.location.href, params = {}, match;
 while(match = regex.exec(url)) {params[match[1]] = match[2];}
+
+if (!result) {
+	userScale = ",user-scalable=0"
+}
+document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0' + userScale + '">')
+
 
 function debug() {
   console.debug.apply(console, arguments);
@@ -245,7 +256,41 @@ $(function () {
 		});
 	}*/
 
-$(function () {
+// IPad/IPhone
+	var viewportmeta = document.querySelector && document.querySelector('meta[name="viewport"]'),
+		ua = navigator.userAgent,
+
+		gestureStart = function () {
+			viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6, initial-scale=1.0";
+		},
+
+		scaleFix = function () {
+			if (viewportmeta && /iPhone|iPad/.test(ua) && !/Opera Mini/.test(ua)) {
+				viewportmeta.content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+				document.addEventListener("gesturestart", gestureStart, false);
+			}
+		};
+	scaleFix();
+
+	// Menu Android
+	if (window.orientation != undefined) {
+		var regM = /ipod|ipad|iphone/gi,
+			result = ua.match(regM)
+		if (!result) {
+			$('.sf-menu li').each(function () {
+				if ($(">ul", this)[0]) {
+					$(">a", this).toggle(
+						function () {
+							return false;
+						},
+						function () {
+							window.location.href = $(this).attr("href");
+						}
+					);
+				}
+			})
+		}
+	}
 
 	$(window).load( function() {
 		$('.external-link').unbind('click');
@@ -284,53 +329,6 @@ $(function () {
 		}
 	  }
 	});
-
-	/* Orientation tablet fix
-	 ========================================================*/
-	// IPad/IPhone
-    var viewportmeta = document.querySelector && document.querySelector('meta[name="viewport"]'),
-        ua = navigator.userAgent,
-
-        gestureStart = function () {
-            viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6, initial-scale=1.0";
-        },
-
-        scaleFix = function () {
-            if (viewportmeta && /iPhone|iPad/.test(ua) && !/Opera Mini/.test(ua)) {
-                viewportmeta.content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
-                document.addEventListener("gesturestart", gestureStart, false);
-            }
-        };
-
-    scaleFix();
-    // Menu Android
-    if (window.orientation != undefined) {
-        var regM = /ipod|ipad|iphone/gi,
-            result = ua.match(regM)
-        if (!result) {
-            $('.sf-menu li').each(function () {
-                if ($(">ul", this)[0]) {
-                    $(">a", this).toggle(
-                        function () {
-                            return false;
-                        },
-                        function () {
-                            window.location.href = $(this).attr("href");
-                        }
-                    );
-                }
-            })
-        }
-    }
-
-	var ua = navigator.userAgent.toLocaleLowerCase(),
-		regV = /ipod|ipad|iphone/gi,
-		result = ua.match(regV),
-		userScale = "";
-	if (!result) {
-		userScale = ",user-scalable=0"
-	}
-	document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0' + userScale + '">')
 
 	// jQuery document.ready will be executed just after html dom tree has been parsed out.
 	// So it is far more earlier executed than window onload.
