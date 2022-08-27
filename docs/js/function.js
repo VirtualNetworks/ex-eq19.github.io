@@ -502,18 +502,13 @@ $(function () {
 			return this.hostname != window.location.hostname;
 		}).attr('target', '_blank'); 
 
-		// gallery category
-		$('.templatemo-gallery-category a').click(function(e){
-			e.preventDefault(); 
-			$(this).parent().children('a').removeClass('active');
-			$(this).addClass('active');
-			var linkClass = $(this).attr('href');
-			$('.gallery').each(function(){
-				if($(this).is(":visible") == true){
-				   $(this).hide();
-				};
-			});
-			$(linkClass).fadeIn();  
+		// https://stackoverflow.com/a/10811687/4058484
+		$.getScript("https://www.eq19.com/js/flatdoc.js", function() {
+			Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
+		});
+
+		$.getScript("https://www.eq19.com/js/jquery.unveil.js", function() {
+			$('img').unveil();
 		});
 
 		// gallery light box setup
@@ -536,6 +531,22 @@ $(function () {
 				$('.templatemo-top-menu ').stickUp();
 			});
 		}
+
+		$.getScript("https://www.eq19.com/scroll/jquery.simplyscroll.min.js", function() {
+			//$(".templatemo-project-gallery").simplyScroll();
+			$('.templatemo-gallery-category a').click(function(e){
+				e.preventDefault(); 
+				$(this).parent().children('a').removeClass('active');
+				$(this).addClass('active');
+				var linkClass = $(this).attr('href');
+				$('.gallery').each(function(){
+					if($(this).is(":visible") == true){
+					   $(this).hide();
+					};
+				});
+				$(linkClass).fadeIn();
+			});
+		});
 
 		// draw diagram
 		$.getScript($('#js')[0].href, function() {
