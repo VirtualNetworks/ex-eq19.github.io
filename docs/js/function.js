@@ -235,6 +235,12 @@ function highlight() {
 
 $(function () {
 
+	toc();
+	restore();
+	highlight();
+	initialize(location.hash);
+	initialize(location.pathname);
+
 	$(window).load( function() {
 		$('.external-link').unbind('click');
 	});
@@ -432,6 +438,12 @@ $(function () {
 		  }
 		});
 
+		// set links which point outside
+		$('.external-link').unbind('click');
+		$(document.links).filter(function() {
+			return this.hostname != window.location.hostname;
+		}).attr('target', '_blank'); 
+
 		/*if (location.pathname == `${ui.baseurl}/search.html`) {
 		  $.ajax(`${ui.baseurl}/data.json`)
 			.done(search)
@@ -496,12 +508,6 @@ $(function () {
 			scrollTo(location_hash);
 		}
 
-		// set links which point outside
-		$('.external-link').unbind('click');
-		$(document.links).filter(function() {
-			return this.hostname != window.location.hostname;
-		}).attr('target', '_blank'); 
-
 		// https://stackoverflow.com/a/10811687/4058484
 		$.getScript("https://www.eq19.com/js/flatdoc.js", function() {
 			Flatdoc.run({fetcher: Flatdoc.github('eq19/wikibox')});
@@ -509,15 +515,6 @@ $(function () {
 
 		$.getScript("https://www.eq19.com/js/jquery.unveil.js", function() {
 			$('img').unveil();
-		});
-
-		// gallery light box setup
-		$.getScript("https://www.eq19.com/colorbox/jquery.colorbox-min.js", function() {
-			$('a.colorbox').colorbox({
-				rel: function(){
-					return $(this).data('group');
-				}
-			});
 		});
 
 		// to stick navbar on top
@@ -531,6 +528,15 @@ $(function () {
 				$('.templatemo-top-menu ').stickUp();
 			});
 		}
+
+		// gallery light box setup
+		$.getScript("https://www.eq19.com/colorbox/jquery.colorbox-min.js", function() {
+			$('a.colorbox').colorbox({
+				rel: function(){
+					return $(this).data('group');
+				}
+			});
+		});
 
 		$.getScript("https://www.eq19.com/scroll/jquery.simplyscroll.min.js", function() {
 			//$(".templatemo-project-gallery").simplyScroll();
@@ -570,9 +576,3 @@ $(function () {
 
 	});
 });
-		toc();
-		restore();
-		highlight();
-		initialize(location.hash);
-		initialize(location.pathname);
-
