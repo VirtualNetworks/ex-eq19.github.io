@@ -1,6 +1,6 @@
-var myIdcounter = 0; 
 var currentYear = (new Date).getFullYear();
-var params, regex = /[?&]([^=#]+)=([^&#]*)/g, url = window.location.href, params = {}, match;
+var params, regex = /[?&]([^=#]+)=([^&#]*)/g, 
+url = window.location.href, params = {}, match;
 while(match = regex.exec(url)) {params[match[1]] = match[2];}
 var oXHR = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 
