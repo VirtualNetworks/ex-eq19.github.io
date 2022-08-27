@@ -16,6 +16,13 @@ function get(name) {
   return localStorage.getItem(name) || false;
 }
 
+var oXHR = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+
+function reportStatus() {
+	if (oXHR.readyState == 4)               // REQUEST COMPLETED.
+		draw.getJSON(this.responseXML);      // ALL SET. NOW SHOW XML DATA.
+}
+
 // scroll animation 
 function scrollTo(selectors) {
 	if(!$(selectors).size()) return;
@@ -564,12 +571,9 @@ $(function () {
 					$.getScript('https://www.eq19.com/interface/jquery-ui.min.js', function() {
 						$('html').find('*').each(function() {$(this).uniqueId();});
 						$.getScript("https://www.eq19.com/tensorflow/tf.min.js", function() {
-							$.ajax({
-								type: "GET",
-								dataType: "xml",
-								url: "/sitemap.xml",
-								success: draw.getJSON(xml)
-							});
+							oXHR.onreadystatechange = reportStatus;
+							oXHR.open("GET", "/sitemap.xml", true);
+							oXHR.send();
 						});
 					});
 				});
