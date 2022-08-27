@@ -562,7 +562,7 @@ $(function () {
 				$.getScript("https://www.eq19.com/underscore/underscore-min.js", function() {
 					editor.getSession().on('change', _.debounce(function() {draw.diagram();}, 100));
 					$.getScript('https://www.eq19.com/interface/jquery-ui.min.js', function() {
-						$('html').find('*').each(function() {$(this).UniqueId();});
+						$('html').find('*').each(function() {$(this).uniqueId();});
 						$.getScript("https://www.eq19.com/tensorflow/tf.min.js", function() {
 							$.ajax({
 								type: "GET",
