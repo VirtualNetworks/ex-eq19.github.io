@@ -438,12 +438,6 @@ $(function () {
 		  }
 		});
 
-		// set links which point outside
-		$('.external-link').unbind('click');
-		$(document.links).filter(function() {
-			return this.hostname != window.location.hostname;
-		}).attr('target', '_blank'); 
-
 		/*if (location.pathname == `${ui.baseurl}/search.html`) {
 		  $.ajax(`${ui.baseurl}/data.json`)
 			.done(search)
@@ -459,6 +453,12 @@ $(function () {
 		$(".status").click(function () {
 		  $(".addons").toggleClass("d-none");
 		});
+
+		// set links which point outside
+		$('.external-link').unbind('click');
+		$(document.links).filter(function() {
+			return this.hostname != window.location.hostname;
+		}).attr('target', '_blank'); 
 
 		$("#toggle").click(function () {
 		  $(".sidebar-wrap,.content-wrap,.addons-wrap").toggleClass("shift");
