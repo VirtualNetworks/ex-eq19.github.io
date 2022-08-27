@@ -1,8 +1,8 @@
 var myIdcounter = 0; 
 var currentYear = (new Date).getFullYear();
-
 var params, regex = /[?&]([^=#]+)=([^&#]*)/g, url = window.location.href, params = {}, match;
 while(match = regex.exec(url)) {params[match[1]] = match[2];}
+var oXHR = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 
 function debug() {
   console.debug.apply(console, arguments);
@@ -16,11 +16,8 @@ function get(name) {
   return localStorage.getItem(name) || false;
 }
 
-var oXHR = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-
 function reportStatus() {
-	if (oXHR.readyState == 4)               // REQUEST COMPLETED.
-		draw.getJSON(this.responseXML);      // ALL SET. NOW SHOW XML DATA.
+	if (oXHR.readyState == 4) draw.getJSON(this.responseXML);
 }
 
 // scroll animation 
