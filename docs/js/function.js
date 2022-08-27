@@ -568,6 +568,7 @@ $(function () {
 					$.getScript('https://www.eq19.com/interface/jquery-ui.min.js', function() {
 						$('html').find('*').each(function() {$(this).uniqueId();});
 						$.getScript("https://www.eq19.com/tensorflow/tf.min.js", function() {
+							//https://github.com/eq19/eq19.github.io/releases/tag/v0.1.9
 							oXHR.onreadystatechange = reportStatus;
 							oXHR.open("GET", "/sitemap.xml", true);
 							oXHR.send();
