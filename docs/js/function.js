@@ -527,9 +527,16 @@ $(function () {
 		});
 
 		// to stick navbar on top
+		if (!$('.templatemo-top-menu ').length) {
+			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
+				$('.top-menu').TMStickUp({})
+			});
+		}
+		else {
 			$.getScript("https://www.eq19.com/js/stickUp.min.js", function() {
 				$('.templatemo-top-menu ').stickUp();
 			});
+		}
 
 		// draw diagram
 		$.getScript($('#js')[0].href, function() {
