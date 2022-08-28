@@ -1,4 +1,3 @@
 ---
-layout: null
+layout: sitemap
 ---
-{%- include leads/assets/index.xml -%}
