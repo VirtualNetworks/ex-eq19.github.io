@@ -1,27 +1,35 @@
----
-id: 169
-layout: atom
----
-{%- comment -%}
-*
-*  This layout loops through all of the collections and provide stylesheet 
-*  and page for inclusion to the project mapping via layout.
-*
-*  You may see the running code here:
-*  https://eq19.github.io/sitemap.xml
-*
-*  The Structure of a Feed
-*  The JSON Feed format as JSON Feed Version 1.1
-*  
-*  Reference:
-*  https://github.com/XSLTdoc/XSLTdoc
-*  https://tools.ietf.org/html/rfc4287
-*  https://ef.gy/serving-an-atom-bundle
-*  https://github.com/jekyll/jekyll-feed
-*  https://awasu.com/kb/content/URL_Rewriting.php
-*  https://www.w3schools.com/xml/xsl_elementref.asp
-*  https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ms762660(v=vs.85)
-*  https://github.com/chetabahana/chetabahana.github.io/blob/Chetabahana/_layouts/atom.xsl#L28
-*  https://www.data2type.de/xml-xslt-xslfo/newsfeeds-rss-atom/referenz-atom-elemente/atom-link/
-*  
-{%- endcomment -%}
+<xsl:stylesheet 
+  version="1.0" 
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  exclude-result-prefixes="atom"
+>
+<xsl:template match="/">
+<HTML>
+  <BODY>
+    <TABLE BORDER="1">
+      <TR>
+        <TD>Id</TD>
+        <TD>Tags</TD>
+        <TD>Name</TD>
+        <TD>Category</TD>
+        <TD>Feed URL</TD>
+      </TR>
+      <xsl:apply-templates select="atom:feed/atom:entry">
+        <xsl:sort select="atom:title"/>
+      </xsl:apply-templates>      
+    </TABLE>
+  </BODY>
+</HTML>
+</xsl:template>
+
+<xsl:template match="atom:feed/atom:entry">
+      <TR>
+        <TD><xsl:value-of select="atom:loc"/></TD>              
+        <TD><xsl:value-of select="atom:lastmod"/></TD>              
+        <TD><xsl:value-of select="atom:priority"/></TD>              
+        <TD><xsl:value-of select="atom:category"/></TD>              
+        <TD><A><xsl:attribute name="href"><xsl:value-of select="atom:link/@href"/></xsl:attribute><xsl:value-of select="atom:link/@href"/></A></TD>
+      </TR>
+      </xsl:template>
+</xsl:stylesheet>
