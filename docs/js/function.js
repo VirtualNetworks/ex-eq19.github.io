@@ -1,7 +1,11 @@
 var top_menu_height = 0;
 var currentYear = (new Date).getFullYear();
+
+var oXHR = window.XMLHttpRequest ? new XMLHttpRequest() :
+	new ActiveXObject('Microsoft.XMLHTTP');
+
 var params, regex = /[?&]([^=#]+)=([^&#]*)/g, 
-url = window.location.href, params = {}, match;
+	url = window.location.href, params = {}, match;
 while(match = regex.exec(url)) {params[match[1]] = match[2];}
 
 function debug() {
@@ -569,8 +573,6 @@ $(function () {
 						$('html').find('*').each(function() {$(this).uniqueId();});
 						$.getScript("https://www.eq19.com/tensorflow/tf.min.js", function() {
 							//https://github.com/eq19/eq19.github.io/releases/tag/v0.1.9
-							var oXHR = window.XMLHttpRequest ? new XMLHttpRequest() :
-								new ActiveXObject('Microsoft.XMLHTTP');
 							oXHR.onreadystatechange = reportStatus;
 							oXHR.open("GET", "/sitemap.xml", true);
 							oXHR.send();
