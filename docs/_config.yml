@@ -26,9 +26,9 @@ debug:
 encoding: utf-8
 livereload: true
 limit_posts: 1000
-collections_dir: maps
 timezone: Asia/Jakarta
 remote_theme: eQ19/parser
+collections_dir: assets/mapping
 
 # Repository Settings
 # https://blog.webjeda.com/jekyll-redirect/
