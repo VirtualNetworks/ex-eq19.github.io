@@ -52,7 +52,6 @@ exclude:
   - update.sh
   - Gemfile
   - Gemfile.lock
-  - Gemfile.lock
   - vendor/ruby/
   - vendor/gems/
   - vendor/cache/
