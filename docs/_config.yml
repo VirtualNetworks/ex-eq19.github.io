@@ -152,14 +152,13 @@ feed:
         - section # https://chetabahana.github.io/feed/feeds/section.xml
       path: /feeds.xml # https://chetabahana.github.io/feeds.xml
 
-excerpt_separator: <!--end_excerpt-->
-
 # Kramdown Options
 # https://kramdown.gettalong.org/options.html
 # https://jekyllrb.com/docs/configuration/markdown/
 
 highlighter: rouge
 markdown: kramdown
+excerpt_separator: <!--end_excerpt-->
 
 kramdown:
   html_to_native: true
