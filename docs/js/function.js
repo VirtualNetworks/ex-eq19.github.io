@@ -1,4 +1,4 @@
-var top_menu_height = 0;
+var top_menu = 0;
 var currentYear = (new Date).getFullYear();
 
 var oXHR = window.XMLHttpRequest ? new XMLHttpRequest() :
@@ -27,7 +27,7 @@ function reportStatus() {
 // scroll animation 
 function scrollTo(selectors) {
 	if(!$(selectors).size()) return;
-	var selector_top = $(selectors).offset().top - top_menu_height;
+	var selector_top = $(selectors).offset().top - top_menu;
 	$('html,body').animate({ scrollTop: selector_top }, 'slow');
 }
 
@@ -499,6 +499,7 @@ $(function () {
 
 		// do scroll and clear the hash anytime someone arrives with a hash tag
 		// https://stackoverflow.com/a/50688363/4058484
+		top_menu = $('.templatemo-top-menu').height();
 		if( typeof(location.hash) !== 'undefined' && location.hash.length ) 
 		{
 			var location_hash = location.hash.split('?')[0];
@@ -529,11 +530,6 @@ $(function () {
 			$.getScript("https://www.eq19.com/js/stickUp.min.js", function() {
 				$('.templatemo-top-menu ').stickUp();
 			});
-
-			// scroll spy to auto active the nav item
-			top_menu_height = $('.templatemo-top-menu').height();
-			$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu_height + 10 });
-
 		}
 
 		// gallery light box setup
@@ -564,22 +560,26 @@ $(function () {
 		// draw diagram
 		$.getScript($('#js')[0].href, function() {
 			$('.theme').val('hand').change(function() {draw.change();});
-			//https://stackoverflow.com/a/73466462/4058484
-			$.getScript("https://www.eq19.com/ace/src-min/ace.js", function() {
-				if (!editor) {ace.config.set("basePath", "/ace/src-min"); draw.editor();};
-				$.getScript("https://www.eq19.com/underscore/underscore-min.js", function() {
-					editor.getSession().on('change', _.debounce(function() {draw.diagram();}, 100));
-					$.getScript('https://www.eq19.com/interface/jquery-ui.min.js', function() {
-						$('html').find('*').each(function() {$(this).uniqueId();});
-						$.getScript("https://www.eq19.com/tensorflow/tf.min.js", function() {
-							//https://stackoverflow.com/a/73515443/4058484
-							oXHR.onreadystatechange = reportStatus;
-							oXHR.open("GET", "/sitemap.xml", true);
-							oXHR.send();
+				$.getScript("/js/bootstrap.min.js", function() {
+				// scroll spy to auto active the nav item
+				$('body').scrollspy({ target: '#templatemo-nav-bar', offset: top_menu + 10 });
+				//https://stackoverflow.com/a/73466462/4058484
+				$.getScript("https://www.eq19.com/ace/src-min/ace.js", function() {
+					if (!editor) {ace.config.set("basePath", "/ace/src-min"); draw.editor();};
+					$.getScript("https://www.eq19.com/underscore/underscore-min.js", function() {
+						editor.getSession().on('change', _.debounce(function() {draw.diagram();}, 100));
+						$.getScript('https://www.eq19.com/interface/jquery-ui.min.js', function() {
+							$('html').find('*').each(function() {$(this).uniqueId();});
+							$.getScript("https://www.eq19.com/tensorflow/tf.min.js", function() {
+								//https://stackoverflow.com/a/73515443/4058484
+								oXHR.onreadystatechange = reportStatus;
+								oXHR.open("GET", "/sitemap.xml", true);
+								oXHR.send();
+							});
 						});
 					});
 				});
-			});
+			});  
 		});  
 
 	});
