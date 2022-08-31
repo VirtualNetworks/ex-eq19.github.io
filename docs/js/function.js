@@ -351,72 +351,78 @@ $(function () {
 		var isotope = $('.isotope');
 
 		if(camera.length > 0){
-			camera.camera(
-				{
-					autoAdvance: false,
-					height: '31.25%',
-					minHeight: '200px',
-					pagination: false,
-					thumbnails: false,
-					playPause: false,
-					hover: false,
-					loader: 'none',
-					navigation: true,
-					navigationHover: false,
-					mobileNavHover: false,
-					fx: 'simpleFade'
-				}
-			);
+			$.getScript("/js/camera.js", function() {
+				camera.camera(
+					{
+						autoAdvance: false,
+						height: '31.25%',
+						minHeight: '200px',
+						pagination: false,
+						thumbnails: false,
+						playPause: false,
+						hover: false,
+						loader: 'none',
+						navigation: true,
+						navigationHover: false,
+						mobileNavHover: false,
+						fx: 'simpleFade'
+					}
+				);
+			});
 		}
 
 		if(owl.length > 0){
-			owl.owlCarousel(
-				{
-					navigation: true,
-					autoPlay: true,
-					slideSpeed: 300,
-					stopOnHover: true,
-					pagination: false,
-					paginationSpeed: 400,
-					singleItem: true,
-					mouseDrag: false,
-					navigationText: ["", ""]
-				}
-			);
-		}
+			$.getScript("/js/owl.carousel.js", function() {
+				owl.owlCarousel(
+					{
+						navigation: true,
+						autoPlay: true,
+						slideSpeed: 300,
+						stopOnHover: true,
+						pagination: false,
+						paginationSpeed: 400,
+						singleItem: true,
+						mouseDrag: false,
+						navigationText: ["", ""]
+					}
+				);
 
-		if(owl2.length > 0){
-			owl2.owlCarousel(
-				{
-					navigation: true,
-					autoPlay: true,
-					slideSpeed: 300,
-					stopOnHover: true,
-					pagination: false,
-					paginationSpeed: 400,
-					singleItem: true,
-					mouseDrag: false,
-					navigationText: ["", ""]
+				if(owl2.length > 0){
+					owl2.owlCarousel(
+						{
+							navigation: true,
+							autoPlay: true,
+							slideSpeed: 300,
+							stopOnHover: true,
+							pagination: false,
+							paginationSpeed: 400,
+							singleItem: true,
+							mouseDrag: false,
+							navigationText: ["", ""]
+						}
+					);
 				}
-			);
+			});
 		}
 
 		if(isotope.length > 0){
-			isotope.isotope({
-				itemSelector: '.element-item',
-				layoutMode: 'fitRows'
-			});
+			$.getScript("/js/isotope.min.js", function() {
+				isotope.isotope({
+					itemSelector: '.element-item',
+					layoutMode: 'fitRows'
+				});
 
-			$('#filters').on( 'click', 'a', function() {
-				var filterValue = $( this ).attr('data-filter');
-				console.log(filterValue);
+				$('#filters').on( 'click', 'a', function() {
+					var filterValue = $( this ).attr('data-filter');
+					console.log(filterValue);
 
-				if(filterValue == '*'){
-					isotope.isotope({ filter: filterValue });
-				}else{
-					isotope.isotope({ filter: '.'+filterValue });
-				}
-				return false;
+					if(filterValue == '*'){
+						isotope.isotope({ filter: filterValue });
+					}else{
+						isotope.isotope({ filter: '.'+filterValue });
+					}
+					return false;
+				});
 			});
 		}
 
