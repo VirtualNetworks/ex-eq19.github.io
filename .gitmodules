@@ -1,0 +1,3 @@
+[submodule "docs/modules/grammar"]
+	path = docs/modules/grammar
+	url = https://github.com/eq19/grammar.git
