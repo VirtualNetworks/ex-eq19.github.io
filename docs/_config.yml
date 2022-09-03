@@ -126,7 +126,7 @@ defaults:
 collections:
   feeds:
     output: true
-    permalink: /sitemap/:categories:output_ext
+    permalink: /:categories/:title:output_ext
   leads:
     output: true
   posts:
