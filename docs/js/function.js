@@ -527,9 +527,9 @@ $(function () {
 		});
 
 		// to stick navbar on top
-		if (!$('.templatemo-top-menu ').length) {
+		if ($('#stuck_container').length) {
 			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
-				$('.top-menu').TMStickUp({})
+				$('#stuck_container').TMStickUp({})
 			});
 		}
 		else {
