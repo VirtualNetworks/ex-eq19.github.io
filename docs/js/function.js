@@ -528,8 +528,10 @@ $(function () {
 
 		// to stick navbar on top
 		if ($('#stuck_container').length) {
-			$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
-				$('#stuck_container').TMStickUp({})
+			$.getScript("https://www.eq19.com/js/superfish.js", function() {
+				$.getScript("https://www.eq19.com/js/tmstickup.js", function() {
+					$('#stuck_container').TMStickUp({})
+				});
 			});
 		}
 		else {
