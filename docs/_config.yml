@@ -67,7 +67,7 @@ timezone: Asia/Jakarta
 remote_theme: eQ19/parser
 
 sass:
-    sass_dir: modules/grammar/_sass
+    sass_dir: module/grammar/_sass
 data_dir: modules/grammar/docs/assets/_data
 collections_dir: modules/grammar/docs/assets
 
