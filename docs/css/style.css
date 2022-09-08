@@ -1,7 +1,7 @@
+@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 @import "animate.css";
-@import url(https://fonts.googleapis.com/css?family=Marvel);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
-@import url(https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css);
+@import url(http://fonts.googleapis.com/css?family=Marvel);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
 /*========================================================
                     Main layout styles
 =========================================================*/
@@ -9,11 +9,6 @@ body {
   background: #129894;
   color: #363535;
   font: 300 18px/36px 'Open Sans', sans-serif;
-}
-sup {
-  font-size: 0.83em;
-  vertical-align: super;
-  line-height: 0;
 }
 .ic {
   border:0;
@@ -263,7 +258,7 @@ img {
     width: 100%;
     height: 40px;
     border: 1px solid #dddddd;
-    background: #edecec url(/images/select.png) 99% center no-repeat;
+    background: #edecec url(../images/select.png) 99% center no-repeat;
     color: #000000;
     border-radius: 0;
     -webkit-appearance: none;
@@ -301,7 +296,6 @@ img {
 /*============  Headers  =============*/
 .header_1 {
   text-align: center;
-  text-transform: capitalize;
   font: 600 48px/60px 'Open Sans', sans-serif;
 }
 .header_1.indent_1 {
@@ -323,7 +317,6 @@ img {
   }
 }
 .header_2 {
-  text-transform: capitalize;
   font: 600 36px/30px 'Open Sans', sans-serif;
 }
 .header_2.indent_1 {
@@ -340,50 +333,6 @@ img {
 }
 .header_2.indent_5 {
   padding-bottom: 41px;
-}
-/*============  Breadcrumbs  =============*/
-#blogArchive {
-    display: inline;
-    /*float: left;*/
-    margin-top: 90px;
-    width: 100%;
-}
-.breadcrumb {
-    margin-bottom: 0px;
-}
-.breadcrumb > li {
-	display: inline-block;
-    font-size: 14px;
-    color: #777;
-}
-.breadcrumb > li a {
-    text-transform: uppercase;
-	text-decoration: none;
-	/*color: #363535;*/
-}
-.breadcrumb>li+li:before {
-    padding: 0 5px;
-    color: #ccc;
-    content: "/\00a0";
-}
-.breadcrumb > .active {
-    text-transform: uppercase;
-	color: #129894;
-}
-.blog-breadcrumbs-area {
-    display: inline;
-    padding: 20px 0;
-    float: left;
-    width: 100%;
-}
-.blog-breadcrumbs-left {
-	margin-left: 30px;
-     float: left;
-    display: inline;
-}
-.blog-breadcrumbs-right {
-    float: right;
-    display: inline;
 }
 /*============  Wraps  =============*/
 .wrap_1 {
@@ -417,7 +366,7 @@ img {
   padding-bottom: 44px;
 }
 .wrap_11 {
-  padding-top: 38px;
+  padding-top: 123px;
 }
 .wrap_12 {
   padding-bottom: 91px;
@@ -477,8 +426,8 @@ img {
   font: 400 30px/30px 'Marvel', sans-serif;
   padding: 15px 51px 16px;
   letter-spacing: 1.5px;
-  color: #ffffff;
-  background: #129894;
+  color: #000000;
+  background: #f1f045;
 }
 .btn_1:hover {
   color: #ffffff;
@@ -489,8 +438,8 @@ img {
   display: inline-block;
   padding: 4px 20px 3px;
   font: 400 24px/30px 'Marvel', sans-serif;
-  color: #ffffff;
-  background: #129894;
+  color: #413d3d;
+  background: #f1f045;
 }
 .btn_2:hover {
   color: #ffffff;
@@ -501,8 +450,8 @@ img {
   display: inline-block;
   padding: 4px 34px 3px 33px;
   font: 400 24px/30px 'Marvel', sans-serif;
-  color: #ffffff;
-  background: #129894;
+  color: #413d3d;
+  background: #f1f045;
 }
 .btn_3:hover {
   color: #ffffff;
@@ -513,11 +462,9 @@ img {
 .img_1 {
   margin: 3px 0 9px 0;
   float: left;
-  width: 220px;
-  height: 154px;
 }
 .img_1 + .img_1 {
-  margin-left: 0px;
+  margin-left: 29px;
 }
 @media (max-width: 1199px) {
   .img_1 {
@@ -530,8 +477,6 @@ img {
 .img_2 {
   margin: 3px 0 9px 0;
   float: left;
-  width: 170px;
-  height: 140px;
 }
 .img_2 + .img_2 {
   margin-left: 30px;
@@ -582,15 +527,15 @@ img {
   font: bold 48px/117px 'Arial', sans-serif;
 }
 .box_1 .icon_2:before {
-  content: '\f007';
+  content: '\f012';
   font: 700 48px/117px 'FontAwesome';
 }
 .box_1 .icon_3:before {
-  content: '\f0ad';
+  content: '\f007';
   font: 700 48px/117px 'FontAwesome';
 }
 .box_1 .icon_4:before {
-  content: '\f012';
+  content: '\f0ad';
   font: 700 48px/117px 'FontAwesome';
 }
 .box_1 [class^='icon_'] + .text_2 {
@@ -753,13 +698,6 @@ img {
   background: #129894;
   text-decoration: none;
 }
-.list_1 li a.fa-facebook {
-  font-size: 25px;
-  line-height: 52px;
-}
-.list_1 li a.fa-facebook:before {
-  padding-left: 2px;
-}
 .list_1 li a.fa-twitter {
   font-size: 25px;
   line-height: 56px;
@@ -767,25 +705,25 @@ img {
 .list_1 li a.fa-twitter:before {
   padding-left: 1px;
 }
-.list_1 li a.fa-google-plus {
-  line-height: 50px;
-  font-size: 25px;
-}
-.list_1 li a.fa-google-plus:before {
-  padding-left: 1px;
-}
-.list_1 li a.fa-github {
+.list_1 li a.fa-facebook {
   font-size: 25px;
   line-height: 52px;
 }
-.list_1 li a.fa-github:before {
-  padding-left: 1px;
+.list_1 li a.fa-facebook:before {
+  padding-left: 2px;
 }
-.list_1 li a.fa-stack-overflow {
-  line-height: 50px;
+.list_1 li a.fa-google-plus {
   font-size: 25px;
+  line-height: 52px;
 }
-.list_1 li a.fa-stack-overflow:before {
+.list_1 li a.fa-google-plus:before {
+  padding-left: 6px;
+}
+.list_1 li a.fa-pinterest {
+  line-height: 50px;
+  font-size: 30px;
+}
+.list_1 li a.fa-pinterest:before {
   padding-left: 1px;
 }
 .list_2 li {
@@ -886,7 +824,7 @@ address .text_7 + .text_8 {
 /*============  LightBox =============*/
 a[data-type='lightbox'] {
   display: block;
-  background: url('/images/magnify.png') no-repeat center center;
+  background: url('../images/magnify.png') no-repeat center center;
 }
 a[data-type='lightbox'] img {
   width: 100%;
