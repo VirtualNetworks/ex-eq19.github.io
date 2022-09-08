@@ -1,3 +1,6 @@
 [submodule "docs/modules/grammar"]
 	path = docs/modules/grammar
 	url = https://github.com/eq19/grammar
+[submodule "docs/module/grammar"]
+	path = docs/module/grammar
+	url = https://github.com/eq19/grammar
