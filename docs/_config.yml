@@ -132,7 +132,8 @@ collections:
   posts:
     permalink: /:categories/:year/:y_day/:month/:hour/:minute/:second/:title:output_ext
 
-# Feed Setting
+# Feed and Submodul Setting
+# https://stackoverflow.com/a/55885186/4058484
 # https://github.com/jekyll/jekyll-feed/issues/2
 # https://www.w3schools.com/xml/xsl_elementref.asp
 # https://github.com/jekyll/jekyll-feed/issues/207#issuecomment-787490785
