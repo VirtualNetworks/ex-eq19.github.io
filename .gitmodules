@@ -4,9 +4,6 @@
 [submodule "docs/modules/parser"]
 	path = docs/modules/parser
 	url = https://github.com/eq19/parser
-[submodule "docs/modules/lexer"]
-	path = docs/modules/lexer
-	url = https://github.com/eq19/lexer
 [submodule "docs/modules/syntax"]
 	path = docs/modules/syntax
 	url = https://github.com/eq19/syntax
