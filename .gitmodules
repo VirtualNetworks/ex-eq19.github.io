@@ -4,3 +4,6 @@
 [submodule "docs/modules/syntax"]
 	path = docs/modules/syntax
 	url = https://github.com/eq19/syntax
+[submodule "docs/modules/lexer"]
+	path = docs/modules/lexer
+	url = https://github.com/eq19/lexer
