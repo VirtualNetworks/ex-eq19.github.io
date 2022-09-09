@@ -7,7 +7,6 @@ function include(url) {
  ========================================================*/
 include('/js/jquery.cookie.js');
 
-
 /* DEVICE.JS
  ========================================================*/
 include('/js/device.min.js');
@@ -26,14 +25,12 @@ $(window).load(function () {
  ========================================================*/
 include('/js/jquery.easing.1.3.js');
 
-
 /* ToTop
  ========================================================*/
 include('/js/jquery.ui.totop.js');
 $(function () {
     $().UItoTop({ easingType: 'easeOutQuart' });
 });
-
 
 /* DEVICE.JS AND SMOOTH SCROLLIG
  ========================================================
@@ -54,7 +51,6 @@ var currentYear = (new Date).getFullYear();
 $(document).ready(function () {
     $("#copyright-year").text((new Date).getFullYear());
 });
-
 
 /* Superfish menu
  ========================================================*/
@@ -193,6 +189,4 @@ $(document).ready(function () {
             return false;
         });
     }
-
-
 });
