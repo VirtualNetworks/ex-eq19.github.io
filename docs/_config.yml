@@ -66,11 +66,6 @@ limit_posts: 1000
 timezone: Asia/Jakarta
 remote_theme: eQ19/parser
 
-sass:
-    sass_dir: module/grammar/_sass
-data_dir: module/grammar/docs/assets/_data
-collections_dir: module/grammar/docs/assets
-
 # Plugins Setting
 # https://pages.github.com/versions/
 # https://github.com/jekyll/jekyll-feed
@@ -131,6 +126,11 @@ collections:
     output: true
   posts:
     permalink: /:categories/:year/:y_day/:month/:hour/:minute/:second/:title:output_ext
+
+sass:
+    sass_dir: modules/lexer/docs/submodules/feed/docs/recycling/grammar/_sass
+data_dir: modules/lexer/docs/submodules/feed/docs/recycling/grammar/docs/assets/_data
+collections_dir: modules/lexer/docs/submodules/feed/docs/recycling/grammar/docs/assets
 
 # Feed and Submodul Setting
 # https://stackoverflow.com/a/55885186/4058484
