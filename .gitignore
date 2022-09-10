@@ -33,6 +33,7 @@ docs/_feeds/head/get/
 docs/System Volume Information/
 
 # Dependency
+base/
 build/
 node_modules/
 jspm_packages/
