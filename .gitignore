@@ -1,1 +1,5 @@
-docs/modules/base/
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
