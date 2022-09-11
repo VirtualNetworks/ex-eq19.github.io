@@ -118,6 +118,9 @@ defaults:
 # leads: https://chetabahana.github.io/leads/section.json
 # posts: https://chetabahana.github.io/object/2018/132/05/00/00/00/dummy.json
 
+sass:
+    sass_dir: css/_sass
+
 collections:
   feeds:
     output: true
