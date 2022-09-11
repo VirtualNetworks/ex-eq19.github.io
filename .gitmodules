@@ -1,9 +1,12 @@
 [submodule "docs/modules/parser"]
 	path = docs/modules/parser
 	url = https://github.com/eq19/parser
+	ignore = dirty
 [submodule "docs/modules/syntax"]
 	path = docs/modules/syntax
 	url = https://github.com/eq19/syntax
+	ignore = dirty
 [submodule "docs/modules/lexer"]
 	path = docs/modules/lexer
 	url = https://github.com/eq19/lexer
+	ignore = dirty
