@@ -127,8 +127,6 @@ collections:
   posts:
     permalink: /:categories/:year/:y_day/:month/:hour/:minute/:second/:title:output_ext
 
-sass:
-    sass_dir: modules/lexer/docs/submodules/feed/docs/recycling/grammar/_sass
 data_dir: modules/lexer/docs/submodules/feed/docs/recycling/grammar/docs/assets/_data
 collections_dir: modules/lexer/docs/submodules/feed/docs/recycling/grammar/docs/assets
 
