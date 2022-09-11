@@ -1,98 +1,14 @@
-# Default
-Music/
-Links/
-source/
-Videos/
-Videos/
-Desktop/
-AppData/
-Contacts/
-OneDrive/
-Searches/
-Pictures/
-Templates/
-Libraries/
-Documents/
-Downloads/
-Favorites/
-3D Objects/
-AccountPictures/
-MicrosoftEdgeBackups/
+# Ignore everything
+*
 
-# Permission denied
-Recent/
-SendTo/
-Cookies/
-NetHood/
-PrintHood/
-Start Menu/
-My Documents/
-Local Settings/
-Application Data/
-docs/_feeds/head/get/
-docs/System Volume Information/
+# But not these files...
+!.gitignore
+!*.md
+# etc...
 
-# Dependency
-base/
-build/
-node_modules/
-jspm_packages/
-nvvp_workspace/
-getting-started/
-grammar/docs/assets/
+# ...even if they are in subdirectories
+#!*/
 
-# Logs
-logs
-*.log
-ntuser.*
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Runtime
-pids
-*.ini
-*.lnk
-*.dat
-*.tgz
-*.pid
-*.seed
-*.pid.lock
-
-# Optional
-.npm
-.next
-.eslintcache
-.bash_history
-.python_history
-.node_repl_history
-
-# Dotenvs
-.env
-.aws/
-.ssh/
-.idea/
-.kivy/
-.azure/
-.gnupg/
-.keras/
-.conda/
-.cloud/
-.github/
-.google/
-.condarc
-.docker/
-.eclipse/
-.astropy/
-.minttyrc
-.gitconfig
-.matplotlib/
-.virtualenvs/
-.continuum/
-.ipython/
-.jupyter/
-.spyder-py3/
-.bash_logout
-.bashrc
-.motd_shown
-.profile
+# if the files to be tracked are in subdirectories
+!*/a/b/file1.txt
+!*/a/b/c/*
