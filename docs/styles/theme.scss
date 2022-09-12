@@ -1,0 +1,148 @@
+---
+# this ensures Jekyll reads the file to be transformed into CSS later
+# only Main files contain this front matter, not partials.
+---
+
+@import "bootstrap";
+@import "colorbox";
+@import "templatemo";
+
+.content {
+    width: 45rem;
+    margin: 0 auto;
+}
+
+.feedsnav {
+    float: left;
+}
+
+.flowchart {
+    fill-opacity: 0.1,
+}
+
+.editor-wrapper, .editor {
+    display: block;
+    min-height: 266px;
+    width: 100%;
+}
+
+.skema_left {
+    height: 400px;
+}
+
+.skema_left p {
+    margin: 0;
+    padding: 0;
+}
+
+.skema_right {
+    height: 400px;
+}
+
+.loadingImg {
+    display: block;
+    position: absolute;
+    background:url('/images/loading-init.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    min-height: 400px;
+    left: 0;
+    top: 0;
+}
+
+#diagram {
+    position: absolute;
+    min-height: 398px;
+    z-index: 999;
+    width: 100%;
+}
+
+svg.sequence {
+    min-height: 400px;
+    min-width: 800px;
+}
+
+.diagram-sequence {
+    height: 398px;
+    left: -5px;
+    top: -8px;
+}
+
+.diagram-flowchart {
+    height: 410px;
+    left: -45px;
+    top: -20px;
+}
+
+.diagram-grammar {
+    overflow: auto;
+    height: 364px;
+    left: -5px;
+    top: 1px;
+}
+
+.diagram-route {
+    overflow: auto;
+    height: 364px;
+    left: -1px;
+    top: -2px;
+}
+
+#viewport {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 317px;
+    right: 5px;
+    top: 48px;
+}
+
+#viewport canvas {
+    height: 317px;
+    right: -4px;
+    top: -1px;
+}
+
+#graphiql {
+    position: absolute;
+    height: 364px;
+    width: 100%;
+    left: -1px;
+    top: -1px;
+}
+
+#graphiql .topBar {
+    height: 48px;
+}
+
+#graphiql .docExplorerHide {
+    margin: -11px -8px -6px 0;
+}
+
+#graphiql .history-contents {
+    height: 317px;
+}
+
+#graphiql .history-title,
+#graphiql .doc-explorer-title {
+    padding: 5px 12px 0 3px;
+}
+
+#graphiql .doc-explorer-back  {
+    padding: 7px 12px 0 6px;
+}
+
+#graphiql .doc-explorer-contents {
+    height: 317px;
+}
+
+.execute-button-wrap > button:focus {
+    outline: none !important;
+}
+
+.execute-button-wrap > button:first-child svg path {
+    transform: rotate(180deg);
+    transform-origin: 48% 47%;
+}
