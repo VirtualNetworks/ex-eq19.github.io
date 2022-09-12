@@ -112,14 +112,16 @@ defaults:
     values:
       layout: "redirect"
 
+data_dir: assets/_data
+collections_dir: assets
+sass:
+    sass_dir: assets/_sass
+
 # Permalinks
 # https://jekyllrb.com/docs/permalinks/
 # feeds: https://chetabahana.github.io/main/tree.json
 # leads: https://chetabahana.github.io/leads/section.json
 # posts: https://chetabahana.github.io/object/2018/132/05/00/00/00/dummy.json
-
-sass:
-    sass_dir: css/_sass
 
 collections:
   feeds:
@@ -130,8 +132,6 @@ collections:
   posts:
     permalink: /:categories/:year/:y_day/:month/:hour/:minute/:second/:title:output_ext
 
-data_dir: modules/lexer/docs/submodules/feed/docs/recycling/grammar/docs/assets/_data
-collections_dir: modules/lexer/docs/submodules/feed/docs/recycling/grammar/docs/assets
 
 # Feed and Submodul Setting
 # https://stackoverflow.com/a/55885186/4058484
