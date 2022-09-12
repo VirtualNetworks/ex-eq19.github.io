@@ -8,7 +8,9 @@
 # Nor these directories...
 !js/*
 !css/*
+!icon/*
 !fonts/*
+!images/*
 
 # ...even if they are in subdirectories
 !*/
