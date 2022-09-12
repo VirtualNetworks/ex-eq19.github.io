@@ -112,10 +112,11 @@ defaults:
     values:
       layout: "redirect"
 
-data_dir: assets/_data
-collections_dir: assets
+data_dir: docs/assets/_data
+collections_dir: docs/assets
+
 sass:
-    sass_dir: assets/_sass
+    sass_dir: docs/assets/_sass
 
 # Permalinks
 # https://jekyllrb.com/docs/permalinks/
@@ -131,7 +132,6 @@ collections:
     output: true
   posts:
     permalink: /:categories/:year/:y_day/:month/:hour/:minute/:second/:title:output_ext
-
 
 # Feed and Submodul Setting
 # https://stackoverflow.com/a/55885186/4058484
