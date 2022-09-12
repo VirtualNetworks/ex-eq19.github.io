@@ -12,8 +12,8 @@
 !fonts/*
 !images/*
 
-# ...even if they are in subdirectories
-!*/
+# ...even if in subdirectories
+# !*/
 
-# if the files to be tracked are in subdirectories
+# to be ignored in subdirectories
 docs/
