@@ -115,7 +115,7 @@ defaults:
 data_dir: assets/_data
 collections_dir: assets
 sass:
-    sass_dir: assets/_sass
+    sass_dir: docs/css/_sass
 
 # Permalinks
 # https://jekyllrb.com/docs/permalinks/
