@@ -5,8 +5,11 @@
 !.gitignore
 !_config.yml
 !*.md
-!*.js
-!*.css
+
+# Nor these directories...
+!js/*
+!css/*
+!fonts/*
 
 # ...even if they are in subdirectories
 !*/
