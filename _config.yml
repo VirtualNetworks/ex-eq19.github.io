@@ -112,11 +112,10 @@ defaults:
     values:
       layout: "redirect"
 
+sass:
+    sass_dir: css/_sass
 data_dir: docs/assets/_data
 collections_dir: docs/assets
-
-sass:
-    sass_dir: docs/assets/_sass
 
 # Permalinks
 # https://jekyllrb.com/docs/permalinks/
