@@ -1,0 +1,19 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!_config.yml
+
+# Nor these directories...
+!js/*
+!css/*
+!icon/*
+!fonts/*
+!images/*
+
+# ...even if in subdirectories
+# !*/
+
+# to be ignored in subdirectories
+docs/
