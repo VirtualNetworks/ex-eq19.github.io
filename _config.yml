@@ -64,7 +64,6 @@ encoding: utf-8
 livereload: true
 limit_posts: 1000
 timezone: Asia/Jakarta
-remote_theme : eQ19/grammar
 
 # Plugins Setting
 # https://pages.github.com/versions/
