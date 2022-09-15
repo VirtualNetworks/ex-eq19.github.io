@@ -114,6 +114,7 @@ defaults:
 # Default Configuration
 # remote_theme: eQ19/parser
 # https://jekyllrb.com/docs/configuration/default/
+# https://jekyllrb.com/docs/continuous-integration/github-actions/
 
 sass:
     sass_dir        : docs/css/_sass
