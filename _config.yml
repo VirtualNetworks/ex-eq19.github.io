@@ -115,6 +115,7 @@ defaults:
 # remote_theme: eQ19/parser
 # https://jekyllrb.com/docs/configuration/default/
 # https://jekyllrb.com/docs/continuous-integration/github-actions/
+# https://docs.github.com/en/actions/security-guides/encrypted-secrets
 
 sass:
     sass_dir        : css/_sass
