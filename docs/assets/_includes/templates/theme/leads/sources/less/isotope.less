@@ -1,0 +1,29 @@
+#filters{
+  display: inline-block;
+
+  li{
+    display: inline-block;
+
+    &:before{
+      content: '|';
+
+      color: @color_13;
+    }
+  }
+
+  @media (max-width: 767px){
+    display: block;
+    padding-top: 10px;
+  }
+
+  @media (max-width: 479px){
+    display: block;
+    li{
+      padding-top: 10px;
+      display: block;
+    }
+  }
+}
+
+@import "mixins.less";
+@import "variables.less";
