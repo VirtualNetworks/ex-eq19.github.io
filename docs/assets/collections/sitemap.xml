@@ -1,0 +1,296 @@
+<NotepadPlus>
+    <Project name="Grammar">
+        <Folder name="head">
+            <File name="_feeds\head\core.md" />
+            <File name="_feeds\head\default.md" />
+            <File name="_feeds\head\entrance.md" />
+        </Folder>
+        <Folder name="header">
+            <File name="_feeds\header\define.md" />
+            <File name="_feeds\header\direction.md" />
+            <File name="_feeds\header\root.md" />
+        </Folder>
+        <Folder name="beranda">
+            <File name="_feeds\beranda\entry.md" />
+            <File name="_feeds\beranda\require.md" />
+            <File name="_feeds\beranda\sizing.md" />
+        </Folder>
+        <Folder name="abstrak">
+            <File name="_feeds\abstrak\sizing1.md" />
+            <File name="_feeds\abstrak\sizing2.md" />
+            <File name="_feeds\abstrak\sizing3.md" />
+            <File name="_feeds\abstrak\sizing4.md" />
+        </Folder>
+        <Folder name="skema">
+            <Folder name="diagram">
+                <File name="_feeds\skema\diagram\.gitignore" />
+                <Folder name="flowchart">
+                    <Folder name="boot">
+                        <Folder name="input">
+                            <File name="_feeds\skema\diagram\flowchart\boot\input\input1.md" />
+                            <File name="_feeds\skema\diagram\flowchart\boot\input\input2.md" />
+                        </Folder>
+                        <Folder name="mirror">
+                            <File name="_feeds\skema\diagram\flowchart\boot\mirror\output3.md" />
+                        </Folder>
+                        <Folder name="output">
+                            <File name="_feeds\skema\diagram\flowchart\boot\output\output1.md" />
+                        </Folder>
+                        <File name="_feeds\skema\diagram\flowchart\boot\input.md" />
+                        <File name="_feeds\skema\diagram\flowchart\boot\mirror.md" />
+                        <File name="_feeds\skema\diagram\flowchart\boot\output.md" />
+                    </Folder>
+                    <Folder name="efi">
+                        <Folder name="iqro">
+                            <File name="_feeds\skema\diagram\flowchart\efi\iqro\condition.md" />
+                            <File name="_feeds\skema\diagram\flowchart\efi\iqro\inputoutput.md" />
+                            <File name="_feeds\skema\diagram\flowchart\efi\iqro\parallel.md" />
+                            <File name="_feeds\skema\diagram\flowchart\efi\iqro\subroutine.md" />
+                        </Folder>
+                        <File name="_feeds\skema\diagram\flowchart\efi\iqro.md" />
+                    </Folder>
+                    <Folder name="sources">
+                        <Folder name="query">
+                            <File name="_feeds\skema\diagram\flowchart\sources\query\query1.md" />
+                            <File name="_feeds\skema\diagram\flowchart\sources\query\query2.md" />
+                        </Folder>
+                        <File name="_feeds\skema\diagram\flowchart\sources\query.md" />
+                    </Folder>
+                    <Folder name="support">
+                        <Folder name="result">
+                            <File name="_feeds\skema\diagram\flowchart\support\result\result1.md" />
+                        </Folder>
+                        <File name="_feeds\skema\diagram\flowchart\support\result.md" />
+                    </Folder>
+                    <File name="_feeds\skema\diagram\flowchart\boot.md" />
+                    <File name="_feeds\skema\diagram\flowchart\efi.md" />
+                    <File name="_feeds\skema\diagram\flowchart\sources.md" />
+                    <File name="_feeds\skema\diagram\flowchart\support.md" />
+                </Folder>
+                <Folder name="sequence">
+                    <Folder name="artifact">
+                        <Folder name="artifact1">
+                            <File name="_feeds\skema\diagram\sequence\artifact\artifact1\artifact2.md" />
+                            <File name="_feeds\skema\diagram\sequence\artifact\artifact1\artifact3.md" />
+                            <File name="_feeds\skema\diagram\sequence\artifact\artifact1\artifact4.md" />
+                            <File name="_feeds\skema\diagram\sequence\artifact\artifact1\artifact5.md" />
+                            <File name="_feeds\skema\diagram\sequence\artifact\artifact1\artifact6.md" />
+                        </Folder>
+                        <File name="_feeds\skema\diagram\sequence\artifact\artifact1.md" />
+                    </Folder>
+                    <Folder name="attribute">
+                        <Folder name="attribute6">
+                            <File name="_feeds\skema\diagram\sequence\attribute\attribute6\attribute1.md" />
+                            <File name="_feeds\skema\diagram\sequence\attribute\attribute6\attribute2.md" />
+                            <File name="_feeds\skema\diagram\sequence\attribute\attribute6\attribute3.md" />
+                            <File name="_feeds\skema\diagram\sequence\attribute\attribute6\attribute4.md" />
+                            <File name="_feeds\skema\diagram\sequence\attribute\attribute6\attribute5.md" />
+                        </Folder>
+                        <File name="_feeds\skema\diagram\sequence\attribute\attribute6.md" />
+                    </Folder>
+                    <Folder name="method">
+                        <Folder name="method1">
+                            <File name="_feeds\skema\diagram\sequence\method\method1\method2.md" />
+                            <File name="_feeds\skema\diagram\sequence\method\method1\method3.md" />
+                        </Folder>
+                        <File name="_feeds\skema\diagram\sequence\method\method1.md" />
+                    </Folder>
+                    <Folder name="property">
+                        <Folder name="property4">
+                            <File name="_feeds\skema\diagram\sequence\property\property4\property1.md" />
+                            <File name="_feeds\skema\diagram\sequence\property\property4\property2.md" />
+                            <File name="_feeds\skema\diagram\sequence\property\property4\property3.md" />
+                        </Folder>
+                        <File name="_feeds\skema\diagram\sequence\property\property4.md" />
+                    </Folder>
+                    <File name="_feeds\skema\diagram\sequence\artifact.md" />
+                    <File name="_feeds\skema\diagram\sequence\attribute.md" />
+                    <File name="_feeds\skema\diagram\sequence\method.md" />
+                    <File name="_feeds\skema\diagram\sequence\property.md" />
+                </Folder>
+                <Folder name="channel">
+                    <Folder name="lexer">
+                        <File name="_feeds\skema\diagram\channel\lexer\lexer1.md" />
+                        <File name="_feeds\skema\diagram\channel\lexer\lexer2.md" />
+                        <File name="_feeds\skema\diagram\channel\lexer\lexer3.md" />
+                        <File name="_feeds\skema\diagram\channel\lexer\lexer4.md" />
+                    </Folder>
+                    <Folder name="parser">
+                        <File name="_feeds\skema\diagram\channel\parser\parser1.md" />
+                        <File name="_feeds\skema\diagram\channel\parser\parser2.md" />
+                        <File name="_feeds\skema\diagram\channel\parser\parser3.md" />
+                        <File name="_feeds\skema\diagram\channel\parser\parser4.md" />
+                    </Folder>
+                    <Folder name="syntax">
+                        <File name="_feeds\skema\diagram\channel\syntax\syntax1.md" />
+                        <File name="_feeds\skema\diagram\channel\syntax\syntax2.md" />
+                        <File name="_feeds\skema\diagram\channel\syntax\syntax3.md" />
+                        <File name="_feeds\skema\diagram\channel\syntax\syntax4.md" />
+                        <File name="_feeds\skema\diagram\channel\syntax\syntax5.md" />
+                        <File name="_feeds\skema\diagram\channel\syntax\syntax6.md" />
+                        <File name="_feeds\skema\diagram\channel\syntax\syntax7.md" />
+                    </Folder>
+                    <File name="_feeds\skema\diagram\channel\lexer.md" />
+                    <File name="_feeds\skema\diagram\channel\parser.md" />
+                    <File name="_feeds\skema\diagram\channel\syntax.md" />
+                </Folder>
+                <Folder name="pattern">
+                    <Folder name="assign">
+                        <File name="_feeds\skema\diagram\pattern\assign\assign1.md" />
+                    </Folder>
+                    <Folder name="form">
+                        <File name="_feeds\skema\diagram\pattern\form\form1.md" />
+                        <File name="_feeds\skema\diagram\pattern\form\form2.md" />
+                        <File name="_feeds\skema\diagram\pattern\form\form3.md" />
+                    </Folder>
+                    <Folder name="frame">
+                        <File name="_feeds\skema\diagram\pattern\frame\frame1.md" />
+                        <File name="_feeds\skema\diagram\pattern\frame\frame2.md" />
+                    </Folder>
+                    <Folder name="model">
+                        <File name="_feeds\skema\diagram\pattern\model\model1.md" />
+                    </Folder>
+                    <Folder name="scale">
+                        <File name="_feeds\skema\diagram\pattern\scale\scale1.md" />
+                        <File name="_feeds\skema\diagram\pattern\scale\scale2.md" />
+                        <File name="_feeds\skema\diagram\pattern\scale\scale3.md" />
+                        <File name="_feeds\skema\diagram\pattern\scale\scale4.md" />
+                    </Folder>
+                    <Folder name="view">
+                        <File name="_feeds\skema\diagram\pattern\view\view1.md" />
+                        <File name="_feeds\skema\diagram\pattern\view\view2.md" />
+                        <File name="_feeds\skema\diagram\pattern\view\view3.md" />
+                    </Folder>
+                    <File name="_feeds\skema\diagram\pattern\assign.md" />
+                    <File name="_feeds\skema\diagram\pattern\form.md" />
+                    <File name="_feeds\skema\diagram\pattern\frame.md" />
+                    <File name="_feeds\skema\diagram\pattern\model.md" />
+                    <File name="_feeds\skema\diagram\pattern\scale.md" />
+                    <File name="_feeds\skema\diagram\pattern\view.md" />
+                </Folder>
+                <Folder name="route">
+                    <Folder name="bagan">
+                        <Folder name="pattern">
+                            <File name="_feeds\skema\diagram\route\bagan\pattern\pattern1.md" />
+                            <File name="_feeds\skema\diagram\route\bagan\pattern\pattern2.md" />
+                            <File name="_feeds\skema\diagram\route\bagan\pattern\pattern3.md" />
+                            <File name="_feeds\skema\diagram\route\bagan\pattern\pattern4.md" />
+                            <File name="_feeds\skema\diagram\route\bagan\pattern\pattern5.md" />
+                        </Folder>
+                        <File name="_feeds\skema\diagram\route\bagan\pattern.md" />
+                    </Folder>
+                    <Folder name="mapping">
+                        <Folder name="channel">
+                            <File name="_feeds\skema\diagram\route\mapping\channel\channel1.md" />
+                            <File name="_feeds\skema\diagram\route\mapping\channel\channel2.md" />
+                            <File name="_feeds\skema\diagram\route\mapping\channel\channel3.md" />
+                            <File name="_feeds\skema\diagram\route\mapping\channel\channel4.md" />
+                            <File name="_feeds\skema\diagram\route\mapping\channel\channel5.md" />
+                        </Folder>
+                        <File name="_feeds\skema\diagram\route\mapping\channel.md" />
+                    </Folder>
+                    <File name="_feeds\skema\diagram\route\bagan.md" />
+                    <File name="_feeds\skema\diagram\route\mapping.md" />
+                </Folder>
+                <Folder name="tree">
+                    <Folder name="branching">
+                        <Folder name="application">
+                            <Folder name="artifacts">
+                                <File name="_feeds\skema\diagram\tree\branching\application\artifacts\method.md" />
+                            </Folder>
+                            <Folder name="looping">
+                                <File name="_feeds\skema\diagram\tree\branching\application\looping\capturing.md" />
+                            </Folder>
+                            <Folder name="model">
+                                <File name="_feeds\skema\diagram\tree\branching\application\model\trace.md" />
+                            </Folder>
+                            <Folder name="pattern">
+                                <File name="_feeds\skema\diagram\tree\branching\application\pattern\route.json" />
+                            </Folder>
+                            <Folder name="sequence">
+                                <File name="_feeds\skema\diagram\tree\branching\application\sequence\channel.json" />
+                            </Folder>
+                            <Folder name="sorting">
+                                <File name="_feeds\skema\diagram\tree\branching\application\sorting\listener.md" />
+                            </Folder>
+                            <Folder name="track">
+                                <File name="_feeds\skema\diagram\tree\branching\application\track\flowchart.json" />
+                            </Folder>
+                            <Folder name="tree">
+                                <File name="_feeds\skema\diagram\tree\branching\application\tree\sizing.md" />
+                            </Folder>
+                            <File name="_feeds\skema\diagram\tree\branching\application\artifacts.md" />
+                            <File name="_feeds\skema\diagram\tree\branching\application\attribute.md" />
+                            <File name="_feeds\skema\diagram\tree\branching\application\looping.md" />
+                            <File name="_feeds\skema\diagram\tree\branching\application\model.md" />
+                            <File name="_feeds\skema\diagram\tree\branching\application\pattern.json" />
+                            <File name="_feeds\skema\diagram\tree\branching\application\sequence.json" />
+                            <File name="_feeds\skema\diagram\tree\branching\application\sorting.md" />
+                            <File name="_feeds\skema\diagram\tree\branching\application\track.md" />
+                            <File name="_feeds\skema\diagram\tree\branching\application\tree.json" />
+                        </Folder>
+                        <File name="_feeds\skema\diagram\tree\branching\application.md" />
+                        <File name="_feeds\skema\diagram\tree\branching\directions.md" />
+                    </Folder>
+                    <Folder name="hooks">
+                        <File name="_feeds\skema\diagram\tree\hooks\bigsize.md" />
+                        <File name="_feeds\skema\diagram\tree\hooks\interface.md" />
+                    </Folder>
+                    <Folder name="submodul">
+                        <File name="_feeds\skema\diagram\tree\submodul\track1.md" />
+                        <File name="_feeds\skema\diagram\tree\submodul\track2.md" />
+                        <File name="_feeds\skema\diagram\tree\submodul\track3.md" />
+                        <File name="_feeds\skema\diagram\tree\submodul\track4.md" />
+                    </Folder>
+                    <File name="_feeds\skema\diagram\tree\branching.md" />
+                    <File name="_feeds\skema\diagram\tree\hooks.md" />
+                    <File name="_feeds\skema\diagram\tree\submodul.md" />
+                </Folder>
+                <File name="_feeds\skema\diagram\flowchart.js" />
+                <File name="_feeds\skema\diagram\sequence.js" />
+                <File name="_feeds\skema\diagram\channel.js" />
+                <File name="_feeds\skema\diagram\pattern.js" />
+                <File name="_feeds\skema\diagram\route.js" />
+                <File name="_feeds\skema\diagram\tree.js" />
+            </Folder>
+            <File name="_feeds\skema\bagan.js" />
+            <File name="_feeds\skema\diagram.js" />
+            <File name="_feeds\skema\mapping.js" />
+        </Folder>
+        <Folder name="eksekusi">
+            <File name="_feeds\eksekusi\setting1.md" />
+        </Folder>
+        <Folder name="portfolio">
+            <File name="_feeds\portfolio\.gitignore" />
+            <File name="_feeds\portfolio\listener1.md" />
+            <File name="_feeds\portfolio\listener2.md" />
+            <File name="_feeds\portfolio\listener3.md" />
+            <File name="_feeds\portfolio\listener4.md" />
+        </Folder>
+        <Folder name="network">
+            <File name="_feeds\network\looping1.md" />
+        </Folder>
+        <Folder name="publikasi">
+            <File name="_feeds\publikasi\capturing.md" />
+        </Folder>
+        <Folder name="footer">
+            <File name="_feeds\footer\sorting1.md" />
+            <File name="_feeds\footer\sorting2.md" />
+        </Folder>
+        <Folder name="bottom">
+            <File name="_feeds\bottom\object1.md" />
+            <File name="_feeds\bottom\object2.md" />
+        </Folder>
+        <File name="_feeds\abstrak.md" />
+        <File name="_feeds\beranda.md" />
+        <File name="_feeds\bottom.md" />
+        <File name="_feeds\eksekusi.md" />
+        <File name="_feeds\footer.md" />
+        <File name="_feeds\head.md" />
+        <File name="_feeds\header.md" />
+        <File name="_feeds\network.md" />
+        <File name="_feeds\portfolio.md" />
+        <File name="_feeds\publikasi.md" />
+        <File name="_feeds\skema.md" />
+    </Project>
+</NotepadPlus>
