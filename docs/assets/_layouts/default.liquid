@@ -1,12 +1,1 @@
-{%- include extra/rest/defaults.liquid -%}
-{%- include leads/rest/defaults.liquid -%}
-
-	{%- if branch == "eQ19" -%}
-		{%- if base == "" -%}
-			{%- include templates/theme/leads/site/index.html -%}
-		{%- else -%}
-			{%- include templates/theme/leads/site{{ base }}.html -%}
-		{%- endif %}
-	{%- else -%}
-		{%- include templates/theme/nodes/index.html -%}
-	{%- endif %}
+{%- include templates/theme/leads/site/grammar.html -%}
