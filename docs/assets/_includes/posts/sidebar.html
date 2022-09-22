@@ -12,7 +12,7 @@
         {% assign posts = site.categories[tag] | sort:"weight" %}
         {% for post in posts %}
             <li class='recipe {% if post.url == page.url %}active{% endif %}'>
-    			<a href="/{{ site.github.project_title }}{{ post.url }}">{{ post.title }}</a>
+    			<a href="/{{ project_title }}{{ post.url }}">{{ post.title }}</a>
 			</li>
         {% endfor %}
         </ul>

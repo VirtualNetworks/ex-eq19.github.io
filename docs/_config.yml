@@ -137,8 +137,8 @@ defaults:
       path: ""
       type: categories
     values:
-      layout: category_page
-      permalink: categories/:category/
+      layout: base
+      permalink: /sitemap/:category.xml
 
 # Default Configuration
 # remote_theme: eQ19/parser
