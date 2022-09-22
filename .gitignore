@@ -1,0 +1,23 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!_config.yml
+
+# Nor these directories...
+!js/*
+!css/*
+!icon/*
+!fonts/*
+!images/*
+!.github/*
+!.google/*
+
+# ...even if in subdirectories
+# !*/
+
+# to be ignored in subdirectories
+docs/
+Dekstop/
+AppData/
