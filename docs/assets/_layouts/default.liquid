@@ -1,1 +1,5 @@
-{%- include templates/theme/leads/site/grammar.html -%}
+{%- if site.github.repository_name contains 'github.io' -%}
+	{%- include templates/theme/leads/site/index.html -%}
+{%- else -%}
+	{%- include templates/theme/leads/site/{{ site.github.repository_name }}.html -%}
+{%- endif -%}
