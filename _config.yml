@@ -63,7 +63,7 @@ exclude:
 encoding: utf-8
 livereload: true
 limit_posts: 1000
-timezone: Asia/Jakarta
+incremental: true
 
 # Plugins Setting
 # https://pages.github.com/versions/
@@ -77,20 +77,42 @@ plugins:
   - jekyll-feed
   - jekyll-avatar
   - jekyll-sitemap
+  - jekyll/tagging
+  - jekyll-paginate
   - jekyll-mentions
+  - jekyll-remote-theme
   - jekyll-coffeescript
+  - jekyll-readme-index
   - jekyll-redirect-from
-
-whitelist:
-  - jemoji
-  - jekyll-gist
-  - jekyll-feed
-  - jekyll-avatar
-  - jekyll-sitemap
-  - jekyll-mentions
-  - jekyll-coffeescript
-  - jekyll-redirect-from
+  - jekyll-relative-links
+  - jekyll-default-layout
+  - jekyll-github-metadata
+  - jekyll-titles-from-headings
+  - jekyll-optional-front-matter
   
+# Jekyll Tag Pages Generator
+# https://github.com/pattex/jekyll-tagging
+
+tag_page_dir: tag
+tag_feed_layout: nil
+tag_page_layout: nil
+
+# Jekyll Data Pages Generator
+# https://github.com/avillafiorita/jekyll-datapage_gen
+
+page_gen-dirs: true
+  
+page_gen:
+- data: core
+  dir: core
+  name: key
+  debug: false
+  title: parser
+  extension: xml
+  template: recipe
+  index_files: false
+  page_data_prefix: form
+
 # Default Setting
 # https://stackoverflow.com/a/49428493
 # https://jekyllrb.com/docs/collections/
@@ -101,15 +123,22 @@ defaults:
   -
     scope:
       path: ""
-      type: "feeds"
+      type: feeds
     values:
-      layout: "feeds"
+      layout: feeds
   -
     scope:
       path: ""
-      type: "leads"
+      type: leads
     values:
-      layout: "redirect"
+      layout: redirect
+  - 
+    scope:
+      path: ""
+      type: categories
+    values:
+      layout: base
+      permalink: /sitemap/:category.xml
 
 # Default Configuration
 # remote_theme: eQ19/parser
@@ -119,10 +148,10 @@ defaults:
 
 sass:
     sass_dir        : css/_sass
-data_dir            : assets/_data
-layouts_dir         : assets/_layouts
-includes_dir        : assets/_includes
-collections_dir     : assets/collections
+data_dir            : docs/assets/_data
+layouts_dir         : docs/assets/_layouts
+includes_dir        : docs/assets/_includes
+collections_dir     : docs/assets/collections
 
 # Permalinks
 # https://jekyllrb.com/docs/permalinks/
@@ -217,11 +246,9 @@ flow_labels:
 # https://stackoverflow.com/a/17260660/4058484
 # https://stackoverflow.com/a/30828197/4058484
 
-username: eq19
 basedir: _feeds
-organization: feedmapping
+organization: marketleader
 repository: eq19/eq19.github.io
-project_link: https://www.eq19.com/
 
 # Site Metadata
 # https://docs.github.com/en/pages
@@ -230,8 +257,6 @@ project_link: https://www.eq19.com/
 # https://stackoverflow.com/questions/3490505/is-there-a-notepad-with-github-plugin/41884020
 # https://stackoverflow.com/questions/14000173/tortoisegit-save-user-authentication-credentials
 
-title: ₠Quantum
-name: ₠Quantum Project | A Unique Mapping System
-slogan: ₠Quantum Project | System Mapping and Definition
+slogan: ₠Quantum Project | A Unique Mapping System
 disclaimer: The definite key to identify whether you use our concept is when there a kind of development item lies a unified assignment in hexagonal form by six (6) corresponding sets while each sets pick a combination of six (6) routes with a pairing of six (6) to six (6) of all channels.
 license: Apache License, Version 2.0
