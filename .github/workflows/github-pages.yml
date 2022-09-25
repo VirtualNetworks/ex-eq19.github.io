@@ -14,6 +14,7 @@ on:
 permissions:
   pages: write
   contents: read
+  packages: read
   id-token: write
 
 # Allow one concurrent deployment
@@ -26,48 +27,17 @@ jobs:
   github-pages:
     runs-on: ubuntu-latest
     environment:
-      name: github-pages-36
+      name: github-pages-30
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: 📂 Checkout
         uses: actions/checkout@v3
-      - name: 💎 Setup Pages
-        uses: actions/configure-pages@v2
 
-      - name: 📂 Get gem cache
-        uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-
-      - name: 📂 Get npm cache
-        id: npm-cache-dir
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm ci
-      # - run: npm test      
-      - uses: 📂 actions/cache@v3
-        id: npm-cache
-        with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # Build and deploy to Github
-      - name: 🔨 Initializing
-        run: |
-          bash .github/workflows/builders/ubuntu/artifact.sh
       - name: 🚀 Build and deploy
-        uses: jeffreytse/jekyll-deploy-action@v0.4.0
+        uses: eq19/grammar@v0.2.7
         with:
           provider: 'github'
-          jekyll_src: './'           # Default is root directory
-          jekyll_cfg: '_config.yml'  # Default is _config.yml
-          token: ${{ secrets.JEKYLL_GITHUB_TOKEN }} # It's your Personal Access Token(PAT)
-          pre_build_commands: 'make && make install' # Installing additional dependencies
+          jekyll_src: './'
+          jekyll_cfg: '_config.yml'
+          token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
+          pre_build_commands: 'make && make build'

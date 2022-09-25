@@ -1,5 +1,5 @@
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: 💎 Build and deploy Jekyll site to GitHub Pages
+name: Build and deploy Jekyll site to GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -14,6 +14,7 @@ on:
 permissions:
   pages: write
   contents: read
+  packages: read
   id-token: write
 
 # Allow one concurrent deployment
@@ -44,7 +45,7 @@ jobs:
         uses: jeffreytse/jekyll-deploy-action@v0.4.0
         with:
           provider: 'github'
-          jekyll_src: './'           # Default is root
-          jekyll_cfg: '_config.yml'  # Default is _config.yml
-          token: ${{ secrets.JEKYLL_GITHUB_TOKEN }} # Personal Access Token
-          pre_build_commands: 'make && make build' # Installing additional dependencies
+          jekyll_src: './'
+          jekyll_cfg: '_config.yml'
+          token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
+          pre_build_commands: 'make && make build'

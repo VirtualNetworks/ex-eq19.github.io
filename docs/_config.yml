@@ -81,6 +81,7 @@ plugins:
   - jekyll/tagging
   - jekyll-paginate
   - jekyll-mentions
+  - jekyll-remote-theme
   - jekyll-coffeescript
   - jekyll-readme-index
   - jekyll-redirect-from
