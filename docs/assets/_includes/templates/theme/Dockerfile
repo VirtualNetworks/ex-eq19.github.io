@@ -9,6 +9,7 @@ COPY LICENSE.txt README.md /
 
 COPY script /script
 COPY providers /providers
-COPY entrypoint.sh /
+COPY theme.gemspec /grammar.gemspec
+COPY Gemfile Gemfile.lock entrypoint.sh /
 
 ENTRYPOINT ["/entrypoint.sh"]
