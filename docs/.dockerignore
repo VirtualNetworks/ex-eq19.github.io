@@ -1,0 +1,18 @@
+# Ignore everything
+*
+
+# But not these files...
+!.dockerignore
+!Dockerfile
+!entrypoint.sh
+
+# Nor these directories...
+!script/*
+!providers/*
+!.vendor/bundle/*
+
+# ...even if in subdirectories
+# !*/
+
+# to be ignored in subdirectories
+docs/
