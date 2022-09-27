@@ -59,7 +59,16 @@ ls -al $HOME/.local/bin
 
 # workspace
 echo -e "\n$hr\nCURRENT REPOSITORY\n$hr"
+if [[ "$(ACTOR)" != "eq19" ]]; then
+  mv ./assets ./docs/
+  export JEKYLL_SRC=./docs
+  export JEKYLL_CFG=./docs/_config.yml
+  sed -i -e 's/eq19/chetabahana/g' ${JEKYLL_CFG}
+fi
 pwd
 ls -al .
 
+# config file
+echo -e "\n$hr\nCONFIG FILE\n$hr"
+cat ${JEKYLL_CFG}
 echo -e "\n$hr"
