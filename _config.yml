@@ -90,27 +90,20 @@ plugins:
   - jekyll-titles-from-headings
   - jekyll-optional-front-matter
   
-# Jekyll Tag Pages Generator
+# Jekyll Tag and Daya Pages Generator
 # https://github.com/pattex/jekyll-tagging
+# https://github.com/avillafiorita/jekyll-datapage_gen
 
 tag_page_dir: tag
 tag_feed_layout: nil
 tag_page_layout: nil
-
-# Jekyll Data Pages Generator
-# https://github.com/avillafiorita/jekyll-datapage_gen
-
-page_gen-dirs: true
   
 page_gen:
 - data: roots
   dir: root
   name: key
-  debug: false
   title: parser
-  extension: xml
   template: recipe
-  index_files: false
   page_data_prefix: form
 
 # Default Setting

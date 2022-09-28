@@ -133,23 +133,23 @@ module Jekyll
       # page_gen-dirs is a global option which determines whether we want to
       # generate index pages (name/index.html) or HTML files (name.html) for
       # all sets
-      index_files = site.config['page_gen-dirs'] == true
+      index_files = true
 
       # data contains the specification of all the datasets for which we want
       # to generate individual pages (look at the README file for its documentation)
       data = site.config['page_gen']
       if data
         data.each do |data_spec|
-          index_files_for_this_data = data_spec['index_files'] != nil ? data_spec['index_files'] : index_files
+          index_files_for_this_data = false
           template         = data_spec['template'] || data_spec['data']
           name             = data_spec['name']
           name_expr        = data_spec['name_expr']
           title            = data_spec['title']
           title_expr       = data_spec['title_expr']
           dir              = data_spec['dir'] || data_spec['data']
-          extension        = data_spec['extension'] || "html"
           page_data_prefix = data_spec['page_data_prefix']
-          debug            = data_spec['debug']
+          debug            = false
+          extension        = "xml"
           
           if not site.layouts.key? template
             puts "error (datapage-gen). could not find template #{template}. Skipping dataset #{name}."
