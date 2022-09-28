@@ -90,11 +90,11 @@ plugins:
   - jekyll-titles-from-headings
   - jekyll-optional-front-matter
   
-# Jekyll Tag and Daya Pages Generator
+# Jekyll Tag Pages Generator
 # https://github.com/pattex/jekyll-tagging
 # https://github.com/avillafiorita/jekyll-datapage_gen
 
-page_gen:
+syntax_gen:
 - data: roots
   title: parser
 

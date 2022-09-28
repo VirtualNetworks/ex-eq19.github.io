@@ -124,20 +124,20 @@ module Jekyll
   class JekyllDatapageGenerator < Generator
     safe true
 
-    # the function =generate= loops over the =_config.yml/page_gen=
+    # the function =generate= loops over the =_config.yml/syntax_gen=
     # specification, determining what sets of pages have to be generated,
     # reading the data for each set and invoking the =DataPage=
     # constructor for each record found in the data
 
     def generate(site)
-      # page_gen-dirs is a global option which determines whether we want to
+      # syntax_gen-dirs is a global option which determines whether we want to
       # generate index pages (name/index.html) or HTML files (name.html) for
       # all sets
       index_files = true
 
       # data contains the specification of all the datasets for which we want
       # to generate individual pages (look at the README file for its documentation)
-      data = site.config['page_gen']
+      data = site.config['syntax_gen']
       if data
         data.each do |data_spec|
           index_files_for_this_data = false
@@ -201,7 +201,7 @@ module Jekyll
     # Thus, if you use the `extension` feature of this plugin, you
     # need to generate the links by hand
     def datapage_url(input, dir)
-      extension = @context.registers[:site].config['page_gen-dirs'] ? '/' : '.html'
+      extension = @context.registers[:site].config['syntax_gen-dirs'] ? '/' : '.html'
       "#{dir}/#{sanitize_filename(input)}#{extension}"
     end
   end
