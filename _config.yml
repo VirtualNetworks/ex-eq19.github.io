@@ -103,7 +103,6 @@ page_gen:
   title: parser
   template: recipe
   page_data_prefix: form
-  name_expr: "index_" + record['key']
 
 # Default Setting
 # https://stackoverflow.com/a/49428493
