@@ -62,4 +62,13 @@ echo -e "\n$hr\nCURRENT REPOSITORY\n$hr"
 pwd
 ls -al .
 
-echo -e "\n$hr"
+# asset files
+echo -e "\n$hr\nASSET FILES\n$hr"
+echo ${PWD}/docs/assets
+ls -al ${PWD}/docs/assets
+
+# config file
+echo -e "\n$hr\nCONFIG FILE\n$hr"
+echo ${PWD}/_config.yml
+cat ${PWD}/_config.yml
+echo -e "\n$hr\n"
