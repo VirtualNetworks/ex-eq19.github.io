@@ -172,7 +172,7 @@ module Jekyll
             # apply filtering conditions:
             # - filter requires the name of a boolean field
             # - filter_condition evals a ruby expression which can use =record= as argument
-            records = records.select { |record| record[data_spec['filter']] } if data_spec['filter']
+            records = records.select { |record| record["root"] }
             records = records.select { |record| eval("record['node'] == '1;30^;40^'") }
 
             # we now have the list of all records for which we want to generate individual pages
