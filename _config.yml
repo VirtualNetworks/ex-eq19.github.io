@@ -94,16 +94,14 @@ plugins:
 # https://github.com/pattex/jekyll-tagging
 # https://github.com/avillafiorita/jekyll-datapage_gen
 
+page_gen:
+- data: roots
+  title: parser
+
 tag_page_dir: tag
 tag_feed_layout: nil
 tag_page_layout: nil
   
-page_gen:
-- data: roots
-  title: parser
-  template: recipe
-  page_data_prefix: form
-
 # Default Setting
 # https://stackoverflow.com/a/49428493
 # https://jekyllrb.com/docs/collections/
