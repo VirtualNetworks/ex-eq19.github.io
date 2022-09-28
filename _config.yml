@@ -95,8 +95,8 @@ plugins:
 # https://github.com/avillafiorita/jekyll-datapage_gen
 
 syntax_gen:
-- title: parser
-  syntax: roots
+- data: roots
+  title: parser
 
 tag_page_dir: tag
 tag_feed_layout: nil

@@ -143,7 +143,6 @@ module Jekyll
           index_files_for_this_data = false
           name_expr        = "'index_' + record['key']"
           title_expr       = data_spec['title_expr']
-          roots            = data_spec['syntax']
           title            = data_spec['title']
           template         = 'recipe'
           page_data_prefix = 'index_'
@@ -159,7 +158,7 @@ module Jekyll
             # individual pages
             records = nil
 
-            roots.split('.').each do |level|
+            data_spec['data'].split('.').each do |level|
               if records.nil?
                 records = site.data[level]
               else
@@ -179,7 +178,7 @@ module Jekyll
             # we now have the list of all records for which we want to generate individual pages
             # iterate and call the constructor
             records.each do |record|
-              site.pages << DataPage.new(site, site.source, index_files_for_this_data, roots, dir, page_data_prefix, record, name, name_expr, title, title_expr, template, extension, debug)
+              site.pages << DataPage.new(site, site.source, index_files_for_this_data, dir, page_data_prefix, record, name, name_expr, title, title_expr, template, extension, debug)
             end
           end
         end
