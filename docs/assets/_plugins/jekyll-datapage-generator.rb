@@ -142,10 +142,10 @@ module Jekyll
         data.each do |data_spec|
           index_files_for_this_data = false
           template         = data_spec['template'] || data_spec['data']
-          name_expr        = data_spec['name_expr']
           title            = data_spec['title']
           title_expr       = data_spec['title_expr']
           page_data_prefix = data_spec['page_data_prefix']
+          name_expr        = "index_" + record["key"]
           debug            = false
           dir              = "root"
           extension        = "xml"
