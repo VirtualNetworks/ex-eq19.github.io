@@ -158,7 +158,7 @@ module Jekyll
             # individual pages
             records = nil
 
-            data_spec['data'].split('.').each do |level|
+            roots.split('.').each do |level|
               if records.nil?
                 records = site.data[level]
               else
