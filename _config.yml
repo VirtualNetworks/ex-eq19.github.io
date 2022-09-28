@@ -100,8 +100,6 @@ tag_page_layout: nil
   
 page_gen:
 - data: roots
-  dir: root
-  name: key
   title: parser
   template: recipe
   page_data_prefix: form
