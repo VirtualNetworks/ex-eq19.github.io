@@ -103,8 +103,8 @@ tag_page_layout: nil
 page_gen-dirs: true
   
 page_gen:
-- data: core
-  dir: core
+- data: roots
+  dir: root
   name: key
   debug: false
   title: parser
@@ -112,7 +112,7 @@ page_gen:
   template: recipe
   index_files: false
   page_data_prefix: form
-  filter_condition: "record['name'] == '1;30;40'"
+  filter_condition: "record['node'] == '1;30^;40^'"
 
 # Default Setting
 # https://stackoverflow.com/a/49428493
