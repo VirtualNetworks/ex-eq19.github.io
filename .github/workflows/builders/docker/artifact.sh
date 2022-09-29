@@ -64,16 +64,16 @@ ls -al .
 
 # asset files
 echo -e "\n$hr\nASSET FILES\n$hr"
-echo ${PWD}/docs/assets
-ls -al ${PWD}/docs/assets
+echo $(realpath ${JEKYLL_SRC}/assets)
+ls -al ${JEKYLL_SRC}/assets
 
 # makefile
 echo -e "\n$hr\nMAKEFILE\n$hr"
-echo ${PWD}/Makefile
-cat ${PWD}/Makefile
+echo $(realpath ${JEKYLL_SRC}/Makefile)
+cat ${JEKYLL_SRC}/Makefile
 
 # config file
 echo -e "\n$hr\nCONFIG FILE\n$hr"
-echo ${PWD}/_config.yml
-cat ${PWD}/_config.yml
+echo $(realpath ${JEKYLL_SRC}/_config.yml)
+cat ${JEKYLL_SRC}/_config.yml
 echo -e "\n$hr\n"
