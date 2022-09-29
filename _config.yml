@@ -140,6 +140,7 @@ collections:
   feeds:
     output: true
     sort_by: myId
+    custom_permalink_placeholders: ["myId"]
   leads:
     output: true
   posts:
