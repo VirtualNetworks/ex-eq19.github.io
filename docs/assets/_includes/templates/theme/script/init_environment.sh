@@ -13,8 +13,6 @@ pacman -S --noconfirm ruby2.7 ruby-bundler
 cp /usr/bin/ruby-2.7 /usr/bin/ruby
 
 # debug
-export GEM_HOME=/github/home/.gem/ruby/2.7.0
-export PATH=$PATH:$GEM_HOME/bin
 ruby -v && bundle version
 
 # This is a temporary workaround
