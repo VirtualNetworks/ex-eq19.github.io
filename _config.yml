@@ -139,8 +139,8 @@ collections:
   feeds:
     output: true
     sort_by: myId
-    custom_permalink_placeholders: ["myId"]
-    permalink: /:categories/:myId:output_ext
+    custom_permalink_placeholders: ["event"]
+    permalink: /:categories/:event:output_ext
   leads:
     output: true
   posts:
