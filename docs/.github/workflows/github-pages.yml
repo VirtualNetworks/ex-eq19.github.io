@@ -42,4 +42,4 @@ jobs:
         uses: FeedMapping/theme@v0.6.0
         with:
           token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
-          pre_build_commands: ''
+          pre_build_commands: 'make && make build'
