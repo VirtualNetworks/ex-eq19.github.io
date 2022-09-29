@@ -144,9 +144,9 @@ module Jekyll
           name_expr        = "'index_' + record['key']"
           title_expr       = data_spec['title_expr']
           title            = data_spec['title']
-          template         = 'recipe'
+          dir              = 'sitemap'
           page_data_prefix = 'index_'
-          dir              = 'root'
+          template         = 'atom'
           extension        = 'xml'
           name             = 'key'
           debug            = false
