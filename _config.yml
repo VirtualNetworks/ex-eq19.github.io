@@ -87,7 +87,6 @@ plugins:
   - jekyll-relative-links
   - jekyll-default-layout
   - jekyll-github-metadata
-  - jekyll_custom_permalink
   - jekyll-titles-from-headings
   - jekyll-optional-front-matter
   
