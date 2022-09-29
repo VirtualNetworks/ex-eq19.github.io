@@ -140,7 +140,8 @@ collections:
   feeds:
     output: true
     sort_by: myId
-    permalink: /:categories/:myId:output_ext
+    custom_permalink_placeholders: ["myId"]
+    permalink: /:categories/:title:output_ext
   leads:
     output: true
   posts:
