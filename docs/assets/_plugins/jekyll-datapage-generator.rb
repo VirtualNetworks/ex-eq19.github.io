@@ -146,7 +146,7 @@ module Jekyll
           title            = data_spec['title']
           dir              = 'sitemap'
           page_data_prefix = 'index_'
-          template         = 'atom'
+          template         = 'base'
           extension        = 'xml'
           name             = 'key'
           debug            = false
