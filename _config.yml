@@ -128,7 +128,7 @@ defaults:
       type: categories
     values:
       layout: base
-      permalink: /sitemap/:category.xml
+      redirect_from: /sitemap/:category.xml
 
 # Permalinks
 # https://jekyllrb.com/docs/permalinks/
@@ -139,7 +139,7 @@ collections:
   feeds:
     output: true
     sort_by: myId
-    permalink: /sitemap/:categories/:name:output_ext
+    permalink: /sitemap/index_:categories.xml
   leads:
     output: true
   posts:
