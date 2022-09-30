@@ -139,7 +139,7 @@ collections:
   feeds:
     output: true
     sort_by: myId
-#   permalink: /sitemap/index_:category.xml
+    permalink: /:categories/:name:output_ext
   leads:
     output: true
   posts:
