@@ -1,7 +1,7 @@
 ---
 myId: 101
 weight: 2
-category: user
+type: user
 label: Merchant Center
 tag_name: ubuntu
 run_time: /bin/python

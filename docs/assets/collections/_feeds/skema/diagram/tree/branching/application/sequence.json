@@ -1,7 +1,7 @@
 ---
 myId: 58
 weight: 5
-category: main
+type: main
 value: [271,1,1,2]
 pairs: [1,30,40,3,1,4,30,5]
 tags: [4,13,22]

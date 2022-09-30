@@ -1,7 +1,7 @@
 ---
 myId: 98
 weight: 3
-category: main
+type: main
 label: Buka Toko
 tag_name: ubuntu
 run_time: /bin/python

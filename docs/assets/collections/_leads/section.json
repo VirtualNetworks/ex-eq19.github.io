@@ -1,7 +1,7 @@
 ---
 myId: 250
 weight: 7
-category: lead
+type: lead
 ---
 {%- comment -%}
 *  True Prime Pairs:

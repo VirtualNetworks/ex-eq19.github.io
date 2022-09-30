@@ -1,7 +1,7 @@
 ---
 myId: 68
 weight: 2
-category: user
+type: user
 label: Tensorflow
 zones: [50]
 value: [337,5,1,0]

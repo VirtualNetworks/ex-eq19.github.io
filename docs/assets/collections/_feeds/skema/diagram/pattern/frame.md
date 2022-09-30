@@ -1,7 +1,7 @@
 ---
 myId: 26
 weight: 6
-category: user
+type: user
 zones: [9,60,40]
 value: [101,2,-1,1]
 pairs: [1,30,300,70,200,1]

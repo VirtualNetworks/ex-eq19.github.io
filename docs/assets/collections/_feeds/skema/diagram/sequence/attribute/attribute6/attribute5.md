@@ -1,7 +1,7 @@
 ---
 myId: 97
 weight: 1
-category: user
+type: user
 label: Stok Barang
 tag_name: ubuntu
 run_time: /bin/python

@@ -1,7 +1,7 @@
 ---
 myId: 14
 weight: 1
-category: user
+type: user
 value: [43,3,1,1]
 zones: [1,30,200]
 pairs: [1,2,200,1,5,10,40]

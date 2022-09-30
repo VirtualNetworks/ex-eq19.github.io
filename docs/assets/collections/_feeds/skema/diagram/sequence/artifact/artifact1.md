@@ -1,7 +1,7 @@
 ---
 myId: 99
 weight: 1
-category: main
+type: main
 label: Buka Toko
 run_time: /bin/python
 value: [523,5,-1,1]
