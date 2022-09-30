@@ -138,8 +138,8 @@ defaults:
 collections:
   feeds:
     output: true
-    sort_by: myId
-    permalink: /sitemap/index_:categories.xml
+    sort_by: category
+    permalink: /sitemap/index_:categories:output_ext
   leads:
     output: true
   posts:
