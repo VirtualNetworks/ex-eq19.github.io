@@ -106,7 +106,7 @@ tag_page_layout: nil
 # Default Setting
 # https://stackoverflow.com/a/49428493
 # https://jekyllrb.com/docs/collections/
-# https://chetabahana.github.io/app/flowchart.json
+# https://jekyllrb.com/docs/plugins/generators/
 # https://jekyllrb.com/docs/configuration/front-matter-defaults
 
 defaults:
@@ -139,7 +139,7 @@ collections:
   feeds:
     output: true
     sort_by: myId
-    permalink: /:categories/:name:output_ext
+    permalink: /sitemap/:categories/:name:output_ext
   leads:
     output: true
   posts:
