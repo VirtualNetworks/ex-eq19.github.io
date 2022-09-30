@@ -144,7 +144,7 @@ module Jekyll
           name_expr        = "'index_' + record['key']"
           title_expr       = data_spec['title_expr']
           title            = data_spec['title']
-          dir              = 'sitemap'
+          dir              = 'test'
           template         = 'recipe'
           page_data_prefix = 'index_'
           extension        = 'xml'
@@ -173,7 +173,7 @@ module Jekyll
             # - filter requires the name of a boolean field
             # - filter_condition evals a ruby expression which can use =record= as argument
             records = records.select { |record| record["root"] }
-            records = records.select { |record| eval("record['node'] == '1;30^;40^'") }
+            records = records.select { |record| eval("record['pos'].end_with?(';1;1;1')") }
 
             # we now have the list of all records for which we want to generate individual pages
             # iterate and call the constructor
