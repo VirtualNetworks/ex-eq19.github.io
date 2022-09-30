@@ -139,8 +139,7 @@ collections:
   feeds:
     output: true
     sort_by: myId
-    custom_permalink_placeholders: ["event"]
-    permalink: /:categories/:event:output_ext
+    permalink: /sitemap/index_:category.xml
   leads:
     output: true
   posts:
