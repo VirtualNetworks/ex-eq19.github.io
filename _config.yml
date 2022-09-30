@@ -138,7 +138,7 @@ defaults:
 collections:
   feeds:
     output: true
-    sort_by: categories
+    sort_by: category
     permalink: /sitemap/index_:categories:output_ext
   leads:
     output: true
