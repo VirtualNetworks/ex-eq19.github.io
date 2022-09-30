@@ -1,5 +1,5 @@
 ---
-myId: 95
+category: 95
 weight: 3
 type: user
 label: Portfolio

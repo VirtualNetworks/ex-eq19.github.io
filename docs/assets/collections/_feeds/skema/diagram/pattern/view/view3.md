@@ -1,5 +1,5 @@
 ---
-myId: 16
+category: 16
 weight: 3
 type: user
 value: [53,4,-1,1]

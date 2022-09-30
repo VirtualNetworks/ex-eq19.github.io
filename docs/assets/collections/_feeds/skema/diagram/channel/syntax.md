@@ -1,5 +1,5 @@
 ---
-myId: 8
+category: 8
 link: 159
 weight: 3
 type: main

@@ -1,5 +1,5 @@
 ---
-myId: 116
+category: 116
 weight: 2
 type: query
 value: [641,0,-1,2]

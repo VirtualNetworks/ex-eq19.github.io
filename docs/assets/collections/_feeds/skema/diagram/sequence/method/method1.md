@@ -1,5 +1,5 @@
 ---
-myId: 90
+category: 90
 to: 5
 from: 4
 weight: 1

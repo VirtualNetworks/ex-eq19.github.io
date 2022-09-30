@@ -1,5 +1,5 @@
 ---
-myId: 115
+category: 115
 weight: 1
 type: class
 value: [631,1,-1,2]

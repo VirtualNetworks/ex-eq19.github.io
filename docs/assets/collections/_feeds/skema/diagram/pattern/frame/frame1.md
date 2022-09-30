@@ -1,5 +1,5 @@
 ---
-myId: 27
+category: 27
 weight: 1
 type: user
 zones: [9,60]

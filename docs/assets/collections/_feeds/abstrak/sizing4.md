@@ -1,5 +1,5 @@
 ---
-myId: 127
+category: 127
 weight: 4
 type: test
 value: [709,1,-1,1]

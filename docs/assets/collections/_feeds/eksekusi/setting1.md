@@ -1,5 +1,5 @@
 ---
-myId: 133
+category: 133
 weight: 1
 type: operation
 value: [751,3,-1,0]

@@ -1,5 +1,5 @@
 ---
-myId: 99
+category: 99
 weight: 1
 type: main
 label: Buka Toko

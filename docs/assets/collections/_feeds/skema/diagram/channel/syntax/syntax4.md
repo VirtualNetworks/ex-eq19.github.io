@@ -1,5 +1,5 @@
 ---
-myId: 4
+category: 4
 weight: 4
 type: main
 value: [7,3,1,0]

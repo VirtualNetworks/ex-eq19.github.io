@@ -1,5 +1,5 @@
 ---
-myId: 103
+category: 103
 weight: 4
 type: user
 label: Peluang Terbaik

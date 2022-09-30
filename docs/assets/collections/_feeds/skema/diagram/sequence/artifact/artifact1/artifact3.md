@@ -1,5 +1,5 @@
 ---
-myId: 101
+category: 101
 weight: 2
 type: user
 label: Merchant Center

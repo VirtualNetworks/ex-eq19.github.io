@@ -128,7 +128,7 @@ defaults:
       type: categories
     values:
       layout: base
-      redirect_from: /sitemap/:category.xml
+      permalink: /sitemap/:category.xml
 
 # Permalinks
 # https://jekyllrb.com/docs/permalinks/

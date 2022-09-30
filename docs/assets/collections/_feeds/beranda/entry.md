@@ -1,5 +1,5 @@
 ---
-myId: 122
+category: 122
 weight: 2
 value: [673,3,1,1]
 tags: [1,24,38,41,62,76,78]

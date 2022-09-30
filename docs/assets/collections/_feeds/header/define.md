@@ -1,5 +1,5 @@
 ---
-myId: 118
+category: 118
 weight: 1
 type: object
 value: [647,4,-1,1]
