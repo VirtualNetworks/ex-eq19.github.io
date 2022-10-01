@@ -1,3 +1,6 @@
+require 'nuggets/range/quantile'
+require 'nuggets/i18n'
+
 module Jekyll
 
   module Helpers
