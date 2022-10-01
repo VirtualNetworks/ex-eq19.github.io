@@ -111,6 +111,7 @@ module Jekyll
       self.content = data.delete('content') || ''
       self.data    = data
 
+      # https://stackoverflow.com/a/60326184/4058484
       super(site, base, dir[-1, 1] == '/' ? dir : '/' + dir, name)
     end
 
