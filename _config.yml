@@ -93,7 +93,7 @@ plugins:
 # Jekyll Tag Pages Generator
 # https://jekyllrb.com/docs/liquid/tags/
 # https://github.com/pattex/jekyll-tagging
-# https://github.com/avillafiorita/jekyll-datapage_gen
+# https://jekyllrb.com/docs/plugins/generators/
 
 syntax_gen:
 - data: roots
@@ -106,7 +106,6 @@ tag_page_layout: nil
 # Default Setting
 # https://stackoverflow.com/a/49428493
 # https://jekyllrb.com/docs/collections/
-# https://jekyllrb.com/docs/plugins/generators/
 # https://jekyllrb.com/docs/configuration/front-matter-defaults
 
 defaults:
@@ -134,6 +133,7 @@ defaults:
 # https://jekyllrb.com/docs/permalinks/
 # https://stackoverflow.com/a/28754526/4058484
 # https://github.com/NiklasEi/jekyll_custom_permalink
+# https://github.com/avillafiorita/jekyll-datapage_gen
 
 collections:
   maps:
