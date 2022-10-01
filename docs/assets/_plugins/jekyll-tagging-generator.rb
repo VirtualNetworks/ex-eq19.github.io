@@ -93,7 +93,7 @@ module Jekyll
       site.tags.reject { |t| site.config["ignored_tags"].include? t[0] }
     end
 
-    def pretty?
+    def pretty
       @pretty ||= (site.permalink_style == :pretty || site.config['tag_permalink_style'] == 'pretty')
     end
 
