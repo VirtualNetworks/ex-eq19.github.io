@@ -57,7 +57,7 @@ module Jekyll
           tag_dir = site.config["tag_#{type}_dir"]
           tag_dir = File.join(tag_dir, (pretty ? name : ''))
 
-          page_name = "#{pretty? ? 'index' : name}#{site.layouts[data['layout']].ext}"
+          page_name = "#{pretty ? 'index' : name}#{site.layouts[data['layout']].ext}"
 
           site.pages << TagPage.new(
             site, site.source, tag_dir, page_name, data
