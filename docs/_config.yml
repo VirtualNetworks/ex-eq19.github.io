@@ -118,7 +118,7 @@ defaults:
   -
     scope:
       path: ""
-      type: leads
+      type: maps
     values:
       layout: redirect
   - 
@@ -150,11 +150,11 @@ collections_dir     : assets/collections
 # posts: https://chetabahana.github.io/object/2018/132/05/00/00/00/dummy.json
 
 collections:
+  maps:
+    output: true
   feeds:
     output: true
     permalink: /:categories/:title:output_ext
-  leads:
-    output: true
   posts:
     permalink: /:categories/:year/:y_day/:month/:hour/:minute/:second/:title:output_ext
 
@@ -170,6 +170,8 @@ feed:
   posts_limit: 1000
   excerpt_only: true
   collections:
+    maps:
+      path: /leads.xml # https://eq19.github.io/grammar/leads.xml
     feeds:
       categories:
         - main # https://eq19.github.io/grammar/feed/feeds/main.xml
@@ -177,8 +179,6 @@ feed:
         - diagram # https://eq19.github.io/grammar/feed/feeds/diagram.xml
         - section # https://eq19.github.io/grammar/feed/feeds/section.xml
       path: /feeds.xml # https://eq19.github.io/grammar/feeds.xml
-    leads:
-      path: /leads.xml # https://eq19.github.io/grammar/leads.xml
     posts:
       path: /posts.xml # https://eq19.github.io/grammar/posts.xml
 
