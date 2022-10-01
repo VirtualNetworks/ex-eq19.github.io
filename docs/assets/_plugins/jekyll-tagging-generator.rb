@@ -121,10 +121,10 @@ module Jekyll
 
   class TagPage < TagDir
 
-    def initialize(site, base, dir, name)
+    def initialize(site, base, dir, name. data)
 
       # https://stackoverflow.com/a/60326184/4058484
-      super(site, base, dir[-1, 1] == '/' ? dir : '/' + dir, name)
+      super(site, base, dir[-1, 1] == '/' ? dir : '/' + dir, name, data)
 
     end
 
