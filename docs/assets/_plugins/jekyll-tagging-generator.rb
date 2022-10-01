@@ -55,7 +55,7 @@ module Jekyll
           name = jekyll_tagging_slug(name)
 
           tag_dir = site.config["tag_#{type}_dir"]
-          tag_dir = File.join(tag_dir, (pretty? ? name : ''))
+          tag_dir = File.join(tag_dir, (pretty ? name : ''))
 
           page_name = "#{pretty? ? 'index' : name}#{site.layouts[data['layout']].ext}"
 
@@ -102,11 +102,6 @@ module Jekyll
   class TagPage < Page
 
     def initialize(site, base, dir, name, data = {})
-      @site = site
-      @base = site.source
-      @dir  = dir
-      @name = 'index.html'
-
       self.content = data.delete('content') || ''
       self.data    = data
 
