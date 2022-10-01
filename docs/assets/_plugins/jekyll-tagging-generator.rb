@@ -102,6 +102,11 @@ module Jekyll
   class TagPage < Page
 
     def initialize(site, base, dir, name, data = {})
+      @site = site
+      @base = base
+      @dir  = dir
+      @name = name
+
       self.content = data.delete('content') || ''
       self.data    = data
 
