@@ -1,7 +1,3 @@
----
-author: Willow Rosenberg
-tags: feminism anti-capitalism witchcraft
----
 # GitHub Pages
 
 [![Build Status](https://travis-ci.org/guard/guard.svg)](https://travis-ci.org/guard/guard) [![Code Climate](https://codeclimate.com/github/guard/guard/badges/gpa.svg)](https://codeclimate.com/github/guard/guard) [![Test Coverage](https://codeclimate.com/github/guard/guard/badges/coverage.svg)](https://codeclimate.com/github/guard/guard) [![Inline docs](http://inch-ci.org/github/guard/guard.svg)](http://inch-ci.org/github/guard/guard)
