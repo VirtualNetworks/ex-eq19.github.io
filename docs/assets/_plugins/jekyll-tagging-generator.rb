@@ -55,7 +55,7 @@ module Jekyll
           name = jekyll_tagging_slug(name)
 
           tag_dir = site.config["tag_#{type}_dir"]
-          tag_dir = File.join(tag_dir, (pretty ? name : ''))
+          # tag_dir = File.join(tag_dir, (pretty ? name : ''))
 
           page_name = "#{pretty ? 'index' : name}#{site.layouts[data['layout']].ext}"
 
