@@ -101,31 +101,22 @@ module Jekyll
 
   class TagDir < Page
 
-    def initialize(site, base, dir, name, data = {})
-
+    def initialize(site, base, dir, name)
       @site = site
       @base = site.source
       @dir  = dir
       @name = name
-
-      self.content = data.delete('content') || ''
-      self.data    = data
-
-    end
-
-    def read_yaml(*)
-      # Do nothing
     end
 
   end
 
   class TagPage < TagDir
 
-    def initialize(site, base, dir, name. data)
-
+    def initialize(site, base, dir, name, data = {})
       # https://stackoverflow.com/a/60326184/4058484
-      super(site, base, dir[-1, 1] == '/' ? dir : '/' + dir, name, data)
-
+      super(site, base, dir[-1, 1] == '/' ? dir : '/' + dir, name)
+      self.content = data.delete('content') || ''
+      self.data    = data
     end
 
   end
