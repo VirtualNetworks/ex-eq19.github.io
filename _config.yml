@@ -132,6 +132,7 @@ defaults:
 
 # Permalinks
 # https://jekyllrb.com/docs/permalinks/
+# https://ruby-doc.org/core-3.1.2/String.html
 # https://stackoverflow.com/a/28754526/4058484
 # https://github.com/NiklasEi/jekyll_custom_permalink
 
