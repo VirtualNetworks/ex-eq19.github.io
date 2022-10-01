@@ -99,7 +99,7 @@ module Jekyll
 
   end
 
-  class TagPage < Page
+  class TagDir < Page
 
     def initialize(site, base, dir, name, data = {})
 
@@ -111,12 +111,21 @@ module Jekyll
       self.content = data.delete('content') || ''
       self.data    = data
 
-      # https://stackoverflow.com/a/60326184/4058484
-      super(site, base, dir[-1, 1] == '/' ? dir : '/' + dir, name)
     end
 
     def read_yaml(*)
       # Do nothing
+    end
+
+  end
+
+  class TagPage < TagDir
+
+    def initialize(site, base, dir, name)
+
+      # https://stackoverflow.com/a/60326184/4058484
+      super(site, base, dir[-1, 1] == '/' ? dir : '/' + dir, name)
+
     end
 
   end
