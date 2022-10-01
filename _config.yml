@@ -98,7 +98,7 @@ syntax_gen:
 - data: roots
   title: parser
 
-tag_page_dir: tag
+tag_page_dir: tagz
 tag_feed_layout: tag_feed
 tag_page_layout: tag_page
   

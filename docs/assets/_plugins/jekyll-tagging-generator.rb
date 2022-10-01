@@ -103,9 +103,9 @@ module Jekyll
 
     def initialize(site, base, dir, name, data = {})
       @site = site
-      @base = base
-      @dir  = dir
-      @name = name
+      @base = site.source
+      @dir  = tags
+      @name = 'index.html'
 
       self.content = data.delete('content') || ''
       self.data    = data
