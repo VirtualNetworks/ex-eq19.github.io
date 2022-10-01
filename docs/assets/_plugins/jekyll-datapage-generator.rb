@@ -141,7 +141,7 @@ module Jekyll
       if data
         data.each do |data_spec|
           index_files_for_this_data = false
-          name_expr        = "'index_' + record['pos'].chomp(';1;1;1')"
+          name_expr        = "'index_' + rb_funcall(sum, '+', 786, record['pos'].chomp(';1;1;1'))"
           title_expr       = data_spec['title_expr']
           title            = data_spec['title']
           dir              = 'sitemap'

@@ -132,7 +132,6 @@ defaults:
 
 # Permalinks
 # https://jekyllrb.com/docs/permalinks/
-# https://ruby-doc.org/core-3.1.2/String.html
 # https://stackoverflow.com/a/28754526/4058484
 # https://github.com/NiklasEi/jekyll_custom_permalink
 
@@ -140,7 +139,7 @@ collections:
   feeds:
     output: true
     sort_by: category
-    permalink: /sitemaps/index_1:categories:output_ext
+    permalink: /sitemap/index_:categories:output_ext
   leads:
     output: true
   posts:
