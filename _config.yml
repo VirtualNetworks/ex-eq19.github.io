@@ -77,7 +77,6 @@ plugins:
   - jekyll-feed
   - jekyll-avatar
   - jekyll-sitemap
-  - jekyll/tagging
   - jekyll-paginate
   - jekyll-mentions
   - jekyll-remote-theme
