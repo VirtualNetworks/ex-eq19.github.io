@@ -141,10 +141,10 @@ module Jekyll
       if data
         data.each do |data_spec|
           index_files_for_this_data = false
-          select_expr      = data_spec['select_expr']
-          title_expr       = data_spec['title_expr']
-          name_expr        = data_spec['name_expr']
-          title            = data_spec['title']
+          select_expr      = %Q(data_spec['select_expr'])
+          title_expr       = %Q(data_spec['title_expr'])
+          name_expr        = %Q(data_spec['name_expr'])
+          title            = %Q(data_spec['title'])
           dir              = 'sitemap'
           template         = 'recipe'
           page_data_prefix = 'index_'
