@@ -2,7 +2,6 @@
 # Generate pages from individual records in yml files
 # (c) 2014-2020 Adolfo Villafiorita
 # Distributed under the conditions of the MIT License
-# https://github.com/avillafiorita/jekyll-datapage_gen
 
 module Jekyll
 
@@ -138,14 +137,14 @@ module Jekyll
 
       # data contains the specification of all the datasets for which we want
       # to generate individual pages (look at the README file for its documentation)
-      data = site.data['roots']
+      data = site.config['syntax_gen']
       if data
         data.each do |data_spec|
           index_files_for_this_data = false
           name_expr        = "'index_' + [100, 168, 618, record['pos'].chomp(';1;1;1').to_i].sum.to_s"
-          title_expr       = "record['key']"
+          title_expr       = data_spec['title_expr']
+          title            = data_spec['title']
           dir              = 'sitemap'
-          title            = 'parser'
           template         = 'recipe'
           page_data_prefix = 'index_'
           extension        = 'xml'

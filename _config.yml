@@ -94,6 +94,10 @@ plugins:
 # https://github.com/pattex/jekyll-tagging
 # https://jekyllrb.com/docs/plugins/generators/
 
+syntax_gen:
+- data: roots
+  title: parser
+
 tag_page_dir: tagz
 tag_feed_layout: tag_feed
 tag_page_layout: tag_page
