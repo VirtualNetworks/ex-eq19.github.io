@@ -1,9 +1,9 @@
 ---
-myId: 158
+category: 258
 weight: 2
 value: [929,2,-1,-2]
 tags: [1,4,13,22]
-category: diagram
+type: diagram
 redirect_from: /sequence.json
 ---
 var init = '{{ page.redirect_from }}';

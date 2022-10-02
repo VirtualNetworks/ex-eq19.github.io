@@ -124,32 +124,32 @@ module Jekyll
   class JekyllDatapageGenerator < Generator
     safe true
 
-    # the function =generate= loops over the =_config.yml/page_gen=
+    # the function =generate= loops over the =_config.yml/syntax_gen=
     # specification, determining what sets of pages have to be generated,
     # reading the data for each set and invoking the =DataPage=
     # constructor for each record found in the data
 
     def generate(site)
-      # page_gen-dirs is a global option which determines whether we want to
+      # syntax_gen-dirs is a global option which determines whether we want to
       # generate index pages (name/index.html) or HTML files (name.html) for
       # all sets
-      index_files = site.config['page_gen-dirs'] == true
+      index_files = true
 
       # data contains the specification of all the datasets for which we want
       # to generate individual pages (look at the README file for its documentation)
-      data = site.config['page_gen']
+      data = site.config['syntax_gen']
       if data
         data.each do |data_spec|
-          index_files_for_this_data = data_spec['index_files'] != nil ? data_spec['index_files'] : index_files
-          template         = data_spec['template'] || data_spec['data']
-          name             = data_spec['name']
-          name_expr        = data_spec['name_expr']
-          title            = data_spec['title']
+          index_files_for_this_data = false
+          name_expr        = "'index_' + [100, 168, 618, record['pos'].chomp(';1;1;1').to_i].sum.to_s"
           title_expr       = data_spec['title_expr']
-          dir              = data_spec['dir'] || data_spec['data']
-          extension        = data_spec['extension'] || "html"
-          page_data_prefix = data_spec['page_data_prefix']
-          debug            = data_spec['debug']
+          title            = data_spec['title']
+          dir              = 'sitemap'
+          template         = 'recipe'
+          page_data_prefix = 'index_'
+          extension        = 'xml'
+          name             = 'key'
+          debug            = false
           
           if not site.layouts.key? template
             puts "error (datapage-gen). could not find template #{template}. Skipping dataset #{name}."
@@ -172,8 +172,8 @@ module Jekyll
             # apply filtering conditions:
             # - filter requires the name of a boolean field
             # - filter_condition evals a ruby expression which can use =record= as argument
-            records = records.select { |record| record[data_spec['filter']] } if data_spec['filter']
-            records = records.select { |record| eval(data_spec['filter_condition']) } if data_spec['filter_condition']
+            records = records.select { |record| record["root"] }
+            records = records.select { |record| eval("record['pos'].end_with?(';1;1;1')") }
 
             # we now have the list of all records for which we want to generate individual pages
             # iterate and call the constructor
@@ -201,7 +201,7 @@ module Jekyll
     # Thus, if you use the `extension` feature of this plugin, you
     # need to generate the links by hand
     def datapage_url(input, dir)
-      extension = @context.registers[:site].config['page_gen-dirs'] ? '/' : '.html'
+      extension = @context.registers[:site].config['syntax_gen-dirs'] ? '/' : '.html'
       "#{dir}/#{sanitize_filename(input)}#{extension}"
     end
   end

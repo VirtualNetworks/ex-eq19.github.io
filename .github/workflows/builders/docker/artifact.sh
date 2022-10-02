@@ -67,6 +67,11 @@ echo -e "\n$hr\nASSET FILES\n$hr"
 echo ${PWD}/docs/assets
 ls -al ${PWD}/docs/assets
 
+# makefile
+echo -e "\n$hr\nMAKEFILE\n$hr"
+echo ${PWD}/Makefile
+cat ${PWD}/Makefile
+
 # config file
 echo -e "\n$hr\nCONFIG FILE\n$hr"
 echo ${PWD}/_config.yml

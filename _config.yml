@@ -77,7 +77,6 @@ plugins:
   - jekyll-feed
   - jekyll-avatar
   - jekyll-sitemap
-  - jekyll/tagging
   - jekyll-paginate
   - jekyll-mentions
   - jekyll-remote-theme
@@ -91,33 +90,21 @@ plugins:
   - jekyll-optional-front-matter
   
 # Jekyll Tag Pages Generator
+# https://jekyllrb.com/docs/liquid/tags/
 # https://github.com/pattex/jekyll-tagging
+# https://jekyllrb.com/docs/plugins/generators/
 
-tag_page_dir: tag
-tag_feed_layout: nil
-tag_page_layout: nil
-
-# Jekyll Data Pages Generator
-# https://github.com/avillafiorita/jekyll-datapage_gen
-
-page_gen-dirs: true
-  
-page_gen:
+syntax_gen:
 - data: roots
-  dir: root
-  name: key
-  debug: false
   title: parser
-  extension: xml
-  template: recipe
-  index_files: false
-  page_data_prefix: form
-  filter_condition: "record['node'] == '1;30^;40^'"
 
+tag_page_dir: tagz
+tag_feed_layout: tag_feed
+tag_page_layout: tag_page
+  
 # Default Setting
 # https://stackoverflow.com/a/49428493
 # https://jekyllrb.com/docs/collections/
-# https://chetabahana.github.io/app/flowchart.json
 # https://jekyllrb.com/docs/configuration/front-matter-defaults
 
 defaults:
@@ -130,7 +117,7 @@ defaults:
   -
     scope:
       path: ""
-      type: leads
+      type: maps
     values:
       layout: redirect
   - 
@@ -141,32 +128,19 @@ defaults:
       layout: base
       permalink: /sitemap/:category.xml
 
-# Default Configuration
-# remote_theme: eQ19/parser
-# https://jekyllrb.com/docs/configuration/default/
-# https://jekyllrb.com/docs/continuous-integration/github-actions/
-# https://docs.github.com/en/actions/security-guides/encrypted-secrets
-
-sass:
-    sass_dir        : css/_sass
-data_dir            : docs/assets/_data
-layouts_dir         : docs/assets/_layouts
-plugins_dir         : docs/assets/_plugins
-includes_dir        : docs/assets/_includes
-collections_dir     : docs/assets/collections
-
 # Permalinks
 # https://jekyllrb.com/docs/permalinks/
-# feeds: https://chetabahana.github.io/main/tree.json
-# leads: https://chetabahana.github.io/leads/section.json
-# posts: https://chetabahana.github.io/object/2018/132/05/00/00/00/dummy.json
+# https://stackoverflow.com/a/28754526/4058484
+# https://github.com/NiklasEi/jekyll_custom_permalink
+# https://github.com/avillafiorita/jekyll-datapage_gen
 
 collections:
+  maps:
+    output: true
   feeds:
     output: true
-    permalink: /:categories/:title:output_ext
-  leads:
-    output: true
+    sort_by: category
+    permalink: /sitemap/index_:categories:output_ext
   posts:
     permalink: /:categories/:year/:y_day/:month/:hour/:minute/:second/:title:output_ext
 
@@ -181,6 +155,8 @@ feed:
   posts_limit: 1000
   excerpt_only: true
   collections:
+    maps:
+      path: /leads.xml # https://eq19.github.io/grammar/leads.xml
     feeds:
       categories:
         - main # https://eq19.github.io/grammar/feed/feeds/main.xml
@@ -188,8 +164,6 @@ feed:
         - diagram # https://eq19.github.io/grammar/feed/feeds/diagram.xml
         - section # https://eq19.github.io/grammar/feed/feeds/section.xml
       path: /feeds.xml # https://eq19.github.io/grammar/feeds.xml
-    leads:
-      path: /leads.xml # https://eq19.github.io/grammar/leads.xml
     posts:
       path: /posts.xml # https://eq19.github.io/grammar/posts.xml
 
@@ -251,6 +225,20 @@ flow_labels:
 basedir: _feeds
 organization: marketleader
 repository: eq19/eq19.github.io
+
+# Directory Setting
+# remote_theme: eQ19/parser
+# https://jekyllrb.com/docs/configuration/default/
+# https://jekyllrb.com/docs/continuous-integration/github-actions/
+# https://docs.github.com/en/actions/security-guides/encrypted-secrets
+
+sass:
+    sass_dir        : css/_sass
+data_dir            : docs/assets/_data
+layouts_dir         : docs/assets/_layouts
+plugins_dir         : docs/assets/_plugins
+includes_dir        : docs/assets/_includes
+collections_dir     : docs/assets/collections
 
 # Site Metadata
 # https://docs.github.com/en/pages
