@@ -137,11 +137,11 @@ module Jekyll
 
       # data contains the specification of all the datasets for which we want
       # to generate individual pages (look at the README file for its documentation)
-      data = site.data['syntax']
+      data = site.data['syntax']['syntax_gen']
       if data
         data.each do |data_spec|
           index_files_for_this_data = false
-          name_expr        = "'index_' + [100, 168, 618, record['pos'].chomp(';1;1;1').to_i].sum.to_s"
+          name_expr        = data_spec['name_expr']
           title_expr       = data_spec['title_expr']
           title            = data_spec['title']
           dir              = 'sitemap'
