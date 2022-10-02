@@ -44,7 +44,7 @@ module Jekyll
 
         puts "debug (datapage-gen) Configuration variables:"
         [:index_files, :dir, :page_data_prefix, :name, :name_expr, :title, :title_expr, :template, :extension].each do |variable|
-          puts ">> #{variable}: #{instance_eval(variable.to_s)}"
+          puts ">> #{variable}: #{eval(variable.to_s)}"
         end
       end
 
@@ -56,7 +56,7 @@ module Jekyll
       # want to generate named folders or not
       if name_expr
         record = data
-        raw_filename = instance_eval(name_expr)
+        raw_filename = eval(name_expr)
         if raw_filename == nil
           puts "error (datapage-gen). name_expr '#{name_expr}' generated an empty value in record #{data}"
           return
@@ -73,7 +73,7 @@ module Jekyll
 
       if title_expr
         record = data
-        raw_title = instance_eval(title_expr)
+        raw_title = eval(title_expr)
         if raw_title == nil
           puts "error (datapage-gen). title_expr '#{title_expr}' generated an empty value in record #{data}"
           return
@@ -172,9 +172,9 @@ module Jekyll
 
             # apply filtering conditions:
             # - filter requires the name of a boolean field
-            # - filter_condition instance_evals a ruby expression which can use =record= as argument
+            # - filter_condition evals a ruby expression which can use =record= as argument
             records = records.select { |record| record["root"] }
-            records = records.select { |record| instance_eval(select_expr) }
+            records = records.select { |record| eval(select_expr) }
 
             # we now have the list of all records for which we want to generate individual pages
             # iterate and call the constructor
