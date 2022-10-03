@@ -2,4 +2,9 @@ syntax_gen:
 - data: roots
   title_expr: "record['pos']"
   select_expr: "record['pos'].end_with?(';1;1;1')"
+  name_expr: "'index_' + [100, 168, record['pos'].chomp(';1;1;1').to_i].sum.to_s"
+
+- data: roots
+  title_expr: "record['pos']"
+  select_expr: "record['pos'].end_with?(';1;1;1')"
   name_expr: "'index_' + [100, 168, 618, record['pos'].chomp(';1;1;1').to_i].sum.to_s"
