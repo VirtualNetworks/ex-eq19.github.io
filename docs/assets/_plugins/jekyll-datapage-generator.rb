@@ -2,6 +2,7 @@
 # Generate pages from individual records in yml files
 # (c) 2014-2020 Adolfo Villafiorita
 # Distributed under the conditions of the MIT License
+# https://github.com/avillafiorita/jekyll-datapage_gen
 
 module Jekyll
 
@@ -141,12 +142,14 @@ module Jekyll
       if data
         data.each do |data_spec|
           index_files_for_this_data = false
-          name_expr        = data_spec['name_expr']
+          filter_condition = data_spec['filter_condition']
           title_expr       = data_spec['title_expr']
+          name_expr        = data_spec['name_expr']
           title            = data_spec['title']
           dir              = 'sitemap'
           template         = 'recipe'
           page_data_prefix = 'index_'
+          filter           = 'root'
           extension        = 'xml'
           name             = 'key'
           debug            = false
@@ -172,8 +175,8 @@ module Jekyll
             # apply filtering conditions:
             # - filter requires the name of a boolean field
             # - filter_condition evals a ruby expression which can use =record= as argument
-            records = records.select { |record| record["root"] }
-            records = records.select { |record| eval("record['pos'].end_with?(';1;1;1')") }
+            records = records.select { |record| record[filter] }
+            records = records.select { |record| eval(filter_condition) }
 
             # we now have the list of all records for which we want to generate individual pages
             # iterate and call the constructor
