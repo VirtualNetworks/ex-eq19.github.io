@@ -138,7 +138,7 @@ module Jekyll
 
       # data contains the specification of all the datasets for which we want
       # to generate individual pages (look at the README file for its documentation)
-      data = site.data['syntax']['syntax_gen']
+      data = site.data['grammar']
       if data
         data.each do |data_spec|
           index_files_for_this_data = false
