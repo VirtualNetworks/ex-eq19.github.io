@@ -2,6 +2,7 @@
 # Generate pages from individual records in yml files
 # (c) 2014-2020 Adolfo Villafiorita
 # Distributed under the conditions of the MIT License
+# https://github.com/avillafiorita/jekyll-datapage_gen
 
 module Jekyll
 
@@ -137,49 +138,51 @@ module Jekyll
 
       # data contains the specification of all the datasets for which we want
       # to generate individual pages (look at the README file for its documentation)
-      data = site.data['syntax']['syntax_gen']
+      data = site.data['syntax']
       if data
-        data.each do |data_spec|
-          index_files_for_this_data = false
-          select_expr      = data_spec['select_expr']
-          title_expr       = data_spec['title_expr']
-          name_expr        = data_spec['name_expr']
-          title            = data_spec['title']
-          dir              = 'sitemap'
-          template         = 'recipe'
-          page_data_prefix = 'index_'
-          extension        = 'xml'
-          name             = 'key'
-          debug            = false
-          
-          if not site.layouts.key? template
-            puts "error (datapage-gen). could not find template #{template}. Skipping dataset #{name}."
-          else
-            # records is the list of records for which we want to generate
-            # individual pages
-            records = nil
+        data.each do |data_type|
+          data_type.each do |data_spec|
+            index_files_for_this_data = false
+            select_expr      = data_spec['select_expr']
+            title_expr       = data_spec['title_expr']
+            name_expr        = data_spec['name_expr']
+            title            = data_spec['title']
+            dir              = 'sitemap'
+            template         = 'recipe'
+            page_data_prefix = 'index_'
+            extension        = 'xml'
+            name             = 'key'
+            debug            = false
 
-            data_spec['data'].split('.').each do |level|
-              if records.nil?
-                records = site.data[level]
-              else
-                records = records[level]
+            if not site.layouts.key? template
+              puts "error (datapage-gen). could not find template #{template}. Skipping dataset #{name}."
+            else
+              # records is the list of records for which we want to generate
+              # individual pages
+              records = nil
+
+              data_spec['data'].split('.').each do |level|
+                if records.nil?
+                  records = site.data[level]
+                else
+                  records = records[level]
+                end
               end
-            end
-            if (records.kind_of?(Hash))
-              records = records.values
-            end
+              if (records.kind_of?(Hash))
+                records = records.values
+              end
 
-            # apply filtering conditions:
-            # - filter requires the name of a boolean field
-            # - filter_condition evals a ruby expression which can use =record= as argument
-            records = records.select { |record| record["root"] }
-            records = records.select { |record| eval(select_expr) }
+              # apply filtering conditions:
+              # - filter requires the name of a boolean field
+              # - filter_condition evals a ruby expression which can use =record= as argument
+              records = records.select { |record| record["root"] }
+              records = records.select { |record| eval(select_expr) }
 
-            # we now have the list of all records for which we want to generate individual pages
-            # iterate and call the constructor
-            records.each do |record|
-              site.pages << DataPage.new(site, site.source, index_files_for_this_data, dir, page_data_prefix, record, name, name_expr, title, title_expr, template, extension, debug)
+              # we now have the list of all records for which we want to generate individual pages
+              # iterate and call the constructor
+              records.each do |record|
+                site.pages << DataPage.new(site, site.source, index_files_for_this_data, dir, page_data_prefix, record, name, name_expr, title, title_expr, template, extension, debug)
+              end
             end
           end
         end
