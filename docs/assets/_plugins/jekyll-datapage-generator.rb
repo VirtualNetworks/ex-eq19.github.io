@@ -151,7 +151,7 @@ module Jekyll
           page_data_prefix = 'index_'
           filter           = 'root'
           extension        = 'xml'
-          name             = 'key'
+          name             = 'pos'
           debug            = false
           
           if not site.layouts.key? template
