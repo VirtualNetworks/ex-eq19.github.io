@@ -35,7 +35,7 @@ module Jekyll
     # - `title_expr` is an expression for generating the page title
     # - `template` is the name of the template for generating the page
     # - `extension` is the extension for the generated file
-    def initialize(site, base, index_files, dir, page_data_prefix, data, name, name_expr, title, title_expr, template, extension, debug)
+    def initialize(site, base, index, index_files, dir, page_data_prefix, data, name, name_expr, title, title_expr, template, extension, debug)
       @site = site
       @base = base
 
@@ -140,6 +140,7 @@ module Jekyll
       # to generate individual pages (look at the README file for its documentation)
       data = site.data['grammar']
       if data
+        index = 0
         data.each do |data_spec|
           index_files_for_this_data = false
           filter_condition = data_spec['filter_condition']
@@ -181,7 +182,8 @@ module Jekyll
             # we now have the list of all records for which we want to generate individual pages
             # iterate and call the constructor
             records.each do |record|
-              site.pages << DataPage.new(site, site.source, index_files_for_this_data, dir, page_data_prefix, record, name, name_expr, title, title_expr, template, extension, debug)
+              index += 1
+              site.pages << DataPage.new(site, site.source, index, index_files_for_this_data, dir, page_data_prefix, record, name, name_expr, title, title_expr, template, extension, debug)
             end
           end
         end
