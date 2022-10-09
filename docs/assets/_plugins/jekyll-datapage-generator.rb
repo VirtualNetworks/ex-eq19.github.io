@@ -140,12 +140,12 @@ module Jekyll
       # to generate individual pages (look at the README file for its documentation)
       data = site.data['grammar']
       if data
-        index = 0
+        index = 168
         data.each do |data_spec|
           index_files_for_this_data = false
           filter_condition = data_spec['filter_condition']
           title_expr       = data_spec['title_expr']
-          name_expr        = data_spec['name_expr']
+          name_expr        = "'index_' + index.to_s"
           title            = data_spec['title']
           dir              = 'sitemap'
           template         = 'recipe'
