@@ -1,3 +1,3 @@
-type,title_expr,filter_condition
-roots,"record['pos']","record['key'].to_i < 4568"
-roots,"record['pos']","record['pos'].end_with?(';1;1;1')"
+type,filter_condition
+roots,"record['key'].to_i < 4568"
+roots,"record['pos'].end_with?(';1;1;1')"
