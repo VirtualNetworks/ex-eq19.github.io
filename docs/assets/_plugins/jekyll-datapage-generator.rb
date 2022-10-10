@@ -176,9 +176,10 @@ module Jekyll
 
             # apply filtering conditions:
             # - filter requires the name of a boolean field
-            # - filter_condition evals a ruby expression which can use =record= as argument
-            records = records.select { |record| record[filter] }
-            records = records.select { |record| eval(filter_condition) }
+            # - filter_condition evals an expression use =record=
+            # https://www.rubyguides.com/2019/04/ruby-select-method/
+            records = records.select.with_index(1) { |record, index| record[filter] }
+            records = records.select.with_index(1) { |record, index| eval(filter_condition) }
 
             # we now have the list of all records for which we want to generate individual pages
             # iterate and call the constructor
