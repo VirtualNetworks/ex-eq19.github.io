@@ -125,6 +125,7 @@ module Jekyll
   class JekyllDatapageGenerator < Generator
     safe true
 
+    # Finding Prime Numbers in Ruby
     def is_prime(num)
       (2..(num - 1)).each do |n|
         return false if num % n == 0
@@ -149,7 +150,7 @@ module Jekyll
       if data
         page_num = 168
         data.each do |data_spec|
-          name_expr        = "page_data_prefix + num.to_s"
+          name_expr        = "page_data_prefix + page_num.to_s"
           filter_condition = data_spec['filter_condition']
           title            = data_spec['title']
           title_expr       = "record['pos']"
