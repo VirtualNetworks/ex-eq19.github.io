@@ -144,7 +144,7 @@ module Jekyll
         data.each do |data_spec|
           index_files_for_this_data = false
           filter_condition = data_spec['filter_condition']
-          name_expr        = "'index_' + index.to_s"
+          name_expr        = "page_data_prefix + index.to_s"
           title            = data_spec['title']
           title_expr       = "record['pos']"
           dir              = 'sitemap'
