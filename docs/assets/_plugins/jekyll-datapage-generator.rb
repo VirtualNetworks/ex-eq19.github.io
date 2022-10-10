@@ -35,7 +35,7 @@ module Jekyll
     # - `title_expr` is an expression for generating the page title
     # - `template` is the name of the template for generating the page
     # - `extension` is the extension for the generated file
-    def initialize(site, base, num, index, index_files, dir, page_data_prefix, data, name, name_expr, title, title_expr, template, extension, debug)
+    def initialize(site, base, page_num, index, index_files, dir, page_data_prefix, data, name, name_expr, title, title_expr, template, extension, debug)
       @site = site
       @base = base
 
@@ -125,6 +125,13 @@ module Jekyll
   class JekyllDatapageGenerator < Generator
     safe true
 
+    def is_prime(num)
+      (2..(num - 1)).each do |n|
+        return false if num % n == 0
+      end
+      true
+    end
+
     # the function =generate= loops over the =_config.yml/syntax_gen=
     # specification, determining what sets of pages have to be generated,
     # reading the data for each set and invoking the =DataPage=
@@ -140,7 +147,7 @@ module Jekyll
       # to generate individual pages (look at the README file for its documentation)
       data = site.data['base']
       if data
-        num = 168
+        page_num = 168
         data.each do |data_spec|
           name_expr        = "page_data_prefix + num.to_s"
           filter_condition = data_spec['filter_condition']
@@ -184,8 +191,8 @@ module Jekyll
             # we now have the list of all records for which we want to generate individual pages
             # iterate and call the constructor
             records.each.with_index(1) do |record, index|
-              num += 1
-              site.pages << DataPage.new(site, site.source, num, index, index_files_for_this_data, dir, page_data_prefix, record, name, name_expr, title, title_expr, template, extension, debug)
+              page_num += 1
+              site.pages << DataPage.new(site, site.source, page_num, index, index_files_for_this_data, dir, page_data_prefix, record, name, name_expr, title, title_expr, template, extension, debug)
             end
           end
         end
