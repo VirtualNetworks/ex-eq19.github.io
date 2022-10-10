@@ -145,8 +145,9 @@ module Jekyll
           name_expr        = "page_data_prefix + index.to_s"
           filter_condition = data_spec['filter_condition']
           title            = data_spec['title']
-          index_files_for_this_data = false
+          type             = data_spec['type']
           title_expr       = "record['pos']"
+          index_files_for_this_data = false
           dir              = 'sitemap'
           template         = 'recipe'
           page_data_prefix = 'index_'
@@ -162,7 +163,7 @@ module Jekyll
             # individual pages
             records = nil
 
-            data_spec['type'].split('.').each do |level|
+            type.split('.').each do |level|
               if records.nil?
                 records = site.data[level]
               else
