@@ -145,12 +145,12 @@ module Jekyll
           name_expr        = "page_data_prefix + index.to_s"
           filter_condition = data_spec['filter_condition']
           title            = data_spec['title']
-          type             = 'roots'
           title_expr       = "record['pos']"
           index_files_for_this_data = false
           dir              = 'sitemap'
           template         = 'recipe'
           page_data_prefix = 'index_'
+          type             = 'roots'
           filter           = 'root'
           debug            = false
           extension        = 'xml'
