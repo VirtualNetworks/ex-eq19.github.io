@@ -142,18 +142,18 @@ module Jekyll
       if data
         index = 168
         data.each do |data_spec|
-          index_files_for_this_data = false
-          filter_condition = data_spec['filter_condition']
           name_expr        = "page_data_prefix + index.to_s"
+          filter_condition = data_spec['filter_condition']
           title            = data_spec['title']
+          index_files_for_this_data = false
           title_expr       = "record['pos']"
           dir              = 'sitemap'
           template         = 'recipe'
           page_data_prefix = 'index_'
           filter           = 'root'
+          debug            = false
           extension        = 'xml'
           name             = 'pos'
-          debug            = false
           
           if not site.layouts.key? template
             puts "error (datapage-gen). could not find template #{template}. Skipping dataset #{name}."
