@@ -126,15 +126,6 @@ module Jekyll
     require 'prime'
     safe true
 
-    # Finding Prime Numbers in Ruby
-    # https://github.com/ruby/prime
-    def is_prime(num)
-      (2..(num - 1)).each do |n|
-        return false if num % n == 0
-      end
-      true
-    end
-
     # the function =generate= loops over the =_config.yml/syntax_gen=
     # specification, determining what sets of pages have to be generated,
     # reading the data for each set and invoking the =DataPage=
@@ -148,19 +139,20 @@ module Jekyll
 
       # data contains the specification of all the datasets for which we want
       # to generate individual pages (look at the README file for its documentation)
+      # https://github.com/ruby/prime
       data = site.data['base']
       if data
         page_num = 168
         data.each do |data_spec|
           name_expr        = "page_data_prefix + page_num.to_s"
           filter_condition = data_spec['filter_condition']
+          enum             = Prime.each(10000).to_a
           title            = data_spec['title']
           title_expr       = "record['pos']"
           index_files_for_this_data = false
           dir              = 'sitemap'
           template         = 'recipe'
           page_data_prefix = 'index_'
-          type             = 'roots'
           filter           = 'root'
           debug            = false
           extension        = 'xml'
@@ -173,7 +165,7 @@ module Jekyll
             # individual pages
             records = nil
 
-            type.split('.').each do |level|
+            enum.split('.').each do |level|
               if records.nil?
                 records = site.data[level]
               else
