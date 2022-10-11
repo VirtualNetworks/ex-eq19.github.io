@@ -1,3 +1,3 @@
 title,filter_condition
-key,"index < 7921 && is_prime(index)"
+key,"index > 1000 && index < 6029 && is_prime(index)"
 pos,"record['pos'].end_with?(';1;1;1')"

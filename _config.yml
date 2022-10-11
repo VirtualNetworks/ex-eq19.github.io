@@ -135,9 +135,9 @@ collections:
   feeds:
     output: true
     sort_by: category
-#     permalink: /sitemap/index_:categories:output_ext
-#   posts:
-#     permalink: /:categories/:year/:y_day/:month/:hour/:minute/:second/:title:output_ext
+    permalink: /sitemap/index_:categories:output_ext
+  posts:
+    permalink: /:categories/:year/:y_day/:month/:hour/:minute/:second/:title:output_ext
 
 # Feed and Submodul Setting
 # https://stackoverflow.com/a/55885186/4058484
