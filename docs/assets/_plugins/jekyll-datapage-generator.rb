@@ -146,13 +146,13 @@ module Jekyll
         data.each do |data_spec|
           name_expr        = "page_data_prefix + page_num.to_s"
           filter_condition = data_spec['filter_condition']
-          enum             = Prime.each(10000).to_a
           title            = data_spec['title']
           title_expr       = "record['pos']"
           index_files_for_this_data = false
           dir              = 'sitemap'
           template         = 'recipe'
           page_data_prefix = 'index_'
+          type             = 'roots'
           filter           = 'root'
           debug            = false
           extension        = 'xml'
@@ -165,7 +165,7 @@ module Jekyll
             # individual pages
             records = nil
 
-            enum.each do |level|
+            type.split('.').each do |level|
               if records.nil?
                 records = site.data[level]
               else

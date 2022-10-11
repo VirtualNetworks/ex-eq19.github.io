@@ -1,2 +1,2 @@
 title,filter_condition
-key,"168 < index && index < 1000"
+key,"1000 < index && index < 89**2 && index.prime?"
