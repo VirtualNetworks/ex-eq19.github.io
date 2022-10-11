@@ -129,12 +129,12 @@ defaults:
 # https://github.com/NiklasEi/jekyll_custom_permalink
 # https://github.com/avillafiorita/jekyll-datapage_gen
 
-# collections:
-#   maps:
-#     output: true
-#   feeds:
-#     output: true
-#     sort_by: category
+collections:
+  maps:
+    output: true
+  feeds:
+    output: true
+    sort_by: category
 #     permalink: /sitemap/index_:categories:output_ext
 #   posts:
 #     permalink: /:categories/:year/:y_day/:month/:hour/:minute/:second/:title:output_ext
