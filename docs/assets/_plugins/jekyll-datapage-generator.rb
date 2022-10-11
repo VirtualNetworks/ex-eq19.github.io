@@ -165,7 +165,7 @@ module Jekyll
             # individual pages
             records = nil
 
-            enum.split('.').each do |level|
+            enum.each do |level|
               if records.nil?
                 records = site.data[level]
               else
