@@ -146,6 +146,7 @@ module Jekyll
         data.each do |data_spec|
           name_expr        = "page_data_prefix + page_num.to_s"
           filter_condition = data_spec['filter_condition']
+          filter           = data_spec['filter']
           title            = data_spec['title']
           title_expr       = "record['pos']"
           index_files_for_this_data = false
@@ -153,7 +154,6 @@ module Jekyll
           template         = 'recipe'
           page_data_prefix = 'index_'
           type             = 'roots'
-          filter           = 'root'
           debug            = false
           extension        = 'xml'
           name             = 'pos'
@@ -180,7 +180,7 @@ module Jekyll
             # - filter requires the name of a boolean field
             # - filter_condition evals an expression use =record=
             # https://www.rubyguides.com/2019/04/ruby-select-method/
-            records = records.select.with_index(1) { |record, index| record[filter] }
+            records = records.select.with_index(1) { |record, index| eval(filter) }
             records = records.select.with_index(1) { |record, index| eval(filter_condition) }
 
             # we now have the list of all records for which we want to generate individual pages
