@@ -70,7 +70,7 @@ In term of distribution, these six (6) primes are naturally laid in three (3) fo
 
 So these prime algorithm is again formed by three (3) sets of twin (2) pairs. To make live simpler let.s call them _[True Prime Pairs](https://translate.google.com/translate?js=n&sl=id&tl=en&u=https://github.com/chetabahana/chetabahana.github.io/wiki#operasi)_.
 
-{% gist 9a405dae5c2ca02a53f865b2cf8fe5fd base.txt %}
+{% gist 0ce5848f7ad62dc46dedfaa430069857 %}
 
 Let's assign another pairs (5, 7, 11, 13, 17,19) in to a combination so it will turn in reverse (19, 17, 13, 11, 7, 5) lies on the center of default. 
 
