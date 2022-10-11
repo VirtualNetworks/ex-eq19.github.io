@@ -148,7 +148,7 @@ module Jekyll
       # to generate individual pages (look at the README file for its documentation)
       data = site.data['base']
       if data
-        page_num = 0
+        page_num = 168
         data.each do |data_spec|
           name_expr        = "page_data_prefix + page_num.to_s"
           filter_condition = data_spec['filter_condition']
