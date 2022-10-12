@@ -132,10 +132,9 @@ defaults:
 collections:
   maps:
     output: true
-    permalink: /sitemap/index_:categories.xml
+    permalink: /sitemap/index_:categories:output_ext
   feeds:
     output: true
-    sort_by: category
     permalink: /sitemap/index_:categories:output_ext
   posts:
     permalink: /:categories/:year/:y_day/:month/:hour/:minute/:second/:title:output_ext
