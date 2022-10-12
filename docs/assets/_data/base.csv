@@ -1,4 +1,4 @@
 title,filter,filter_condition
 key,"index.prime?","168<index && index<=786"
-pos,"record['key']","record['pos'].end_with?(';1;1;1')"
+pos,"record['pos']","record['pos'].end_with?(';1;1;1')"
 index,"record['pos'].end_with?(';1;1;1')","index.prime?"
