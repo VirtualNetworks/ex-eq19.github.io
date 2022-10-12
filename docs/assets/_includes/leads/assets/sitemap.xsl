@@ -50,7 +50,7 @@
                         </xsl:choose>
                     </h2>
                     <p>
-                        This is an <a href="https://gist.github.com/eq19/d2336e28e79702acf38edd182003d5e0" class="link blue">XML Sitemap</a>, meant for consumption by search engines.<br/>
+                        This is an <a href="https://gist.github.com/eq19/0ce5848f7ad62dc46dedfaa430069857" class="link blue">XML Sitemap</a>, meant for consumption by search engines.<br/>
                         You can find more information about XML sitemaps on <a href="https://sitemaps.org" class="link blue">sitemaps.org</a>.
                     </p>
                 </header>
