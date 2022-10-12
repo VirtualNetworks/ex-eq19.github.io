@@ -137,6 +137,7 @@ collections:
     output: true
     permalink: /sitemap/index_:categories:output_ext
   posts:
+    output: true
     permalink: /:categories/:year/:y_day/:month/:hour/:minute/:second/:title:output_ext
 
 # Feed and Submodul Setting
