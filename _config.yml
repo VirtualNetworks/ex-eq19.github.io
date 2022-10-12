@@ -132,7 +132,7 @@ defaults:
 collections:
   maps:
     output: true
-    permalink: /sitemap/index_:category.xml
+    permalink: /sitemap/index_:categories.xml
   feeds:
     output: true
     sort_by: category
