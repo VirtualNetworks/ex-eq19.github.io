@@ -233,8 +233,8 @@ sass:
 layouts_dir         : docs/assets/_layouts
 plugins_dir         : docs/assets/_plugins
 includes_dir        : docs/assets/_includes
-collections_dir     : docs/assets/collections
 data_dir            : docs/assets/primes/numberGenerator/python/prime_lists/_data
+collections_dir     : docs/assets/primes/numberGenerator/python/results/collections
 
 # Site Metadata
 # https://docs.github.com/en/pages
