@@ -230,11 +230,11 @@ repository: eq19/eq19.github.io
 
 sass:
     sass_dir        : css/_sass
-data_dir            : docs/assets/_data
 layouts_dir         : docs/assets/_layouts
 plugins_dir         : docs/assets/_plugins
 includes_dir        : docs/assets/_includes
 collections_dir     : docs/assets/collections
+data_dir            : docs/assets/primes/numberGenerator/python/prime_lists/_data
 
 # Site Metadata
 # https://docs.github.com/en/pages
