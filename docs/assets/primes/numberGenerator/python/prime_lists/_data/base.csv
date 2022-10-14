@@ -1,5 +1,6 @@
-title,filter,filter_condition
-key,"1000<index && index<=10000","Array.new(2, 'index.prime?').flatten.compact.join(',')",
-key,"7921<index && index<=20000","Array.new(3, 'index.prime?').flatten.compact.join(',')",
+title,filter,prime_level
+key,"index < 1000",1
+key,"1000 < index && index <= 10000",2
+key,"7921 < index && index <= 20000",3
 pos,"record['pos'],record['pos'].end_with?(';1;1;1')"
-index,"record['pos'].end_with?(';1;1;1'),index.prime?"
+index,"record['pos'].end_with?(';1;1;1')",1

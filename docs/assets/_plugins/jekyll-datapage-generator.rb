@@ -145,7 +145,7 @@ module Jekyll
         page_num = 168
         data.each do |data_spec|
           name_expr        = "page_data_prefix + page_num.to_s"
-          filter_condition = data_spec['filter_condition']
+          prime_level      = data_spec['prime_level']
           filter           = data_spec['filter']
           title            = data_spec['title']
           title_expr       = "record['pos']"
@@ -183,9 +183,9 @@ module Jekyll
             filter.split(',').each do |level|
               records = records.select.with_index(1) { |record, index| eval(level) }
             end
-            if (filter_condition)
-              eval(filter_condition).split(',').each do |level|
-                records = records.select.with_index(1) { |record, index| eval(level) }
+            if (prime_level)
+              Array.new(prime_level).each do |level|
+                records = records.select.with_index(1) { |record, index| index.prime? }
               end
             end
 
