@@ -184,8 +184,8 @@ module Jekyll
               records = records.select.with_index(1) { |record, index| eval(level) }
             end
             if (prime_level)
-              Array.new(prime_level).each do |level|
-                records = records.select.with_index(1) { |record, index| index.prime? }
+              Array.new(prime_level, 'index.prime?').each do |level|
+                records = records.select.with_index(1) { |record, index| eval(level) }
               end
             end
 
