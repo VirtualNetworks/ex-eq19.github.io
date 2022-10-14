@@ -180,11 +180,13 @@ module Jekyll
             # - filter requires the name of a boolean field
             # - filter_condition evals an expression use =record=
             # https://www.rubyguides.com/2019/04/ruby-select-method/
-			filter.split(',').each do |level|
+            filter.split(',').each do |level|
               records = records.select.with_index(1) { |record, index| eval(level) }
             end
-			eval(filter_condition).split(',').each do |level|
-              records = records.select.with_index(1) { |record, index| eval(level) }
+            if (filter_condition)
+              eval(filter_condition).split(',').each do |level|
+                records = records.select.with_index(1) { |record, index| eval(level) }
+              end
             end
 
             # we now have the list of all records for which we want to generate individual pages
