@@ -1,5 +1,5 @@
 title,filter,filter_condition
-key,"1000<index && index<=10000","Array.new(2, 'index.prime?').join(',')"
-key,"7921<index && index<=10000","Array.new(3, 'index.prime?').join(',')"
+key,"1000<index && index<=10000","index.prime?,index.prime?",
+key,"7921<index && index<=20000","index.prime?,index.prime?,index.prime?",
 pos,"record['pos']","record['pos'].end_with?(';1;1;1')"
 index,"record['pos'].end_with?(';1;1;1')","index.prime?"
