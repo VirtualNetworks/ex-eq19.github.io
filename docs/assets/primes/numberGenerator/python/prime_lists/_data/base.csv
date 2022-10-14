@@ -1,4 +1,4 @@
 title,filter,filter_condition
-key,"1000<index && index<=10000 && index.prime?","index.prime?",
+key,"1000<index && index<=10000","index.prime?,index.prime?",
 pos,"record['pos']","record['pos'].end_with?(';1;1;1')"
 index,"record['pos'].end_with?(';1;1;1')","index.prime?"
