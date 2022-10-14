@@ -183,7 +183,7 @@ module Jekyll
 			filter.split(',').each do |level|
               records = records.select.with_index(1) { |record, index| eval(level) }
             end
-			filter_condition.split(',').each do |level|
+			eval(filter_condition).split(',').each do |level|
               records = records.select.with_index(1) { |record, index| eval(level) }
             end
 
