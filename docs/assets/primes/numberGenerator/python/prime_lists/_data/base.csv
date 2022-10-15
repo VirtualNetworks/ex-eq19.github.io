@@ -1,6 +1,6 @@
 title,filter,prime_level
-key,"index < 1000",1
-key,"1000 < index && index <= 10000",2
-key,"index > 7921",3
+key,"index.prime?,index <= 168"
+key,"index.prime?,index.prime?,40 <= index && index <= 200"
+key,"index.prime?,index.prime?,index.prime?,index >= 40"
 pos,"record['pos'].end_with?(';1;1;1')"
 index,"record['pos'].end_with?(';1;1;1')",1
