@@ -186,9 +186,11 @@ module Jekyll
                 records = records.select.with_index(1) { |record, index| eval(level) }
               end
             end
+
             filter.split(',').each do |level|
               records = records.select.with_index(1) { |record, index| eval(level) }
             end
+
             if (prime_get)
               Array.new(prime_get.to_i, "index.prime?").each do |level|
                 records = records.select.with_index(1) { |record, index| eval(level) }
