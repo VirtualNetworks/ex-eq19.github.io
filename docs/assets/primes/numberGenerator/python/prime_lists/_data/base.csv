@@ -1,8 +1,8 @@
 title,prime_set,filter,prime_get
-key,1,"index <= 168"
-key,2,"40 <= index && index <= 200"
-key,2,"278 < index && index <= 329"
-key,3,"40 <= index && index <= 229"
-pos,0,"record['pos'].end_with?(';1;1;1')"
+key,1,"index <= 168",0
+key,2,"40 <= index && index <= 200",0
+key,2,"278 < index && index <= 329",0
+key,3,"40 <= index && index <= 229",0
+pos,0,"record['pos'].end_with?(';1;1;1')",0
 key,0,"index <= 100",1
 pos,0,"record['pos'].end_with?(';1;1;1')",1
