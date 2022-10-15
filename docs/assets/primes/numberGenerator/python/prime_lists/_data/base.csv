@@ -1,8 +1,8 @@
 title,filter,prime_level
-key,"index <= 100",1
-key,"index <= 229",1
 key,"index.prime?,index <= 168"
 key,"index.prime?,index.prime?,40 <= index && index <= 200"
-key,"index.prime?,index.prime?,index.prime?,40 <= index && index <= 329"
+key,"index.prime?,index.prime?,278 < index && index <= 329"
+key,"index.prime?,index.prime?,index.prime?,40 <= index && index <= 229"
+key,"index <= 100",1
 pos,"record['pos'].end_with?(';1;1;1')"
 index,"record['pos'].end_with?(';1;1;1')",1
