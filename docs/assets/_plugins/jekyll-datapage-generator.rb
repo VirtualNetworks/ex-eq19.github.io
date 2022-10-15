@@ -144,9 +144,9 @@ module Jekyll
       if data
         page_num = 168
         data.each do |data_spec|
+          set              = "index.prime?," * data_spec['set'].to_i
+          get              = "index.prime?," * data_spec['get'].to_i
           name_expr        = "page_data_prefix + page_num.to_s"
-          set              = data_spec['prime_set'].to_i
-          get              = data_spec['prime_get'].to_i
           filter           = data_spec['filter']
           title            = data_spec['title']
           title_expr       = "record['pos']"
@@ -181,7 +181,7 @@ module Jekyll
             # - filter requires the name of a boolean field
             # - filter_condition evals an expression use =record=
             # https://www.rubyguides.com/2019/04/ruby-select-method/
-            filter = "index.prime?," * set + filter + ",index.prime?" * get
+            filter = set + filter + get
             filter.split(',').each do |level|
               records = records.select.with_index(1) { |record, index| eval(level) }
             end
