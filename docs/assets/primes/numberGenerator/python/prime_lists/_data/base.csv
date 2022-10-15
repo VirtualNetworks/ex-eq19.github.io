@@ -1,5 +1,7 @@
 title,filter,prime_level
+key,"index.prime?,index <= 100"
 key,"index.prime?,index <= 168"
+key,"index.prime?,index <= 229"
 key,"index.prime?,index.prime?,40 <= index && index <= 200"
 key,"index.prime?,index.prime?,index.prime?,40 <= index && index <= 329"
 pos,"record['pos'].end_with?(';1;1;1')"
