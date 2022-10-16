@@ -27,7 +27,7 @@ module Jekyll
     #
     # - `index_files` specifies if we want to generate named folders (true) or not (false)
     # - `dir` is the default output directory
-    # - `page_data_prefix` is the prefix used to output the page data
+    # - `prefix is the page_data_prefix`used to output the page data
     # - `data` is the data of the record for which we are generating a page
     # - `name` is the key in `data` which determines the output filename
     # - `name_expr` is an expression for generating the output filename
@@ -35,7 +35,7 @@ module Jekyll
     # - `title_expr` is an expression for generating the page title
     # - `template` is the name of the template for generating the page
     # - `extension` is the extension for the generated file
-    def initialize(site, base, page_num, index, index_files, dir, page_data_prefix, data, name, name_expr, title, title_expr, template, extension, debug)
+    def initialize(site, base, page_num, index, index_files, dir, prefix, data, name, name_expr, title, title_expr, template, extension, debug)
       @site = site
       @base = base
 
@@ -44,7 +44,7 @@ module Jekyll
         puts ">> #{data}"
 
         puts "debug (datapage-gen) Configuration variables:"
-        [:index_files, :dir, :page_data_prefix, :name, :name_expr, :title, :title_expr, :template, :extension].each do |variable|
+        [:index_files, :dir, :prefix, :name, :name_expr, :title, :title_expr, :template, :extension].each do |variable|
           puts ">> #{variable}: #{eval(variable.to_s)}"
         end
       end
@@ -110,8 +110,8 @@ module Jekyll
 
       # add all the information defined in _data for the current record to the
       # current page (so that we can access it with liquid tags)
-      if page_data_prefix
-        self.data[page_data_prefix] = data
+      if prefix
+        self.data[prefix] = data
       else
         if data.key?('name')
           data['_name'] = data['name']
@@ -146,15 +146,15 @@ module Jekyll
         data.each do |data_spec|
           set              = "index.prime?," * data_spec['set'].to_i
           get              = "index.prime?," * data_spec['get'].to_i
-          name_expr        = "page_data_prefix + page_num.to_s"
           filter           = set + data_spec['filter'] + get
+          name_expr        = "prefix + page_num.to_s"
           title            = data_spec['title']
           title_expr       = "record['pos']"
-          index_files_for_this_data = false
           dir              = 'sitemap'
           template         = 'recipe'
-          page_data_prefix = 'index_'
+          prefix           = 'index_'
           type             = 'roots'
+          index_files_data = false
           debug            = false
           extension        = 'xml'
           name             = 'pos'
@@ -189,7 +189,7 @@ module Jekyll
             # iterate and call the constructor
             records.each.with_index(1) do |record, index|
               page_num += 1
-              site.pages << DataPage.new(site, site.source, page_num, index, index_files_for_this_data, dir, page_data_prefix, record, name, name_expr, title, title_expr, template, extension, debug)
+              site.pages << DataPage.new(site, site.source, page_num, index, index_files_data, dir, prefix, record, name, name_expr, title, title_expr, template, extension, debug)
             end
           end
         end
