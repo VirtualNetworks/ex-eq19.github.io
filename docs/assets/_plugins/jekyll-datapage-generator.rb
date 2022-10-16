@@ -150,11 +150,11 @@ module Jekyll
           name_expr        = "prefix + page_num.to_s"
           title_expr       = "record['pos']"
           filter           = set + up + get
-          title            = row['title']
+          type             = row['type']
           dir              = 'sitemap'
           template         = 'recipe'
+          title            = 'title'
           prefix           = 'index_'
-          type             = 'roots'
           index_files_data = false
           debug            = false
           extension        = 'xml'
