@@ -143,13 +143,13 @@ module Jekyll
       data = site.data['base']
       if data
         page_num = 168
-        data.each do |data_spec|
-          set              = "index.prime?," * data_spec['set'].to_i
-          get              = ",index.prime?" * data_spec['get'].to_i
-          filter           = set + data_spec['filter'] + get
+        data.each do |row|
+          set              = "index.prime?," * row['set'].to_i
+          get              = ",index.prime?" * row['get'].to_i
+          filter           = set + row['filter'] + get
           name_expr        = "prefix + page_num.to_s"
-          title            = data_spec['title']
           title_expr       = "record['pos']"
+          title            = row['title']
           dir              = 'sitemap'
           template         = 'recipe'
           prefix           = 'index_'
