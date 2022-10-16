@@ -1,9 +1,9 @@
-title,set,filter,get
-key,1,"1 < index && index <= 168",0
-key,2,"1 < index && index <= 30",0
-key,2,"40 < index && index <= 200",0
-key,2,"278 < index && index <= 329",0
-key,3,"1 < index && index <= 30",0
-key,3,"40 < index && index <= 229",0
-key,0,"2 < index && index <= 619",1
-key,0,"3 < index && index <= 100",1
+title,set,up,get
+key,1,"1;168",0
+key,2,"1;30",0
+key,2,"40;200",0
+key,2,"278;329",0
+key,3,"1;30",0
+key,3,"40;229",0
+key,0,"2;619",1
+key,0,"3;100",1
