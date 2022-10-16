@@ -145,7 +145,7 @@ module Jekyll
         page_num = 168
         data.each do |data_spec|
           set              = "index.prime?," * data_spec['set'].to_i
-          get              = "index.prime?," * data_spec['get'].to_i
+          get              = ",index.prime?" * data_spec['get'].to_i
           filter           = set + data_spec['filter'] + get
           name_expr        = "prefix + page_num.to_s"
           title            = data_spec['title']
