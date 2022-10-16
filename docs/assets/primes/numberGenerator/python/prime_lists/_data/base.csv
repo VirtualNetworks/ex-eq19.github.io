@@ -5,5 +5,5 @@ key,2,"40 <= index && index <= 200",0
 key,2,"278 < index && index <= 329",0
 pos,0,"record['pos'].end_with?(';1;1;1')",1
 key,3,"40 <= index && index <= 229",0
-pos,0,"record['pos'].end_with?(';1;1;1')",0
-key,0,"index <= 100",1
+pos,0,"record['pos'].end_with?(';1;1;1') && 1 < index",0
+key,0,"2 < index && index <= 100",1
