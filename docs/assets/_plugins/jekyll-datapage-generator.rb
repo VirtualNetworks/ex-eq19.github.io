@@ -142,6 +142,7 @@ module Jekyll
       # https://github.com/ruby/prime
       data = site.data['base']
       if data
+        up_last = 0
         page_num = 168
         data.each do |row|
           set              = "index.prime?," * row['set'].to_i
@@ -181,20 +182,33 @@ module Jekyll
             # - filter requires the name of a boolean field
             # - filter_condition evals an expression use =record=
             # https://www.rubyguides.com/2019/04/ruby-select-method/
-			
-            filter = set + up.gsub(";"," < index && index <= ") + get
-            filter.split(',').each do |level|
-              records = records.select.with_index(1) { |record, index| eval(level) }
+
+            up = "0;" + up if up.scan(";").size == 0
+            up.split(";").each.with_index do |now, i|
+
+              if i < 1
+                results = records
+                next
+              end
+
+              up_next = up_last + now.to_i
+              filter = set + "#{up_last} < index && index <= #{up_next}" + get
+              up_last = up_next
+
+              filter.split(',').each do |level|
+                results = results.select.with_index(1) { |result, index| eval(level) }
+              end
+
+              # we now have the list of all results for which we want to generate individual pages
+              # iterate and call the constructor
+              results.each.with_index(1) do |result, index|
+                page_num += 1
+                site.pages << DataPage.new(site, site.source, page_num, index, index_files_data, dir, prefix, result, name, name_expr, title, title_expr, template, extension, debug)
+              end
+
             end
 
-            # we now have the list of all records for which we want to generate individual pages
-            # iterate and call the constructor
-            records.each.with_index(1) do |record, index|
-              page_num += 1
-              site.pages << DataPage.new(site, site.source, page_num, index, index_files_data, dir, prefix, record, name, name_expr, title, title_expr, template, extension, debug)
-            end
-
-          end
+         end
         end
       end
     end
