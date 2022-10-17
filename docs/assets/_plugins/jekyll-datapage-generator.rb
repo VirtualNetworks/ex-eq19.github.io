@@ -145,11 +145,11 @@ module Jekyll
         page_num = 168
         data.each do |row|
           name_expr        = "'index_' + page_num.to_s + '_' + prefix.to_s + '_' + title.to_s + '_' + index.to_s"
-          set              = row['pos'].split(";")[2].to_i - 1
-          get              = row['pos'].split(";")[1].to_i - 1
+          pos              = row['pos'].split(";")
+          prefix           = pos[2].to_i - 1
+          suffix           = pos[1].to_i - 1
           title_expr       = "record['pos']"
-          up               = row['node']
-          prefix           = row['set']
+          node             = row['node']
           dir              = 'sitemap'
           template         = 'recipe'
           type             = 'roots'
@@ -181,23 +181,23 @@ module Jekyll
             # - filter_condition evals an expression use =record=
             # https://www.rubyguides.com/2019/04/ruby-select-method/
 
-            up_last = 0
-            up = "0;" + up if up.scan(";").size == 0
-            up.split(";").each.with_index do |title, i|
+            node_last = 0
+            node = "0;" + node if node.scan(";").size == 0
+            node.split(";").each.with_index do |title, i|
 
               results = records
-              up_next = up_last + title.to_i
+              node_next = node_last + title.to_i
 
-              filter = "index.prime?," * set 
-			  filter += "#{up_last} < index && index <= #{up_next}"
-			  filter += ",index.prime?" * get
+              filter = "index.prime?," * prefix 
+			  filter += "#{node_last} < index && index <= #{node_next}"
+			  filter += ",index.prime?" * suffix
               filter.split(',').each do |level|
                 results = results.select.with_index(1) { |result, index| eval(level) }
               end
 
               # we now have the list of all results for which we want to generate individual pages
               # iterate and call the constructor
-              up_last = up_next
+              node_last = node_next
               results.each.with_index(1) do |result, index|
                 page_num += 1
                 site.pages << DataPage.new(site, site.source, page_num, index, index_files_data, dir, prefix, result, name, name_expr, title, title_expr, template, extension, debug)
