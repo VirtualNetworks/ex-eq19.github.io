@@ -145,7 +145,7 @@ module Jekyll
         up_last = 0
         page_num = 168
         data.each do |row|
-          name_expr        = "'index_' + page_num.to_s + '_' + prefix + '_' + title + '_' + index"
+          name_expr        = "'index_#{page_num}_#{prefix}_#{title}_#{index}'"
           set              = "index.prime?," * row['set'].to_i
           get              = ",index.prime?" * row['get'].to_i
           title_expr       = "record['pos']"
@@ -187,7 +187,6 @@ module Jekyll
 
               up_next = up_last + title.to_i
               filter = set + "#{up_last} < index && index <= #{up_next}" + get
-              up_last = up_next
               up_last = up_next
 
               results = records
