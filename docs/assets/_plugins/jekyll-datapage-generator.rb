@@ -145,15 +145,15 @@ module Jekyll
         up_last = 0
         page_num = 168
         data.each do |row|
+          name_expr        = "prefix + page_num.to_s + '_' + title"
           set              = "index.prime?," * row['set'].to_i
           get              = ",index.prime?" * row['get'].to_i
-          name_expr        = "prefix + page_num.to_s + '_' + row['set']"
           title_expr       = "record['pos']"
           type             = row['type']
+          title            = row['set']
           up               = row['up']
           dir              = 'sitemap'
           template         = 'recipe'
-          title            = 'title'
           prefix           = 'index_'
           index_files_data = false
           debug            = false
