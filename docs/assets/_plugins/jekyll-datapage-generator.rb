@@ -186,15 +186,11 @@ module Jekyll
             up = "0;" + up if up.scan(";").size == 0
             up.split(";").each.with_index do |now, i|
 
-              if i < 1
-                results = records
-                next
-              end
-
               up_next = up_last + now.to_i
               filter = set + "#{up_last} < index && index <= #{up_next}" + get
               up_last = up_next
 
+              results = records
               filter.split(',').each do |level|
                 results = results.select.with_index(1) { |result, index| eval(level) }
               end
