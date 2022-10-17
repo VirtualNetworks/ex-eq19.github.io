@@ -1,4 +1,4 @@
-key,val,pos,node,name,link,root
+key,spin,pos,node,name,link,root
 2,0;1;0,1;1;1;1,2,bi,PP,PREFIX|bi+
 3,1;1;0,1;1;1;2,60;40,somi,N,STEM|POS:N|LEM:{som|ROOT:smw|M|GEN
 5,2;1;0,1;1;2;1,1;30;30;5,{ll~ahi,PN,STEM|POS:PN|LEM:{ll~ah|ROOT:Alh|GEN

@@ -145,6 +145,7 @@ module Jekyll
         page_num = 168
         data.each do |row|
           name_expr        = "'index_' + page_num.to_s + '_' + prefix.to_s + '_' + title.to_s + '_' + index.to_s"
+          spin             = row['spin'].split(";")
           pos              = row['pos'].split(";")
           prefix           = pos[2].to_i - 1
           suffix           = pos[1].to_i - 1
