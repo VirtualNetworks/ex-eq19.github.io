@@ -147,7 +147,7 @@ module Jekyll
         data.each do |row|
           set              = "index.prime?," * row['set'].to_i
           get              = ",index.prime?" * row['get'].to_i
-          name_expr        = "prefix + page_num.to_s + row['set']"
+          name_expr        = "prefix + page_num.to_s + '_' + row['set']"
           title_expr       = "record['pos']"
           type             = row['type']
           up               = row['up']
