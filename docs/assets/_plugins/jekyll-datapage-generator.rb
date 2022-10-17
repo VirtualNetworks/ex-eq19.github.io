@@ -145,16 +145,15 @@ module Jekyll
         up_last = 0
         page_num = 168
         data.each do |row|
-          name_expr        = "prefix + page_num.to_s + '_' + title"
+          name_expr        = "'index_' + page_num.to_s + '_' + prefix + '_' + title + '_' + index"
           set              = "index.prime?," * row['set'].to_i
           get              = ",index.prime?" * row['get'].to_i
           title_expr       = "record['pos']"
           type             = row['type']
-          title            = row['set']
+          prefix           = row['set']
           up               = row['up']
           dir              = 'sitemap'
           template         = 'recipe'
-          prefix           = 'index_'
           index_files_data = false
           debug            = false
           extension        = 'xml'
@@ -184,10 +183,11 @@ module Jekyll
             # https://www.rubyguides.com/2019/04/ruby-select-method/
 
             up = "0;" + up if up.scan(";").size == 0
-            up.split(";").each.with_index do |now, i|
+            up.split(";").each.with_index do |title, i|
 
-              up_next = up_last + now.to_i
+              up_next = up_last + title.to_i
               filter = set + "#{up_last} < index && index <= #{up_next}" + get
+              up_last = up_next
               up_last = up_next
 
               results = records
