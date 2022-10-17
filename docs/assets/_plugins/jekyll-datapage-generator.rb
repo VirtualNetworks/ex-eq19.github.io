@@ -145,14 +145,14 @@ module Jekyll
         page_num = 168
         data.each do |row|
           name_expr        = "'index_' + page_num.to_s + '_' + prefix.to_s + '_' + title.to_s + '_' + index.to_s"
-          set              = "index.prime?," * row['set'].to_i
-          get              = ",index.prime?" * row['get'].to_i
+          set              = row['pos'].split(";")[2].to_i - 1
+          get              = row['pos'].split(";")[1].to_i - 1
           title_expr       = "record['pos']"
-          type             = row['type']
+          up               = row['node']
           prefix           = row['set']
-          up               = row['up']
           dir              = 'sitemap'
           template         = 'recipe'
+          type             = 'roots'
           index_files_data = false
           debug            = false
           extension        = 'xml'
@@ -185,11 +185,12 @@ module Jekyll
             up = "0;" + up if up.scan(";").size == 0
             up.split(";").each.with_index do |title, i|
 
-              up_next = up_last + title.to_i
-              filter = set + "#{up_last} < index && index <= #{up_next}" + get
-              up_last = up_next
-
               results = records
+              up_next = up_last + title.to_i
+
+              filter = "index.prime?," * set 
+			  filter += "#{up_last} < index && index <= #{up_next}"
+			  filter += ",index.prime?" * get
               filter.split(',').each do |level|
                 results = results.select.with_index(1) { |result, index| eval(level) }
               end
@@ -201,6 +202,7 @@ module Jekyll
                 site.pages << DataPage.new(site, site.source, page_num, index, index_files_data, dir, prefix, result, name, name_expr, title, title_expr, template, extension, debug)
               end
 
+              up_last = up_next
             end
 
          end
