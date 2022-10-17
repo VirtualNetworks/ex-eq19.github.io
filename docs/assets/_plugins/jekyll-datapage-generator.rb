@@ -142,10 +142,9 @@ module Jekyll
       # https://github.com/ruby/prime
       data = site.data['base']
       if data
-        up_last = 0
         page_num = 168
         data.each do |row|
-          name_expr        = "'index_#{page_num}_#{prefix}_#{title}_#{index}'"
+          name_expr        = "'index_' + page_num.to_s + '_' + prefix.to_s + '_' + title.to_s + '_' index.to_s"
           set              = "index.prime?," * row['set'].to_i
           get              = ",index.prime?" * row['get'].to_i
           title_expr       = "record['pos']"
@@ -182,6 +181,7 @@ module Jekyll
             # - filter_condition evals an expression use =record=
             # https://www.rubyguides.com/2019/04/ruby-select-method/
 
+            up_last = 0
             up = "0;" + up if up.scan(";").size == 0
             up.split(";").each.with_index do |title, i|
 
