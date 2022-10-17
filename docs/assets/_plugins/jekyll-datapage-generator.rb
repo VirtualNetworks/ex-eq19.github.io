@@ -197,12 +197,12 @@ module Jekyll
 
               # we now have the list of all results for which we want to generate individual pages
               # iterate and call the constructor
+              up_last = up_next
               results.each.with_index(1) do |result, index|
                 page_num += 1
                 site.pages << DataPage.new(site, site.source, page_num, index, index_files_data, dir, prefix, result, name, name_expr, title, title_expr, template, extension, debug)
               end
 
-              up_last = up_next
             end
 
          end
