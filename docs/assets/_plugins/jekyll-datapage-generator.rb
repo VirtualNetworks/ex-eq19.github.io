@@ -144,13 +144,12 @@ module Jekyll
       if data
         page_num = 168
         data.each do |row|
-          up               = row['up'].gsub(";"," < index && index <= ")
           set              = "index.prime?," * row['set'].to_i
           get              = ",index.prime?" * row['get'].to_i
           name_expr        = "prefix + page_num.to_s"
           title_expr       = "record['pos']"
-          filter           = set + up + get
           type             = row['type']
+          up               = row['up']
           dir              = 'sitemap'
           template         = 'recipe'
           title            = 'title'
@@ -182,6 +181,8 @@ module Jekyll
             # - filter requires the name of a boolean field
             # - filter_condition evals an expression use =record=
             # https://www.rubyguides.com/2019/04/ruby-select-method/
+			
+            filter = set + up.gsub(";"," < index && index <= ") + get
             filter.split(',').each do |level|
               records = records.select.with_index(1) { |record, index| eval(level) }
             end
@@ -192,6 +193,7 @@ module Jekyll
               page_num += 1
               site.pages << DataPage.new(site, site.source, page_num, index, index_files_data, dir, prefix, record, name, name_expr, title, title_expr, template, extension, debug)
             end
+
           end
         end
       end
