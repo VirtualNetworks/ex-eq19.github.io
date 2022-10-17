@@ -144,7 +144,7 @@ module Jekyll
       if data
         page_num = 168
         data.each do |row|
-          name_expr        = "'index_' + page_num.to_s + '_' + prefix.to_s + '_' + title.to_s + '_' index.to_s"
+          name_expr        = "'index_' + page_num.to_s + '_' + prefix.to_s + '_' + title.to_s + '_' + index.to_s"
           set              = "index.prime?," * row['set'].to_i
           get              = ",index.prime?" * row['get'].to_i
           title_expr       = "record['pos']"
