@@ -152,9 +152,9 @@ module Jekyll
           suffix           = pos[1].to_i - 1
           title_expr       = "record['pos']"
           node             = row['node']
+          type             = row['type']
           dir              = 'sitemap'
           template         = 'recipe'
-          type             = 'roots'
           index_files_data = false
           debug            = false
           extension        = 'xml'
@@ -187,7 +187,8 @@ module Jekyll
             node = "0;" + node if node.scan(";").size == 0
             node.split(";").each.with_index do |title, i|
 
-              results = records
+              results = data
+              results = records if records
               node_next = node_last + title.to_i
 
               filter = "index.prime?," * prefix 
