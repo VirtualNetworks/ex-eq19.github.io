@@ -140,11 +140,11 @@ module Jekyll
       # data contains the specification of all the datasets for which we want
       # to generate individual pages (look at the README file for its documentation)
       # https://github.com/ruby/prime
-      data = site.data['base']
+      data = site.data['roots']
       if data
         page_num = 168
         data.each do |row|
-          break if page_num >= 1000
+          break if page_num > 1000
           name_expr        = "'index_' + page_num.to_s + '_' + prefix.to_s + '_' + title.to_s + '_' + index.to_s"
           spin             = row['spin'].split(";")
           pos              = row['pos'].split(";")
