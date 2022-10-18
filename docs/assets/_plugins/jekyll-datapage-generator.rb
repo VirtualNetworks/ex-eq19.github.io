@@ -194,6 +194,7 @@ module Jekyll
               filter = "index.prime?," * prefix 
 			  filter += "#{node_last} < index && index <= #{node_next}"
 			  filter += ",index.prime?" * suffix
+
               filter.split(',').each do |level|
                 results = results.select.with_index(1) { |result, index| eval(level) }
               end
