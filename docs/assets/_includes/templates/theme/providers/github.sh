@@ -17,7 +17,7 @@ echo -e "\nDeploying to ${REPOSITORY} on branch ${BRANCH}"
 echo -e "Deploying to https://github.com/${REPOSITORY}.git\n"
 
 REMOTE_REPO="https://${ACTOR}:${TOKEN}@github.com/${REPOSITORY}.git" && \
-  git init -initial-branch=master && \
+  git init --initial-branch=master && \
   git config user.name "${ACTOR}" && \
   git config user.email "${ACTOR}@users.noreply.github.com" && \
   git add . && \
