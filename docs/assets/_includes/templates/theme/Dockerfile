@@ -1,8 +1,11 @@
 FROM archlinux:base-devel
 
-LABEL version="0.1.0"
-LABEL maintainer="Jeffrey Tse <jeffreytse.mail@gmail.com>"
-LABEL homepage="https://github.com/jeffreytse/jekyll-deploy-action"
+LABEL version="0.6.0"
+LABEL maintainer="Pact Foundation <pact-support@googlegroups.com>"
+LABEL homepage="https://github.com/pact-foundation/pact-ruby-cli/blob/master/Dockerfile"
+
+ENV NOKOGIRI_USE_SYSTEM_LIBRARIES=1
+ENV BUNDLE_SILENCE_ROOT_WARNING=1
 
 COPY LICENSE.txt README.md /
 

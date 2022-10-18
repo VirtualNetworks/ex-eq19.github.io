@@ -13,16 +13,17 @@ fi
 touch .nojekyll
 [ -n "$INPUT_CNAME" ] && echo "$INPUT_CNAME" > CNAME
 
-echo "Deploying to ${REPOSITORY} on branch ${BRANCH}"
-echo "Deploying to https://${ACTOR}:${TOKEN}@github.com/${REPOSITORY}.git"
+echo -e "\nDeploying to ${REPOSITORY} on branch ${BRANCH}"
+echo -e "Deploying to https://github.com/${REPOSITORY}.git\n"
 
 REMOTE_REPO="https://${ACTOR}:${TOKEN}@github.com/${REPOSITORY}.git" && \
   git init && \
   git config user.name "${ACTOR}" && \
   git config user.email "${ACTOR}@users.noreply.github.com" && \
+  git config --global init.defaultBranch main && \
   git add . && \
   git commit -m "jekyll build from Action ${GITHUB_SHA}" && \
-  git push --force $REMOTE_REPO master:$BRANCH && \
+  git push --force $REMOTE_REPO main:$BRANCH && \
   fuser -k .git || rm -rf .git && \
   cd ..
 
