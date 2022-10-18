@@ -140,21 +140,21 @@ module Jekyll
       # data contains the specification of all the datasets for which we want
       # to generate individual pages (look at the README file for its documentation)
       # https://github.com/ruby/prime
-      data = site.data['base']
+      data = site.data['roots']
       if data
         page_num = 168
         data.each do |row|
-          up               = row['up'].gsub(";"," < index && index <= ")
-          set              = "index.prime?," * row['set'].to_i
-          get              = ",index.prime?" * row['get'].to_i
-          name_expr        = "prefix + page_num.to_s"
+          break if page_num > 1000
+          name_expr        = "'index_' + page_num.to_s + '_' + prefix.to_s + '_' + title.to_s + '_' + index.to_s"
+          spin             = row['spin'].split(";")
+          pos              = row['pos'].split(";")
+          prefix           = pos[2].to_i - 1
+          suffix           = pos[1].to_i - 1
           title_expr       = "record['pos']"
-          filter           = set + up + get
+          node             = row['node']
           type             = row['type']
           dir              = 'sitemap'
           template         = 'recipe'
-          title            = 'title'
-          prefix           = 'index_'
           index_files_data = false
           debug            = false
           extension        = 'xml'
@@ -182,17 +182,34 @@ module Jekyll
             # - filter requires the name of a boolean field
             # - filter_condition evals an expression use =record=
             # https://www.rubyguides.com/2019/04/ruby-select-method/
-            filter.split(',').each do |level|
-              records = records.select.with_index(1) { |record, index| eval(level) }
+
+            node_last = 0
+            node = "0;" + node if node.scan(";").size == 0
+            node.split(";").each.with_index do |title, i|
+
+              results = data
+              results = records if records
+              node_next = node_last + title.to_i
+
+              filter = "index.prime?," * prefix 
+			  filter += "#{node_last} < index && index <= #{node_next}"
+			  filter += ",index.prime?" * suffix
+
+              filter.split(',').each do |level|
+                results = results.select.with_index(1) { |result, index| eval(level) }
+              end
+
+              # we now have the list of all results for which we want to generate individual pages
+              # iterate and call the constructor
+              node_last = node_next
+              results.each.with_index(1) do |result, index|
+                page_num += 1
+                site.pages << DataPage.new(site, site.source, page_num, index, index_files_data, dir, prefix, result, name, name_expr, title, title_expr, template, extension, debug)
+              end
+
             end
 
-            # we now have the list of all records for which we want to generate individual pages
-            # iterate and call the constructor
-            records.each.with_index(1) do |record, index|
-              page_num += 1
-              site.pages << DataPage.new(site, site.source, page_num, index, index_files_data, dir, prefix, record, name, name_expr, title, title_expr, template, extension, debug)
-            end
-          end
+         end
         end
       end
     end
