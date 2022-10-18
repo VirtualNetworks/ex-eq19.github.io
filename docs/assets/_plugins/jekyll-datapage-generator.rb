@@ -123,6 +123,7 @@ module Jekyll
   end
 
   class JekyllDatapageGenerator < Generator
+    require 'graphql'
     require 'prime'
     safe true
 
