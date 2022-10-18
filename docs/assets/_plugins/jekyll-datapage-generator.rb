@@ -144,6 +144,7 @@ module Jekyll
       if data
         page_num = 168
         data.each do |row|
+          break if page_num >= 1000
           name_expr        = "'index_' + page_num.to_s + '_' + prefix.to_s + '_' + title.to_s + '_' + index.to_s"
           spin             = row['spin'].split(";")
           pos              = row['pos'].split(";")
