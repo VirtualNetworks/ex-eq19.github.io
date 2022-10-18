@@ -48,7 +48,7 @@ theme: dist
 	@gem install *.gem && rm -f *.gem
 
 build: dist
-	@${DEBUG} bundle exec jekyll build --profile
+	@${DEBUG} bundle exec jekyll build --trace --profile
 	@bash /script/artifact.sh
 
 server: dist
