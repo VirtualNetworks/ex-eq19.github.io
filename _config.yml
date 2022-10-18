@@ -234,7 +234,7 @@ layouts_dir         : docs/assets/_layouts
 plugins_dir         : docs/assets/_plugins
 includes_dir        : docs/assets/_includes
 data_dir            : docs/assets/primes/numberGenerator/python/prime_lists/_data
-collections_dir     : docs/assets/primes/numberGenerator/python/results/collections
+collections_dir     : docs/assets/primes/numberGenerator/python/prime_lists/_data/_base
 
 # Site Metadata
 # https://docs.github.com/en/pages
