@@ -125,7 +125,21 @@ module Jekyll
   class JekyllDatapageGenerator < Generator
     require 'graphql'
     require 'prime'
+    require 'rack'
     safe true
+
+    def call(env)
+      request = Rack::Request.new(env)
+      if request.request_method == 'POST' && request.path == '/graphql'
+        params         = request.params
+        query          = params[:query]
+        variables      = params[:variables]
+        operation_name = params[:operationName]
+        result         = AppSchema.execute(query, variables: variables, 
+                         context: {}, operation_name: operation_name)
+        [200, { 'Content-Type' => 'application/json' },[result.to_json]]
+      end
+    end
 
     # the function =generate= loops over the =_config.yml/syntax_gen=
     # specification, determining what sets of pages have to be generated,
