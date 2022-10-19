@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export hr=$(printf '=%.0s' {1..40})
+
 # os version
 echo -e "\nOS VERSION\n$hr"
 cat /etc/os-release
