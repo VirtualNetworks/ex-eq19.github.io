@@ -2,7 +2,7 @@ ALIAS=grammar
 DEBUG=JEKYLL_GITHUB_TOKEN=${TOKEN}
 
 help:
-	@echo "HomePage: https://github.com/rundocs/${ALIAS}\n"
+	@echo "HomePage: https://github.com/eq19/${ALIAS}"
 	@echo "Usage:"
 	@echo "    make [subcommand]\n"
 	@echo "Subcommands:"
@@ -19,6 +19,36 @@ help:
 
 checkout:
 	@git checkout _config.yml
+	@git checkout /js/theme.min.js
+	@git checkout /css/theme.min.css
+
+install:
+	@gem install jekyll bundler
+	@npm install
+	@bundle install
+
+format:
+	@npm run format
+
+report:
+	@npm run report
+
+clean:
+	@bundle exec jekyll clean
+
+dist: format clean
+	@npm run build
+
+status: format clean checkout
+	@git status
+
+theme: dist
+	@gem uninstall ${ALIAS}
+	@gem build *.gemspec
+	@gem install *.gem && rm -f *.gem
+
+server: dist
+	@${DEBUG} bundle exec jekyll server --livereload
 
 build:
 	@bash .github/workflows/builders/docker/artifact.sh
