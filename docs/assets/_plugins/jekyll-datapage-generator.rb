@@ -128,6 +128,8 @@ module Jekyll
     require 'rack'
     safe true
 
+    # GitHub API: Get Pinned Repositories
+    # https://stackoverflow.com/a/60123976/4058484
     def call(env)
       request = Rack::Request.new(env)
       if request.request_method == 'POST' && request.path == '/graphql'
