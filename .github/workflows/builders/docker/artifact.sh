@@ -81,9 +81,7 @@ cat ${PWD}/_config.yml
 
 # pinned repos
 echo -e "\n$hr\nPINNED  REPOSITORIES\n$hr"
-curl -L -X POST 'https://api.github.com/graphql' \
--H 'Authorization: bearer $JEKYLL_GITHUB_TOKEN' \
---data-raw '{"query":"{\n  user(login: \"eq19\") {\n pinnedItems(first: 6, types: REPOSITORY) {\n nodes {\n ... on Repository {\n name\n }\n }\n }\n }\n}"
-'
+curl -L -X POST 'https://api.github.com/graphql' -H 'Authorization: bearer TOKEN' \
+--data-raw '{"query":"{\n  user(login: \"eq19\") {\n pinnedItems(first: 6, types: REPOSITORY) {\n nodes {\n ... on Repository {\n name\n }\n }\n }\n }\n}"'
 
 echo -e "\n"
