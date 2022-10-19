@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # os version
-echo -e "\n$hrOS VERSION\n$hr"
+echo -e "\nOS VERSION\n$hr"
 cat /etc/os-release
 hostnamectl
 uname -r

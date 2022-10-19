@@ -4,7 +4,7 @@ DEBUG=JEKYLL_GITHUB_TOKEN=${TOKEN}
 help:
 	@echo "HomePage: https://github.com/eq19/${ALIAS}"
 	@echo "Usage:"
-	@echo "    make [subcommand]\n"
+	@echo "    make [subcommand]"
 	@echo "Subcommands:"
 	@echo "    install   Install the theme dependencies"
 	@echo "    format    Format all files"
@@ -15,7 +15,7 @@ help:
 	@echo "    theme     Make theme as gem and install"
 	@echo "    build     Build the test site"
 	@echo "    server    Make a livereload jekyll server to development"
-	@echo "    checkout  Reset the theme minified css and script to last commit"
+	@echo "    checkout  Reset the minified css and script to last commit"
 
 checkout:
 	@git checkout _config.yml

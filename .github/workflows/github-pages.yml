@@ -40,5 +40,5 @@ jobs:
       - name: 🚀 Build and deploy
         uses: FeedMapping/theme@v0.6.0
         with:
+          pre_build_commands: 'make build'
           token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
-          pre_build_commands: 'make && make build'
