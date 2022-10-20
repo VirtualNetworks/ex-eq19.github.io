@@ -51,7 +51,7 @@ echo $HOME/.local/bin
 ls -al $HOME/.local/bin
 
 # bundel
-echo -e "$hr\nBUNDLE PATH\n$hr"
+echo -e "\n$hr\nBUNDLE PATH\n$hr"
 echo $BUNDLE_PATH
 ls -al $BUNDLE_PATH
 

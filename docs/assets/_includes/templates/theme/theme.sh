@@ -96,7 +96,8 @@ fi
 
 echo -e "$hr\nBUNDLE INSTALLATION\n$hr"
 cd ${WORKING_DIR}
-git init --initial-branch=master && \
+git init --initial-branch=master
+pwd
 bundle config cache_all true
 bundle config path $BUNDLE_PATH
 bundle install
@@ -108,6 +109,7 @@ fi
 
 build_jekyll() {
   echo -e "\nJEKYLL INSTALLATION\n"
+  pwd 
   JEKYLL_ENV=production bundle exec jekyll build --trace --profile \
     ${JEKYLL_BASEURL} \
     -c ${JEKYLL_CFG} \
