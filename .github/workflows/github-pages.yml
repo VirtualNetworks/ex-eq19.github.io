@@ -31,19 +31,19 @@ jobs:
 
       - name: 💎 Set prime
         id: cache-primes
-        uses: actions/cache@v3
+        uses: FeedMapping/setup@v3
         with:
           path: prime-numbers
           key: ${{ runner.os }}-primes
 
       - name: 🔨 Get gem cache
-        uses: FeedMapping/setup@v1
+        uses: FeedMapping/build@v1
         with:
           bundler-cache: false
           ruby-version: '3.1.2'
 
       - name: 🚀 Build and deploy
-        uses: FeedMapping/theme@v1
+        uses: FeedMapping/deploy@v1
         with:
           pre_build_commands: 'make build'
           token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
