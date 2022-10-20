@@ -123,6 +123,7 @@ module Jekyll
   end
 
   class JekyllDatapageGenerator < Generator
+    require 'github_api'
     require 'graphql'
     require 'prime'
     require 'rack'
