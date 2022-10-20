@@ -96,7 +96,6 @@ fi
 
 echo -e "$hr\nBUNDLE INSTALLATION\n$hr"
 cd ${WORKING_DIR}
-git init --initial-branch=master
 pwd
 bundle config cache_all true
 bundle config path $BUNDLE_PATH

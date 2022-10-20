@@ -6,7 +6,7 @@ source "https://rubygems.org"
 #     bundle exec jekyll serve
 #
 # This will help ensure the proper Jekyll version is running.
-# Happy Jekylling!
+# https://linuxtut.com/en/49d3975a0620a85a7fa4/
 
 gemspec
 ruby "2.7.6"
