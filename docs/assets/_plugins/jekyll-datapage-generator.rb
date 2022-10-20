@@ -24,7 +24,6 @@ module Jekyll
     include Sanitizer
 
     # - site and base are copied from other plugins: to be honest, I am not sure what they do
-    #
     # - `index_files` specifies if we want to generate named folders (true) or not (false)
     # - `dir` is the default output directory
     # - `prefix is the page_data_prefix`used to output the page data
@@ -35,6 +34,7 @@ module Jekyll
     # - `title_expr` is an expression for generating the page title
     # - `template` is the name of the template for generating the page
     # - `extension` is the extension for the generated file
+	
     def initialize(site, base, page_num, index, index_files, dir, prefix, data, name, name_expr, title, title_expr, template, extension, debug)
       @site = site
       @base = base
@@ -130,6 +130,8 @@ module Jekyll
 
     # GitHub API: Get Pinned Repositories
     # https://stackoverflow.com/a/60123976/4058484
+    # https://gist.github.com/MichaelCurrin/6777b91e6374cdb5662b64b8249070ea
+
     def call(env)
       request = Rack::Request.new(env)
       if request.request_method == 'POST' && request.path == '/graphql'
