@@ -50,6 +50,11 @@ echo -e "$hr\nBIN FILES\n$hr"
 echo $HOME/.local/bin
 ls -al $HOME/.local/bin
 
+# bundel
+echo -e "$hr\nBUNDLE PATH\n$hr"
+echo $BUNDLE_PATH
+ls -al $BUNDLE_PATH
+
 # workspace
 echo -e "\n$hr\nCURRENT REPOSITORY\n$hr"
 pwd
