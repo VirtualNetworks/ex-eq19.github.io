@@ -6,6 +6,7 @@ LABEL homepage="https://github.com/pact-foundation/pact-ruby-cli/blob/master/Doc
 
 ENV NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 ENV BUNDLE_SILENCE_ROOT_WARNING=1
+ENV RUBYOPT=W0
 
 COPY LICENSE.txt README.md /
 COPY providers /providers
