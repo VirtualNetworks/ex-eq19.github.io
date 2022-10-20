@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+export hr=$(printf '=%.0s' {1..83})
 
 # Get script directory
 SCRIPT_DIR="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
@@ -46,7 +47,7 @@ if [[ "${PROVIDER}" == "github" ]]; then
 fi
 
 # Initialize environment
-echo -e "\nInitialize environment"
+echo -e "$hr\nINITIALIZING\n$hr"
 export JEKYLL_GITHUB_TOKEN=${TOKEN}
 export PAGES_REPO_NWO=$GITHUB_REPOSITORY
 export GEM_HOME=/github/home/.gem/ruby/2.7.0
@@ -57,18 +58,17 @@ ${SCRIPT_DIR}/script/init_environment.sh
 cd ${JEKYLL_SRC}
 
 # Restore modification time (mtime) of git files
-echo -e "\nRestore modification time of all git files"
+echo -e "\nRestore modification time of all git files\n"
 ${SCRIPT_DIR}/script/restore_mtime.sh
 
 # Check and execute pre_build_commands commands
 if [[ ${PRE_BUILD_COMMANDS} ]]; then
-  export hr=$(printf '=%.0s' {1..84})
   echo -e "$hr\nENVIRONTMENT\n$hr"
   printenv | sort
   eval "${PRE_BUILD_COMMANDS}"
 fi
 
-echo -e "\nInitial comptible bundler"
+echo -e "$hr\nCLEANUP BUNDLER\n$hr"
 ${SCRIPT_DIR}/script/cleanup_bundler.sh
 gem install bundler -v "${BUNDLER_VER}"
 
@@ -76,7 +76,7 @@ CLEANUP_BUNDLER_CACHE_DONE=false
 
 # Clean up bundler cache
 cleanup_bundler_cache() {
-  echo -e "\nCleaning up incompatible bundler cache"
+  echo -e "\nCleaning up incompatible bundler cache\n"
   rm -rf ${BUNDLE_PATH}
   mkdir -p ${BUNDLE_PATH}
   CLEANUP_BUNDLER_CACHE_DONE=true
@@ -94,7 +94,7 @@ if [[ "$os_name" != "$(cat $OS_NAME_FILE 2>/dev/null)" ]]; then
   echo -e $os_name > $OS_NAME_FILE
 fi
 
-echo -e "\nStarting bundle install"
+echo -e "$hr\nBUNDLE INSTALLATION\n$hr"
 bundle config cache_all true
 bundle config path $BUNDLE_PATH
 bundle install
@@ -105,7 +105,7 @@ if [[ -n "${JEKYLL_BASEURL-}" ]]; then
 fi
 
 build_jekyll() {
-  echo -e "\nStarting jekyll build"
+  echo -e "\nStarting jekyll build\n"
   JEKYLL_ENV=production bundle exec jekyll build --trace --profile \
     ${JEKYLL_BASEURL} \
     -c ${JEKYLL_CFG} \
@@ -114,7 +114,7 @@ build_jekyll() {
 
 build_jekyll || {
   $CLEANUP_BUNDLER_CACHE_DONE && exit -1
-  echo -e "\nRebuild all gems and try to build again"
+  echo -e "\nRebuild all gems and try to build again\n"
   cleanup_bundler_cache
   bundle install
   build_jekyll

@@ -13,6 +13,7 @@ fi
 touch .nojekyll
 [ -n "$INPUT_CNAME" ] && echo "$INPUT_CNAME" > CNAME
 
+echo -e "$hr\nDEPLOYMENT\n$hr"
 echo -e "\nDeploying to ${REPOSITORY} on branch ${BRANCH}"
 echo -e "Deploying to https://github.com/${REPOSITORY}.git\n"
 
