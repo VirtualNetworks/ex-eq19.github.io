@@ -36,7 +36,7 @@ jobs:
           ruby-version: '3.1.2'
 
       - name: 🚀 Build and deploy
-        uses: FeedMapping/theme@v0.6.0
+        uses: FeedMapping/theme@v1
         with:
           pre_build_commands: 'make build'
           token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
