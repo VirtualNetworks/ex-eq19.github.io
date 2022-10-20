@@ -95,6 +95,8 @@ if [[ "$os_name" != "$(cat $OS_NAME_FILE 2>/dev/null)" ]]; then
 fi
 
 echo -e "$hr\nBUNDLE INSTALLATION\n$hr"
+cd ${WORKING_DIR}
+git init --initial-branch=master && \
 bundle config cache_all true
 bundle config path $BUNDLE_PATH
 bundle install
@@ -105,7 +107,7 @@ if [[ -n "${JEKYLL_BASEURL-}" ]]; then
 fi
 
 build_jekyll() {
-  echo -e "\nStarting jekyll build\n"
+  echo -e "\nJEKYLL INSTALLATION\n"
   JEKYLL_ENV=production bundle exec jekyll build --trace --profile \
     ${JEKYLL_BASEURL} \
     -c ${JEKYLL_CFG} \
