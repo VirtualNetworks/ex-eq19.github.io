@@ -1,19 +1,10 @@
 #!/bin/bash
 
-export hr=$(printf '=%.0s' {1..40})
-
 # os version
 echo -e "\nOS VERSION\n$hr"
 cat /etc/os-release
 hostnamectl
 uname -r
-
-# environtment archlinux:base-devel
-echo -e "$hr\nENVIRONTMENT\n$hr"
-export PAGES_REPO_NWO=$GITHUB_REPOSITORY
-export JEKYLL_GITHUB_TOKEN=$JEKYLL_GITHUB_TOKEN
-export SSL_CERT_FILE=$(realpath .github/hook-scripts/cacert.pem)
-printenv | sort
 
 # installed packages
 echo -e "$hr\nPACKAGESS\n$hr"

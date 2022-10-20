@@ -27,8 +27,6 @@ fi
 # Set default bundle path and cache
 BUNDLE_PATH=${WORKING_DIR}/vendor/bundle
 
-echo -e "\nStarting the Jekyll Deploy Action"
-
 if [[ -z "${TOKEN}" ]]; then
   echo -e "Please set the TOKEN environment variable."
   exit 1
@@ -45,15 +43,15 @@ if [[ "${PROVIDER}" == "github" ]]; then
     echo -e "The repository ${REPOSITORY} doesn't match the pattern <author>/<repos>"
     exit 1
   fi
-
-  # Fix Github API metadata warnings
-  export JEKYLL_GITHUB_TOKEN=${TOKEN}
 fi
 
 # Initialize environment
 echo -e "\nInitialize environment"
+export JEKYLL_GITHUB_TOKEN=${TOKEN}
+export PAGES_REPO_NWO=$GITHUB_REPOSITORY
 export GEM_HOME=/github/home/.gem/ruby/2.7.0
-export PATH=$PATH:$GEM_HOME/bin
+export PATH=$PATH:$GEM_HOME/bin:$HOME/.local/bin
+export SSL_CERT_FILE=$(realpath .github/hook-scripts/cacert.pem)
 ${SCRIPT_DIR}/script/init_environment.sh
 
 cd ${JEKYLL_SRC}
@@ -64,7 +62,9 @@ ${SCRIPT_DIR}/script/restore_mtime.sh
 
 # Check and execute pre_build_commands commands
 if [[ ${PRE_BUILD_COMMANDS} ]]; then
-  echo -e "\nExecuting pre-build commands"
+  export hr=$(printf '=%.0s' {1..84})
+  echo -e "$hr\nENVIRONTMENT\n$hr"
+  printenv | sort
   eval "${PRE_BUILD_COMMANDS}"
 fi
 
