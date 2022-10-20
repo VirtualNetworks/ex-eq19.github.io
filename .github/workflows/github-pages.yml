@@ -29,6 +29,13 @@ jobs:
       - name: 📂 Checkout
         uses: actions/checkout@v3
 
+      - name: 💎 Set prime
+        id: cache-primes
+        uses: actions/cache@v3
+        with:
+          path: prime-numbers
+          key: ${{ runner.os }}-primes
+
       - name: 🔨 Get gem cache
         uses: FeedMapping/setup@v1
         with:
