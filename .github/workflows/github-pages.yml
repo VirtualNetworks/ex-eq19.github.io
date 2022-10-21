@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📂 Checkout
-        uses: FeedMapping/check@v3
+        uses: FeedMapping/check@v3.1.1
 
       - name: 💎 Set prime
         id: cache-primes
