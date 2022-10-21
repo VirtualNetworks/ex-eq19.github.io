@@ -1,17 +1,10 @@
 #!/bin/bash
 
 # os version
-echo -e "\n$hrOS VERSION\n$hr"
+echo -e "\nOS VERSION\n$hr"
 cat /etc/os-release
 hostnamectl
 uname -r
-
-# environtment archlinux:base-devel
-echo -e "$hr\nENVIRONTMENT\n$hr"
-export PAGES_REPO_NWO=$GITHUB_REPOSITORY
-export JEKYLL_GITHUB_TOKEN=$JEKYLL_GITHUB_TOKEN
-export SSL_CERT_FILE=$(realpath .github/hook-scripts/cacert.pem)
-printenv | sort
 
 # installed packages
 echo -e "$hr\nPACKAGESS\n$hr"
@@ -57,6 +50,11 @@ echo -e "$hr\nBIN FILES\n$hr"
 echo $HOME/.local/bin
 ls -al $HOME/.local/bin
 
+# bundel
+echo -e "\n$hr\nBUNDLE PATH\n$hr"
+echo $BUNDLE_PATH
+ls -al $BUNDLE_PATH
+
 # workspace
 echo -e "\n$hr\nCURRENT REPOSITORY\n$hr"
 pwd
@@ -67,8 +65,21 @@ echo -e "\n$hr\nASSET FILES\n$hr"
 echo ${PWD}/docs/assets
 ls -al ${PWD}/docs/assets
 
+# makefile
+echo -e "\n$hr\nMAKEFILE\n$hr"
+echo ${PWD}/Makefile
+cat ${PWD}/Makefile
+
 # config file
 echo -e "\n$hr\nCONFIG FILE\n$hr"
 echo ${PWD}/_config.yml
 cat ${PWD}/_config.yml
-echo -e "\n$hr\n"
+
+# pinned repos
+# https://dev.to/thomasaudo/get-started-with-github-grapql-api--1g8b
+echo -e "\n$hr\nPINNED  REPOSITORIES\n$hr"
+AUTH="Authorization: bearer $JEKYLL_GITHUB_TOKEN"
+curl -L -X POST "https://api.github.com/graphql" -H "$AUTH" \
+--data-raw '{"query":"{\n  user(login: \"eq19\") {\n pinnedItems(first: 6, types: REPOSITORY) {\n nodes {\n ... on Repository {\n name\n }\n }\n }\n }\n}"'
+
+echo -e "\n"

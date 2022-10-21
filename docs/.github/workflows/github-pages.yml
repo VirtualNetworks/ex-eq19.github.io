@@ -5,7 +5,8 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches:
-      - main 
+      - eQ19
+      - Chetabahana
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -28,18 +29,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📂 Checkout
-        uses: actions/checkout@v3
+        uses: FeedMapping/check@v3.1.1
+        with:
+          path: ${{ secrets.REPO_SOURCE }}
+
+      - name: 💎 Set prime
+        id: cache-primes
+        uses: FeedMapping/setup@v3
+        with:
+          path: prime-numbers
+          key: ${{ runner.os }}-primes
 
       - name: 🔨 Get gem cache
-        uses: actions/cache@v2
+        uses: FeedMapping/build@v1
         with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
+          bundler-cache: false
+          ruby-version: '3.1.2'
 
       - name: 🚀 Build and deploy
-        uses: FeedMapping/theme@v0.6.0
+        uses: FeedMapping/deploy@v1
         with:
+          pre_build_commands: 'make build'
           token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
-          pre_build_commands: 'make && make build'
