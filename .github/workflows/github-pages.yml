@@ -27,9 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📂 Checkout
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
+        uses: FeedMapping/check@v3
 
       - name: 💎 Set prime
         id: cache-primes
