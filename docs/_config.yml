@@ -25,7 +25,6 @@ debug:
 
 # Repository Settings
 # https://blog.webjeda.com/jekyll-redirect/
-# https://github.com/dotnet/docs/issues/20459#issuecomment-725295168
 # https://github.com/ethanresnick/json-api-1/blob/gh-pages/_config.yml
 # https://github.com/daattali/beautiful-jekyll/blob/master/_config.yml
 
@@ -33,7 +32,6 @@ include:
   - app.js
   - feed.xml
   - feed.json
-  - .nojekyll
   - .htaccess
   - node_modules
   - package.json
@@ -68,8 +66,9 @@ incremental: true
 
 # Plugins Setting
 # https://pages.github.com/versions/
-# https://jekyllrb.com/docs/plugins/
-# https://docs.github.com/en/pages/quickstart
+# https://github.com/jekyll/jekyll-feed
+# https://en.wikipedia.org/wiki/CoffeeScript
+# https://github.com/jekyll/jekyll-redirect-from
 
 plugins:
   - jemoji
@@ -77,7 +76,6 @@ plugins:
   - jekyll-feed
   - jekyll-avatar
   - jekyll-sitemap
-  - jekyll/tagging
   - jekyll-paginate
   - jekyll-mentions
   - jekyll-remote-theme
@@ -89,23 +87,19 @@ plugins:
   - jekyll-github-metadata
   - jekyll-titles-from-headings
   - jekyll-optional-front-matter
-
+  
 # Jekyll Tag Pages Generator
+# https://jekyllrb.com/docs/liquid/tags/
 # https://github.com/pattex/jekyll-tagging
-# https://github.com/avillafiorita/jekyll-datapage_gen
+# https://jekyllrb.com/docs/plugins/generators/
 
-syntax_gen:
-- data: roots
-  title: grammar
-
-tag_page_dir: tag
-tag_feed_layout: nil
-tag_page_layout: nil
+tag_page_dir: tagz
+tag_feed_layout: tag_feed
+tag_page_layout: tag_page
   
 # Default Setting
 # https://stackoverflow.com/a/49428493
 # https://jekyllrb.com/docs/collections/
-# https://chetabahana.github.io/app/flowchart.json
 # https://jekyllrb.com/docs/configuration/front-matter-defaults
 
 defaults:
@@ -129,35 +123,22 @@ defaults:
       layout: base
       permalink: /sitemap/:category.xml
 
-# Default Configuration
-# remote_theme: eQ19/parser
-# https://jekyllrb.com/docs/configuration/default/
-# https://jekyllrb.com/docs/continuous-integration/github-actions/
-# https://docs.github.com/en/actions/security-guides/encrypted-secrets
-
-sass:
-    sass_dir        : docs/css/_sass
-data_dir            : assets/_data
-plugins_dir         : assets/_plugins
-layouts_dir         : assets/_layouts
-includes_dir        : assets/_includes
-collections_dir     : assets/collections
-
 # Permalinks
 # https://jekyllrb.com/docs/permalinks/
-# feeds: https://chetabahana.github.io/main/tree.json
-# leads: https://chetabahana.github.io/leads/section.json
-# posts: https://chetabahana.github.io/object/2018/132/05/00/00/00/dummy.json
+# https://stackoverflow.com/a/28754526/4058484
+# https://github.com/NiklasEi/jekyll_custom_permalink
+# https://github.com/avillafiorita/jekyll-datapage_gen
 
 collections:
   maps:
     output: true
+    permalink: /sitemap/index_:categories:output_ext
   feeds:
     output: true
-    permalink: /:categories/:title:output_ext
+    permalink: /sitemap/index_:categories:output_ext
   posts:
-    permalink: /:categories/:year/:y_day/:month/:hour/:minute/:second/:title:output_ext
-
+    output: true
+    permalink: /sitemap/:year/:y_day/:month/:title:output_ext
 
 # Feed and Submodul Setting
 # https://stackoverflow.com/a/55885186/4058484
@@ -239,7 +220,21 @@ flow_labels:
 
 basedir: _feeds
 repository: eq19/grammar
-organization: feedmapping
+organization: marketleader
+
+# Directory Setting
+# remote_theme: eQ19/parser
+# https://jekyllrb.com/docs/configuration/default/
+# https://jekyllrb.com/docs/continuous-integration/github-actions/
+# https://docs.github.com/en/actions/security-guides/encrypted-secrets
+
+sass:
+    sass_dir        : docs/css/_sass
+data_dir            : assets/_data
+plugins_dir         : assets/_plugins
+layouts_dir         : assets/_layouts
+includes_dir        : assets/_includes
+collections_dir     : assets/collections
 
 # Site Metadata
 # https://docs.github.com/en/pages
