@@ -4,7 +4,9 @@ name: Build and deploy Jekyll site to GitHub Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: eQ19
+    branches:
+      - eQ19
+      - Chetabahana
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -28,6 +30,8 @@ jobs:
     steps:
       - name: 📂 Checkout
         uses: FeedMapping/check@v3.1.1
+        with:
+          path: ${{ secrets.REPO_SOURCE }}
 
       - name: 💎 Set prime
         id: cache-primes
