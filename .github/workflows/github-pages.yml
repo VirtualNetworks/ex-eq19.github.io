@@ -30,8 +30,6 @@ jobs:
     steps:
       - name: 📂 Checkout
         uses: FeedMapping/check@v3.1.1
-        with:
-          path: ${{ secrets.REPO_SOURCE }}
 
       - name: 💎 Set prime
         id: cache-primes
