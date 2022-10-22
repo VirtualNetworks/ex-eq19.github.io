@@ -230,11 +230,11 @@ organization: marketleader
 
 sass:
     sass_dir        : docs/css/_sass
-data_dir            : assets/_data
 plugins_dir         : assets/_plugins
 layouts_dir         : assets/_layouts
 includes_dir        : assets/_includes
-collections_dir     : assets/collections
+data_dir            : assets/primes/numberGenerator/python/prime_lists/_data
+collections_dir     : assets/primes/numberGenerator/python/prime_lists/_data/_base
 
 # Site Metadata
 # https://docs.github.com/en/pages
