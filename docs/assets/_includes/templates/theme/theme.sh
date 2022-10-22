@@ -26,9 +26,6 @@ if [[ "${OWNER}" != "eq19" ]]; then
   sed -i -e "s/eq19/${OWNER}/g" ${JEKYLL_SRC}/${JEKYLL_CFG}
 fi
 
-# Set default bundle path and cache
-BUNDLE_PATH=${WORKING_DIR}/vendor/bundle
-
 if [[ -z "${TOKEN}" ]]; then
   echo -e "Please set the TOKEN environment variable."
   exit 1
@@ -50,6 +47,7 @@ fi
 # Initialize environment
 export JEKYLL_GITHUB_TOKEN=${TOKEN}
 export PAGES_REPO_NWO=$GITHUB_REPOSITORY
+export BUNDLE_PATH=${WORKING_DIR}/vendor/bundle
 export GEM_HOME=/github/home/.gem/ruby/${RUBY_VERSION}
 export PATH=$PATH:${GEM_HOME}/bin:$HOME/.local/bin
 export SSL_CERT_FILE=$(realpath .github/hook-scripts/cacert.pem)
