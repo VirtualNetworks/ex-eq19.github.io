@@ -48,5 +48,4 @@ jobs:
         uses: FeedMapping/deploy@v1
         with:
           pre_build_commands: 'make build'
-          jekyll_src: ${{ secrets.REPO_SOURCE }}
           token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}

@@ -18,11 +18,11 @@ JEKYLL_CFG=${INPUT_JEKYLL_CFG:=./_config.yml}
 JEKYLL_BASEURL=${INPUT_JEKYLL_BASEURL:=}
 PRE_BUILD_COMMANDS=${INPUT_PRE_BUILD_COMMANDS:=}
 
-if [[ "${GITHUB_ACTOR}" != "eq19" ]]; then
-  mkdir ${JEKYLL_SRC}/docs/docs
-  mv ${JEKYLL_SRC}/assets ${JEKYLL_SRC}/docs/docs/
+if [[ "${GITHUB_REPOSITORY_OWNER}" != "eq19" ]]; then
+  # mkdir ${JEKYLL_SRC}/docs/docs
+  # mv ${JEKYLL_SRC}/assets ${JEKYLL_SRC}/docs/docs/
   export JEKYLL_SRC=${JEKYLL_SRC}/docs
-  sed -i -e 's/eq19/chetabahana/g' ${JEKYLL_SRC}/${JEKYLL_CFG}
+  sed -i -e "s/eq19/${GITHUB_REPOSITORY_OWNER}/g" ${JEKYLL_SRC}/${JEKYLL_CFG}
 fi
 
 # Set default bundle path and cache
