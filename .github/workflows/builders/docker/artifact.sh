@@ -52,8 +52,8 @@ ls -al $HOME/.local/bin
 
 # bundel
 echo -e "\n$hr\nBUNDLE PATH\n$hr"
-echo $BUNDLE_PATH
-ls -al $BUNDLE_PATH
+echo ${BUNDLE_PATH}
+ls -al ${BUNDLE_PATH}
 
 # workspace
 echo -e "\n$hr\nCURRENT REPOSITORY\n$hr"
@@ -62,18 +62,18 @@ ls -al .
 
 # asset files
 echo -e "\n$hr\nASSET FILES\n$hr"
-echo ${PWD}/docs/assets
-ls -al ${PWD}/docs/assets
+echo ${JEKYLL_SRC}/docs/assets
+ls -al ${JEKYLL_SRC}/docs/assets
 
 # makefile
 echo -e "\n$hr\nMAKEFILE\n$hr"
-echo ${PWD}/Makefile
-cat ${PWD}/Makefile
+echo ${JEKYLL_SRC}/Makefile
+cat ${JEKYLL_SRC}/Makefile
 
 # config file
 echo -e "\n$hr\nCONFIG FILE\n$hr"
-echo ${PWD}/_config.yml
-cat ${PWD}/_config.yml
+echo ${JEKYLL_SRC}/${JEKYLL_CFG}
+cat ${JEKYLL_SRC}/${JEKYLL_CFG}
 
 # pinned repos
 # https://dev.to/thomasaudo/get-started-with-github-grapql-api--1g8b

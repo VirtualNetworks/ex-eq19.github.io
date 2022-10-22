@@ -1,28 +1,28 @@
 #!/bin/bash
 set -e
+export WORKING_DIR=${PWD}
 export hr=$(printf '=%.0s' {1..83})
 
 # Get script directory
 SCRIPT_DIR="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-WORKING_DIR=${PWD}
 
 # Initial default value
-PROVIDER=${INPUT_PROVIDER:=github}
 TOKEN=${INPUT_TOKEN}
 ACTOR=${INPUT_ACTOR}
-REPOSITORY=${INPUT_REPOSITORY}
 BRANCH=${INPUT_BRANCH}
+REPOSITORY=${INPUT_REPOSITORY}
+OWNER=${GITHUB_REPOSITORY_OWNER}
+PROVIDER=${INPUT_PROVIDER:=github}
 BUNDLER_VER=${INPUT_BUNDLER_VER:=>=0}
 JEKYLL_SRC=${INPUT_JEKYLL_SRC:=./}
 JEKYLL_CFG=${INPUT_JEKYLL_CFG:=./_config.yml}
 JEKYLL_BASEURL=${INPUT_JEKYLL_BASEURL:=}
 PRE_BUILD_COMMANDS=${INPUT_PRE_BUILD_COMMANDS:=}
 
-if [[ "${GITHUB_REPOSITORY_OWNER}" != "eq19" ]]; then
-  # mkdir ${JEKYLL_SRC}/docs/docs
-  # mv ${JEKYLL_SRC}/assets ${JEKYLL_SRC}/docs/docs/
+# https://stackoverflow.com/a/42137273/4058484
+if [[ "${OWNER}" != "eq19" ]]; then
   export JEKYLL_SRC=${JEKYLL_SRC}/docs
-  sed -i -e "s/eq19/${GITHUB_REPOSITORY_OWNER}/g" ${JEKYLL_SRC}/${JEKYLL_CFG}
+  sed -i -e "s/eq19/${OWNER}/g" ${JEKYLL_SRC}/${JEKYLL_CFG}
 fi
 
 # Set default bundle path and cache
@@ -35,9 +35,9 @@ fi
 
 # Check parameters and assign default values
 if [[ "${PROVIDER}" == "github" ]]; then
+  : ${BRANCH:=gh-pages}
   : ${ACTOR:=${GITHUB_ACTOR}}
   : ${REPOSITORY:=${GITHUB_REPOSITORY}}
-  : ${BRANCH:=gh-pages}
 
   # Check if repository is available
   if ! echo -e "${REPOSITORY}" | grep -Eq ".+/.+"; then
@@ -95,8 +95,6 @@ if [[ "$os_name" != "$(cat $OS_NAME_FILE 2>/dev/null)" ]]; then
 fi
 
 echo -e "$hr\nBUNDLE INSTALLATION\n$hr"
-cd ${WORKING_DIR}
-pwd
 bundle config cache_all true
 bundle config path $BUNDLE_PATH
 bundle install
