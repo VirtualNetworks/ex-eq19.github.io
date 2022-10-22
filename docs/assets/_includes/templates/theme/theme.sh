@@ -13,6 +13,7 @@ BRANCH=${INPUT_BRANCH}
 REPOSITORY=${INPUT_REPOSITORY}
 OWNER=${GITHUB_REPOSITORY_OWNER}
 PROVIDER=${INPUT_PROVIDER:=github}
+RUBY_VERSION=${INPUT_RUBY_VERSION}
 BUNDLER_VER=${INPUT_BUNDLER_VER:=>=0}
 JEKYLL_SRC=${INPUT_JEKYLL_SRC:=./}
 JEKYLL_CFG=${INPUT_JEKYLL_CFG:=./_config.yml}
@@ -47,11 +48,10 @@ if [[ "${PROVIDER}" == "github" ]]; then
 fi
 
 # Initialize environment
-echo -e "$hr\nINITIALIZING\n$hr"
 export JEKYLL_GITHUB_TOKEN=${TOKEN}
 export PAGES_REPO_NWO=$GITHUB_REPOSITORY
-export GEM_HOME=/github/home/.gem/ruby/2.7.0
-export PATH=$PATH:$GEM_HOME/bin:$HOME/.local/bin
+export GEM_HOME=/github/home/.gem/ruby/${RUBY_VERSION}
+export PATH=$PATH:${GEM_HOME}/bin:$HOME/.local/bin
 export SSL_CERT_FILE=$(realpath .github/hook-scripts/cacert.pem)
 ${SCRIPT_DIR}/script/init_environment.sh
 
@@ -61,14 +61,7 @@ cd ${JEKYLL_SRC}
 echo -e "\nRestore modification time of all git files\n"
 ${SCRIPT_DIR}/script/restore_mtime.sh
 
-# Check and execute pre_build_commands commands
-if [[ ${PRE_BUILD_COMMANDS} ]]; then
-  echo -e "$hr\nENVIRONTMENT\n$hr"
-  printenv | sort
-  eval "${PRE_BUILD_COMMANDS}"
-fi
-
-echo -e "$hr\nCLEANUP BUNDLER\n$hr"
+# echo -e "$hr\nCLEANUP BUNDLER\n$hr"
 ${SCRIPT_DIR}/script/cleanup_bundler.sh
 gem install bundler -v "${BUNDLER_VER}"
 
@@ -107,7 +100,7 @@ fi
 build_jekyll() {
   echo -e "\nJEKYLL INSTALLATION\n"
   pwd 
-  JEKYLL_ENV=production bundle exec jekyll build --trace --profile \
+  JEKYLL_GITHUB_TOKEN=${TOKEN} bundle exec jekyll build --trace --profile \
     ${JEKYLL_BASEURL} \
     -c ${JEKYLL_CFG} \
     -d ${WORKING_DIR}/build
@@ -121,10 +114,16 @@ build_jekyll || {
   build_jekyll
 }
 
-cd ${WORKING_DIR}/build
+# Check and execute pre_build_commands commands
+if [[ ${PRE_BUILD_COMMANDS} ]]; then
+  echo -e "$hr\nENVIRONTMENT\n$hr"
+  printenv | sort
+  eval "${PRE_BUILD_COMMANDS}"
+fi
 
 # Check if deploy on the same repository branch
 if [[ "${PROVIDER}" == "github" ]]; then
+  cd ${WORKING_DIR}/build
   source "${SCRIPT_DIR}/providers/github.sh"
 else
   echo -e "${PROVIDER} is an unsupported provider."

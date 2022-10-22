@@ -1,8 +1,5 @@
-FROM archlinux:base-devel
-
-LABEL version="0.6.0"
-LABEL maintainer="Pact Foundation <pact-support@googlegroups.com>"
-LABEL homepage="https://github.com/pact-foundation/pact-ruby-cli/blob/master/Dockerfile"
+FROM ruby:3.0
+LABEL version="0.7.0"
 
 ENV NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 ENV BUNDLE_SILENCE_ROOT_WARNING=1

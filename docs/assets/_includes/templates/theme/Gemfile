@@ -9,7 +9,7 @@ source "https://rubygems.org"
 # https://linuxtut.com/en/49d3975a0620a85a7fa4/
 
 gemspec
-ruby "2.7.6"
+# ruby "2.7.6"
 gem "jekyll", "~> 4.2.2"
 
 # If you want to use GitHub Pages, comment the "gem "jekyll"" above and

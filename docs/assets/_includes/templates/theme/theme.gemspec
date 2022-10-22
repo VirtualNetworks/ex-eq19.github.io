@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |spec|
-  spec.name          = "grammar"
-  spec.version       = "0.1.7"
-  spec.license       = "MIT"
 
-  spec.authors       = ["eQ19"]
-  spec.email         = ["admin@eq19.com"]
-  spec.homepage      = "https://github.com/eq19/grammar"
-  spec.summary       = "A unique mapping system based on prime objects"
+  spec.license       = "MIT"
+  spec.version       = "2.0.10"
+  spec.name          = "jekyll-rtd-theme"
+  spec.authors       = ["saowang"]
+  spec.email         = ["saowang@outlook.com"]
+  spec.homepage      = "https://github.com/rundocs/jekyll-rtd-theme"
+  spec.summary       = "Just another documentation theme compatible with GitHub Pages"
 
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_sass|_includes|_layouts|_plugins|LICENSE|README)!i) }
 

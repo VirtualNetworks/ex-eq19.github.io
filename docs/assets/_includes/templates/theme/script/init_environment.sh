@@ -1,18 +1,19 @@
 #!/bin/bash
 
 # Update packages database
-pacman -Syu --noconfirm
+# echo -e "$hr\nUPDATE PACKAGES\n$hr"
+# pacman -Syu --noconfirm
 
 # Installing git package
-pacman -S --noconfirm git
+# echo -e "$hr\nINSTALL GIT\n$hr"
+# pacman -S --noconfirm git
 
 # Installing ruby libraries
-pacman -S --noconfirm ruby2.7 ruby-bundler
+# echo -e "$hr\nINSTALL RUBY\n$hr"
+# pacman -S --noconfirm ruby${RUBY_VERSION} ruby-bundler
 
 # Setting default ruby version
-cp /usr/bin/ruby-2.7 /usr/bin/ruby
-
-# debug
+echo -e "$hr\nDEFAULT VERSION\n$hr"
 ruby -v && bundle version
 
 # This is a temporary workaround
