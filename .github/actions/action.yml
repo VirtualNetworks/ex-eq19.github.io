@@ -1,6 +1,6 @@
 name: 'Jekyll Deploy Action'
 description: >
-  🪂  A Github Action to deploy Jekyll for GitHub Pages
+  🪂  A Github Action to deploy the Jekyll site conveniently for GitHub Pages
 inputs:
   provider:
     description: 'The deploy provider'
@@ -35,6 +35,9 @@ inputs:
   pre_build_commands:
     description: 'The pre-build commands'
     required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
 branding:
   icon: 'command'
   color: 'red'

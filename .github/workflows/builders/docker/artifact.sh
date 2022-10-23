@@ -1,56 +1,12 @@
 #!/bin/bash
 
-# os version
-echo -e "\nOS VERSION\n$hr"
-cat /etc/os-release
-hostnamectl
-uname -r
+# makefile
+echo -e "\n$hr\nMAKEFILE\n$hr"
+cat ${WORKING_DIR}/${JEKYLL_SRC}/Makefile
 
-# installed packages
-echo -e "$hr\nPACKAGES\n$hr"
-pacman -Q
-dpkg -l
-
-# file system
-echo -e "\n$hr\nFILE SYSTEM\n$hr"
-df -h
-
-# identity
-echo -e "\n$hrWHOAMI\n$hr"
-sudo chown -R $(id -u):$(id -g) $PWD
-whoami
-pwd
-id
-
-# ls /
-echo -e "\n$hr\nALL REPOSITORY\n$hr"
-echo "/"
-ls -al /
-
-# root
-echo -e "$hr\nROOT PROFILES\n$hr"
-echo "/root"
-[[ "$(whoami)" == "root" ]] && ls -alL /root || sudo bash -c 'ls -alL /root'
-
-# root ssh
-echo -e "$hr\nSSH FILES\n$hr"
-echo "/root/.ssh"
-[[ "$(whoami)" == "root" ]] && ls -alL /root/.ssh || sudo bash -c 'ls -alL /root/.ssh'
-
-# home
-echo -e "\n$hr\nHOME PROFILES\n$hr"
-echo $HOME
-ls -al $HOME
-
-# local bin
-echo -e "$hr\nBIN FILES\n$hr"
-echo $HOME/.local/bin
-ls -al $HOME/.local/bin
-
-# bundel
-echo -e "\n$hr\nBUNDLE PATH\n$hr"
-echo ${BUNDLE_PATH}
-ls -al ${BUNDLE_PATH}
+# config file
+echo -e "\n$hr\nJEKYLL CONFIG FILE\n$hr"
+cat ${WORKING_DIR}/${JEKYLL_SRC}/${JEKYLL_CFG}
 
 # pinned repos
 # https://dev.to/thomasaudo/get-started-with-github-grapql-api--1g8b
@@ -59,21 +15,6 @@ AUTH="Authorization: bearer $JEKYLL_GITHUB_TOKEN"
 curl -L -X POST "https://api.github.com/graphql" -H "$AUTH" \
 --data-raw '{"query":"{\n  user(login: \"'${GITHUB_REPOSITORY_OWNER}'\") {\n pinnedItems(first: 6, types: REPOSITORY) {\n nodes {\n ... on Repository {\n name\n }\n }\n }\n }\n}"'
 
-# workspace
-echo -e "\n$hr\nCURRENT REPOSITORY\n$hr"
-pwd
-ls -al .
-
-# asset files
-echo -e "\n$hr\nASSET FILES\n$hr"
-ls -al ${WORKING_DIR}/${JEKYLL_SRC}/docs/assets
-
-# makefile
-echo -e "\n$hr\nMAKEFILE\n$hr"
-cat ${WORKING_DIR}/${JEKYLL_SRC}/Makefile
-
-# config file
-echo -e "\n$hr\nCONFIG FILE\n$hr"
-cat ${WORKING_DIR}/${JEKYLL_SRC}/${JEKYLL_CFG}
-
-echo -e "\n"
+# environtment
+echo -e "\n$hr\nENVIRONTMENT\n$hr"
+printenv | sort
