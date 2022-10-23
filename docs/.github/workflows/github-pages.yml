@@ -1,8 +1,9 @@
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
+# 💎 Sample workflow for building and deploying a Jekyll site to GitHub Pages
 name: Build and deploy Jekyll site to GitHub Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # 🔨 Runs on pushes targeting the default branch
   push:
     branches:
       - eQ19
@@ -35,15 +36,14 @@ jobs:
         uses: ./.github/actions/actions.yml
 
       - name: 🔨 Get gem cache
-        uses: actions/cache@v3
+        uses: ruby/setup-ruby@v1
         with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
+          ruby-version: '3.1.2'
+          bundler-cache: false
 
       - name: 🚀 Build and deploy
-        uses: FeedMapping/deploy@v1
+        uses: FeedMapping/deploy@v2
         with:
+          bundler_ver: '2.3.7'
           pre_build_commands: 'make build'
           token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
