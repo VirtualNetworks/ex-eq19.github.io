@@ -7,12 +7,9 @@ hostnamectl
 uname -r
 
 # installed packages
-echo -e "$hr\nPACKAGESS\n$hr"
+echo -e "$hr\nPACKAGES\n$hr"
 pacman -Q
-
-# installed bash
-echo -e "$hr\nBASH DETAIL\n$hr"
-pacman -Qii bash
+dpkg -l
 
 # file system
 echo -e "\n$hr\nFILE SYSTEM\n$hr"
@@ -55,6 +52,13 @@ echo -e "\n$hr\nBUNDLE PATH\n$hr"
 echo ${BUNDLE_PATH}
 ls -al ${BUNDLE_PATH}
 
+# pinned repos
+# https://dev.to/thomasaudo/get-started-with-github-grapql-api--1g8b
+echo -e "\n$hr\nPINNED  REPOSITORIES\n$hr"
+AUTH="Authorization: bearer $JEKYLL_GITHUB_TOKEN"
+curl -L -X POST "https://api.github.com/graphql" -H "$AUTH" \
+--data-raw '{"query":"{\n  user(login: \"'${GITHUB_REPOSITORY_OWNER}'\") {\n pinnedItems(first: 6, types: REPOSITORY) {\n nodes {\n ... on Repository {\n name\n }\n }\n }\n }\n}"'
+
 # workspace
 echo -e "\n$hr\nCURRENT REPOSITORY\n$hr"
 pwd
@@ -71,12 +75,5 @@ cat ${WORKING_DIR}/${JEKYLL_SRC}/Makefile
 # config file
 echo -e "\n$hr\nCONFIG FILE\n$hr"
 cat ${WORKING_DIR}/${JEKYLL_SRC}/${JEKYLL_CFG}
-
-# pinned repos
-# https://dev.to/thomasaudo/get-started-with-github-grapql-api--1g8b
-echo -e "\n$hr\nPINNED  REPOSITORIES\n$hr"
-AUTH="Authorization: bearer $JEKYLL_GITHUB_TOKEN"
-curl -L -X POST "https://api.github.com/graphql" -H "$AUTH" \
---data-raw '{"query":"{\n  user(login: \"'${GITHUB_REPOSITORY_OWNER}'\") {\n pinnedItems(first: 6, types: REPOSITORY) {\n nodes {\n ... on Repository {\n name\n }\n }\n }\n }\n}"'
 
 echo -e "\n"
