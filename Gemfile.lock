@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    jekyll-rtd-theme (2.0.10)
+      jekyll (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
