@@ -34,8 +34,8 @@ jobs:
       - name: 🔨 Get gem cache
         uses: ruby/setup-ruby@v1
         with:
+          bundler-cache: true
           ruby-version: '3.1.2'
-          bundler-cache: false
 
       - name: 🚀 Build and deploy
         uses: FeedMapping/deploy@v3
