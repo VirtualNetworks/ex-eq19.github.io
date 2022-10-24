@@ -38,7 +38,7 @@ jobs:
           bundler-cache: false
 
       - name: 🚀 Build and deploy
-        uses: FeedMapping/deploy@v2
+        uses: FeedMapping/deploy@v3
         with:
           bundler_ver: '2.3.7'
           pre_build_commands: 'make build'
