@@ -1,9 +1,0 @@
-User-agent: *
-
-Disallow: /id/
-Disallow: /en/
-Disallow: /i18n/
-Disallow: /graphql/
-Disallow: /products/
-Disallow: /dashboard/
-Disallow: /sitemap.xml

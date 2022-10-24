@@ -1,0 +1,35 @@
+/* UItoTop styles
+========================================================*/
+#toTop {
+    display: none;
+    text-decoration: none;
+    position: fixed;
+    bottom: 80px;
+    right: 30px;
+    overflow: hidden;
+    border: none;
+    color: @color_7;
+    width: 40px;
+    height: 43px;
+    font-size: 43px;
+    line-height: 38px;
+    z-index: 20;
+    .transition(color 0.5s ease);
+
+    &:hover {        
+        outline: none;
+      text-decoration: none;
+        color: @color_9;
+    }
+
+    &:active{
+      background: transparent;
+    }
+}
+@media only screen and (max-width: 1199px) {
+  #toTop {
+    display: none !important;
+  }
+}
+@import "mixins.less";
+@import "variables.less";

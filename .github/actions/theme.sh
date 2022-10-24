@@ -44,14 +44,19 @@ if [[ "${PROVIDER}" == "github" ]]; then
   fi
 fi
 
+# Pre-handle Jekyll baseurl
+if [[ -n "${JEKYLL_BASEURL-}" ]]; then
+  JEKYLL_BASEURL="--baseurl ${JEKYLL_BASEURL}"
+fi
+
 # Initialize environment
+export BUNDLER_VER=${BUNDLER_VER}
 export JEKYLL_GITHUB_TOKEN=${TOKEN}
 export PAGES_REPO_NWO=$GITHUB_REPOSITORY
 export BUNDLE_PATH=${WORKING_DIR}/vendor/bundle
 # export GEM_HOME=/github/home/.gem/ruby/${RUBY_VERSION}
 # export PATH=$PATH:${GEM_HOME}/bin:$HOME/.local/bin
 export SSL_CERT_FILE=$(realpath .github/hook-scripts/cacert.pem)
-${SCRIPT_DIR}/script/init_environment.sh
 
 cd ${JEKYLL_SRC}
 
@@ -59,8 +64,7 @@ cd ${JEKYLL_SRC}
 # echo -e "\nRestore modification time of all git files\n"
 ${SCRIPT_DIR}/script/restore_mtime.sh
 ${SCRIPT_DIR}/script/cleanup_bundler.sh
-gem install bundler -v "${BUNDLER_VER}"
-node -v && npm -v
+${SCRIPT_DIR}/script/init_environment.sh
 
 echo -e "$hr\nBUNDLE INSTALLATION\n$hr"
 CLEANUP_BUNDLER_CACHE_DONE=false
@@ -89,15 +93,8 @@ bundle config cache_all true
 bundle config path $BUNDLE_PATH
 bundle install
 
-# Pre-handle Jekyll baseurl
-if [[ -n "${JEKYLL_BASEURL-}" ]]; then
-  JEKYLL_BASEURL="--baseurl ${JEKYLL_BASEURL}"
-fi
-
 # Check and execute pre_build_commands commands
 if [[ ${PRE_BUILD_COMMANDS} ]]; then
-  echo -e "$hr\nENVIRONTMENT\n$hr"
-  printenv | sort
   eval "${PRE_BUILD_COMMANDS}"
 fi
 
