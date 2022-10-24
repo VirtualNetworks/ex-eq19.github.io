@@ -14,8 +14,7 @@ uname -r
 
 # Setting default ruby version
 echo -e "$hr\nRUBY_NODE VERSION\n$hr"
-ruby -v
-gem install bundler -v "${BUNDLER_VER}"
+ruby -v && bundler version
 node -v && npm -v
 
 # file system
